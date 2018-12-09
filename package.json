@@ -1,0 +1,31 @@
+{
+  "name": "webshop",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node-dev --no-notify --respawn --transpileOnly ./src"
+  },
+  "dependencies": {
+    "graphql": "14.0.2",
+    "graphql-nexus": "0.1.1",
+    "graphql-yoga": "1.16.7",
+    "lodash": "^4.17.11",
+    "nexus-prisma": "0.0.9",
+    "prisma-client-lib": "1.23.0-test.3"
+  },
+  "devDependencies": {
+    "@types/graphql": "14.0.3",
+    "@types/lodash": "^4.14.118",
+    "@types/node": "10.12.12",
+    "prisma": "^1.23.0-beta.3",
+    "ts-node-dev": "1.0.0-pre.31",
+    "typescript": "3.2.2"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "printWidth": 80,
+    "trailingComma": "all",
+    "semi": false
+  }
+}
