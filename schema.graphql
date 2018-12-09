@@ -65,6 +65,16 @@ type Brand {
   products(after: String, before: String, first: Int, last: Int, orderBy: ProductOrderByInput, skip: Int, where: ProductWhereInput): [Product!]!
 }
 
+type BrandConnection {
+  edges: [BrandEdge!]!
+  pageInfo: PageInfo!
+}
+
+type BrandEdge {
+  cursor: String!
+  node: Brand!
+}
+
 enum BrandOrderByInput {
   createdAt_ASC
   createdAt_DESC
@@ -185,6 +195,16 @@ type Option {
   values(after: String, before: String, first: Int, last: Int, orderBy: OptionValueOrderByInput, skip: Int, where: OptionValueWhereInput): [OptionValue!]!
 }
 
+type OptionConnection {
+  edges: [OptionEdge!]!
+  pageInfo: PageInfo!
+}
+
+type OptionEdge {
+  cursor: String!
+  node: Option!
+}
+
 enum OptionOrderByInput {
   createdAt_ASC
   createdAt_DESC
@@ -285,11 +305,28 @@ input OptionWhereInput {
   values_some: OptionValueWhereInput
 }
 
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
 type Product {
   brand: Brand!
   id: ID!
   name: String!
   options: [Option!]!
+}
+
+type ProductConnection {
+  edges: [ProductEdge!]!
+  pageInfo: PageInfo!
+}
+
+type ProductEdge {
+  cursor: String!
+  node: Product!
 }
 
 enum ProductOrderByInput {
@@ -348,10 +385,10 @@ input ProductWhereInput {
 }
 
 type Query {
-  brands(after: String, before: String, first: Int, last: Int, orderBy: BrandOrderByInput, skip: Int, where: BrandWhereInput): [Brand!]!
+  brandsConnection(after: String, before: String, first: Int, last: Int, orderBy: BrandOrderByInput, skip: Int, where: BrandWhereInput): BrandConnection!
   collection(collectionId: ID!): Collection!
-  options(after: String, before: String, first: Int, last: Int, orderBy: OptionOrderByInput, skip: Int, where: OptionWhereInput): [Option!]!
-  products(after: String, before: String, first: Int, last: Int, orderBy: ProductOrderByInput, skip: Int, where: ProductWhereInput): [Product!]!
+  optionsConnection(after: String, before: String, first: Int, last: Int, orderBy: OptionOrderByInput, skip: Int, where: OptionWhereInput): OptionConnection!
+  productsConnection(after: String, before: String, first: Int, last: Int, orderBy: ProductOrderByInput, skip: Int, where: ProductWhereInput): ProductConnection!
 }
 
 input UniqueInput {

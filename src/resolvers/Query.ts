@@ -10,7 +10,7 @@ import { prismaObjectType } from 'nexus-prisma'
  * }
  */
 export const Query = prismaObjectType('Query', t => {
-  t.prismaFields({ pick: ['products', 'options', 'brands'] })
+  t.prismaFields({ pick: ['productsConnection', 'optionsConnection', 'brandsConnection'] })
 
   t.field('collection', 'Collection', {
     args: {

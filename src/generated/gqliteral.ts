@@ -24,9 +24,9 @@ type MaybeThunk<T> = T | (() => T);
 // Maybe Thunk, with args
 type MaybeThunkArgs<T, A> = T | ((args?: A) => T);
 
-export type QueryBrandsReturnType = MaybePromiseList<BrandReturnType>;
+export type QueryBrandsConnectionReturnType = BrandConnectionReturnType;
 
-export interface QueryBrandsArgs {
+export interface QueryBrandsConnectionArgs {
   after?: string;
   before?: string;
   first?: number;
@@ -42,9 +42,9 @@ export interface QueryCollectionArgs {
   collectionId: string;
 }
 
-export type QueryOptionsReturnType = MaybePromiseList<OptionReturnType>;
+export type QueryOptionsConnectionReturnType = OptionConnectionReturnType;
 
-export interface QueryOptionsArgs {
+export interface QueryOptionsConnectionArgs {
   after?: string;
   before?: string;
   first?: number;
@@ -54,9 +54,9 @@ export interface QueryOptionsArgs {
   where?: OptionWhereInput;
 }
 
-export type QueryProductsReturnType = MaybePromiseList<ProductReturnType>;
+export type QueryProductsConnectionReturnType = ProductConnectionReturnType;
 
-export interface QueryProductsArgs {
+export interface QueryProductsConnectionArgs {
   after?: string;
   before?: string;
   first?: number;
@@ -344,6 +344,22 @@ interface OptionWhereInput {
   values_some?: OptionValueWhereInput;
 }
 
+export type BrandConnectionEdgesReturnType = MaybePromiseList<BrandEdgeReturnType>;
+
+export type BrandConnectionPageInfoReturnType = PageInfoReturnType;
+
+export type BrandConnectionRootType = prisma.BrandConnection;
+
+export type BrandConnectionReturnType = prisma.BrandConnection
+
+export type BrandEdgeCursorReturnType = string;
+
+export type BrandEdgeNodeReturnType = BrandReturnType;
+
+export type BrandEdgeRootType = prisma.BrandEdge;
+
+export type BrandEdgeReturnType = prisma.BrandEdge
+
 export type BrandIdReturnType = string;
 
 export type BrandNameReturnType = string;
@@ -410,6 +426,18 @@ export type OptionValueRootType = prisma.OptionValue;
 
 export type OptionValueReturnType = prisma.OptionValue
 
+export type PageInfoEndCursorReturnType = null | string;
+
+export type PageInfoHasNextPageReturnType = boolean;
+
+export type PageInfoHasPreviousPageReturnType = boolean;
+
+export type PageInfoStartCursorReturnType = null | string;
+
+export type PageInfoRootType = prisma.PageInfo;
+
+export type PageInfoReturnType = prisma.PageInfo
+
 export type CollectionAttributesReturnType = MaybePromiseList<AttributeReturnType>;
 
 export type CollectionBrandsReturnType = MaybePromiseList<BrandReturnType>;
@@ -459,6 +487,38 @@ export type AttributeRootType = prisma.Attribute;
 export type AttributeReturnType = prisma.Attribute
 
 export type OptionOrderByInput = "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC";
+
+export type OptionConnectionEdgesReturnType = MaybePromiseList<OptionEdgeReturnType>;
+
+export type OptionConnectionPageInfoReturnType = PageInfoReturnType;
+
+export type OptionConnectionRootType = prisma.OptionConnection;
+
+export type OptionConnectionReturnType = prisma.OptionConnection
+
+export type OptionEdgeCursorReturnType = string;
+
+export type OptionEdgeNodeReturnType = OptionReturnType;
+
+export type OptionEdgeRootType = prisma.OptionEdge;
+
+export type OptionEdgeReturnType = prisma.OptionEdge
+
+export type ProductConnectionEdgesReturnType = MaybePromiseList<ProductEdgeReturnType>;
+
+export type ProductConnectionPageInfoReturnType = PageInfoReturnType;
+
+export type ProductConnectionRootType = prisma.ProductConnection;
+
+export type ProductConnectionReturnType = prisma.ProductConnection
+
+export type ProductEdgeCursorReturnType = string;
+
+export type ProductEdgeNodeReturnType = ProductReturnType;
+
+export type ProductEdgeRootType = prisma.ProductEdge;
+
+export type ProductEdgeReturnType = prisma.ProductEdge
 
 export type MutationAddProductsToCollectionReturnType = CollectionReturnType;
 
@@ -524,10 +584,10 @@ interface UpdateVariantInput {
 
 export interface GraphQLiteralGenArgTypes {
   Query: {
-    brands: QueryBrandsArgs;
+    brandsConnection: QueryBrandsConnectionArgs;
     collection: QueryCollectionArgs;
-    options: QueryOptionsArgs;
-    products: QueryProductsArgs;
+    optionsConnection: QueryOptionsConnectionArgs;
+    productsConnection: QueryProductsConnectionArgs;
   };
   Brand: {
     products: BrandProductsArgs;
@@ -551,21 +611,36 @@ export interface GraphQLiteralGenArgTypes {
 
 export interface GraphQLiteralGenRootTypes {
   Query: QueryRootType;
+  BrandConnection: BrandConnectionRootType;
+  BrandEdge: BrandEdgeRootType;
   Brand: BrandRootType;
   Product: ProductRootType;
   Option: OptionRootType;
   OptionValue: OptionValueRootType;
+  PageInfo: PageInfoRootType;
   Collection: CollectionRootType;
   Attribute: AttributeRootType;
+  OptionConnection: OptionConnectionRootType;
+  OptionEdge: OptionEdgeRootType;
+  ProductConnection: ProductConnectionRootType;
+  ProductEdge: ProductEdgeRootType;
   Mutation: MutationRootType;
 }
 
 export interface GraphQLiteralGenReturnTypes {
   Query: {
-    brands: QueryBrandsReturnType;
+    brandsConnection: QueryBrandsConnectionReturnType;
     collection: QueryCollectionReturnType;
-    options: QueryOptionsReturnType;
-    products: QueryProductsReturnType;
+    optionsConnection: QueryOptionsConnectionReturnType;
+    productsConnection: QueryProductsConnectionReturnType;
+  };
+  BrandConnection: {
+    edges: BrandConnectionEdgesReturnType;
+    pageInfo: BrandConnectionPageInfoReturnType;
+  };
+  BrandEdge: {
+    cursor: BrandEdgeCursorReturnType;
+    node: BrandEdgeNodeReturnType;
   };
   Brand: {
     id: BrandIdReturnType;
@@ -588,6 +663,12 @@ export interface GraphQLiteralGenReturnTypes {
     name: OptionValueNameReturnType;
     option: OptionValueOptionReturnType;
   };
+  PageInfo: {
+    endCursor: PageInfoEndCursorReturnType;
+    hasNextPage: PageInfoHasNextPageReturnType;
+    hasPreviousPage: PageInfoHasPreviousPageReturnType;
+    startCursor: PageInfoStartCursorReturnType;
+  };
   Collection: {
     attributes: CollectionAttributesReturnType;
     brands: CollectionBrandsReturnType;
@@ -601,6 +682,22 @@ export interface GraphQLiteralGenReturnTypes {
     key: AttributeKeyReturnType;
     products: AttributeProductsReturnType;
     value: AttributeValueReturnType;
+  };
+  OptionConnection: {
+    edges: OptionConnectionEdgesReturnType;
+    pageInfo: OptionConnectionPageInfoReturnType;
+  };
+  OptionEdge: {
+    cursor: OptionEdgeCursorReturnType;
+    node: OptionEdgeNodeReturnType;
+  };
+  ProductConnection: {
+    edges: ProductConnectionEdgesReturnType;
+    pageInfo: ProductConnectionPageInfoReturnType;
+  };
+  ProductEdge: {
+    cursor: ProductEdgeCursorReturnType;
+    node: ProductEdgeNodeReturnType;
   };
   Mutation: {
     addProductsToCollection: MutationAddProductsToCollectionReturnType;
@@ -623,12 +720,19 @@ export interface GraphQLiteralGenTypes {
   };
   objects: {
     Query: QueryRootType;
+    BrandConnection: BrandConnectionRootType;
+    BrandEdge: BrandEdgeRootType;
     Brand: BrandRootType;
     Product: ProductRootType;
     Option: OptionRootType;
     OptionValue: OptionValueRootType;
+    PageInfo: PageInfoRootType;
     Collection: CollectionRootType;
     Attribute: AttributeRootType;
+    OptionConnection: OptionConnectionRootType;
+    OptionEdge: OptionEdgeRootType;
+    ProductConnection: ProductConnectionRootType;
+    ProductEdge: ProductEdgeRootType;
     Mutation: MutationRootType;
   };
   interfaces: {};

@@ -7,9 +7,9 @@ export const UniqueInput = inputObjectType('UniqueInput', t => {
 })
 
 export const CreateVariantInput = inputObjectType('CreateVariantInput', t => {
-  t.field('optionsValueIds', 'UniqueInput', { list: true })
   t.boolean('availableForSale')
   t.int('price')
+  t.field('optionsValueIds', 'UniqueInput', { list: true })
 })
 
 export const CreateProductInput = inputObjectType('CreateProductInput', t => {
@@ -21,15 +21,14 @@ export const CreateProductInput = inputObjectType('CreateProductInput', t => {
 
 export const UpdateVariantInput = inputObjectType('UpdateVariantInput', t => {
   t.id('id')
-  t.field('optionsValueIds', 'UniqueInput', { list: true })
   t.boolean('availableForSale')
   t.int('price')
+  t.field('optionsValueIds', 'UniqueInput', { list: true })
 })
 
 export const UpdateProductInput = inputObjectType('UpdateProductInput', t => {
   t.id('id')
   t.string('name')
-
   t.field('brand', 'UniqueInput')
   t.field('attributesIds', 'UniqueInput', { list: true })
   t.field('variants', 'UpdateVariantInput', { list: true })
