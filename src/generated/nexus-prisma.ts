@@ -4006,6 +4006,8 @@ export interface ProductUpdateManyWithoutAttributesInput {
   disconnect: ProductWhereUniqueInput[]
   update: ProductUpdateWithWhereUniqueWithoutAttributesInput[]
   upsert: ProductUpsertWithWhereUniqueWithoutAttributesInput[]
+  deleteMany: ProductScalarWhereInput[]
+  updateMany: ProductUpdateManyWithWhereNestedInput[]
 }
   
 export interface ProductUpdateWithWhereUniqueWithoutAttributesInput {
@@ -4043,6 +4045,8 @@ export interface VariantUpdateManyInput {
   delete: VariantWhereUniqueInput[]
   connect: VariantWhereUniqueInput[]
   disconnect: VariantWhereUniqueInput[]
+  deleteMany: VariantScalarWhereInput[]
+  updateMany: VariantUpdateManyWithWhereNestedInput[]
 }
   
 export interface VariantUpdateWithWhereUniqueNestedInput {
@@ -4062,6 +4066,8 @@ export interface OptionValueUpdateManyInput {
   delete: OptionValueWhereUniqueInput[]
   connect: OptionValueWhereUniqueInput[]
   disconnect: OptionValueWhereUniqueInput[]
+  deleteMany: OptionValueScalarWhereInput[]
+  updateMany: OptionValueUpdateManyWithWhereNestedInput[]
 }
   
 export interface OptionValueUpdateWithWhereUniqueNestedInput {
@@ -4096,10 +4102,90 @@ export interface OptionValueUpsertWithWhereUniqueNestedInput {
   create: OptionValueCreateInput
 }
   
+export interface OptionValueScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in: string[]
+  id_not_in: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in: string[]
+  name_not_in: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  AND: OptionValueScalarWhereInput[]
+  OR: OptionValueScalarWhereInput[]
+  NOT: OptionValueScalarWhereInput[]
+}
+  
+export interface OptionValueUpdateManyWithWhereNestedInput {
+  where: OptionValueScalarWhereInput
+  data: OptionValueUpdateManyDataInput
+}
+  
+export interface OptionValueUpdateManyDataInput {
+  name?: string | null
+}
+  
 export interface VariantUpsertWithWhereUniqueNestedInput {
   where: VariantWhereUniqueInput
   update: VariantUpdateDataInput
   create: VariantCreateInput
+}
+  
+export interface VariantScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in: string[]
+  id_not_in: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  price?: number | null
+  price_not?: number | null
+  price_in: number[]
+  price_not_in: number[]
+  price_lt?: number | null
+  price_lte?: number | null
+  price_gt?: number | null
+  price_gte?: number | null
+  AND: VariantScalarWhereInput[]
+  OR: VariantScalarWhereInput[]
+  NOT: VariantScalarWhereInput[]
+}
+  
+export interface VariantUpdateManyWithWhereNestedInput {
+  where: VariantScalarWhereInput
+  data: VariantUpdateManyDataInput
+}
+  
+export interface VariantUpdateManyDataInput {
+  price?: number | null
 }
   
 export interface CollectionUpdateManyWithoutProductsInput {
@@ -4109,6 +4195,8 @@ export interface CollectionUpdateManyWithoutProductsInput {
   disconnect: CollectionWhereUniqueInput[]
   update: CollectionUpdateWithWhereUniqueWithoutProductsInput[]
   upsert: CollectionUpsertWithWhereUniqueWithoutProductsInput[]
+  deleteMany: CollectionScalarWhereInput[]
+  updateMany: CollectionUpdateManyWithWhereNestedInput[]
 }
   
 export interface CollectionUpdateWithWhereUniqueWithoutProductsInput {
@@ -4126,10 +4214,96 @@ export interface CollectionUpsertWithWhereUniqueWithoutProductsInput {
   create: CollectionCreateWithoutProductsInput
 }
   
+export interface CollectionScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in: string[]
+  id_not_in: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in: string[]
+  name_not_in: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  AND: CollectionScalarWhereInput[]
+  OR: CollectionScalarWhereInput[]
+  NOT: CollectionScalarWhereInput[]
+}
+  
+export interface CollectionUpdateManyWithWhereNestedInput {
+  where: CollectionScalarWhereInput
+  data: CollectionUpdateManyDataInput
+}
+  
+export interface CollectionUpdateManyDataInput {
+  name?: string | null
+}
+  
 export interface ProductUpsertWithWhereUniqueWithoutAttributesInput {
   where: ProductWhereUniqueInput
   update: ProductUpdateWithoutAttributesDataInput
   create: ProductCreateWithoutAttributesInput
+}
+  
+export interface ProductScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in: string[]
+  id_not_in: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in: string[]
+  name_not_in: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  AND: ProductScalarWhereInput[]
+  OR: ProductScalarWhereInput[]
+  NOT: ProductScalarWhereInput[]
+}
+  
+export interface ProductUpdateManyWithWhereNestedInput {
+  where: ProductScalarWhereInput
+  data: ProductUpdateManyDataInput
+}
+  
+export interface ProductUpdateManyDataInput {
+  name?: string | null
 }
   
 export interface AttributeUpdateManyMutationInput {
@@ -4176,6 +4350,8 @@ export interface ProductUpdateManyWithoutBrandInput {
   disconnect: ProductWhereUniqueInput[]
   update: ProductUpdateWithWhereUniqueWithoutBrandInput[]
   upsert: ProductUpsertWithWhereUniqueWithoutBrandInput[]
+  deleteMany: ProductScalarWhereInput[]
+  updateMany: ProductUpdateManyWithWhereNestedInput[]
 }
   
 export interface ProductUpdateWithWhereUniqueWithoutBrandInput {
@@ -4197,6 +4373,8 @@ export interface AttributeUpdateManyWithoutProductsInput {
   disconnect: AttributeWhereUniqueInput[]
   update: AttributeUpdateWithWhereUniqueWithoutProductsInput[]
   upsert: AttributeUpsertWithWhereUniqueWithoutProductsInput[]
+  deleteMany: AttributeScalarWhereInput[]
+  updateMany: AttributeUpdateManyWithWhereNestedInput[]
 }
   
 export interface AttributeUpdateWithWhereUniqueWithoutProductsInput {
@@ -4213,6 +4391,64 @@ export interface AttributeUpsertWithWhereUniqueWithoutProductsInput {
   where: AttributeWhereUniqueInput
   update: AttributeUpdateWithoutProductsDataInput
   create: AttributeCreateWithoutProductsInput
+}
+  
+export interface AttributeScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in: string[]
+  id_not_in: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  key?: string | null
+  key_not?: string | null
+  key_in: string[]
+  key_not_in: string[]
+  key_lt?: string | null
+  key_lte?: string | null
+  key_gt?: string | null
+  key_gte?: string | null
+  key_contains?: string | null
+  key_not_contains?: string | null
+  key_starts_with?: string | null
+  key_not_starts_with?: string | null
+  key_ends_with?: string | null
+  key_not_ends_with?: string | null
+  value?: string | null
+  value_not?: string | null
+  value_in: string[]
+  value_not_in: string[]
+  value_lt?: string | null
+  value_lte?: string | null
+  value_gt?: string | null
+  value_gte?: string | null
+  value_contains?: string | null
+  value_not_contains?: string | null
+  value_starts_with?: string | null
+  value_not_starts_with?: string | null
+  value_ends_with?: string | null
+  value_not_ends_with?: string | null
+  AND: AttributeScalarWhereInput[]
+  OR: AttributeScalarWhereInput[]
+  NOT: AttributeScalarWhereInput[]
+}
+  
+export interface AttributeUpdateManyWithWhereNestedInput {
+  where: AttributeScalarWhereInput
+  data: AttributeUpdateManyDataInput
+}
+  
+export interface AttributeUpdateManyDataInput {
+  key?: string | null
+  value?: string | null
 }
   
 export interface ProductUpsertWithWhereUniqueWithoutBrandInput {
@@ -4254,6 +4490,8 @@ export interface ProductUpdateManyWithoutCollectionsInput {
   disconnect: ProductWhereUniqueInput[]
   update: ProductUpdateWithWhereUniqueWithoutCollectionsInput[]
   upsert: ProductUpsertWithWhereUniqueWithoutCollectionsInput[]
+  deleteMany: ProductScalarWhereInput[]
+  updateMany: ProductUpdateManyWithWhereNestedInput[]
 }
   
 export interface ProductUpdateWithWhereUniqueWithoutCollectionsInput {
@@ -4304,6 +4542,8 @@ export interface OptionValueUpdateManyWithoutOptionInput {
   disconnect: OptionValueWhereUniqueInput[]
   update: OptionValueUpdateWithWhereUniqueWithoutOptionInput[]
   upsert: OptionValueUpsertWithWhereUniqueWithoutOptionInput[]
+  deleteMany: OptionValueScalarWhereInput[]
+  updateMany: OptionValueUpdateManyWithWhereNestedInput[]
 }
   
 export interface OptionValueUpdateWithWhereUniqueWithoutOptionInput {

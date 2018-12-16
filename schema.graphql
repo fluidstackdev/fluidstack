@@ -317,6 +317,7 @@ type Product {
   id: ID!
   name: String!
   options: [Option!]!
+  variants(after: String, before: String, first: Int, last: Int, orderBy: VariantOrderByInput, skip: Int, where: VariantWhereInput): [Variant!]!
 }
 
 type ProductConnection {
@@ -385,10 +386,10 @@ input ProductWhereInput {
 }
 
 type Query {
-  brandsConnection(after: String, before: String, first: Int, last: Int, orderBy: BrandOrderByInput, skip: Int, where: BrandWhereInput): BrandConnection!
+  brands(after: String, before: String, first: Int, last: Int, orderBy: BrandOrderByInput, skip: Int, where: BrandWhereInput): BrandConnection!
   collection(collectionId: ID!): Collection!
-  optionsConnection(after: String, before: String, first: Int, last: Int, orderBy: OptionOrderByInput, skip: Int, where: OptionWhereInput): OptionConnection!
-  productsConnection(after: String, before: String, first: Int, last: Int, orderBy: ProductOrderByInput, skip: Int, where: ProductWhereInput): ProductConnection!
+  options(after: String, before: String, first: Int, last: Int, orderBy: OptionOrderByInput, skip: Int, where: OptionWhereInput): OptionConnection!
+  products(after: String, before: String, first: Int, last: Int, orderBy: ProductOrderByInput, skip: Int, where: ProductWhereInput): ProductConnection!
 }
 
 input UniqueInput {
@@ -408,6 +409,23 @@ input UpdateVariantInput {
   id: ID!
   optionsValueIds: [UniqueInput!]!
   price: Int!
+}
+
+type Variant {
+  id: ID!
+  optionValues(after: String, before: String, first: Int, last: Int, orderBy: OptionValueOrderByInput, skip: Int, where: OptionValueWhereInput): [OptionValue!]!
+  price: Int
+}
+
+enum VariantOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  price_ASC
+  price_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 input VariantWhereInput {
