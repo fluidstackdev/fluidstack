@@ -1,4 +1,4 @@
-import { idArg } from 'gqliteral'
+import { idArg } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
 
 /**

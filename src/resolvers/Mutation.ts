@@ -1,4 +1,4 @@
-import { arg, idArg, inputObjectType } from 'gqliteral'
+import { arg, idArg, inputObjectType } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
 import { VariantCreateInput } from '../generated/prisma-client'
 

@@ -7,10 +7,10 @@
   },
   "dependencies": {
     "graphql": "14.0.2",
-    "graphql-nexus": "0.1.1",
+    "nexus": "0.5.1",
     "graphql-yoga": "1.16.7",
     "lodash": "^4.17.11",
-    "nexus-prisma": "0.0.9",
+    "nexus-prisma": "0.0.11",
     "prisma-client-lib": "1.23.0-test.3"
   },
   "devDependencies": {

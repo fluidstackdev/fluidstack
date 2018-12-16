@@ -4,7 +4,7 @@ import {
   ArgDefinition,
   ContextValue,
   RootValue,
-} from 'gqliteral/dist/types'
+} from 'nexus/dist/types'
 import { GraphQLResolveInfo } from 'graphql'
 
 import * as prisma from './prisma-client'
