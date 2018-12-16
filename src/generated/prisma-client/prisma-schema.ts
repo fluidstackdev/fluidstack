@@ -10,6 +10,18 @@ type AggregateCollection {
   count: Int!
 }
 
+type AggregateCollectionRule {
+  count: Int!
+}
+
+type AggregateCollectionRuleSet {
+  count: Int!
+}
+
+type AggregateImage {
+  count: Int!
+}
+
 type AggregateOption {
   count: Int!
 }
@@ -386,6 +398,7 @@ input BrandWhereUniqueInput {
 type Collection {
   id: ID!
   name: String!
+  rules: CollectionRuleSet
   products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product!]
 }
 
@@ -397,6 +410,7 @@ type CollectionConnection {
 
 input CollectionCreateInput {
   name: String!
+  rules: CollectionRuleSetCreateOneInput
   products: ProductCreateManyWithoutCollectionsInput
 }
 
@@ -407,6 +421,7 @@ input CollectionCreateManyWithoutProductsInput {
 
 input CollectionCreateWithoutProductsInput {
   name: String!
+  rules: CollectionRuleSetCreateOneInput
 }
 
 type CollectionEdge {
@@ -428,6 +443,262 @@ enum CollectionOrderByInput {
 type CollectionPreviousValues {
   id: ID!
   name: String!
+}
+
+type CollectionRule {
+  field: CollectionRuleField!
+  relation: CollectionRuleRelation!
+  value: String!
+}
+
+type CollectionRuleConnection {
+  pageInfo: PageInfo!
+  edges: [CollectionRuleEdge]!
+  aggregate: AggregateCollectionRule!
+}
+
+input CollectionRuleCreateInput {
+  field: CollectionRuleField!
+  relation: CollectionRuleRelation!
+  value: String!
+}
+
+input CollectionRuleCreateManyInput {
+  create: [CollectionRuleCreateInput!]
+}
+
+type CollectionRuleEdge {
+  node: CollectionRule!
+  cursor: String!
+}
+
+enum CollectionRuleField {
+  TAG
+  TITLE
+  TYPE
+  INVENTORY
+  PRICE
+  VENDOR
+}
+
+enum CollectionRuleOrderByInput {
+  field_ASC
+  field_DESC
+  relation_ASC
+  relation_DESC
+  value_ASC
+  value_DESC
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CollectionRulePreviousValues {
+  field: CollectionRuleField!
+  relation: CollectionRuleRelation!
+  value: String!
+}
+
+enum CollectionRuleRelation {
+  CONTAINS
+  ENDS_WITH
+  EQUALS
+  GREATER_THAN
+  LESS_THAN
+  NOT_CONTAINS
+  NOT_EQUALS
+  STARTS_WITH
+}
+
+input CollectionRuleScalarWhereInput {
+  field: CollectionRuleField
+  field_not: CollectionRuleField
+  field_in: [CollectionRuleField!]
+  field_not_in: [CollectionRuleField!]
+  relation: CollectionRuleRelation
+  relation_not: CollectionRuleRelation
+  relation_in: [CollectionRuleRelation!]
+  relation_not_in: [CollectionRuleRelation!]
+  value: String
+  value_not: String
+  value_in: [String!]
+  value_not_in: [String!]
+  value_lt: String
+  value_lte: String
+  value_gt: String
+  value_gte: String
+  value_contains: String
+  value_not_contains: String
+  value_starts_with: String
+  value_not_starts_with: String
+  value_ends_with: String
+  value_not_ends_with: String
+  AND: [CollectionRuleScalarWhereInput!]
+  OR: [CollectionRuleScalarWhereInput!]
+  NOT: [CollectionRuleScalarWhereInput!]
+}
+
+type CollectionRuleSet {
+  rules(where: CollectionRuleWhereInput, orderBy: CollectionRuleOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CollectionRule!]
+  appliesDisjunctively: Boolean!
+}
+
+type CollectionRuleSetConnection {
+  pageInfo: PageInfo!
+  edges: [CollectionRuleSetEdge]!
+  aggregate: AggregateCollectionRuleSet!
+}
+
+input CollectionRuleSetCreateInput {
+  rules: CollectionRuleCreateManyInput
+  appliesDisjunctively: Boolean!
+}
+
+input CollectionRuleSetCreateOneInput {
+  create: CollectionRuleSetCreateInput
+}
+
+type CollectionRuleSetEdge {
+  node: CollectionRuleSet!
+  cursor: String!
+}
+
+enum CollectionRuleSetOrderByInput {
+  appliesDisjunctively_ASC
+  appliesDisjunctively_DESC
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CollectionRuleSetPreviousValues {
+  appliesDisjunctively: Boolean!
+}
+
+type CollectionRuleSetSubscriptionPayload {
+  mutation: MutationType!
+  node: CollectionRuleSet
+  updatedFields: [String!]
+  previousValues: CollectionRuleSetPreviousValues
+}
+
+input CollectionRuleSetSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CollectionRuleSetWhereInput
+  AND: [CollectionRuleSetSubscriptionWhereInput!]
+  OR: [CollectionRuleSetSubscriptionWhereInput!]
+  NOT: [CollectionRuleSetSubscriptionWhereInput!]
+}
+
+input CollectionRuleSetUpdateDataInput {
+  rules: CollectionRuleUpdateManyInput
+  appliesDisjunctively: Boolean
+}
+
+input CollectionRuleSetUpdateManyMutationInput {
+  appliesDisjunctively: Boolean
+}
+
+input CollectionRuleSetUpdateOneInput {
+  create: CollectionRuleSetCreateInput
+  update: CollectionRuleSetUpdateDataInput
+  upsert: CollectionRuleSetUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+}
+
+input CollectionRuleSetUpsertNestedInput {
+  update: CollectionRuleSetUpdateDataInput!
+  create: CollectionRuleSetCreateInput!
+}
+
+input CollectionRuleSetWhereInput {
+  rules_every: CollectionRuleWhereInput
+  rules_some: CollectionRuleWhereInput
+  rules_none: CollectionRuleWhereInput
+  appliesDisjunctively: Boolean
+  appliesDisjunctively_not: Boolean
+  AND: [CollectionRuleSetWhereInput!]
+  OR: [CollectionRuleSetWhereInput!]
+  NOT: [CollectionRuleSetWhereInput!]
+}
+
+type CollectionRuleSubscriptionPayload {
+  mutation: MutationType!
+  node: CollectionRule
+  updatedFields: [String!]
+  previousValues: CollectionRulePreviousValues
+}
+
+input CollectionRuleSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CollectionRuleWhereInput
+  AND: [CollectionRuleSubscriptionWhereInput!]
+  OR: [CollectionRuleSubscriptionWhereInput!]
+  NOT: [CollectionRuleSubscriptionWhereInput!]
+}
+
+input CollectionRuleUpdateManyDataInput {
+  field: CollectionRuleField
+  relation: CollectionRuleRelation
+  value: String
+}
+
+input CollectionRuleUpdateManyInput {
+  create: [CollectionRuleCreateInput!]
+  deleteMany: [CollectionRuleScalarWhereInput!]
+  updateMany: [CollectionRuleUpdateManyWithWhereNestedInput!]
+}
+
+input CollectionRuleUpdateManyMutationInput {
+  field: CollectionRuleField
+  relation: CollectionRuleRelation
+  value: String
+}
+
+input CollectionRuleUpdateManyWithWhereNestedInput {
+  where: CollectionRuleScalarWhereInput!
+  data: CollectionRuleUpdateManyDataInput!
+}
+
+input CollectionRuleWhereInput {
+  field: CollectionRuleField
+  field_not: CollectionRuleField
+  field_in: [CollectionRuleField!]
+  field_not_in: [CollectionRuleField!]
+  relation: CollectionRuleRelation
+  relation_not: CollectionRuleRelation
+  relation_in: [CollectionRuleRelation!]
+  relation_not_in: [CollectionRuleRelation!]
+  value: String
+  value_not: String
+  value_in: [String!]
+  value_not_in: [String!]
+  value_lt: String
+  value_lte: String
+  value_gt: String
+  value_gte: String
+  value_contains: String
+  value_not_contains: String
+  value_starts_with: String
+  value_not_starts_with: String
+  value_ends_with: String
+  value_not_ends_with: String
+  AND: [CollectionRuleWhereInput!]
+  OR: [CollectionRuleWhereInput!]
+  NOT: [CollectionRuleWhereInput!]
 }
 
 input CollectionScalarWhereInput {
@@ -484,6 +755,7 @@ input CollectionSubscriptionWhereInput {
 
 input CollectionUpdateInput {
   name: String
+  rules: CollectionRuleSetUpdateOneInput
   products: ProductUpdateManyWithoutCollectionsInput
 }
 
@@ -513,6 +785,7 @@ input CollectionUpdateManyWithWhereNestedInput {
 
 input CollectionUpdateWithoutProductsDataInput {
   name: String
+  rules: CollectionRuleSetUpdateOneInput
 }
 
 input CollectionUpdateWithWhereUniqueWithoutProductsInput {
@@ -555,6 +828,7 @@ input CollectionWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  rules: CollectionRuleSetWhereInput
   products_every: ProductWhereInput
   products_some: ProductWhereInput
   products_none: ProductWhereInput
@@ -564,6 +838,129 @@ input CollectionWhereInput {
 }
 
 input CollectionWhereUniqueInput {
+  id: ID
+}
+
+type Image {
+  id: ID!
+  url: String!
+}
+
+type ImageConnection {
+  pageInfo: PageInfo!
+  edges: [ImageEdge]!
+  aggregate: AggregateImage!
+}
+
+input ImageCreateInput {
+  url: String!
+}
+
+input ImageCreateOneInput {
+  create: ImageCreateInput
+  connect: ImageWhereUniqueInput
+}
+
+type ImageEdge {
+  node: Image!
+  cursor: String!
+}
+
+enum ImageOrderByInput {
+  id_ASC
+  id_DESC
+  url_ASC
+  url_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ImagePreviousValues {
+  id: ID!
+  url: String!
+}
+
+type ImageSubscriptionPayload {
+  mutation: MutationType!
+  node: Image
+  updatedFields: [String!]
+  previousValues: ImagePreviousValues
+}
+
+input ImageSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ImageWhereInput
+  AND: [ImageSubscriptionWhereInput!]
+  OR: [ImageSubscriptionWhereInput!]
+  NOT: [ImageSubscriptionWhereInput!]
+}
+
+input ImageUpdateDataInput {
+  url: String
+}
+
+input ImageUpdateInput {
+  url: String
+}
+
+input ImageUpdateManyMutationInput {
+  url: String
+}
+
+input ImageUpdateOneInput {
+  create: ImageCreateInput
+  update: ImageUpdateDataInput
+  upsert: ImageUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ImageWhereUniqueInput
+}
+
+input ImageUpsertNestedInput {
+  update: ImageUpdateDataInput!
+  create: ImageCreateInput!
+}
+
+input ImageWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  AND: [ImageWhereInput!]
+  OR: [ImageWhereInput!]
+  NOT: [ImageWhereInput!]
+}
+
+input ImageWhereUniqueInput {
   id: ID
 }
 
@@ -588,6 +985,18 @@ type Mutation {
   upsertCollection(where: CollectionWhereUniqueInput!, create: CollectionCreateInput!, update: CollectionUpdateInput!): Collection!
   deleteCollection(where: CollectionWhereUniqueInput!): Collection
   deleteManyCollections(where: CollectionWhereInput): BatchPayload!
+  createCollectionRule(data: CollectionRuleCreateInput!): CollectionRule!
+  updateManyCollectionRules(data: CollectionRuleUpdateManyMutationInput!, where: CollectionRuleWhereInput): BatchPayload!
+  deleteManyCollectionRules(where: CollectionRuleWhereInput): BatchPayload!
+  createCollectionRuleSet(data: CollectionRuleSetCreateInput!): CollectionRuleSet!
+  updateManyCollectionRuleSets(data: CollectionRuleSetUpdateManyMutationInput!, where: CollectionRuleSetWhereInput): BatchPayload!
+  deleteManyCollectionRuleSets(where: CollectionRuleSetWhereInput): BatchPayload!
+  createImage(data: ImageCreateInput!): Image!
+  updateImage(data: ImageUpdateInput!, where: ImageWhereUniqueInput!): Image
+  updateManyImages(data: ImageUpdateManyMutationInput!, where: ImageWhereInput): BatchPayload!
+  upsertImage(where: ImageWhereUniqueInput!, create: ImageCreateInput!, update: ImageUpdateInput!): Image!
+  deleteImage(where: ImageWhereUniqueInput!): Image
+  deleteManyImages(where: ImageWhereInput): BatchPayload!
   createOption(data: OptionCreateInput!): Option!
   updateOption(data: OptionUpdateInput!, where: OptionWhereUniqueInput!): Option
   updateManyOptions(data: OptionUpdateManyMutationInput!, where: OptionWhereInput): BatchPayload!
@@ -980,6 +1389,7 @@ type Product {
   id: ID!
   name: String!
   brand: Brand!
+  image: Image
   variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Variant!]
   collections(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Collection!]
   attributes(where: AttributeWhereInput, orderBy: AttributeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Attribute!]
@@ -994,6 +1404,7 @@ type ProductConnection {
 input ProductCreateInput {
   name: String!
   brand: BrandCreateOneWithoutProductsInput!
+  image: ImageCreateOneInput
   variants: VariantCreateManyInput
   collections: CollectionCreateManyWithoutProductsInput
   attributes: AttributeCreateManyWithoutProductsInput
@@ -1017,12 +1428,14 @@ input ProductCreateManyWithoutCollectionsInput {
 input ProductCreateWithoutAttributesInput {
   name: String!
   brand: BrandCreateOneWithoutProductsInput!
+  image: ImageCreateOneInput
   variants: VariantCreateManyInput
   collections: CollectionCreateManyWithoutProductsInput
 }
 
 input ProductCreateWithoutBrandInput {
   name: String!
+  image: ImageCreateOneInput
   variants: VariantCreateManyInput
   collections: CollectionCreateManyWithoutProductsInput
   attributes: AttributeCreateManyWithoutProductsInput
@@ -1031,6 +1444,7 @@ input ProductCreateWithoutBrandInput {
 input ProductCreateWithoutCollectionsInput {
   name: String!
   brand: BrandCreateOneWithoutProductsInput!
+  image: ImageCreateOneInput
   variants: VariantCreateManyInput
   attributes: AttributeCreateManyWithoutProductsInput
 }
@@ -1111,6 +1525,7 @@ input ProductSubscriptionWhereInput {
 input ProductUpdateInput {
   name: String
   brand: BrandUpdateOneRequiredWithoutProductsInput
+  image: ImageUpdateOneInput
   variants: VariantUpdateManyInput
   collections: CollectionUpdateManyWithoutProductsInput
   attributes: AttributeUpdateManyWithoutProductsInput
@@ -1165,12 +1580,14 @@ input ProductUpdateManyWithWhereNestedInput {
 input ProductUpdateWithoutAttributesDataInput {
   name: String
   brand: BrandUpdateOneRequiredWithoutProductsInput
+  image: ImageUpdateOneInput
   variants: VariantUpdateManyInput
   collections: CollectionUpdateManyWithoutProductsInput
 }
 
 input ProductUpdateWithoutBrandDataInput {
   name: String
+  image: ImageUpdateOneInput
   variants: VariantUpdateManyInput
   collections: CollectionUpdateManyWithoutProductsInput
   attributes: AttributeUpdateManyWithoutProductsInput
@@ -1179,6 +1596,7 @@ input ProductUpdateWithoutBrandDataInput {
 input ProductUpdateWithoutCollectionsDataInput {
   name: String
   brand: BrandUpdateOneRequiredWithoutProductsInput
+  image: ImageUpdateOneInput
   variants: VariantUpdateManyInput
   attributes: AttributeUpdateManyWithoutProductsInput
 }
@@ -1246,6 +1664,7 @@ input ProductWhereInput {
   name_ends_with: String
   name_not_ends_with: String
   brand: BrandWhereInput
+  image: ImageWhereInput
   variants_every: VariantWhereInput
   variants_some: VariantWhereInput
   variants_none: VariantWhereInput
@@ -1274,6 +1693,13 @@ type Query {
   collection(where: CollectionWhereUniqueInput!): Collection
   collections(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Collection]!
   collectionsConnection(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CollectionConnection!
+  collectionRules(where: CollectionRuleWhereInput, orderBy: CollectionRuleOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CollectionRule]!
+  collectionRulesConnection(where: CollectionRuleWhereInput, orderBy: CollectionRuleOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CollectionRuleConnection!
+  collectionRuleSets(where: CollectionRuleSetWhereInput, orderBy: CollectionRuleSetOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CollectionRuleSet]!
+  collectionRuleSetsConnection(where: CollectionRuleSetWhereInput, orderBy: CollectionRuleSetOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CollectionRuleSetConnection!
+  image(where: ImageWhereUniqueInput!): Image
+  images(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Image]!
+  imagesConnection(where: ImageWhereInput, orderBy: ImageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ImageConnection!
   option(where: OptionWhereUniqueInput!): Option
   options(where: OptionWhereInput, orderBy: OptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Option]!
   optionsConnection(where: OptionWhereInput, orderBy: OptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OptionConnection!
@@ -1293,6 +1719,9 @@ type Subscription {
   attribute(where: AttributeSubscriptionWhereInput): AttributeSubscriptionPayload
   brand(where: BrandSubscriptionWhereInput): BrandSubscriptionPayload
   collection(where: CollectionSubscriptionWhereInput): CollectionSubscriptionPayload
+  collectionRule(where: CollectionRuleSubscriptionWhereInput): CollectionRuleSubscriptionPayload
+  collectionRuleSet(where: CollectionRuleSetSubscriptionWhereInput): CollectionRuleSetSubscriptionPayload
+  image(where: ImageSubscriptionWhereInput): ImageSubscriptionPayload
   option(where: OptionSubscriptionWhereInput): OptionSubscriptionPayload
   optionValue(where: OptionValueSubscriptionWhereInput): OptionValueSubscriptionPayload
   product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
@@ -1302,7 +1731,10 @@ type Subscription {
 type Variant {
   id: ID!
   optionValues(where: OptionValueWhereInput, orderBy: OptionValueOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [OptionValue!]
-  price: Int
+  price: Int!
+  availableForSale: Boolean
+  sku: String
+  image: Image
 }
 
 type VariantConnection {
@@ -1313,7 +1745,10 @@ type VariantConnection {
 
 input VariantCreateInput {
   optionValues: OptionValueCreateManyInput
-  price: Int
+  price: Int!
+  availableForSale: Boolean
+  sku: String
+  image: ImageCreateOneInput
 }
 
 input VariantCreateManyInput {
@@ -1331,6 +1766,10 @@ enum VariantOrderByInput {
   id_DESC
   price_ASC
   price_DESC
+  availableForSale_ASC
+  availableForSale_DESC
+  sku_ASC
+  sku_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -1339,7 +1778,9 @@ enum VariantOrderByInput {
 
 type VariantPreviousValues {
   id: ID!
-  price: Int
+  price: Int!
+  availableForSale: Boolean
+  sku: String
 }
 
 input VariantScalarWhereInput {
@@ -1365,6 +1806,22 @@ input VariantScalarWhereInput {
   price_lte: Int
   price_gt: Int
   price_gte: Int
+  availableForSale: Boolean
+  availableForSale_not: Boolean
+  sku: String
+  sku_not: String
+  sku_in: [String!]
+  sku_not_in: [String!]
+  sku_lt: String
+  sku_lte: String
+  sku_gt: String
+  sku_gte: String
+  sku_contains: String
+  sku_not_contains: String
+  sku_starts_with: String
+  sku_not_starts_with: String
+  sku_ends_with: String
+  sku_not_ends_with: String
   AND: [VariantScalarWhereInput!]
   OR: [VariantScalarWhereInput!]
   NOT: [VariantScalarWhereInput!]
@@ -1391,15 +1848,23 @@ input VariantSubscriptionWhereInput {
 input VariantUpdateDataInput {
   optionValues: OptionValueUpdateManyInput
   price: Int
+  availableForSale: Boolean
+  sku: String
+  image: ImageUpdateOneInput
 }
 
 input VariantUpdateInput {
   optionValues: OptionValueUpdateManyInput
   price: Int
+  availableForSale: Boolean
+  sku: String
+  image: ImageUpdateOneInput
 }
 
 input VariantUpdateManyDataInput {
   price: Int
+  availableForSale: Boolean
+  sku: String
 }
 
 input VariantUpdateManyInput {
@@ -1415,6 +1880,8 @@ input VariantUpdateManyInput {
 
 input VariantUpdateManyMutationInput {
   price: Int
+  availableForSale: Boolean
+  sku: String
 }
 
 input VariantUpdateManyWithWhereNestedInput {
@@ -1459,6 +1926,23 @@ input VariantWhereInput {
   price_lte: Int
   price_gt: Int
   price_gte: Int
+  availableForSale: Boolean
+  availableForSale_not: Boolean
+  sku: String
+  sku_not: String
+  sku_in: [String!]
+  sku_not_in: [String!]
+  sku_lt: String
+  sku_lte: String
+  sku_gt: String
+  sku_gte: String
+  sku_contains: String
+  sku_not_contains: String
+  sku_starts_with: String
+  sku_not_starts_with: String
+  sku_ends_with: String
+  sku_not_ends_with: String
+  image: ImageWhereInput
   AND: [VariantWhereInput!]
   OR: [VariantWhereInput!]
   NOT: [VariantWhereInput!]

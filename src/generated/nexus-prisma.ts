@@ -22,6 +22,13 @@ type QueryObject =
   | { name: 'collection', args?: QueryCollectionArgs[] | false, alias?: string  } 
   | { name: 'collections', args?: QueryCollectionsArgs[] | false, alias?: string  } 
   | { name: 'collectionsConnection', args?: QueryCollectionsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'collectionRules', args?: QueryCollectionRulesArgs[] | false, alias?: string  } 
+  | { name: 'collectionRulesConnection', args?: QueryCollectionRulesConnectionArgs[] | false, alias?: string  } 
+  | { name: 'collectionRuleSets', args?: QueryCollectionRuleSetsArgs[] | false, alias?: string  } 
+  | { name: 'collectionRuleSetsConnection', args?: QueryCollectionRuleSetsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'image', args?: QueryImageArgs[] | false, alias?: string  } 
+  | { name: 'images', args?: QueryImagesArgs[] | false, alias?: string  } 
+  | { name: 'imagesConnection', args?: QueryImagesConnectionArgs[] | false, alias?: string  } 
   | { name: 'option', args?: QueryOptionArgs[] | false, alias?: string  } 
   | { name: 'options', args?: QueryOptionsArgs[] | false, alias?: string  } 
   | { name: 'optionsConnection', args?: QueryOptionsConnectionArgs[] | false, alias?: string  } 
@@ -46,6 +53,13 @@ type QueryFields =
   | 'collection'
   | 'collections'
   | 'collectionsConnection'
+  | 'collectionRules'
+  | 'collectionRulesConnection'
+  | 'collectionRuleSets'
+  | 'collectionRuleSetsConnection'
+  | 'image'
+  | 'images'
+  | 'imagesConnection'
   | 'option'
   | 'options'
   | 'optionsConnection'
@@ -108,6 +122,56 @@ type QueryCollectionsArgs =
   | 'first'
   | 'last'
 type QueryCollectionsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryCollectionRulesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryCollectionRulesConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryCollectionRuleSetsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryCollectionRuleSetsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryImageArgs =
+  | 'where'
+type QueryImagesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryImagesConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -191,7 +255,7 @@ type QueryNodeArgs =
   | 'id'
   
 
-export interface QueryFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface QueryFieldDetails<GenTypes = GraphQLNexusGen> {
   attribute: {
     args: Record<QueryAttributeArgs, ArgDefinition>
     description: string
@@ -299,6 +363,90 @@ export interface QueryFieldDetails<GenTypes = GraphQLiteralGen> {
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.CollectionConnection> | prisma.CollectionConnection;
+  }
+  collectionRules: {
+    args: Record<QueryCollectionRulesArgs, ArgDefinition>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Query">,
+      args: { where?: CollectionRuleWhereInput | null, orderBy?: prisma.CollectionRuleOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRule[]> | prisma.CollectionRule[];
+  }
+  collectionRulesConnection: {
+    args: Record<QueryCollectionRulesConnectionArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Query">,
+      args: { where?: CollectionRuleWhereInput | null, orderBy?: prisma.CollectionRuleOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleConnection> | prisma.CollectionRuleConnection;
+  }
+  collectionRuleSets: {
+    args: Record<QueryCollectionRuleSetsArgs, ArgDefinition>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Query">,
+      args: { where?: CollectionRuleSetWhereInput | null, orderBy?: prisma.CollectionRuleSetOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleSet[]> | prisma.CollectionRuleSet[];
+  }
+  collectionRuleSetsConnection: {
+    args: Record<QueryCollectionRuleSetsConnectionArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Query">,
+      args: { where?: CollectionRuleSetWhereInput | null, orderBy?: prisma.CollectionRuleSetOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleSetConnection> | prisma.CollectionRuleSetConnection;
+  }
+  image: {
+    args: Record<QueryImageArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Query">,
+      args: { where: ImageWhereUniqueInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image | null> | prisma.Image | null;
+  }
+  images: {
+    args: Record<QueryImagesArgs, ArgDefinition>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Query">,
+      args: { where?: ImageWhereInput | null, orderBy?: prisma.ImageOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image[]> | prisma.Image[];
+  }
+  imagesConnection: {
+    args: Record<QueryImagesConnectionArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Query">,
+      args: { where?: ImageWhereInput | null, orderBy?: prisma.ImageOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ImageConnection> | prisma.ImageConnection;
   }
   option: {
     args: Record<QueryOptionArgs, ArgDefinition>
@@ -485,7 +633,7 @@ type AttributeProductsArgs =
   | 'last'
   
 
-export interface AttributeFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AttributeFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -544,6 +692,7 @@ type ProductObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'brand', args?: [] | false, alias?: string  } 
+  | { name: 'image', args?: [] | false, alias?: string  } 
   | { name: 'variants', args?: ProductVariantsArgs[] | false, alias?: string  } 
   | { name: 'collections', args?: ProductCollectionsArgs[] | false, alias?: string  } 
   | { name: 'attributes', args?: ProductAttributesArgs[] | false, alias?: string  } 
@@ -552,6 +701,7 @@ type ProductFields =
   | 'id'
   | 'name'
   | 'brand'
+  | 'image'
   | 'variants'
   | 'collections'
   | 'attributes'
@@ -583,7 +733,7 @@ type ProductAttributesArgs =
   | 'last'
   
 
-export interface ProductFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface ProductFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -619,6 +769,18 @@ export interface ProductFieldDetails<GenTypes = GraphQLiteralGen> {
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Brand> | prisma.Brand;
+  }
+  image: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Product">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image | null> | prisma.Image | null;
   }
   variants: {
     args: Record<ProductVariantsArgs, ArgDefinition>
@@ -683,7 +845,7 @@ type BrandProductsArgs =
   | 'last'
   
 
-export interface BrandFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface BrandFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -723,6 +885,49 @@ export interface BrandFieldDetails<GenTypes = GraphQLiteralGen> {
 }
   
 
+// Types for Image
+
+type ImageObject =
+  | ImageFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'url', args?: [] | false, alias?: string  } 
+
+type ImageFields =
+  | 'id'
+  | 'url'
+
+
+
+  
+
+export interface ImageFieldDetails<GenTypes = GraphQLNexusGen> {
+  id: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Image">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+  url: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Image">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+}
+  
+
 // Types for Variant
 
 type VariantObject =
@@ -730,11 +935,17 @@ type VariantObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'optionValues', args?: VariantOptionValuesArgs[] | false, alias?: string  } 
   | { name: 'price', args?: [] | false, alias?: string  } 
+  | { name: 'availableForSale', args?: [] | false, alias?: string  } 
+  | { name: 'sku', args?: [] | false, alias?: string  } 
+  | { name: 'image', args?: [] | false, alias?: string  } 
 
 type VariantFields =
   | 'id'
   | 'optionValues'
   | 'price'
+  | 'availableForSale'
+  | 'sku'
+  | 'image'
 
 
 type VariantOptionValuesArgs =
@@ -747,7 +958,7 @@ type VariantOptionValuesArgs =
   | 'last'
   
 
-export interface VariantFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface VariantFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -776,13 +987,49 @@ export interface VariantFieldDetails<GenTypes = GraphQLiteralGen> {
     args: {}
     description: string
     list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Variant">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<number> | number;
+  }
+  availableForSale: {
+    args: {}
+    description: string
+    list: false
     nullable: true
     resolve: (
       root: RootValue<GenTypes, "Variant">,
       args: {  }  ,
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
-    ) => Promise<number | null> | number | null;
+    ) => Promise<boolean | null> | boolean | null;
+  }
+  sku: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Variant">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string | null> | string | null;
+  }
+  image: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Variant">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image | null> | prisma.Image | null;
   }
 }
   
@@ -804,7 +1051,7 @@ type OptionValueFields =
 
   
 
-export interface OptionValueFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface OptionValueFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -868,7 +1115,7 @@ type OptionValuesArgs =
   | 'last'
   
 
-export interface OptionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface OptionFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -914,11 +1161,13 @@ type CollectionObject =
   | CollectionFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'rules', args?: [] | false, alias?: string  } 
   | { name: 'products', args?: CollectionProductsArgs[] | false, alias?: string  } 
 
 type CollectionFields =
   | 'id'
   | 'name'
+  | 'rules'
   | 'products'
 
 
@@ -932,7 +1181,7 @@ type CollectionProductsArgs =
   | 'last'
   
 
-export interface CollectionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface CollectionFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -957,6 +1206,18 @@ export interface CollectionFieldDetails<GenTypes = GraphQLiteralGen> {
       info?: GraphQLResolveInfo
     ) => Promise<string> | string;
   }
+  rules: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Collection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleSet | null> | prisma.CollectionRuleSet | null;
+  }
   products: {
     args: Record<CollectionProductsArgs, ArgDefinition>
     description: string
@@ -968,6 +1229,113 @@ export interface CollectionFieldDetails<GenTypes = GraphQLiteralGen> {
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Product[]> | prisma.Product[];
+  }
+}
+  
+
+// Types for CollectionRuleSet
+
+type CollectionRuleSetObject =
+  | CollectionRuleSetFields
+  | { name: 'rules', args?: CollectionRuleSetRulesArgs[] | false, alias?: string  } 
+  | { name: 'appliesDisjunctively', args?: [] | false, alias?: string  } 
+
+type CollectionRuleSetFields =
+  | 'rules'
+  | 'appliesDisjunctively'
+
+
+type CollectionRuleSetRulesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface CollectionRuleSetFieldDetails<GenTypes = GraphQLNexusGen> {
+  rules: {
+    args: Record<CollectionRuleSetRulesArgs, ArgDefinition>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSet">,
+      args: { where?: CollectionRuleWhereInput | null, orderBy?: prisma.CollectionRuleOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRule[]> | prisma.CollectionRule[];
+  }
+  appliesDisjunctively: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSet">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<boolean> | boolean;
+  }
+}
+  
+
+// Types for CollectionRule
+
+type CollectionRuleObject =
+  | CollectionRuleFields
+  | { name: 'field', args?: [] | false, alias?: string  } 
+  | { name: 'relation', args?: [] | false, alias?: string  } 
+  | { name: 'value', args?: [] | false, alias?: string  } 
+
+type CollectionRuleFields =
+  | 'field'
+  | 'relation'
+  | 'value'
+
+
+
+  
+
+export interface CollectionRuleFieldDetails<GenTypes = GraphQLNexusGen> {
+  field: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRule">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleField> | prisma.CollectionRuleField;
+  }
+  relation: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRule">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleRelation> | prisma.CollectionRuleRelation;
+  }
+  value: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRule">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
   }
 }
   
@@ -989,7 +1357,7 @@ type AttributeConnectionFields =
 
   
 
-export interface AttributeConnectionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AttributeConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
   pageInfo: {
     args: {}
     description: string
@@ -1048,7 +1416,7 @@ type PageInfoFields =
 
   
 
-export interface PageInfoFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface PageInfoFieldDetails<GenTypes = GraphQLNexusGen> {
   hasNextPage: {
     args: {}
     description: string
@@ -1115,7 +1483,7 @@ type AttributeEdgeFields =
 
   
 
-export interface AttributeEdgeFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AttributeEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
   node: {
     args: {}
     description: string
@@ -1156,7 +1524,7 @@ type AggregateAttributeFields =
 
   
 
-export interface AggregateAttributeFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AggregateAttributeFieldDetails<GenTypes = GraphQLNexusGen> {
   count: {
     args: {}
     description: string
@@ -1189,7 +1557,7 @@ type BrandConnectionFields =
 
   
 
-export interface BrandConnectionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface BrandConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
   pageInfo: {
     args: {}
     description: string
@@ -1244,7 +1612,7 @@ type BrandEdgeFields =
 
   
 
-export interface BrandEdgeFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface BrandEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
   node: {
     args: {}
     description: string
@@ -1285,7 +1653,7 @@ type AggregateBrandFields =
 
   
 
-export interface AggregateBrandFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AggregateBrandFieldDetails<GenTypes = GraphQLNexusGen> {
   count: {
     args: {}
     description: string
@@ -1318,7 +1686,7 @@ type CollectionConnectionFields =
 
   
 
-export interface CollectionConnectionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface CollectionConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
   pageInfo: {
     args: {}
     description: string
@@ -1373,7 +1741,7 @@ type CollectionEdgeFields =
 
   
 
-export interface CollectionEdgeFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface CollectionEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
   node: {
     args: {}
     description: string
@@ -1414,7 +1782,7 @@ type AggregateCollectionFields =
 
   
 
-export interface AggregateCollectionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AggregateCollectionFieldDetails<GenTypes = GraphQLNexusGen> {
   count: {
     args: {}
     description: string
@@ -1422,6 +1790,393 @@ export interface AggregateCollectionFieldDetails<GenTypes = GraphQLiteralGen> {
     nullable: false
     resolve: (
       root: RootValue<GenTypes, "AggregateCollection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<number> | number;
+  }
+}
+  
+
+// Types for CollectionRuleConnection
+
+type CollectionRuleConnectionObject =
+  | CollectionRuleConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type CollectionRuleConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface CollectionRuleConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
+  pageInfo: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo;
+  }
+  edges: {
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleEdge[]> | prisma.CollectionRuleEdge[];
+  }
+  aggregate: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateCollectionRule> | prisma.AggregateCollectionRule;
+  }
+}
+  
+
+// Types for CollectionRuleEdge
+
+type CollectionRuleEdgeObject =
+  | CollectionRuleEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type CollectionRuleEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface CollectionRuleEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
+  node: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleEdge">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRule> | prisma.CollectionRule;
+  }
+  cursor: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleEdge">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+}
+  
+
+// Types for AggregateCollectionRule
+
+type AggregateCollectionRuleObject =
+  | AggregateCollectionRuleFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateCollectionRuleFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateCollectionRuleFieldDetails<GenTypes = GraphQLNexusGen> {
+  count: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "AggregateCollectionRule">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<number> | number;
+  }
+}
+  
+
+// Types for CollectionRuleSetConnection
+
+type CollectionRuleSetConnectionObject =
+  | CollectionRuleSetConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type CollectionRuleSetConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface CollectionRuleSetConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
+  pageInfo: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSetConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo;
+  }
+  edges: {
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSetConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleSetEdge[]> | prisma.CollectionRuleSetEdge[];
+  }
+  aggregate: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSetConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateCollectionRuleSet> | prisma.AggregateCollectionRuleSet;
+  }
+}
+  
+
+// Types for CollectionRuleSetEdge
+
+type CollectionRuleSetEdgeObject =
+  | CollectionRuleSetEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type CollectionRuleSetEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface CollectionRuleSetEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
+  node: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSetEdge">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleSet> | prisma.CollectionRuleSet;
+  }
+  cursor: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSetEdge">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+}
+  
+
+// Types for AggregateCollectionRuleSet
+
+type AggregateCollectionRuleSetObject =
+  | AggregateCollectionRuleSetFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateCollectionRuleSetFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateCollectionRuleSetFieldDetails<GenTypes = GraphQLNexusGen> {
+  count: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "AggregateCollectionRuleSet">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<number> | number;
+  }
+}
+  
+
+// Types for ImageConnection
+
+type ImageConnectionObject =
+  | ImageConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type ImageConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface ImageConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
+  pageInfo: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ImageConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo;
+  }
+  edges: {
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ImageConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ImageEdge[]> | prisma.ImageEdge[];
+  }
+  aggregate: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ImageConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateImage> | prisma.AggregateImage;
+  }
+}
+  
+
+// Types for ImageEdge
+
+type ImageEdgeObject =
+  | ImageEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type ImageEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface ImageEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
+  node: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ImageEdge">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image> | prisma.Image;
+  }
+  cursor: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ImageEdge">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+}
+  
+
+// Types for AggregateImage
+
+type AggregateImageObject =
+  | AggregateImageFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateImageFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateImageFieldDetails<GenTypes = GraphQLNexusGen> {
+  count: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "AggregateImage">,
       args: {  }  ,
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
@@ -1447,7 +2202,7 @@ type OptionConnectionFields =
 
   
 
-export interface OptionConnectionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface OptionConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
   pageInfo: {
     args: {}
     description: string
@@ -1502,7 +2257,7 @@ type OptionEdgeFields =
 
   
 
-export interface OptionEdgeFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface OptionEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
   node: {
     args: {}
     description: string
@@ -1543,7 +2298,7 @@ type AggregateOptionFields =
 
   
 
-export interface AggregateOptionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AggregateOptionFieldDetails<GenTypes = GraphQLNexusGen> {
   count: {
     args: {}
     description: string
@@ -1576,7 +2331,7 @@ type OptionValueConnectionFields =
 
   
 
-export interface OptionValueConnectionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface OptionValueConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
   pageInfo: {
     args: {}
     description: string
@@ -1631,7 +2386,7 @@ type OptionValueEdgeFields =
 
   
 
-export interface OptionValueEdgeFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface OptionValueEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
   node: {
     args: {}
     description: string
@@ -1672,7 +2427,7 @@ type AggregateOptionValueFields =
 
   
 
-export interface AggregateOptionValueFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AggregateOptionValueFieldDetails<GenTypes = GraphQLNexusGen> {
   count: {
     args: {}
     description: string
@@ -1705,7 +2460,7 @@ type ProductConnectionFields =
 
   
 
-export interface ProductConnectionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface ProductConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
   pageInfo: {
     args: {}
     description: string
@@ -1760,7 +2515,7 @@ type ProductEdgeFields =
 
   
 
-export interface ProductEdgeFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface ProductEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
   node: {
     args: {}
     description: string
@@ -1801,7 +2556,7 @@ type AggregateProductFields =
 
   
 
-export interface AggregateProductFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AggregateProductFieldDetails<GenTypes = GraphQLNexusGen> {
   count: {
     args: {}
     description: string
@@ -1834,7 +2589,7 @@ type VariantConnectionFields =
 
   
 
-export interface VariantConnectionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface VariantConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
   pageInfo: {
     args: {}
     description: string
@@ -1889,7 +2644,7 @@ type VariantEdgeFields =
 
   
 
-export interface VariantEdgeFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface VariantEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
   node: {
     args: {}
     description: string
@@ -1930,7 +2685,7 @@ type AggregateVariantFields =
 
   
 
-export interface AggregateVariantFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AggregateVariantFieldDetails<GenTypes = GraphQLNexusGen> {
   count: {
     args: {}
     description: string
@@ -1968,6 +2723,18 @@ type MutationObject =
   | { name: 'upsertCollection', args?: MutationUpsertCollectionArgs[] | false, alias?: string  } 
   | { name: 'deleteCollection', args?: MutationDeleteCollectionArgs[] | false, alias?: string  } 
   | { name: 'deleteManyCollections', args?: MutationDeleteManyCollectionsArgs[] | false, alias?: string  } 
+  | { name: 'createCollectionRule', args?: MutationCreateCollectionRuleArgs[] | false, alias?: string  } 
+  | { name: 'updateManyCollectionRules', args?: MutationUpdateManyCollectionRulesArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyCollectionRules', args?: MutationDeleteManyCollectionRulesArgs[] | false, alias?: string  } 
+  | { name: 'createCollectionRuleSet', args?: MutationCreateCollectionRuleSetArgs[] | false, alias?: string  } 
+  | { name: 'updateManyCollectionRuleSets', args?: MutationUpdateManyCollectionRuleSetsArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyCollectionRuleSets', args?: MutationDeleteManyCollectionRuleSetsArgs[] | false, alias?: string  } 
+  | { name: 'createImage', args?: MutationCreateImageArgs[] | false, alias?: string  } 
+  | { name: 'updateImage', args?: MutationUpdateImageArgs[] | false, alias?: string  } 
+  | { name: 'updateManyImages', args?: MutationUpdateManyImagesArgs[] | false, alias?: string  } 
+  | { name: 'upsertImage', args?: MutationUpsertImageArgs[] | false, alias?: string  } 
+  | { name: 'deleteImage', args?: MutationDeleteImageArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyImages', args?: MutationDeleteManyImagesArgs[] | false, alias?: string  } 
   | { name: 'createOption', args?: MutationCreateOptionArgs[] | false, alias?: string  } 
   | { name: 'updateOption', args?: MutationUpdateOptionArgs[] | false, alias?: string  } 
   | { name: 'updateManyOptions', args?: MutationUpdateManyOptionsArgs[] | false, alias?: string  } 
@@ -2012,6 +2779,18 @@ type MutationFields =
   | 'upsertCollection'
   | 'deleteCollection'
   | 'deleteManyCollections'
+  | 'createCollectionRule'
+  | 'updateManyCollectionRules'
+  | 'deleteManyCollectionRules'
+  | 'createCollectionRuleSet'
+  | 'updateManyCollectionRuleSets'
+  | 'deleteManyCollectionRuleSets'
+  | 'createImage'
+  | 'updateImage'
+  | 'updateManyImages'
+  | 'upsertImage'
+  | 'deleteImage'
+  | 'deleteManyImages'
   | 'createOption'
   | 'updateOption'
   | 'updateManyOptions'
@@ -2086,6 +2865,36 @@ type MutationDeleteCollectionArgs =
   | 'where'
 type MutationDeleteManyCollectionsArgs =
   | 'where'
+type MutationCreateCollectionRuleArgs =
+  | 'data'
+type MutationUpdateManyCollectionRulesArgs =
+  | 'data'
+  | 'where'
+type MutationDeleteManyCollectionRulesArgs =
+  | 'where'
+type MutationCreateCollectionRuleSetArgs =
+  | 'data'
+type MutationUpdateManyCollectionRuleSetsArgs =
+  | 'data'
+  | 'where'
+type MutationDeleteManyCollectionRuleSetsArgs =
+  | 'where'
+type MutationCreateImageArgs =
+  | 'data'
+type MutationUpdateImageArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyImagesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertImageArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteImageArgs =
+  | 'where'
+type MutationDeleteManyImagesArgs =
+  | 'where'
 type MutationCreateOptionArgs =
   | 'data'
 type MutationUpdateOptionArgs =
@@ -2152,7 +2961,7 @@ type MutationDeleteManyVariantsArgs =
   | 'where'
   
 
-export interface MutationFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface MutationFieldDetails<GenTypes = GraphQLNexusGen> {
   createAttribute: {
     args: Record<MutationCreateAttributeArgs, ArgDefinition>
     description: string
@@ -2365,6 +3174,150 @@ export interface MutationFieldDetails<GenTypes = GraphQLiteralGen> {
     resolve: (
       root: RootValue<GenTypes, "Mutation">,
       args: { where?: CollectionWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload;
+  }
+  createCollectionRule: {
+    args: Record<MutationCreateCollectionRuleArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { data: CollectionRuleCreateInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRule> | prisma.CollectionRule;
+  }
+  updateManyCollectionRules: {
+    args: Record<MutationUpdateManyCollectionRulesArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { data: CollectionRuleUpdateManyMutationInput, where?: CollectionRuleWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload;
+  }
+  deleteManyCollectionRules: {
+    args: Record<MutationDeleteManyCollectionRulesArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { where?: CollectionRuleWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload;
+  }
+  createCollectionRuleSet: {
+    args: Record<MutationCreateCollectionRuleSetArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { data: CollectionRuleSetCreateInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleSet> | prisma.CollectionRuleSet;
+  }
+  updateManyCollectionRuleSets: {
+    args: Record<MutationUpdateManyCollectionRuleSetsArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { data: CollectionRuleSetUpdateManyMutationInput, where?: CollectionRuleSetWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload;
+  }
+  deleteManyCollectionRuleSets: {
+    args: Record<MutationDeleteManyCollectionRuleSetsArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { where?: CollectionRuleSetWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload;
+  }
+  createImage: {
+    args: Record<MutationCreateImageArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { data: ImageCreateInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image> | prisma.Image;
+  }
+  updateImage: {
+    args: Record<MutationUpdateImageArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { data: ImageUpdateInput, where: ImageWhereUniqueInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image | null> | prisma.Image | null;
+  }
+  updateManyImages: {
+    args: Record<MutationUpdateManyImagesArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { data: ImageUpdateManyMutationInput, where?: ImageWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload;
+  }
+  upsertImage: {
+    args: Record<MutationUpsertImageArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { where: ImageWhereUniqueInput, create: ImageCreateInput, update: ImageUpdateInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image> | prisma.Image;
+  }
+  deleteImage: {
+    args: Record<MutationDeleteImageArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { where: ImageWhereUniqueInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image | null> | prisma.Image | null;
+  }
+  deleteManyImages: {
+    args: Record<MutationDeleteManyImagesArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { where?: ImageWhereInput | null }  ,
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload;
@@ -2673,7 +3626,7 @@ type BatchPayloadFields =
 
   
 
-export interface BatchPayloadFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface BatchPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
   count: {
     args: {}
     description: string
@@ -2696,6 +3649,9 @@ type SubscriptionObject =
   | { name: 'attribute', args?: SubscriptionAttributeArgs[] | false, alias?: string  } 
   | { name: 'brand', args?: SubscriptionBrandArgs[] | false, alias?: string  } 
   | { name: 'collection', args?: SubscriptionCollectionArgs[] | false, alias?: string  } 
+  | { name: 'collectionRule', args?: SubscriptionCollectionRuleArgs[] | false, alias?: string  } 
+  | { name: 'collectionRuleSet', args?: SubscriptionCollectionRuleSetArgs[] | false, alias?: string  } 
+  | { name: 'image', args?: SubscriptionImageArgs[] | false, alias?: string  } 
   | { name: 'option', args?: SubscriptionOptionArgs[] | false, alias?: string  } 
   | { name: 'optionValue', args?: SubscriptionOptionValueArgs[] | false, alias?: string  } 
   | { name: 'product', args?: SubscriptionProductArgs[] | false, alias?: string  } 
@@ -2705,6 +3661,9 @@ type SubscriptionFields =
   | 'attribute'
   | 'brand'
   | 'collection'
+  | 'collectionRule'
+  | 'collectionRuleSet'
+  | 'image'
   | 'option'
   | 'optionValue'
   | 'product'
@@ -2717,6 +3676,12 @@ type SubscriptionBrandArgs =
   | 'where'
 type SubscriptionCollectionArgs =
   | 'where'
+type SubscriptionCollectionRuleArgs =
+  | 'where'
+type SubscriptionCollectionRuleSetArgs =
+  | 'where'
+type SubscriptionImageArgs =
+  | 'where'
 type SubscriptionOptionArgs =
   | 'where'
 type SubscriptionOptionValueArgs =
@@ -2727,7 +3692,7 @@ type SubscriptionVariantArgs =
   | 'where'
   
 
-export interface SubscriptionFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface SubscriptionFieldDetails<GenTypes = GraphQLNexusGen> {
   attribute: {
     args: Record<SubscriptionAttributeArgs, ArgDefinition>
     description: string
@@ -2763,6 +3728,42 @@ export interface SubscriptionFieldDetails<GenTypes = GraphQLiteralGen> {
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.CollectionSubscriptionPayload | null> | prisma.CollectionSubscriptionPayload | null;
+  }
+  collectionRule: {
+    args: Record<SubscriptionCollectionRuleArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Subscription">,
+      args: { where?: CollectionRuleSubscriptionWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleSubscriptionPayload | null> | prisma.CollectionRuleSubscriptionPayload | null;
+  }
+  collectionRuleSet: {
+    args: Record<SubscriptionCollectionRuleSetArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Subscription">,
+      args: { where?: CollectionRuleSetSubscriptionWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleSetSubscriptionPayload | null> | prisma.CollectionRuleSetSubscriptionPayload | null;
+  }
+  image: {
+    args: Record<SubscriptionImageArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Subscription">,
+      args: { where?: ImageSubscriptionWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ImageSubscriptionPayload | null> | prisma.ImageSubscriptionPayload | null;
   }
   option: {
     args: Record<SubscriptionOptionArgs, ArgDefinition>
@@ -2834,7 +3835,7 @@ type AttributeSubscriptionPayloadFields =
 
   
 
-export interface AttributeSubscriptionPayloadFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AttributeSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
   mutation: {
     args: {}
     description: string
@@ -2903,7 +3904,7 @@ type AttributePreviousValuesFields =
 
   
 
-export interface AttributePreviousValuesFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface AttributePreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -2962,7 +3963,7 @@ type BrandSubscriptionPayloadFields =
 
   
 
-export interface BrandSubscriptionPayloadFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface BrandSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
   mutation: {
     args: {}
     description: string
@@ -3029,7 +4030,7 @@ type BrandPreviousValuesFields =
 
   
 
-export interface BrandPreviousValuesFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface BrandPreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -3076,7 +4077,7 @@ type CollectionSubscriptionPayloadFields =
 
   
 
-export interface CollectionSubscriptionPayloadFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface CollectionSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
   mutation: {
     args: {}
     description: string
@@ -3143,7 +4144,7 @@ type CollectionPreviousValuesFields =
 
   
 
-export interface CollectionPreviousValuesFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface CollectionPreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -3171,6 +4172,348 @@ export interface CollectionPreviousValuesFieldDetails<GenTypes = GraphQLiteralGe
 }
   
 
+// Types for CollectionRuleSubscriptionPayload
+
+type CollectionRuleSubscriptionPayloadObject =
+  | CollectionRuleSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type CollectionRuleSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface CollectionRuleSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
+  mutation: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType;
+  }
+  node: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRule | null> | prisma.CollectionRule | null;
+  }
+  updatedFields: {
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string[]> | string[];
+  }
+  previousValues: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRulePreviousValues | null> | prisma.CollectionRulePreviousValues | null;
+  }
+}
+  
+
+// Types for CollectionRulePreviousValues
+
+type CollectionRulePreviousValuesObject =
+  | CollectionRulePreviousValuesFields
+  | { name: 'field', args?: [] | false, alias?: string  } 
+  | { name: 'relation', args?: [] | false, alias?: string  } 
+  | { name: 'value', args?: [] | false, alias?: string  } 
+
+type CollectionRulePreviousValuesFields =
+  | 'field'
+  | 'relation'
+  | 'value'
+
+
+
+  
+
+export interface CollectionRulePreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
+  field: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRulePreviousValues">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleField> | prisma.CollectionRuleField;
+  }
+  relation: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRulePreviousValues">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleRelation> | prisma.CollectionRuleRelation;
+  }
+  value: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRulePreviousValues">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+}
+  
+
+// Types for CollectionRuleSetSubscriptionPayload
+
+type CollectionRuleSetSubscriptionPayloadObject =
+  | CollectionRuleSetSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type CollectionRuleSetSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface CollectionRuleSetSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
+  mutation: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSetSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType;
+  }
+  node: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSetSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleSet | null> | prisma.CollectionRuleSet | null;
+  }
+  updatedFields: {
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSetSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string[]> | string[];
+  }
+  previousValues: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSetSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CollectionRuleSetPreviousValues | null> | prisma.CollectionRuleSetPreviousValues | null;
+  }
+}
+  
+
+// Types for CollectionRuleSetPreviousValues
+
+type CollectionRuleSetPreviousValuesObject =
+  | CollectionRuleSetPreviousValuesFields
+  | { name: 'appliesDisjunctively', args?: [] | false, alias?: string  } 
+
+type CollectionRuleSetPreviousValuesFields =
+  | 'appliesDisjunctively'
+
+
+
+  
+
+export interface CollectionRuleSetPreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
+  appliesDisjunctively: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "CollectionRuleSetPreviousValues">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<boolean> | boolean;
+  }
+}
+  
+
+// Types for ImageSubscriptionPayload
+
+type ImageSubscriptionPayloadObject =
+  | ImageSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type ImageSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface ImageSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
+  mutation: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ImageSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType;
+  }
+  node: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "ImageSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image | null> | prisma.Image | null;
+  }
+  updatedFields: {
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ImageSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string[]> | string[];
+  }
+  previousValues: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "ImageSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ImagePreviousValues | null> | prisma.ImagePreviousValues | null;
+  }
+}
+  
+
+// Types for ImagePreviousValues
+
+type ImagePreviousValuesObject =
+  | ImagePreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'url', args?: [] | false, alias?: string  } 
+
+type ImagePreviousValuesFields =
+  | 'id'
+  | 'url'
+
+
+
+  
+
+export interface ImagePreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
+  id: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ImagePreviousValues">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+  url: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ImagePreviousValues">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+}
+  
+
 // Types for OptionSubscriptionPayload
 
 type OptionSubscriptionPayloadObject =
@@ -3190,7 +4533,7 @@ type OptionSubscriptionPayloadFields =
 
   
 
-export interface OptionSubscriptionPayloadFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface OptionSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
   mutation: {
     args: {}
     description: string
@@ -3257,7 +4600,7 @@ type OptionPreviousValuesFields =
 
   
 
-export interface OptionPreviousValuesFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface OptionPreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -3304,7 +4647,7 @@ type OptionValueSubscriptionPayloadFields =
 
   
 
-export interface OptionValueSubscriptionPayloadFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface OptionValueSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
   mutation: {
     args: {}
     description: string
@@ -3371,7 +4714,7 @@ type OptionValuePreviousValuesFields =
 
   
 
-export interface OptionValuePreviousValuesFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface OptionValuePreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -3418,7 +4761,7 @@ type ProductSubscriptionPayloadFields =
 
   
 
-export interface ProductSubscriptionPayloadFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface ProductSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
   mutation: {
     args: {}
     description: string
@@ -3485,7 +4828,7 @@ type ProductPreviousValuesFields =
 
   
 
-export interface ProductPreviousValuesFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface ProductPreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -3532,7 +4875,7 @@ type VariantSubscriptionPayloadFields =
 
   
 
-export interface VariantSubscriptionPayloadFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface VariantSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
   mutation: {
     args: {}
     description: string
@@ -3590,16 +4933,20 @@ type VariantPreviousValuesObject =
   | VariantPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'price', args?: [] | false, alias?: string  } 
+  | { name: 'availableForSale', args?: [] | false, alias?: string  } 
+  | { name: 'sku', args?: [] | false, alias?: string  } 
 
 type VariantPreviousValuesFields =
   | 'id'
   | 'price'
+  | 'availableForSale'
+  | 'sku'
 
 
 
   
 
-export interface VariantPreviousValuesFieldDetails<GenTypes = GraphQLiteralGen> {
+export interface VariantPreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
   id: {
     args: {}
     description: string
@@ -3616,13 +4963,37 @@ export interface VariantPreviousValuesFieldDetails<GenTypes = GraphQLiteralGen> 
     args: {}
     description: string
     list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "VariantPreviousValues">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<number> | number;
+  }
+  availableForSale: {
+    args: {}
+    description: string
+    list: false
     nullable: true
     resolve: (
       root: RootValue<GenTypes, "VariantPreviousValues">,
       args: {  }  ,
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
-    ) => Promise<number | null> | number | null;
+    ) => Promise<boolean | null> | boolean | null;
+  }
+  sku: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "VariantPreviousValues">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string | null> | string | null;
   }
 }
   
@@ -3662,6 +5033,7 @@ export interface ProductWhereInput {
   name_ends_with?: string | null
   name_not_ends_with?: string | null
   brand?: BrandWhereInput | null
+  image?: ImageWhereInput | null
   variants_every?: VariantWhereInput | null
   variants_some?: VariantWhereInput | null
   variants_none?: VariantWhereInput | null
@@ -3713,6 +5085,40 @@ export interface BrandWhereInput {
   NOT: BrandWhereInput[]
 }
   
+export interface ImageWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in: string[]
+  id_not_in: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  url?: string | null
+  url_not?: string | null
+  url_in: string[]
+  url_not_in: string[]
+  url_lt?: string | null
+  url_lte?: string | null
+  url_gt?: string | null
+  url_gte?: string | null
+  url_contains?: string | null
+  url_not_contains?: string | null
+  url_starts_with?: string | null
+  url_not_starts_with?: string | null
+  url_ends_with?: string | null
+  url_not_ends_with?: string | null
+  AND: ImageWhereInput[]
+  OR: ImageWhereInput[]
+  NOT: ImageWhereInput[]
+}
+  
 export interface VariantWhereInput {
   id?: string | null
   id_not?: string | null
@@ -3739,6 +5145,23 @@ export interface VariantWhereInput {
   price_lte?: number | null
   price_gt?: number | null
   price_gte?: number | null
+  availableForSale?: boolean | null
+  availableForSale_not?: boolean | null
+  sku?: string | null
+  sku_not?: string | null
+  sku_in: string[]
+  sku_not_in: string[]
+  sku_lt?: string | null
+  sku_lte?: string | null
+  sku_gt?: string | null
+  sku_gte?: string | null
+  sku_contains?: string | null
+  sku_not_contains?: string | null
+  sku_starts_with?: string | null
+  sku_not_starts_with?: string | null
+  sku_ends_with?: string | null
+  sku_not_ends_with?: string | null
+  image?: ImageWhereInput | null
   AND: VariantWhereInput[]
   OR: VariantWhereInput[]
   NOT: VariantWhereInput[]
@@ -3845,12 +5268,52 @@ export interface CollectionWhereInput {
   name_not_starts_with?: string | null
   name_ends_with?: string | null
   name_not_ends_with?: string | null
+  rules?: CollectionRuleSetWhereInput | null
   products_every?: ProductWhereInput | null
   products_some?: ProductWhereInput | null
   products_none?: ProductWhereInput | null
   AND: CollectionWhereInput[]
   OR: CollectionWhereInput[]
   NOT: CollectionWhereInput[]
+}
+  
+export interface CollectionRuleSetWhereInput {
+  rules_every?: CollectionRuleWhereInput | null
+  rules_some?: CollectionRuleWhereInput | null
+  rules_none?: CollectionRuleWhereInput | null
+  appliesDisjunctively?: boolean | null
+  appliesDisjunctively_not?: boolean | null
+  AND: CollectionRuleSetWhereInput[]
+  OR: CollectionRuleSetWhereInput[]
+  NOT: CollectionRuleSetWhereInput[]
+}
+  
+export interface CollectionRuleWhereInput {
+  field?: prisma.CollectionRuleField | null
+  field_not?: prisma.CollectionRuleField | null
+  field_in: prisma.CollectionRuleField[]
+  field_not_in: prisma.CollectionRuleField[]
+  relation?: prisma.CollectionRuleRelation | null
+  relation_not?: prisma.CollectionRuleRelation | null
+  relation_in: prisma.CollectionRuleRelation[]
+  relation_not_in: prisma.CollectionRuleRelation[]
+  value?: string | null
+  value_not?: string | null
+  value_in: string[]
+  value_not_in: string[]
+  value_lt?: string | null
+  value_lte?: string | null
+  value_gt?: string | null
+  value_gte?: string | null
+  value_contains?: string | null
+  value_not_contains?: string | null
+  value_starts_with?: string | null
+  value_not_starts_with?: string | null
+  value_ends_with?: string | null
+  value_not_ends_with?: string | null
+  AND: CollectionRuleWhereInput[]
+  OR: CollectionRuleWhereInput[]
+  NOT: CollectionRuleWhereInput[]
 }
   
 export interface AttributeWhereInput {
@@ -3912,6 +5375,10 @@ export interface CollectionWhereUniqueInput {
   id?: string | null
 }
   
+export interface ImageWhereUniqueInput {
+  id?: string | null
+}
+  
 export interface OptionWhereUniqueInput {
   id?: string | null
 }
@@ -3942,6 +5409,7 @@ export interface ProductCreateManyWithoutAttributesInput {
 export interface ProductCreateWithoutAttributesInput {
   name: string
   brand: BrandCreateOneWithoutProductsInput
+  image?: ImageCreateOneInput | null
   variants?: VariantCreateManyInput | null
   collections?: CollectionCreateManyWithoutProductsInput | null
 }
@@ -3955,6 +5423,15 @@ export interface BrandCreateWithoutProductsInput {
   name: string
 }
   
+export interface ImageCreateOneInput {
+  create?: ImageCreateInput | null
+  connect?: ImageWhereUniqueInput | null
+}
+  
+export interface ImageCreateInput {
+  url: string
+}
+  
 export interface VariantCreateManyInput {
   create: VariantCreateInput[]
   connect: VariantWhereUniqueInput[]
@@ -3962,7 +5439,10 @@ export interface VariantCreateManyInput {
   
 export interface VariantCreateInput {
   optionValues?: OptionValueCreateManyInput | null
-  price?: number | null
+  price: number
+  availableForSale?: boolean | null
+  sku?: string | null
+  image?: ImageCreateOneInput | null
 }
   
 export interface OptionValueCreateManyInput {
@@ -3991,6 +5471,26 @@ export interface CollectionCreateManyWithoutProductsInput {
   
 export interface CollectionCreateWithoutProductsInput {
   name: string
+  rules?: CollectionRuleSetCreateOneInput | null
+}
+  
+export interface CollectionRuleSetCreateOneInput {
+  create?: CollectionRuleSetCreateInput | null
+}
+  
+export interface CollectionRuleSetCreateInput {
+  rules?: CollectionRuleCreateManyInput | null
+  appliesDisjunctively: boolean
+}
+  
+export interface CollectionRuleCreateManyInput {
+  create: CollectionRuleCreateInput[]
+}
+  
+export interface CollectionRuleCreateInput {
+  field: prisma.CollectionRuleField
+  relation: prisma.CollectionRuleRelation
+  value: string
 }
   
 export interface AttributeUpdateInput {
@@ -4018,6 +5518,7 @@ export interface ProductUpdateWithWhereUniqueWithoutAttributesInput {
 export interface ProductUpdateWithoutAttributesDataInput {
   name?: string | null
   brand?: BrandUpdateOneRequiredWithoutProductsInput | null
+  image?: ImageUpdateOneInput | null
   variants?: VariantUpdateManyInput | null
   collections?: CollectionUpdateManyWithoutProductsInput | null
 }
@@ -4036,6 +5537,24 @@ export interface BrandUpdateWithoutProductsDataInput {
 export interface BrandUpsertWithoutProductsInput {
   update: BrandUpdateWithoutProductsDataInput
   create: BrandCreateWithoutProductsInput
+}
+  
+export interface ImageUpdateOneInput {
+  create?: ImageCreateInput | null
+  update?: ImageUpdateDataInput | null
+  upsert?: ImageUpsertNestedInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+  connect?: ImageWhereUniqueInput | null
+}
+  
+export interface ImageUpdateDataInput {
+  url?: string | null
+}
+  
+export interface ImageUpsertNestedInput {
+  update: ImageUpdateDataInput
+  create: ImageCreateInput
 }
   
 export interface VariantUpdateManyInput {
@@ -4057,6 +5576,9 @@ export interface VariantUpdateWithWhereUniqueNestedInput {
 export interface VariantUpdateDataInput {
   optionValues?: OptionValueUpdateManyInput | null
   price?: number | null
+  availableForSale?: boolean | null
+  sku?: string | null
+  image?: ImageUpdateOneInput | null
 }
   
 export interface OptionValueUpdateManyInput {
@@ -4174,6 +5696,22 @@ export interface VariantScalarWhereInput {
   price_lte?: number | null
   price_gt?: number | null
   price_gte?: number | null
+  availableForSale?: boolean | null
+  availableForSale_not?: boolean | null
+  sku?: string | null
+  sku_not?: string | null
+  sku_in: string[]
+  sku_not_in: string[]
+  sku_lt?: string | null
+  sku_lte?: string | null
+  sku_gt?: string | null
+  sku_gte?: string | null
+  sku_contains?: string | null
+  sku_not_contains?: string | null
+  sku_starts_with?: string | null
+  sku_not_starts_with?: string | null
+  sku_ends_with?: string | null
+  sku_not_ends_with?: string | null
   AND: VariantScalarWhereInput[]
   OR: VariantScalarWhereInput[]
   NOT: VariantScalarWhereInput[]
@@ -4186,6 +5724,8 @@ export interface VariantUpdateManyWithWhereNestedInput {
   
 export interface VariantUpdateManyDataInput {
   price?: number | null
+  availableForSale?: boolean | null
+  sku?: string | null
 }
   
 export interface CollectionUpdateManyWithoutProductsInput {
@@ -4206,6 +5746,70 @@ export interface CollectionUpdateWithWhereUniqueWithoutProductsInput {
   
 export interface CollectionUpdateWithoutProductsDataInput {
   name?: string | null
+  rules?: CollectionRuleSetUpdateOneInput | null
+}
+  
+export interface CollectionRuleSetUpdateOneInput {
+  create?: CollectionRuleSetCreateInput | null
+  update?: CollectionRuleSetUpdateDataInput | null
+  upsert?: CollectionRuleSetUpsertNestedInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+}
+  
+export interface CollectionRuleSetUpdateDataInput {
+  rules?: CollectionRuleUpdateManyInput | null
+  appliesDisjunctively?: boolean | null
+}
+  
+export interface CollectionRuleUpdateManyInput {
+  create: CollectionRuleCreateInput[]
+  deleteMany: CollectionRuleScalarWhereInput[]
+  updateMany: CollectionRuleUpdateManyWithWhereNestedInput[]
+}
+  
+export interface CollectionRuleScalarWhereInput {
+  field?: prisma.CollectionRuleField | null
+  field_not?: prisma.CollectionRuleField | null
+  field_in: prisma.CollectionRuleField[]
+  field_not_in: prisma.CollectionRuleField[]
+  relation?: prisma.CollectionRuleRelation | null
+  relation_not?: prisma.CollectionRuleRelation | null
+  relation_in: prisma.CollectionRuleRelation[]
+  relation_not_in: prisma.CollectionRuleRelation[]
+  value?: string | null
+  value_not?: string | null
+  value_in: string[]
+  value_not_in: string[]
+  value_lt?: string | null
+  value_lte?: string | null
+  value_gt?: string | null
+  value_gte?: string | null
+  value_contains?: string | null
+  value_not_contains?: string | null
+  value_starts_with?: string | null
+  value_not_starts_with?: string | null
+  value_ends_with?: string | null
+  value_not_ends_with?: string | null
+  AND: CollectionRuleScalarWhereInput[]
+  OR: CollectionRuleScalarWhereInput[]
+  NOT: CollectionRuleScalarWhereInput[]
+}
+  
+export interface CollectionRuleUpdateManyWithWhereNestedInput {
+  where: CollectionRuleScalarWhereInput
+  data: CollectionRuleUpdateManyDataInput
+}
+  
+export interface CollectionRuleUpdateManyDataInput {
+  field?: prisma.CollectionRuleField | null
+  relation?: prisma.CollectionRuleRelation | null
+  value?: string | null
+}
+  
+export interface CollectionRuleSetUpsertNestedInput {
+  update: CollectionRuleSetUpdateDataInput
+  create: CollectionRuleSetCreateInput
 }
   
 export interface CollectionUpsertWithWhereUniqueWithoutProductsInput {
@@ -4323,6 +5927,7 @@ export interface ProductCreateManyWithoutBrandInput {
   
 export interface ProductCreateWithoutBrandInput {
   name: string
+  image?: ImageCreateOneInput | null
   variants?: VariantCreateManyInput | null
   collections?: CollectionCreateManyWithoutProductsInput | null
   attributes?: AttributeCreateManyWithoutProductsInput | null
@@ -4361,6 +5966,7 @@ export interface ProductUpdateWithWhereUniqueWithoutBrandInput {
   
 export interface ProductUpdateWithoutBrandDataInput {
   name?: string | null
+  image?: ImageUpdateOneInput | null
   variants?: VariantUpdateManyInput | null
   collections?: CollectionUpdateManyWithoutProductsInput | null
   attributes?: AttributeUpdateManyWithoutProductsInput | null
@@ -4463,6 +6069,7 @@ export interface BrandUpdateManyMutationInput {
   
 export interface CollectionCreateInput {
   name: string
+  rules?: CollectionRuleSetCreateOneInput | null
   products?: ProductCreateManyWithoutCollectionsInput | null
 }
   
@@ -4474,12 +6081,14 @@ export interface ProductCreateManyWithoutCollectionsInput {
 export interface ProductCreateWithoutCollectionsInput {
   name: string
   brand: BrandCreateOneWithoutProductsInput
+  image?: ImageCreateOneInput | null
   variants?: VariantCreateManyInput | null
   attributes?: AttributeCreateManyWithoutProductsInput | null
 }
   
 export interface CollectionUpdateInput {
   name?: string | null
+  rules?: CollectionRuleSetUpdateOneInput | null
   products?: ProductUpdateManyWithoutCollectionsInput | null
 }
   
@@ -4502,6 +6111,7 @@ export interface ProductUpdateWithWhereUniqueWithoutCollectionsInput {
 export interface ProductUpdateWithoutCollectionsDataInput {
   name?: string | null
   brand?: BrandUpdateOneRequiredWithoutProductsInput | null
+  image?: ImageUpdateOneInput | null
   variants?: VariantUpdateManyInput | null
   attributes?: AttributeUpdateManyWithoutProductsInput | null
 }
@@ -4514,6 +6124,24 @@ export interface ProductUpsertWithWhereUniqueWithoutCollectionsInput {
   
 export interface CollectionUpdateManyMutationInput {
   name?: string | null
+}
+  
+export interface CollectionRuleUpdateManyMutationInput {
+  field?: prisma.CollectionRuleField | null
+  relation?: prisma.CollectionRuleRelation | null
+  value?: string | null
+}
+  
+export interface CollectionRuleSetUpdateManyMutationInput {
+  appliesDisjunctively?: boolean | null
+}
+  
+export interface ImageUpdateInput {
+  url?: string | null
+}
+  
+export interface ImageUpdateManyMutationInput {
+  url?: string | null
 }
   
 export interface OptionCreateInput {
@@ -4577,6 +6205,7 @@ export interface OptionValueUpdateManyMutationInput {
 export interface ProductCreateInput {
   name: string
   brand: BrandCreateOneWithoutProductsInput
+  image?: ImageCreateOneInput | null
   variants?: VariantCreateManyInput | null
   collections?: CollectionCreateManyWithoutProductsInput | null
   attributes?: AttributeCreateManyWithoutProductsInput | null
@@ -4585,6 +6214,7 @@ export interface ProductCreateInput {
 export interface ProductUpdateInput {
   name?: string | null
   brand?: BrandUpdateOneRequiredWithoutProductsInput | null
+  image?: ImageUpdateOneInput | null
   variants?: VariantUpdateManyInput | null
   collections?: CollectionUpdateManyWithoutProductsInput | null
   attributes?: AttributeUpdateManyWithoutProductsInput | null
@@ -4597,10 +6227,15 @@ export interface ProductUpdateManyMutationInput {
 export interface VariantUpdateInput {
   optionValues?: OptionValueUpdateManyInput | null
   price?: number | null
+  availableForSale?: boolean | null
+  sku?: string | null
+  image?: ImageUpdateOneInput | null
 }
   
 export interface VariantUpdateManyMutationInput {
   price?: number | null
+  availableForSale?: boolean | null
+  sku?: string | null
 }
   
 export interface AttributeSubscriptionWhereInput {
@@ -4634,6 +6269,39 @@ export interface CollectionSubscriptionWhereInput {
   AND: CollectionSubscriptionWhereInput[]
   OR: CollectionSubscriptionWhereInput[]
   NOT: CollectionSubscriptionWhereInput[]
+}
+  
+export interface CollectionRuleSubscriptionWhereInput {
+  mutation_in: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every: string[]
+  updatedFields_contains_some: string[]
+  node?: CollectionRuleWhereInput | null
+  AND: CollectionRuleSubscriptionWhereInput[]
+  OR: CollectionRuleSubscriptionWhereInput[]
+  NOT: CollectionRuleSubscriptionWhereInput[]
+}
+  
+export interface CollectionRuleSetSubscriptionWhereInput {
+  mutation_in: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every: string[]
+  updatedFields_contains_some: string[]
+  node?: CollectionRuleSetWhereInput | null
+  AND: CollectionRuleSetSubscriptionWhereInput[]
+  OR: CollectionRuleSetSubscriptionWhereInput[]
+  NOT: CollectionRuleSetSubscriptionWhereInput[]
+}
+  
+export interface ImageSubscriptionWhereInput {
+  mutation_in: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every: string[]
+  updatedFields_contains_some: string[]
+  node?: ImageWhereInput | null
+  AND: ImageSubscriptionWhereInput[]
+  OR: ImageSubscriptionWhereInput[]
+  NOT: ImageSubscriptionWhereInput[]
 }
   
 export interface OptionSubscriptionWhereInput {
@@ -4681,16 +6349,35 @@ export interface VariantSubscriptionWhereInput {
 }
   
 
+export type enumTypesNames =
+  | 'CollectionRuleField'
+  | 'CollectionRuleRelation'
+  | 'ProductOrderByInput'
+  | 'VariantOrderByInput'
+  | 'OptionValueOrderByInput'
+  | 'CollectionOrderByInput'
+  | 'CollectionRuleOrderByInput'
+  | 'AttributeOrderByInput'
+  | 'BrandOrderByInput'
+  | 'CollectionRuleSetOrderByInput'
+  | 'ImageOrderByInput'
+  | 'OptionOrderByInput'
+  | 'MutationType'
+  
+
 export interface PluginTypes {
   fields: {
     Query: QueryObject
     Attribute: AttributeObject
     Product: ProductObject
     Brand: BrandObject
+    Image: ImageObject
     Variant: VariantObject
     OptionValue: OptionValueObject
     Option: OptionObject
     Collection: CollectionObject
+    CollectionRuleSet: CollectionRuleSetObject
+    CollectionRule: CollectionRuleObject
     AttributeConnection: AttributeConnectionObject
     PageInfo: PageInfoObject
     AttributeEdge: AttributeEdgeObject
@@ -4701,6 +6388,15 @@ export interface PluginTypes {
     CollectionConnection: CollectionConnectionObject
     CollectionEdge: CollectionEdgeObject
     AggregateCollection: AggregateCollectionObject
+    CollectionRuleConnection: CollectionRuleConnectionObject
+    CollectionRuleEdge: CollectionRuleEdgeObject
+    AggregateCollectionRule: AggregateCollectionRuleObject
+    CollectionRuleSetConnection: CollectionRuleSetConnectionObject
+    CollectionRuleSetEdge: CollectionRuleSetEdgeObject
+    AggregateCollectionRuleSet: AggregateCollectionRuleSetObject
+    ImageConnection: ImageConnectionObject
+    ImageEdge: ImageEdgeObject
+    AggregateImage: AggregateImageObject
     OptionConnection: OptionConnectionObject
     OptionEdge: OptionEdgeObject
     AggregateOption: AggregateOptionObject
@@ -4722,6 +6418,12 @@ export interface PluginTypes {
     BrandPreviousValues: BrandPreviousValuesObject
     CollectionSubscriptionPayload: CollectionSubscriptionPayloadObject
     CollectionPreviousValues: CollectionPreviousValuesObject
+    CollectionRuleSubscriptionPayload: CollectionRuleSubscriptionPayloadObject
+    CollectionRulePreviousValues: CollectionRulePreviousValuesObject
+    CollectionRuleSetSubscriptionPayload: CollectionRuleSetSubscriptionPayloadObject
+    CollectionRuleSetPreviousValues: CollectionRuleSetPreviousValuesObject
+    ImageSubscriptionPayload: ImageSubscriptionPayloadObject
+    ImagePreviousValues: ImagePreviousValuesObject
     OptionSubscriptionPayload: OptionSubscriptionPayloadObject
     OptionPreviousValues: OptionPreviousValuesObject
     OptionValueSubscriptionPayload: OptionValueSubscriptionPayloadObject
@@ -4736,10 +6438,13 @@ export interface PluginTypes {
     Attribute: AttributeFieldDetails
     Product: ProductFieldDetails
     Brand: BrandFieldDetails
+    Image: ImageFieldDetails
     Variant: VariantFieldDetails
     OptionValue: OptionValueFieldDetails
     Option: OptionFieldDetails
     Collection: CollectionFieldDetails
+    CollectionRuleSet: CollectionRuleSetFieldDetails
+    CollectionRule: CollectionRuleFieldDetails
     AttributeConnection: AttributeConnectionFieldDetails
     PageInfo: PageInfoFieldDetails
     AttributeEdge: AttributeEdgeFieldDetails
@@ -4750,6 +6455,15 @@ export interface PluginTypes {
     CollectionConnection: CollectionConnectionFieldDetails
     CollectionEdge: CollectionEdgeFieldDetails
     AggregateCollection: AggregateCollectionFieldDetails
+    CollectionRuleConnection: CollectionRuleConnectionFieldDetails
+    CollectionRuleEdge: CollectionRuleEdgeFieldDetails
+    AggregateCollectionRule: AggregateCollectionRuleFieldDetails
+    CollectionRuleSetConnection: CollectionRuleSetConnectionFieldDetails
+    CollectionRuleSetEdge: CollectionRuleSetEdgeFieldDetails
+    AggregateCollectionRuleSet: AggregateCollectionRuleSetFieldDetails
+    ImageConnection: ImageConnectionFieldDetails
+    ImageEdge: ImageEdgeFieldDetails
+    AggregateImage: AggregateImageFieldDetails
     OptionConnection: OptionConnectionFieldDetails
     OptionEdge: OptionEdgeFieldDetails
     AggregateOption: AggregateOptionFieldDetails
@@ -4771,6 +6485,12 @@ export interface PluginTypes {
     BrandPreviousValues: BrandPreviousValuesFieldDetails
     CollectionSubscriptionPayload: CollectionSubscriptionPayloadFieldDetails
     CollectionPreviousValues: CollectionPreviousValuesFieldDetails
+    CollectionRuleSubscriptionPayload: CollectionRuleSubscriptionPayloadFieldDetails
+    CollectionRulePreviousValues: CollectionRulePreviousValuesFieldDetails
+    CollectionRuleSetSubscriptionPayload: CollectionRuleSetSubscriptionPayloadFieldDetails
+    CollectionRuleSetPreviousValues: CollectionRuleSetPreviousValuesFieldDetails
+    ImageSubscriptionPayload: ImageSubscriptionPayloadFieldDetails
+    ImagePreviousValues: ImagePreviousValuesFieldDetails
     OptionSubscriptionPayload: OptionSubscriptionPayloadFieldDetails
     OptionPreviousValues: OptionPreviousValuesFieldDetails
     OptionValueSubscriptionPayload: OptionValueSubscriptionPayloadFieldDetails
@@ -4780,9 +6500,10 @@ export interface PluginTypes {
     VariantSubscriptionPayload: VariantSubscriptionPayloadFieldDetails
     VariantPreviousValues: VariantPreviousValuesFieldDetails
   }
+  enumTypesNames: enumTypesNames
 }
 
 declare global {
-  interface GraphQLiteralGen extends PluginTypes {}
+  interface GraphQLNexusGen extends PluginTypes {}
 }
   

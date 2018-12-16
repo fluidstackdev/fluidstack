@@ -1,13 +1,45 @@
 type Collection {
   id: ID! @unique
   name: String!
+  rules: CollectionRuleSet
   products: [Product!]!
+}
+type CollectionRuleSet {
+  rules: [CollectionRule!]!
+  appliesDisjunctively: Boolean!
+}
+
+type CollectionRule {
+  field: CollectionRuleField!
+  relation: CollectionRuleRelation!
+  value: String!
+}
+
+enum CollectionRuleField {
+  TAG
+  TITLE
+  TYPE
+  INVENTORY
+  PRICE
+  VENDOR
+}
+
+enum CollectionRuleRelation {
+  CONTAINS
+  ENDS_WITH
+  EQUALS
+  GREATER_THAN
+  LESS_THAN
+  NOT_CONTAINS
+  NOT_EQUALS
+  STARTS_WITH
 }
 
 type Product {
   id: ID! @unique
   name: String!
   brand: Brand!
+  image: Image
   variants: [Variant!]!
   collections: [Collection!]!
   attributes: [Attribute!]!
@@ -41,9 +73,13 @@ type Option {
 type Variant {
   id: ID! @unique
   optionValues: [OptionValue!]!
-  price: Int
+  price: Int!
+  availableForSale: Boolean @default(value: false)
+  sku: String
+  image: Image
+}
 
-  #availableForSale: Boolean!
-  #sku: String
-  #image: Image
+type Image {
+  id: ID! @unique
+  url: String!
 }

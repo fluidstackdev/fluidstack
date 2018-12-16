@@ -2906,7 +2906,7 @@ nexus-prisma@0.0.11:
     lodash "^4.17.11"
     nexus "^0.5.1"
 
-nexus@0.5.1, nexus@^0.5.1:
+nexus@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/nexus/-/nexus-0.5.1.tgz#2ffd108430da994c8dd94c7a9a4797496475826d"
   integrity sha512-Lfnb2e+w/ke7JbkBJqkfiU80Ww62lsZRzbQNFu9GNTAxrB1CDsH/8/uIwRkV8wTtLPufYnKBEMjoZ70+TB+Ezw==

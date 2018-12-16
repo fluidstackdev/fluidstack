@@ -132,6 +132,7 @@ interface ProductWhereInput {
   id_not_in: string[];
   id_not_starts_with?: string;
   id_starts_with?: string;
+  image?: ImageWhereInput;
   name?: string;
   name_contains?: string;
   name_ends_with?: string;
@@ -239,10 +240,54 @@ interface CollectionWhereInput {
   products_every?: ProductWhereInput;
   products_none?: ProductWhereInput;
   products_some?: ProductWhereInput;
+  rules?: CollectionRuleSetWhereInput;
 }
 
-interface VariantWhereInput {
-  AND: VariantWhereInput[];
+interface CollectionRuleSetWhereInput {
+  AND: CollectionRuleSetWhereInput[];
+  appliesDisjunctively?: boolean;
+  appliesDisjunctively_not?: boolean;
+  NOT: CollectionRuleSetWhereInput[];
+  OR: CollectionRuleSetWhereInput[];
+  rules_every?: CollectionRuleWhereInput;
+  rules_none?: CollectionRuleWhereInput;
+  rules_some?: CollectionRuleWhereInput;
+}
+
+interface CollectionRuleWhereInput {
+  AND: CollectionRuleWhereInput[];
+  field?: CollectionRuleField;
+  field_in: CollectionRuleField[];
+  field_not?: CollectionRuleField;
+  field_not_in: CollectionRuleField[];
+  NOT: CollectionRuleWhereInput[];
+  OR: CollectionRuleWhereInput[];
+  relation?: CollectionRuleRelation;
+  relation_in: CollectionRuleRelation[];
+  relation_not?: CollectionRuleRelation;
+  relation_not_in: CollectionRuleRelation[];
+  value?: string;
+  value_contains?: string;
+  value_ends_with?: string;
+  value_gt?: string;
+  value_gte?: string;
+  value_in: string[];
+  value_lt?: string;
+  value_lte?: string;
+  value_not?: string;
+  value_not_contains?: string;
+  value_not_ends_with?: string;
+  value_not_in: string[];
+  value_not_starts_with?: string;
+  value_starts_with?: string;
+}
+
+export type CollectionRuleField = "INVENTORY" | "PRICE" | "TAG" | "TITLE" | "TYPE" | "VENDOR";
+
+export type CollectionRuleRelation = "CONTAINS" | "ENDS_WITH" | "EQUALS" | "GREATER_THAN" | "LESS_THAN" | "NOT_CONTAINS" | "NOT_EQUALS" | "STARTS_WITH";
+
+interface ImageWhereInput {
+  AND: ImageWhereInput[];
   id?: string;
   id_contains?: string;
   id_ends_with?: string;
@@ -257,6 +302,43 @@ interface VariantWhereInput {
   id_not_in: string[];
   id_not_starts_with?: string;
   id_starts_with?: string;
+  NOT: ImageWhereInput[];
+  OR: ImageWhereInput[];
+  url?: string;
+  url_contains?: string;
+  url_ends_with?: string;
+  url_gt?: string;
+  url_gte?: string;
+  url_in: string[];
+  url_lt?: string;
+  url_lte?: string;
+  url_not?: string;
+  url_not_contains?: string;
+  url_not_ends_with?: string;
+  url_not_in: string[];
+  url_not_starts_with?: string;
+  url_starts_with?: string;
+}
+
+interface VariantWhereInput {
+  AND: VariantWhereInput[];
+  availableForSale?: boolean;
+  availableForSale_not?: boolean;
+  id?: string;
+  id_contains?: string;
+  id_ends_with?: string;
+  id_gt?: string;
+  id_gte?: string;
+  id_in: string[];
+  id_lt?: string;
+  id_lte?: string;
+  id_not?: string;
+  id_not_contains?: string;
+  id_not_ends_with?: string;
+  id_not_in: string[];
+  id_not_starts_with?: string;
+  id_starts_with?: string;
+  image?: ImageWhereInput;
   NOT: VariantWhereInput[];
   optionValues_every?: OptionValueWhereInput;
   optionValues_none?: OptionValueWhereInput;
@@ -270,6 +352,20 @@ interface VariantWhereInput {
   price_lte?: number;
   price_not?: number;
   price_not_in: number[];
+  sku?: string;
+  sku_contains?: string;
+  sku_ends_with?: string;
+  sku_gt?: string;
+  sku_gte?: string;
+  sku_in: string[];
+  sku_lt?: string;
+  sku_lte?: string;
+  sku_not?: string;
+  sku_not_contains?: string;
+  sku_not_ends_with?: string;
+  sku_not_in: string[];
+  sku_not_starts_with?: string;
+  sku_starts_with?: string;
 }
 
 interface OptionValueWhereInput {
@@ -438,9 +534,13 @@ export type OptionValueRootType = prisma.OptionValue;
 
 export type OptionValue_ReturnType = prisma.OptionValue
 
-export type VariantOrderByInput = "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "price_ASC" | "price_DESC" | "updatedAt_ASC" | "updatedAt_DESC";
+export type VariantOrderByInput = "availableForSale_ASC" | "availableForSale_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "price_ASC" | "price_DESC" | "sku_ASC" | "sku_DESC" | "updatedAt_ASC" | "updatedAt_DESC";
+
+export type VariantAvailableForSaleReturnType = null | boolean;
 
 export type VariantIdReturnType = string;
+
+export type VariantImageReturnType = null | Image_ReturnType;
 
 export type VariantOptionValuesReturnType = MaybePromiseList<OptionValue_ReturnType>;
 
@@ -454,11 +554,21 @@ export interface VariantOptionValuesArgs {
   where?: OptionValueWhereInput;
 }
 
-export type VariantPriceReturnType = null | number;
+export type VariantPriceReturnType = number;
+
+export type VariantSkuReturnType = null | string;
 
 export type VariantRootType = prisma.Variant;
 
 export type Variant_ReturnType = prisma.Variant
+
+export type ImageIdReturnType = string;
+
+export type ImageUrlReturnType = string;
+
+export type ImageRootType = prisma.Image;
+
+export type Image_ReturnType = prisma.Image
 
 export type PageInfoEndCursorReturnType = null | string;
 
@@ -484,15 +594,7 @@ export type CollectionOptionsReturnType = MaybePromiseList<Option_ReturnType>;
 
 export type CollectionProductsReturnType = MaybePromiseList<Product_ReturnType>;
 
-export interface CollectionProductsArgs {
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-  orderBy?: ProductOrderByInput;
-  skip?: number;
-  where?: ProductWhereInput;
-}
+export type CollectionRulesReturnType = null | CollectionRuleSet_ReturnType;
 
 export type CollectionRootType = prisma.Collection;
 
@@ -519,6 +621,36 @@ export type AttributeValueReturnType = string;
 export type AttributeRootType = prisma.Attribute;
 
 export type Attribute_ReturnType = prisma.Attribute
+
+export type CollectionRuleSetAppliesDisjunctivelyReturnType = boolean;
+
+export type CollectionRuleSetRulesReturnType = MaybePromiseList<CollectionRule_ReturnType>;
+
+export interface CollectionRuleSetRulesArgs {
+  after?: string;
+  before?: string;
+  first?: number;
+  last?: number;
+  orderBy?: CollectionRuleOrderByInput;
+  skip?: number;
+  where?: CollectionRuleWhereInput;
+}
+
+export type CollectionRuleSetRootType = prisma.CollectionRuleSet;
+
+export type CollectionRuleSet_ReturnType = prisma.CollectionRuleSet
+
+export type CollectionRuleOrderByInput = "createdAt_ASC" | "createdAt_DESC" | "field_ASC" | "field_DESC" | "id_ASC" | "id_DESC" | "relation_ASC" | "relation_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "value_ASC" | "value_DESC";
+
+export type CollectionRuleFieldReturnType = CollectionRuleField;
+
+export type CollectionRuleRelationReturnType = CollectionRuleRelation;
+
+export type CollectionRuleValueReturnType = string;
+
+export type CollectionRuleRootType = prisma.CollectionRule;
+
+export type CollectionRule_ReturnType = prisma.CollectionRule
 
 export type OptionOrderByInput = "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC";
 
@@ -635,11 +767,11 @@ export interface GraphQLNexusGenArgTypes {
   Variant: {
     optionValues: VariantOptionValuesArgs;
   };
-  Collection: {
-    products: CollectionProductsArgs;
-  };
   Attribute: {
     products: AttributeProductsArgs;
+  };
+  CollectionRuleSet: {
+    rules: CollectionRuleSetRulesArgs;
   };
   Mutation: {
     addProductsToCollection: MutationAddProductsToCollectionArgs;
@@ -658,9 +790,12 @@ export interface GraphQLNexusGenRootTypes {
   Option: OptionRootType;
   OptionValue: OptionValueRootType;
   Variant: VariantRootType;
+  Image: ImageRootType;
   PageInfo: PageInfoRootType;
   Collection: CollectionRootType;
   Attribute: AttributeRootType;
+  CollectionRuleSet: CollectionRuleSetRootType;
+  CollectionRule: CollectionRuleRootType;
   OptionConnection: OptionConnectionRootType;
   OptionEdge: OptionEdgeRootType;
   ProductConnection: ProductConnectionRootType;
@@ -706,9 +841,16 @@ export interface GraphQLNexusGenReturnTypes {
     option: OptionValueOptionReturnType;
   };
   Variant: {
+    availableForSale: VariantAvailableForSaleReturnType;
     id: VariantIdReturnType;
+    image: VariantImageReturnType;
     optionValues: VariantOptionValuesReturnType;
     price: VariantPriceReturnType;
+    sku: VariantSkuReturnType;
+  };
+  Image: {
+    id: ImageIdReturnType;
+    url: ImageUrlReturnType;
   };
   PageInfo: {
     endCursor: PageInfoEndCursorReturnType;
@@ -723,12 +865,22 @@ export interface GraphQLNexusGenReturnTypes {
     name: CollectionNameReturnType;
     options: CollectionOptionsReturnType;
     products: CollectionProductsReturnType;
+    rules: CollectionRulesReturnType;
   };
   Attribute: {
     id: AttributeIdReturnType;
     key: AttributeKeyReturnType;
     products: AttributeProductsReturnType;
     value: AttributeValueReturnType;
+  };
+  CollectionRuleSet: {
+    appliesDisjunctively: CollectionRuleSetAppliesDisjunctivelyReturnType;
+    rules: CollectionRuleSetRulesReturnType;
+  };
+  CollectionRule: {
+    field: CollectionRuleFieldReturnType;
+    relation: CollectionRuleRelationReturnType;
+    value: CollectionRuleValueReturnType;
   };
   OptionConnection: {
     edges: OptionConnectionEdgesReturnType;
@@ -761,9 +913,12 @@ export interface GraphQLNexusGenTypes {
   context: ctx.Context;
   enums: {
     BrandOrderByInput: BrandOrderByInput;
+    CollectionRuleField: CollectionRuleField;
+    CollectionRuleRelation: CollectionRuleRelation;
     ProductOrderByInput: ProductOrderByInput;
     OptionValueOrderByInput: OptionValueOrderByInput;
     VariantOrderByInput: VariantOrderByInput;
+    CollectionRuleOrderByInput: CollectionRuleOrderByInput;
     OptionOrderByInput: OptionOrderByInput;
   };
   objects: {
@@ -775,9 +930,12 @@ export interface GraphQLNexusGenTypes {
     Option: OptionRootType;
     OptionValue: OptionValueRootType;
     Variant: VariantRootType;
+    Image: ImageRootType;
     PageInfo: PageInfoRootType;
     Collection: CollectionRootType;
     Attribute: AttributeRootType;
+    CollectionRuleSet: CollectionRuleSetRootType;
+    CollectionRule: CollectionRuleRootType;
     OptionConnection: OptionConnectionRootType;
     OptionEdge: OptionEdgeRootType;
     ProductConnection: ProductConnectionRootType;
@@ -797,6 +955,9 @@ export interface GraphQLNexusGenTypes {
     ProductWhereInput: any;
     AttributeWhereInput: any;
     CollectionWhereInput: any;
+    CollectionRuleSetWhereInput: any;
+    CollectionRuleWhereInput: any;
+    ImageWhereInput: any;
     VariantWhereInput: any;
     OptionValueWhereInput: any;
     OptionWhereInput: any;
