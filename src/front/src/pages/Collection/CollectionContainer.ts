@@ -1,8 +1,8 @@
 import { graphql, compose } from 'react-apollo'
 import { CollectionHOC } from '../../generated-models'
-import Collection, { Props } from './Collection'
+import Collection, { CollectionProps } from './Collection'
 
-export default CollectionHOC<Props>({
+export default CollectionHOC<CollectionProps>({
   options: props => ({
     variables: {
       collectionId: props.match.params.collectionId,

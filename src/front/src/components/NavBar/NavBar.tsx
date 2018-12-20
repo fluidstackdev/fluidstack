@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const NavBar: React.SFC<Props> = props => (
-  <nav style={{ flex: 1, flexDirection: 'row' }}>
+  <nav>
     <ul>
       {props.items.map(item => (
         <li key={item.link}>

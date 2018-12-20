@@ -7,10 +7,10 @@ interface RouterProps {
   collectionId: string
 }
 
-export type Props = DataProps<CollectionQuery, CollectionVariables> &
+export type CollectionProps = DataProps<CollectionQuery, CollectionVariables> &
   RouteComponentProps<RouterProps>
 
-class Collection extends Component<Props> {
+class Collection extends Component<CollectionProps> {
   render() {
     if (this.props.data.loading) {
       return null
