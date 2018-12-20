@@ -15,6 +15,7 @@ export const Query = prismaObjectType('Query', t => {
       { name: 'productsConnection', alias: 'products' },
       { name: 'optionsConnection', alias: 'options' },
       { name: 'brandsConnection', alias: 'brands' },
+      { name: 'collectionsConnection', alias: 'collections' },
     ],
   })
 

@@ -3,14 +3,25 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.7.0",
+    "apollo-boost": "^0.1.23",
+    "graphql": "^14.0.2",
+    "graphql-code-generator": "^0.15.1",
+    "graphql-codegen-typescript-react-apollo-template": "^0.15.1",
+    "graphql-tag": "^2.10.0",
+    "react": "^16.7.0",
+    "react-apollo": "^2.3.3",
+    "react-dom": "^16.7.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.18",
     "@types/react": "^16.7.17",
     "@types/react-dom": "^16.0.11",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-scripts": "2.1.1",
-    "typescript": "^3.2.2"
+    "@types/react-router-dom": "^4.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,5 +37,18 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
+  ],
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
   ]
 }

@@ -132,6 +132,27 @@ type Collection {
   products: [Product!]!
 }
 
+type CollectionConnection {
+  edges: [CollectionEdge!]!
+  pageInfo: PageInfo!
+}
+
+type CollectionEdge {
+  cursor: String!
+  node: Collection!
+}
+
+enum CollectionOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
 type CollectionRule {
   field: CollectionRuleField!
   relation: CollectionRuleRelation!
@@ -552,6 +573,7 @@ input ProductWhereInput {
 type Query {
   brands(after: String, before: String, first: Int, last: Int, orderBy: BrandOrderByInput, skip: Int, where: BrandWhereInput): BrandConnection!
   collection(collectionId: ID!): Collection!
+  collections(after: String, before: String, first: Int, last: Int, orderBy: CollectionOrderByInput, skip: Int, where: CollectionWhereInput): CollectionConnection!
   options(after: String, before: String, first: Int, last: Int, orderBy: OptionOrderByInput, skip: Int, where: OptionWhereInput): OptionConnection!
   products(after: String, before: String, first: Int, last: Int, orderBy: ProductOrderByInput, skip: Int, where: ProductWhereInput): ProductConnection!
 }

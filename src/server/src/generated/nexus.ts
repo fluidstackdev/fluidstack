@@ -42,6 +42,18 @@ export interface QueryCollectionArgs {
   collectionId: string;
 }
 
+export type QueryCollectionsReturnType = CollectionConnection_ReturnType;
+
+export interface QueryCollectionsArgs {
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | CollectionOrderByInput;
+  skip?: null | number;
+  where?: null | CollectionWhereInput;
+}
+
 export type QueryOptionsReturnType = OptionConnection_ReturnType;
 
 export interface QueryOptionsArgs {
@@ -665,6 +677,24 @@ export type AttributeRootType = prisma.Attribute;
 
 export type Attribute_ReturnType = prisma.Attribute
 
+export type CollectionOrderByInput = "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC";
+
+export type CollectionConnectionEdgesReturnType = MaybePromiseList<CollectionEdge_ReturnType>;
+
+export type CollectionConnectionPageInfoReturnType = PageInfo_ReturnType;
+
+export type CollectionConnectionRootType = prisma.CollectionConnection;
+
+export type CollectionConnection_ReturnType = prisma.CollectionConnection
+
+export type CollectionEdgeCursorReturnType = string;
+
+export type CollectionEdgeNodeReturnType = Collection_ReturnType;
+
+export type CollectionEdgeRootType = prisma.CollectionEdge;
+
+export type CollectionEdge_ReturnType = prisma.CollectionEdge
+
 export type OptionOrderByInput = "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC";
 
 export type OptionConnectionEdgesReturnType = MaybePromiseList<OptionEdge_ReturnType>;
@@ -795,6 +825,7 @@ export interface GraphQLNexusGenArgTypes {
   Query: {
     brands: QueryBrandsArgs;
     collection: QueryCollectionArgs;
+    collections: QueryCollectionsArgs;
     options: QueryOptionsArgs;
     products: QueryProductsArgs;
   };
@@ -838,6 +869,8 @@ export interface GraphQLNexusGenRootTypes {
   PageInfo: PageInfoRootType;
   Collection: CollectionRootType;
   Attribute: AttributeRootType;
+  CollectionConnection: CollectionConnectionRootType;
+  CollectionEdge: CollectionEdgeRootType;
   OptionConnection: OptionConnectionRootType;
   OptionEdge: OptionEdgeRootType;
   ProductConnection: ProductConnectionRootType;
@@ -851,6 +884,7 @@ export interface GraphQLNexusGenReturnTypes {
   Query: {
     brands: QueryBrandsReturnType;
     collection: QueryCollectionReturnType;
+    collections: QueryCollectionsReturnType;
     options: QueryOptionsReturnType;
     products: QueryProductsReturnType;
   };
@@ -921,6 +955,14 @@ export interface GraphQLNexusGenReturnTypes {
     products: AttributeProductsReturnType;
     value: AttributeValueReturnType;
   };
+  CollectionConnection: {
+    edges: CollectionConnectionEdgesReturnType;
+    pageInfo: CollectionConnectionPageInfoReturnType;
+  };
+  CollectionEdge: {
+    cursor: CollectionEdgeCursorReturnType;
+    node: CollectionEdgeNodeReturnType;
+  };
   OptionConnection: {
     edges: OptionConnectionEdgesReturnType;
     pageInfo: OptionConnectionPageInfoReturnType;
@@ -966,6 +1008,7 @@ export interface GraphQLNexusGenTypes {
     ProductOrderByInput: ProductOrderByInput;
     OptionValueOrderByInput: OptionValueOrderByInput;
     VariantOrderByInput: VariantOrderByInput;
+    CollectionOrderByInput: CollectionOrderByInput;
     OptionOrderByInput: OptionOrderByInput;
     CollectionRuleOrderByInput: CollectionRuleOrderByInput;
   };
@@ -983,6 +1026,8 @@ export interface GraphQLNexusGenTypes {
     PageInfo: PageInfoRootType;
     Collection: CollectionRootType;
     Attribute: AttributeRootType;
+    CollectionConnection: CollectionConnectionRootType;
+    CollectionEdge: CollectionEdgeRootType;
     OptionConnection: OptionConnectionRootType;
     OptionEdge: OptionEdgeRootType;
     ProductConnection: ProductConnectionRootType;

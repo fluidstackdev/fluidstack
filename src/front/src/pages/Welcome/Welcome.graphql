@@ -1,0 +1,10 @@
+query collections {
+  collections {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}

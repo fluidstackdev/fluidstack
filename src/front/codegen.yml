@@ -1,0 +1,12 @@
+overwrite: true
+watch: true
+schema: http://localhost:4000
+documents: ./src/**/*.graphql
+generates:
+  src/generated-models.tsx:
+    plugins:
+      - typescript-common
+      - typescript-client
+      - typescript-react-apollo
+    config:
+      noNamespaces: true

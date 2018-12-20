@@ -1,0 +1,22 @@
+query collection($collectionId: ID!) {
+  collection(collectionId: $collectionId) {
+    id
+    name
+    products {
+      id
+      name
+      brand {
+        id
+        name
+      }
+    }
+    options {
+      id
+      name
+    }
+    brands {
+      id
+      name
+    }
+  }
+}
