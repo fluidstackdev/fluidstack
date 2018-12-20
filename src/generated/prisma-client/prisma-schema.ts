@@ -34,6 +34,10 @@ type AggregateProduct {
   count: Int!
 }
 
+type AggregateProductType {
+  count: Int!
+}
+
 type AggregateVariant {
   count: Int!
 }
@@ -473,12 +477,9 @@ type CollectionRuleEdge {
 }
 
 enum CollectionRuleField {
-  TAG
-  TITLE
   TYPE
-  INVENTORY
+  TITLE
   PRICE
-  VENDOR
 }
 
 enum CollectionRuleOrderByInput {
@@ -1015,6 +1016,12 @@ type Mutation {
   upsertProduct(where: ProductWhereUniqueInput!, create: ProductCreateInput!, update: ProductUpdateInput!): Product!
   deleteProduct(where: ProductWhereUniqueInput!): Product
   deleteManyProducts(where: ProductWhereInput): BatchPayload!
+  createProductType(data: ProductTypeCreateInput!): ProductType!
+  updateProductType(data: ProductTypeUpdateInput!, where: ProductTypeWhereUniqueInput!): ProductType
+  updateManyProductTypes(data: ProductTypeUpdateManyMutationInput!, where: ProductTypeWhereInput): BatchPayload!
+  upsertProductType(where: ProductTypeWhereUniqueInput!, create: ProductTypeCreateInput!, update: ProductTypeUpdateInput!): ProductType!
+  deleteProductType(where: ProductTypeWhereUniqueInput!): ProductType
+  deleteManyProductTypes(where: ProductTypeWhereInput): BatchPayload!
   createVariant(data: VariantCreateInput!): Variant!
   updateVariant(data: VariantUpdateInput!, where: VariantWhereUniqueInput!): Variant
   updateManyVariants(data: VariantUpdateManyMutationInput!, where: VariantWhereInput): BatchPayload!
@@ -1390,6 +1397,7 @@ type Product {
   name: String!
   brand: Brand!
   image: Image
+  type: ProductType
   variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Variant!]
   collections(where: CollectionWhereInput, orderBy: CollectionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Collection!]
   attributes(where: AttributeWhereInput, orderBy: AttributeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Attribute!]
@@ -1405,6 +1413,7 @@ input ProductCreateInput {
   name: String!
   brand: BrandCreateOneWithoutProductsInput!
   image: ImageCreateOneInput
+  type: ProductTypeCreateOneInput
   variants: VariantCreateManyInput
   collections: CollectionCreateManyWithoutProductsInput
   attributes: AttributeCreateManyWithoutProductsInput
@@ -1429,6 +1438,7 @@ input ProductCreateWithoutAttributesInput {
   name: String!
   brand: BrandCreateOneWithoutProductsInput!
   image: ImageCreateOneInput
+  type: ProductTypeCreateOneInput
   variants: VariantCreateManyInput
   collections: CollectionCreateManyWithoutProductsInput
 }
@@ -1436,6 +1446,7 @@ input ProductCreateWithoutAttributesInput {
 input ProductCreateWithoutBrandInput {
   name: String!
   image: ImageCreateOneInput
+  type: ProductTypeCreateOneInput
   variants: VariantCreateManyInput
   collections: CollectionCreateManyWithoutProductsInput
   attributes: AttributeCreateManyWithoutProductsInput
@@ -1445,6 +1456,7 @@ input ProductCreateWithoutCollectionsInput {
   name: String!
   brand: BrandCreateOneWithoutProductsInput!
   image: ImageCreateOneInput
+  type: ProductTypeCreateOneInput
   variants: VariantCreateManyInput
   attributes: AttributeCreateManyWithoutProductsInput
 }
@@ -1522,10 +1534,134 @@ input ProductSubscriptionWhereInput {
   NOT: [ProductSubscriptionWhereInput!]
 }
 
+type ProductType {
+  id: ID!
+  name: String!
+}
+
+type ProductTypeConnection {
+  pageInfo: PageInfo!
+  edges: [ProductTypeEdge]!
+  aggregate: AggregateProductType!
+}
+
+input ProductTypeCreateInput {
+  name: String!
+}
+
+input ProductTypeCreateOneInput {
+  create: ProductTypeCreateInput
+  connect: ProductTypeWhereUniqueInput
+}
+
+type ProductTypeEdge {
+  node: ProductType!
+  cursor: String!
+}
+
+enum ProductTypeOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProductTypePreviousValues {
+  id: ID!
+  name: String!
+}
+
+type ProductTypeSubscriptionPayload {
+  mutation: MutationType!
+  node: ProductType
+  updatedFields: [String!]
+  previousValues: ProductTypePreviousValues
+}
+
+input ProductTypeSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProductTypeWhereInput
+  AND: [ProductTypeSubscriptionWhereInput!]
+  OR: [ProductTypeSubscriptionWhereInput!]
+  NOT: [ProductTypeSubscriptionWhereInput!]
+}
+
+input ProductTypeUpdateDataInput {
+  name: String
+}
+
+input ProductTypeUpdateInput {
+  name: String
+}
+
+input ProductTypeUpdateManyMutationInput {
+  name: String
+}
+
+input ProductTypeUpdateOneInput {
+  create: ProductTypeCreateInput
+  update: ProductTypeUpdateDataInput
+  upsert: ProductTypeUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ProductTypeWhereUniqueInput
+}
+
+input ProductTypeUpsertNestedInput {
+  update: ProductTypeUpdateDataInput!
+  create: ProductTypeCreateInput!
+}
+
+input ProductTypeWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  AND: [ProductTypeWhereInput!]
+  OR: [ProductTypeWhereInput!]
+  NOT: [ProductTypeWhereInput!]
+}
+
+input ProductTypeWhereUniqueInput {
+  id: ID
+}
+
 input ProductUpdateInput {
   name: String
   brand: BrandUpdateOneRequiredWithoutProductsInput
   image: ImageUpdateOneInput
+  type: ProductTypeUpdateOneInput
   variants: VariantUpdateManyInput
   collections: CollectionUpdateManyWithoutProductsInput
   attributes: AttributeUpdateManyWithoutProductsInput
@@ -1581,6 +1717,7 @@ input ProductUpdateWithoutAttributesDataInput {
   name: String
   brand: BrandUpdateOneRequiredWithoutProductsInput
   image: ImageUpdateOneInput
+  type: ProductTypeUpdateOneInput
   variants: VariantUpdateManyInput
   collections: CollectionUpdateManyWithoutProductsInput
 }
@@ -1588,6 +1725,7 @@ input ProductUpdateWithoutAttributesDataInput {
 input ProductUpdateWithoutBrandDataInput {
   name: String
   image: ImageUpdateOneInput
+  type: ProductTypeUpdateOneInput
   variants: VariantUpdateManyInput
   collections: CollectionUpdateManyWithoutProductsInput
   attributes: AttributeUpdateManyWithoutProductsInput
@@ -1597,6 +1735,7 @@ input ProductUpdateWithoutCollectionsDataInput {
   name: String
   brand: BrandUpdateOneRequiredWithoutProductsInput
   image: ImageUpdateOneInput
+  type: ProductTypeUpdateOneInput
   variants: VariantUpdateManyInput
   attributes: AttributeUpdateManyWithoutProductsInput
 }
@@ -1665,6 +1804,7 @@ input ProductWhereInput {
   name_not_ends_with: String
   brand: BrandWhereInput
   image: ImageWhereInput
+  type: ProductTypeWhereInput
   variants_every: VariantWhereInput
   variants_some: VariantWhereInput
   variants_none: VariantWhereInput
@@ -1709,6 +1849,9 @@ type Query {
   product(where: ProductWhereUniqueInput!): Product
   products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product]!
   productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductConnection!
+  productType(where: ProductTypeWhereUniqueInput!): ProductType
+  productTypes(where: ProductTypeWhereInput, orderBy: ProductTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProductType]!
+  productTypesConnection(where: ProductTypeWhereInput, orderBy: ProductTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductTypeConnection!
   variant(where: VariantWhereUniqueInput!): Variant
   variants(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Variant]!
   variantsConnection(where: VariantWhereInput, orderBy: VariantOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): VariantConnection!
@@ -1725,6 +1868,7 @@ type Subscription {
   option(where: OptionSubscriptionWhereInput): OptionSubscriptionPayload
   optionValue(where: OptionValueSubscriptionWhereInput): OptionValueSubscriptionPayload
   product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
+  productType(where: ProductTypeSubscriptionWhereInput): ProductTypeSubscriptionPayload
   variant(where: VariantSubscriptionWhereInput): VariantSubscriptionPayload
 }
 

@@ -38,6 +38,9 @@ type QueryObject =
   | { name: 'product', args?: QueryProductArgs[] | false, alias?: string  } 
   | { name: 'products', args?: QueryProductsArgs[] | false, alias?: string  } 
   | { name: 'productsConnection', args?: QueryProductsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'productType', args?: QueryProductTypeArgs[] | false, alias?: string  } 
+  | { name: 'productTypes', args?: QueryProductTypesArgs[] | false, alias?: string  } 
+  | { name: 'productTypesConnection', args?: QueryProductTypesConnectionArgs[] | false, alias?: string  } 
   | { name: 'variant', args?: QueryVariantArgs[] | false, alias?: string  } 
   | { name: 'variants', args?: QueryVariantsArgs[] | false, alias?: string  } 
   | { name: 'variantsConnection', args?: QueryVariantsConnectionArgs[] | false, alias?: string  } 
@@ -69,6 +72,9 @@ type QueryFields =
   | 'product'
   | 'products'
   | 'productsConnection'
+  | 'productType'
+  | 'productTypes'
+  | 'productTypesConnection'
   | 'variant'
   | 'variants'
   | 'variantsConnection'
@@ -226,6 +232,24 @@ type QueryProductsArgs =
   | 'first'
   | 'last'
 type QueryProductsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryProductTypeArgs =
+  | 'where'
+type QueryProductTypesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryProductTypesConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -556,6 +580,42 @@ export interface QueryFieldDetails<GenTypes = GraphQLNexusGen> {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.ProductConnection> | prisma.ProductConnection;
   }
+  productType: {
+    args: Record<QueryProductTypeArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Query">,
+      args: { where: ProductTypeWhereUniqueInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductType | null> | prisma.ProductType | null;
+  }
+  productTypes: {
+    args: Record<QueryProductTypesArgs, ArgDefinition>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Query">,
+      args: { where?: ProductTypeWhereInput | null, orderBy?: prisma.ProductTypeOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductType[]> | prisma.ProductType[];
+  }
+  productTypesConnection: {
+    args: Record<QueryProductTypesConnectionArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Query">,
+      args: { where?: ProductTypeWhereInput | null, orderBy?: prisma.ProductTypeOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductTypeConnection> | prisma.ProductTypeConnection;
+  }
   variant: {
     args: Record<QueryVariantArgs, ArgDefinition>
     description: string
@@ -693,6 +753,7 @@ type ProductObject =
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'brand', args?: [] | false, alias?: string  } 
   | { name: 'image', args?: [] | false, alias?: string  } 
+  | { name: 'type', args?: [] | false, alias?: string  } 
   | { name: 'variants', args?: ProductVariantsArgs[] | false, alias?: string  } 
   | { name: 'collections', args?: ProductCollectionsArgs[] | false, alias?: string  } 
   | { name: 'attributes', args?: ProductAttributesArgs[] | false, alias?: string  } 
@@ -702,6 +763,7 @@ type ProductFields =
   | 'name'
   | 'brand'
   | 'image'
+  | 'type'
   | 'variants'
   | 'collections'
   | 'attributes'
@@ -781,6 +843,18 @@ export interface ProductFieldDetails<GenTypes = GraphQLNexusGen> {
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Image | null> | prisma.Image | null;
+  }
+  type: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Product">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductType | null> | prisma.ProductType | null;
   }
   variants: {
     args: Record<ProductVariantsArgs, ArgDefinition>
@@ -920,6 +994,49 @@ export interface ImageFieldDetails<GenTypes = GraphQLNexusGen> {
     nullable: false
     resolve: (
       root: RootValue<GenTypes, "Image">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+}
+  
+
+// Types for ProductType
+
+type ProductTypeObject =
+  | ProductTypeFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+
+type ProductTypeFields =
+  | 'id'
+  | 'name'
+
+
+
+  
+
+export interface ProductTypeFieldDetails<GenTypes = GraphQLNexusGen> {
+  id: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductType">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+  name: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductType">,
       args: {  }  ,
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
@@ -2572,6 +2689,135 @@ export interface AggregateProductFieldDetails<GenTypes = GraphQLNexusGen> {
 }
   
 
+// Types for ProductTypeConnection
+
+type ProductTypeConnectionObject =
+  | ProductTypeConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type ProductTypeConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface ProductTypeConnectionFieldDetails<GenTypes = GraphQLNexusGen> {
+  pageInfo: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypeConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo;
+  }
+  edges: {
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypeConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductTypeEdge[]> | prisma.ProductTypeEdge[];
+  }
+  aggregate: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypeConnection">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateProductType> | prisma.AggregateProductType;
+  }
+}
+  
+
+// Types for ProductTypeEdge
+
+type ProductTypeEdgeObject =
+  | ProductTypeEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type ProductTypeEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface ProductTypeEdgeFieldDetails<GenTypes = GraphQLNexusGen> {
+  node: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypeEdge">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductType> | prisma.ProductType;
+  }
+  cursor: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypeEdge">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+}
+  
+
+// Types for AggregateProductType
+
+type AggregateProductTypeObject =
+  | AggregateProductTypeFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateProductTypeFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateProductTypeFieldDetails<GenTypes = GraphQLNexusGen> {
+  count: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "AggregateProductType">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<number> | number;
+  }
+}
+  
+
 // Types for VariantConnection
 
 type VariantConnectionObject =
@@ -2753,6 +2999,12 @@ type MutationObject =
   | { name: 'upsertProduct', args?: MutationUpsertProductArgs[] | false, alias?: string  } 
   | { name: 'deleteProduct', args?: MutationDeleteProductArgs[] | false, alias?: string  } 
   | { name: 'deleteManyProducts', args?: MutationDeleteManyProductsArgs[] | false, alias?: string  } 
+  | { name: 'createProductType', args?: MutationCreateProductTypeArgs[] | false, alias?: string  } 
+  | { name: 'updateProductType', args?: MutationUpdateProductTypeArgs[] | false, alias?: string  } 
+  | { name: 'updateManyProductTypes', args?: MutationUpdateManyProductTypesArgs[] | false, alias?: string  } 
+  | { name: 'upsertProductType', args?: MutationUpsertProductTypeArgs[] | false, alias?: string  } 
+  | { name: 'deleteProductType', args?: MutationDeleteProductTypeArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyProductTypes', args?: MutationDeleteManyProductTypesArgs[] | false, alias?: string  } 
   | { name: 'createVariant', args?: MutationCreateVariantArgs[] | false, alias?: string  } 
   | { name: 'updateVariant', args?: MutationUpdateVariantArgs[] | false, alias?: string  } 
   | { name: 'updateManyVariants', args?: MutationUpdateManyVariantsArgs[] | false, alias?: string  } 
@@ -2809,6 +3061,12 @@ type MutationFields =
   | 'upsertProduct'
   | 'deleteProduct'
   | 'deleteManyProducts'
+  | 'createProductType'
+  | 'updateProductType'
+  | 'updateManyProductTypes'
+  | 'upsertProductType'
+  | 'deleteProductType'
+  | 'deleteManyProductTypes'
   | 'createVariant'
   | 'updateVariant'
   | 'updateManyVariants'
@@ -2942,6 +3200,22 @@ type MutationUpsertProductArgs =
 type MutationDeleteProductArgs =
   | 'where'
 type MutationDeleteManyProductsArgs =
+  | 'where'
+type MutationCreateProductTypeArgs =
+  | 'data'
+type MutationUpdateProductTypeArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyProductTypesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertProductTypeArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteProductTypeArgs =
+  | 'where'
+type MutationDeleteManyProductTypesArgs =
   | 'where'
 type MutationCreateVariantArgs =
   | 'data'
@@ -3538,6 +3812,78 @@ export interface MutationFieldDetails<GenTypes = GraphQLNexusGen> {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload;
   }
+  createProductType: {
+    args: Record<MutationCreateProductTypeArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { data: ProductTypeCreateInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductType> | prisma.ProductType;
+  }
+  updateProductType: {
+    args: Record<MutationUpdateProductTypeArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { data: ProductTypeUpdateInput, where: ProductTypeWhereUniqueInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductType | null> | prisma.ProductType | null;
+  }
+  updateManyProductTypes: {
+    args: Record<MutationUpdateManyProductTypesArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { data: ProductTypeUpdateManyMutationInput, where?: ProductTypeWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload;
+  }
+  upsertProductType: {
+    args: Record<MutationUpsertProductTypeArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { where: ProductTypeWhereUniqueInput, create: ProductTypeCreateInput, update: ProductTypeUpdateInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductType> | prisma.ProductType;
+  }
+  deleteProductType: {
+    args: Record<MutationDeleteProductTypeArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { where: ProductTypeWhereUniqueInput }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductType | null> | prisma.ProductType | null;
+  }
+  deleteManyProductTypes: {
+    args: Record<MutationDeleteManyProductTypesArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "Mutation">,
+      args: { where?: ProductTypeWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload;
+  }
   createVariant: {
     args: Record<MutationCreateVariantArgs, ArgDefinition>
     description: string
@@ -3655,6 +4001,7 @@ type SubscriptionObject =
   | { name: 'option', args?: SubscriptionOptionArgs[] | false, alias?: string  } 
   | { name: 'optionValue', args?: SubscriptionOptionValueArgs[] | false, alias?: string  } 
   | { name: 'product', args?: SubscriptionProductArgs[] | false, alias?: string  } 
+  | { name: 'productType', args?: SubscriptionProductTypeArgs[] | false, alias?: string  } 
   | { name: 'variant', args?: SubscriptionVariantArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
@@ -3667,6 +4014,7 @@ type SubscriptionFields =
   | 'option'
   | 'optionValue'
   | 'product'
+  | 'productType'
   | 'variant'
 
 
@@ -3687,6 +4035,8 @@ type SubscriptionOptionArgs =
 type SubscriptionOptionValueArgs =
   | 'where'
 type SubscriptionProductArgs =
+  | 'where'
+type SubscriptionProductTypeArgs =
   | 'where'
 type SubscriptionVariantArgs =
   | 'where'
@@ -3800,6 +4150,18 @@ export interface SubscriptionFieldDetails<GenTypes = GraphQLNexusGen> {
       context: ContextValue<GenTypes>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.ProductSubscriptionPayload | null> | prisma.ProductSubscriptionPayload | null;
+  }
+  productType: {
+    args: Record<SubscriptionProductTypeArgs, ArgDefinition>
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "Subscription">,
+      args: { where?: ProductTypeSubscriptionWhereInput | null }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductTypeSubscriptionPayload | null> | prisma.ProductTypeSubscriptionPayload | null;
   }
   variant: {
     args: Record<SubscriptionVariantArgs, ArgDefinition>
@@ -4856,6 +5218,120 @@ export interface ProductPreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
 }
   
 
+// Types for ProductTypeSubscriptionPayload
+
+type ProductTypeSubscriptionPayloadObject =
+  | ProductTypeSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type ProductTypeSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface ProductTypeSubscriptionPayloadFieldDetails<GenTypes = GraphQLNexusGen> {
+  mutation: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypeSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType;
+  }
+  node: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypeSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductType | null> | prisma.ProductType | null;
+  }
+  updatedFields: {
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypeSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string[]> | string[];
+  }
+  previousValues: {
+    args: {}
+    description: string
+    list: false
+    nullable: true
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypeSubscriptionPayload">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.ProductTypePreviousValues | null> | prisma.ProductTypePreviousValues | null;
+  }
+}
+  
+
+// Types for ProductTypePreviousValues
+
+type ProductTypePreviousValuesObject =
+  | ProductTypePreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+
+type ProductTypePreviousValuesFields =
+  | 'id'
+  | 'name'
+
+
+
+  
+
+export interface ProductTypePreviousValuesFieldDetails<GenTypes = GraphQLNexusGen> {
+  id: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypePreviousValues">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+  name: {
+    args: {}
+    description: string
+    list: false
+    nullable: false
+    resolve: (
+      root: RootValue<GenTypes, "ProductTypePreviousValues">,
+      args: {  }  ,
+      context: ContextValue<GenTypes>,
+      info?: GraphQLResolveInfo
+    ) => Promise<string> | string;
+  }
+}
+  
+
 // Types for VariantSubscriptionPayload
 
 type VariantSubscriptionPayloadObject =
@@ -5034,6 +5510,7 @@ export interface ProductWhereInput {
   name_not_ends_with?: string | null
   brand?: BrandWhereInput | null
   image?: ImageWhereInput | null
+  type?: ProductTypeWhereInput | null
   variants_every?: VariantWhereInput | null
   variants_some?: VariantWhereInput | null
   variants_none?: VariantWhereInput | null
@@ -5117,6 +5594,40 @@ export interface ImageWhereInput {
   AND: ImageWhereInput[]
   OR: ImageWhereInput[]
   NOT: ImageWhereInput[]
+}
+  
+export interface ProductTypeWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in: string[]
+  id_not_in: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in: string[]
+  name_not_in: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  AND: ProductTypeWhereInput[]
+  OR: ProductTypeWhereInput[]
+  NOT: ProductTypeWhereInput[]
 }
   
 export interface VariantWhereInput {
@@ -5391,6 +5902,10 @@ export interface ProductWhereUniqueInput {
   id?: string | null
 }
   
+export interface ProductTypeWhereUniqueInput {
+  id?: string | null
+}
+  
 export interface VariantWhereUniqueInput {
   id?: string | null
 }
@@ -5410,6 +5925,7 @@ export interface ProductCreateWithoutAttributesInput {
   name: string
   brand: BrandCreateOneWithoutProductsInput
   image?: ImageCreateOneInput | null
+  type?: ProductTypeCreateOneInput | null
   variants?: VariantCreateManyInput | null
   collections?: CollectionCreateManyWithoutProductsInput | null
 }
@@ -5430,6 +5946,15 @@ export interface ImageCreateOneInput {
   
 export interface ImageCreateInput {
   url: string
+}
+  
+export interface ProductTypeCreateOneInput {
+  create?: ProductTypeCreateInput | null
+  connect?: ProductTypeWhereUniqueInput | null
+}
+  
+export interface ProductTypeCreateInput {
+  name: string
 }
   
 export interface VariantCreateManyInput {
@@ -5519,6 +6044,7 @@ export interface ProductUpdateWithoutAttributesDataInput {
   name?: string | null
   brand?: BrandUpdateOneRequiredWithoutProductsInput | null
   image?: ImageUpdateOneInput | null
+  type?: ProductTypeUpdateOneInput | null
   variants?: VariantUpdateManyInput | null
   collections?: CollectionUpdateManyWithoutProductsInput | null
 }
@@ -5555,6 +6081,24 @@ export interface ImageUpdateDataInput {
 export interface ImageUpsertNestedInput {
   update: ImageUpdateDataInput
   create: ImageCreateInput
+}
+  
+export interface ProductTypeUpdateOneInput {
+  create?: ProductTypeCreateInput | null
+  update?: ProductTypeUpdateDataInput | null
+  upsert?: ProductTypeUpsertNestedInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+  connect?: ProductTypeWhereUniqueInput | null
+}
+  
+export interface ProductTypeUpdateDataInput {
+  name?: string | null
+}
+  
+export interface ProductTypeUpsertNestedInput {
+  update: ProductTypeUpdateDataInput
+  create: ProductTypeCreateInput
 }
   
 export interface VariantUpdateManyInput {
@@ -5928,6 +6472,7 @@ export interface ProductCreateManyWithoutBrandInput {
 export interface ProductCreateWithoutBrandInput {
   name: string
   image?: ImageCreateOneInput | null
+  type?: ProductTypeCreateOneInput | null
   variants?: VariantCreateManyInput | null
   collections?: CollectionCreateManyWithoutProductsInput | null
   attributes?: AttributeCreateManyWithoutProductsInput | null
@@ -5967,6 +6512,7 @@ export interface ProductUpdateWithWhereUniqueWithoutBrandInput {
 export interface ProductUpdateWithoutBrandDataInput {
   name?: string | null
   image?: ImageUpdateOneInput | null
+  type?: ProductTypeUpdateOneInput | null
   variants?: VariantUpdateManyInput | null
   collections?: CollectionUpdateManyWithoutProductsInput | null
   attributes?: AttributeUpdateManyWithoutProductsInput | null
@@ -6082,6 +6628,7 @@ export interface ProductCreateWithoutCollectionsInput {
   name: string
   brand: BrandCreateOneWithoutProductsInput
   image?: ImageCreateOneInput | null
+  type?: ProductTypeCreateOneInput | null
   variants?: VariantCreateManyInput | null
   attributes?: AttributeCreateManyWithoutProductsInput | null
 }
@@ -6112,6 +6659,7 @@ export interface ProductUpdateWithoutCollectionsDataInput {
   name?: string | null
   brand?: BrandUpdateOneRequiredWithoutProductsInput | null
   image?: ImageUpdateOneInput | null
+  type?: ProductTypeUpdateOneInput | null
   variants?: VariantUpdateManyInput | null
   attributes?: AttributeUpdateManyWithoutProductsInput | null
 }
@@ -6206,6 +6754,7 @@ export interface ProductCreateInput {
   name: string
   brand: BrandCreateOneWithoutProductsInput
   image?: ImageCreateOneInput | null
+  type?: ProductTypeCreateOneInput | null
   variants?: VariantCreateManyInput | null
   collections?: CollectionCreateManyWithoutProductsInput | null
   attributes?: AttributeCreateManyWithoutProductsInput | null
@@ -6215,12 +6764,21 @@ export interface ProductUpdateInput {
   name?: string | null
   brand?: BrandUpdateOneRequiredWithoutProductsInput | null
   image?: ImageUpdateOneInput | null
+  type?: ProductTypeUpdateOneInput | null
   variants?: VariantUpdateManyInput | null
   collections?: CollectionUpdateManyWithoutProductsInput | null
   attributes?: AttributeUpdateManyWithoutProductsInput | null
 }
   
 export interface ProductUpdateManyMutationInput {
+  name?: string | null
+}
+  
+export interface ProductTypeUpdateInput {
+  name?: string | null
+}
+  
+export interface ProductTypeUpdateManyMutationInput {
   name?: string | null
 }
   
@@ -6337,6 +6895,17 @@ export interface ProductSubscriptionWhereInput {
   NOT: ProductSubscriptionWhereInput[]
 }
   
+export interface ProductTypeSubscriptionWhereInput {
+  mutation_in: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every: string[]
+  updatedFields_contains_some: string[]
+  node?: ProductTypeWhereInput | null
+  AND: ProductTypeSubscriptionWhereInput[]
+  OR: ProductTypeSubscriptionWhereInput[]
+  NOT: ProductTypeSubscriptionWhereInput[]
+}
+  
 export interface VariantSubscriptionWhereInput {
   mutation_in: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -6362,6 +6931,7 @@ export type enumTypesNames =
   | 'CollectionRuleSetOrderByInput'
   | 'ImageOrderByInput'
   | 'OptionOrderByInput'
+  | 'ProductTypeOrderByInput'
   | 'MutationType'
   
 
@@ -6372,6 +6942,7 @@ export interface PluginTypes {
     Product: ProductObject
     Brand: BrandObject
     Image: ImageObject
+    ProductType: ProductTypeObject
     Variant: VariantObject
     OptionValue: OptionValueObject
     Option: OptionObject
@@ -6406,6 +6977,9 @@ export interface PluginTypes {
     ProductConnection: ProductConnectionObject
     ProductEdge: ProductEdgeObject
     AggregateProduct: AggregateProductObject
+    ProductTypeConnection: ProductTypeConnectionObject
+    ProductTypeEdge: ProductTypeEdgeObject
+    AggregateProductType: AggregateProductTypeObject
     VariantConnection: VariantConnectionObject
     VariantEdge: VariantEdgeObject
     AggregateVariant: AggregateVariantObject
@@ -6430,6 +7004,8 @@ export interface PluginTypes {
     OptionValuePreviousValues: OptionValuePreviousValuesObject
     ProductSubscriptionPayload: ProductSubscriptionPayloadObject
     ProductPreviousValues: ProductPreviousValuesObject
+    ProductTypeSubscriptionPayload: ProductTypeSubscriptionPayloadObject
+    ProductTypePreviousValues: ProductTypePreviousValuesObject
     VariantSubscriptionPayload: VariantSubscriptionPayloadObject
     VariantPreviousValues: VariantPreviousValuesObject
   }
@@ -6439,6 +7015,7 @@ export interface PluginTypes {
     Product: ProductFieldDetails
     Brand: BrandFieldDetails
     Image: ImageFieldDetails
+    ProductType: ProductTypeFieldDetails
     Variant: VariantFieldDetails
     OptionValue: OptionValueFieldDetails
     Option: OptionFieldDetails
@@ -6473,6 +7050,9 @@ export interface PluginTypes {
     ProductConnection: ProductConnectionFieldDetails
     ProductEdge: ProductEdgeFieldDetails
     AggregateProduct: AggregateProductFieldDetails
+    ProductTypeConnection: ProductTypeConnectionFieldDetails
+    ProductTypeEdge: ProductTypeEdgeFieldDetails
+    AggregateProductType: AggregateProductTypeFieldDetails
     VariantConnection: VariantConnectionFieldDetails
     VariantEdge: VariantEdgeFieldDetails
     AggregateVariant: AggregateVariantFieldDetails
@@ -6497,6 +7077,8 @@ export interface PluginTypes {
     OptionValuePreviousValues: OptionValuePreviousValuesFieldDetails
     ProductSubscriptionPayload: ProductSubscriptionPayloadFieldDetails
     ProductPreviousValues: ProductPreviousValuesFieldDetails
+    ProductTypeSubscriptionPayload: ProductTypeSubscriptionPayloadFieldDetails
+    ProductTypePreviousValues: ProductTypePreviousValuesFieldDetails
     VariantSubscriptionPayload: VariantSubscriptionPayloadFieldDetails
     VariantPreviousValues: VariantPreviousValuesFieldDetails
   }

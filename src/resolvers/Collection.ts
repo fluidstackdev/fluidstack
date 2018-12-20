@@ -1,59 +1,12 @@
 import * as _ from 'lodash'
 import { prismaObjectType } from 'nexus-prisma'
 import * as ProductVariant from '../fragments/ProductVariant'
+import { mapRulesToPrismaFilter } from '../utils/rules'
 import { optionsFromVariants } from './utils'
-import {
-  CollectionRule,
-  ProductWhereInput,
-  CollectionRuleRelation,
-  CollectionRuleField,
-} from '../generated/prisma-client'
-
-function ruleFieldToPrisma(field: CollectionRuleField): string {
-  switch (field) {
-    case 'TITLE':
-      return 'name'
-    default:
-      throw new Error('Field not implemented yet')
-  }
-}
-
-function ruleRelationToPrisma(relation: CollectionRuleRelation): string {
-  switch (relation) {
-    case 'CONTAINS':
-      return '_contains'
-    case 'NOT_CONTAINS':
-      return '_not_contains'
-    case 'ENDS_WITH':
-      return '_ends_with'
-    case 'GREATER_THAN':
-      return '_gt'
-    case 'LESS_THAN':
-      return '_lt'
-    case 'STARTS_WITH':
-      return '_starts_with'
-    case 'NOT_EQUALS':
-      return '_not'
-    case 'EQUALS':
-      return ''
-  }
-}
-
-function mapRulesToPrismaFilter(rules: CollectionRule[]): ProductWhereInput {
-  return rules.reduce<ProductWhereInput>((acc, rule) => {
-    acc = {
-      ...acc,
-      [`${ruleFieldToPrisma(rule.field)}${ruleRelationToPrisma(
-        rule.relation,
-      )}`]: rule.value,
-    }
-    return acc
-  }, {})
-}
 
 export const Collection = prismaObjectType('Collection', t => {
   // TODO: Fix 'rules'
-  t.prismaFields(['id', 'name', 'rules'])
+  t.prismaFields(['id', 'name'])
 
   t.field('products', 'Product', {
     list: true,

@@ -13,27 +13,27 @@ declare global {
 }
 
 // Maybe Promise
-type MaybePromise<T> = T | PromiseLike<T>;
+export type MaybePromise<T> = T | PromiseLike<T>;
 
 // Maybe Promise List
-type MaybePromiseList<T> = Array<MaybePromise<T>>;
+export type MaybePromiseList<T> = Array<MaybePromise<T>>;
 
 // Maybe Thunk
-type MaybeThunk<T> = T | (() => T);
+export type MaybeThunk<T> = T | (() => T);
 
 // Maybe Thunk, with args
-type MaybeThunkArgs<T, A> = T | ((args?: A) => T);
+export type MaybeThunkArgs<T, A> = T | ((args?: A) => T);
 
 export type QueryBrandsReturnType = BrandConnection_ReturnType;
 
 export interface QueryBrandsArgs {
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-  orderBy?: BrandOrderByInput;
-  skip?: number;
-  where?: BrandWhereInput;
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | BrandOrderByInput;
+  skip?: null | number;
+  where?: null | BrandWhereInput;
 }
 
 export type QueryCollectionReturnType = Collection_ReturnType;
@@ -45,25 +45,25 @@ export interface QueryCollectionArgs {
 export type QueryOptionsReturnType = OptionConnection_ReturnType;
 
 export interface QueryOptionsArgs {
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-  orderBy?: OptionOrderByInput;
-  skip?: number;
-  where?: OptionWhereInput;
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | OptionOrderByInput;
+  skip?: null | number;
+  where?: null | OptionWhereInput;
 }
 
 export type QueryProductsReturnType = ProductConnection_ReturnType;
 
 export interface QueryProductsArgs {
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-  orderBy?: ProductOrderByInput;
-  skip?: number;
-  where?: ProductWhereInput;
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | ProductOrderByInput;
+  skip?: null | number;
+  where?: null | ProductWhereInput;
 }
 
 export type QueryRootType = {};
@@ -72,372 +72,407 @@ export type Query_ReturnType = {};
 
 export type BrandOrderByInput = "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC";
 
-interface BrandWhereInput {
+export interface BrandWhereInput {
   AND: BrandWhereInput[];
-  id?: string;
-  id_contains?: string;
-  id_ends_with?: string;
-  id_gt?: string;
-  id_gte?: string;
+  id?: null | string;
+  id_contains?: null | string;
+  id_ends_with?: null | string;
+  id_gt?: null | string;
+  id_gte?: null | string;
   id_in: string[];
-  id_lt?: string;
-  id_lte?: string;
-  id_not?: string;
-  id_not_contains?: string;
-  id_not_ends_with?: string;
+  id_lt?: null | string;
+  id_lte?: null | string;
+  id_not?: null | string;
+  id_not_contains?: null | string;
+  id_not_ends_with?: null | string;
   id_not_in: string[];
-  id_not_starts_with?: string;
-  id_starts_with?: string;
-  name?: string;
-  name_contains?: string;
-  name_ends_with?: string;
-  name_gt?: string;
-  name_gte?: string;
+  id_not_starts_with?: null | string;
+  id_starts_with?: null | string;
+  name?: null | string;
+  name_contains?: null | string;
+  name_ends_with?: null | string;
+  name_gt?: null | string;
+  name_gte?: null | string;
   name_in: string[];
-  name_lt?: string;
-  name_lte?: string;
-  name_not?: string;
-  name_not_contains?: string;
-  name_not_ends_with?: string;
+  name_lt?: null | string;
+  name_lte?: null | string;
+  name_not?: null | string;
+  name_not_contains?: null | string;
+  name_not_ends_with?: null | string;
   name_not_in: string[];
-  name_not_starts_with?: string;
-  name_starts_with?: string;
+  name_not_starts_with?: null | string;
+  name_starts_with?: null | string;
   NOT: BrandWhereInput[];
   OR: BrandWhereInput[];
-  products_every?: ProductWhereInput;
-  products_none?: ProductWhereInput;
-  products_some?: ProductWhereInput;
+  products_every?: null | ProductWhereInput;
+  products_none?: null | ProductWhereInput;
+  products_some?: null | ProductWhereInput;
 }
 
-interface ProductWhereInput {
+export interface ProductWhereInput {
   AND: ProductWhereInput[];
-  attributes_every?: AttributeWhereInput;
-  attributes_none?: AttributeWhereInput;
-  attributes_some?: AttributeWhereInput;
-  brand?: BrandWhereInput;
-  collections_every?: CollectionWhereInput;
-  collections_none?: CollectionWhereInput;
-  collections_some?: CollectionWhereInput;
-  id?: string;
-  id_contains?: string;
-  id_ends_with?: string;
-  id_gt?: string;
-  id_gte?: string;
+  attributes_every?: null | AttributeWhereInput;
+  attributes_none?: null | AttributeWhereInput;
+  attributes_some?: null | AttributeWhereInput;
+  brand?: null | BrandWhereInput;
+  collections_every?: null | CollectionWhereInput;
+  collections_none?: null | CollectionWhereInput;
+  collections_some?: null | CollectionWhereInput;
+  id?: null | string;
+  id_contains?: null | string;
+  id_ends_with?: null | string;
+  id_gt?: null | string;
+  id_gte?: null | string;
   id_in: string[];
-  id_lt?: string;
-  id_lte?: string;
-  id_not?: string;
-  id_not_contains?: string;
-  id_not_ends_with?: string;
+  id_lt?: null | string;
+  id_lte?: null | string;
+  id_not?: null | string;
+  id_not_contains?: null | string;
+  id_not_ends_with?: null | string;
   id_not_in: string[];
-  id_not_starts_with?: string;
-  id_starts_with?: string;
-  image?: ImageWhereInput;
-  name?: string;
-  name_contains?: string;
-  name_ends_with?: string;
-  name_gt?: string;
-  name_gte?: string;
+  id_not_starts_with?: null | string;
+  id_starts_with?: null | string;
+  image?: null | ImageWhereInput;
+  name?: null | string;
+  name_contains?: null | string;
+  name_ends_with?: null | string;
+  name_gt?: null | string;
+  name_gte?: null | string;
   name_in: string[];
-  name_lt?: string;
-  name_lte?: string;
-  name_not?: string;
-  name_not_contains?: string;
-  name_not_ends_with?: string;
+  name_lt?: null | string;
+  name_lte?: null | string;
+  name_not?: null | string;
+  name_not_contains?: null | string;
+  name_not_ends_with?: null | string;
   name_not_in: string[];
-  name_not_starts_with?: string;
-  name_starts_with?: string;
+  name_not_starts_with?: null | string;
+  name_starts_with?: null | string;
   NOT: ProductWhereInput[];
   OR: ProductWhereInput[];
-  variants_every?: VariantWhereInput;
-  variants_none?: VariantWhereInput;
-  variants_some?: VariantWhereInput;
+  type?: null | ProductTypeWhereInput;
+  variants_every?: null | VariantWhereInput;
+  variants_none?: null | VariantWhereInput;
+  variants_some?: null | VariantWhereInput;
 }
 
-interface AttributeWhereInput {
+export interface AttributeWhereInput {
   AND: AttributeWhereInput[];
-  id?: string;
-  id_contains?: string;
-  id_ends_with?: string;
-  id_gt?: string;
-  id_gte?: string;
+  id?: null | string;
+  id_contains?: null | string;
+  id_ends_with?: null | string;
+  id_gt?: null | string;
+  id_gte?: null | string;
   id_in: string[];
-  id_lt?: string;
-  id_lte?: string;
-  id_not?: string;
-  id_not_contains?: string;
-  id_not_ends_with?: string;
+  id_lt?: null | string;
+  id_lte?: null | string;
+  id_not?: null | string;
+  id_not_contains?: null | string;
+  id_not_ends_with?: null | string;
   id_not_in: string[];
-  id_not_starts_with?: string;
-  id_starts_with?: string;
-  key?: string;
-  key_contains?: string;
-  key_ends_with?: string;
-  key_gt?: string;
-  key_gte?: string;
+  id_not_starts_with?: null | string;
+  id_starts_with?: null | string;
+  key?: null | string;
+  key_contains?: null | string;
+  key_ends_with?: null | string;
+  key_gt?: null | string;
+  key_gte?: null | string;
   key_in: string[];
-  key_lt?: string;
-  key_lte?: string;
-  key_not?: string;
-  key_not_contains?: string;
-  key_not_ends_with?: string;
+  key_lt?: null | string;
+  key_lte?: null | string;
+  key_not?: null | string;
+  key_not_contains?: null | string;
+  key_not_ends_with?: null | string;
   key_not_in: string[];
-  key_not_starts_with?: string;
-  key_starts_with?: string;
+  key_not_starts_with?: null | string;
+  key_starts_with?: null | string;
   NOT: AttributeWhereInput[];
   OR: AttributeWhereInput[];
-  products_every?: ProductWhereInput;
-  products_none?: ProductWhereInput;
-  products_some?: ProductWhereInput;
-  value?: string;
-  value_contains?: string;
-  value_ends_with?: string;
-  value_gt?: string;
-  value_gte?: string;
+  products_every?: null | ProductWhereInput;
+  products_none?: null | ProductWhereInput;
+  products_some?: null | ProductWhereInput;
+  value?: null | string;
+  value_contains?: null | string;
+  value_ends_with?: null | string;
+  value_gt?: null | string;
+  value_gte?: null | string;
   value_in: string[];
-  value_lt?: string;
-  value_lte?: string;
-  value_not?: string;
-  value_not_contains?: string;
-  value_not_ends_with?: string;
+  value_lt?: null | string;
+  value_lte?: null | string;
+  value_not?: null | string;
+  value_not_contains?: null | string;
+  value_not_ends_with?: null | string;
   value_not_in: string[];
-  value_not_starts_with?: string;
-  value_starts_with?: string;
+  value_not_starts_with?: null | string;
+  value_starts_with?: null | string;
 }
 
-interface CollectionWhereInput {
+export interface CollectionWhereInput {
   AND: CollectionWhereInput[];
-  id?: string;
-  id_contains?: string;
-  id_ends_with?: string;
-  id_gt?: string;
-  id_gte?: string;
+  id?: null | string;
+  id_contains?: null | string;
+  id_ends_with?: null | string;
+  id_gt?: null | string;
+  id_gte?: null | string;
   id_in: string[];
-  id_lt?: string;
-  id_lte?: string;
-  id_not?: string;
-  id_not_contains?: string;
-  id_not_ends_with?: string;
+  id_lt?: null | string;
+  id_lte?: null | string;
+  id_not?: null | string;
+  id_not_contains?: null | string;
+  id_not_ends_with?: null | string;
   id_not_in: string[];
-  id_not_starts_with?: string;
-  id_starts_with?: string;
-  name?: string;
-  name_contains?: string;
-  name_ends_with?: string;
-  name_gt?: string;
-  name_gte?: string;
+  id_not_starts_with?: null | string;
+  id_starts_with?: null | string;
+  name?: null | string;
+  name_contains?: null | string;
+  name_ends_with?: null | string;
+  name_gt?: null | string;
+  name_gte?: null | string;
   name_in: string[];
-  name_lt?: string;
-  name_lte?: string;
-  name_not?: string;
-  name_not_contains?: string;
-  name_not_ends_with?: string;
+  name_lt?: null | string;
+  name_lte?: null | string;
+  name_not?: null | string;
+  name_not_contains?: null | string;
+  name_not_ends_with?: null | string;
   name_not_in: string[];
-  name_not_starts_with?: string;
-  name_starts_with?: string;
+  name_not_starts_with?: null | string;
+  name_starts_with?: null | string;
   NOT: CollectionWhereInput[];
   OR: CollectionWhereInput[];
-  products_every?: ProductWhereInput;
-  products_none?: ProductWhereInput;
-  products_some?: ProductWhereInput;
-  rules?: CollectionRuleSetWhereInput;
+  products_every?: null | ProductWhereInput;
+  products_none?: null | ProductWhereInput;
+  products_some?: null | ProductWhereInput;
+  rules?: null | CollectionRuleSetWhereInput;
 }
 
-interface CollectionRuleSetWhereInput {
+export interface CollectionRuleSetWhereInput {
   AND: CollectionRuleSetWhereInput[];
-  appliesDisjunctively?: boolean;
-  appliesDisjunctively_not?: boolean;
+  appliesDisjunctively?: null | boolean;
+  appliesDisjunctively_not?: null | boolean;
   NOT: CollectionRuleSetWhereInput[];
   OR: CollectionRuleSetWhereInput[];
-  rules_every?: CollectionRuleWhereInput;
-  rules_none?: CollectionRuleWhereInput;
-  rules_some?: CollectionRuleWhereInput;
+  rules_every?: null | CollectionRuleWhereInput;
+  rules_none?: null | CollectionRuleWhereInput;
+  rules_some?: null | CollectionRuleWhereInput;
 }
 
-interface CollectionRuleWhereInput {
+export interface CollectionRuleWhereInput {
   AND: CollectionRuleWhereInput[];
-  field?: CollectionRuleField;
+  field?: null | CollectionRuleField;
   field_in: CollectionRuleField[];
-  field_not?: CollectionRuleField;
+  field_not?: null | CollectionRuleField;
   field_not_in: CollectionRuleField[];
   NOT: CollectionRuleWhereInput[];
   OR: CollectionRuleWhereInput[];
-  relation?: CollectionRuleRelation;
+  relation?: null | CollectionRuleRelation;
   relation_in: CollectionRuleRelation[];
-  relation_not?: CollectionRuleRelation;
+  relation_not?: null | CollectionRuleRelation;
   relation_not_in: CollectionRuleRelation[];
-  value?: string;
-  value_contains?: string;
-  value_ends_with?: string;
-  value_gt?: string;
-  value_gte?: string;
+  value?: null | string;
+  value_contains?: null | string;
+  value_ends_with?: null | string;
+  value_gt?: null | string;
+  value_gte?: null | string;
   value_in: string[];
-  value_lt?: string;
-  value_lte?: string;
-  value_not?: string;
-  value_not_contains?: string;
-  value_not_ends_with?: string;
+  value_lt?: null | string;
+  value_lte?: null | string;
+  value_not?: null | string;
+  value_not_contains?: null | string;
+  value_not_ends_with?: null | string;
   value_not_in: string[];
-  value_not_starts_with?: string;
-  value_starts_with?: string;
+  value_not_starts_with?: null | string;
+  value_starts_with?: null | string;
 }
 
-export type CollectionRuleField = "INVENTORY" | "PRICE" | "TAG" | "TITLE" | "TYPE" | "VENDOR";
+export type CollectionRuleField = "PRICE" | "TITLE" | "TYPE";
 
 export type CollectionRuleRelation = "CONTAINS" | "ENDS_WITH" | "EQUALS" | "GREATER_THAN" | "LESS_THAN" | "NOT_CONTAINS" | "NOT_EQUALS" | "STARTS_WITH";
 
-interface ImageWhereInput {
+export interface ImageWhereInput {
   AND: ImageWhereInput[];
-  id?: string;
-  id_contains?: string;
-  id_ends_with?: string;
-  id_gt?: string;
-  id_gte?: string;
+  id?: null | string;
+  id_contains?: null | string;
+  id_ends_with?: null | string;
+  id_gt?: null | string;
+  id_gte?: null | string;
   id_in: string[];
-  id_lt?: string;
-  id_lte?: string;
-  id_not?: string;
-  id_not_contains?: string;
-  id_not_ends_with?: string;
+  id_lt?: null | string;
+  id_lte?: null | string;
+  id_not?: null | string;
+  id_not_contains?: null | string;
+  id_not_ends_with?: null | string;
   id_not_in: string[];
-  id_not_starts_with?: string;
-  id_starts_with?: string;
+  id_not_starts_with?: null | string;
+  id_starts_with?: null | string;
   NOT: ImageWhereInput[];
   OR: ImageWhereInput[];
-  url?: string;
-  url_contains?: string;
-  url_ends_with?: string;
-  url_gt?: string;
-  url_gte?: string;
+  url?: null | string;
+  url_contains?: null | string;
+  url_ends_with?: null | string;
+  url_gt?: null | string;
+  url_gte?: null | string;
   url_in: string[];
-  url_lt?: string;
-  url_lte?: string;
-  url_not?: string;
-  url_not_contains?: string;
-  url_not_ends_with?: string;
+  url_lt?: null | string;
+  url_lte?: null | string;
+  url_not?: null | string;
+  url_not_contains?: null | string;
+  url_not_ends_with?: null | string;
   url_not_in: string[];
-  url_not_starts_with?: string;
-  url_starts_with?: string;
+  url_not_starts_with?: null | string;
+  url_starts_with?: null | string;
 }
 
-interface VariantWhereInput {
-  AND: VariantWhereInput[];
-  availableForSale?: boolean;
-  availableForSale_not?: boolean;
-  id?: string;
-  id_contains?: string;
-  id_ends_with?: string;
-  id_gt?: string;
-  id_gte?: string;
+export interface ProductTypeWhereInput {
+  AND: ProductTypeWhereInput[];
+  id?: null | string;
+  id_contains?: null | string;
+  id_ends_with?: null | string;
+  id_gt?: null | string;
+  id_gte?: null | string;
   id_in: string[];
-  id_lt?: string;
-  id_lte?: string;
-  id_not?: string;
-  id_not_contains?: string;
-  id_not_ends_with?: string;
+  id_lt?: null | string;
+  id_lte?: null | string;
+  id_not?: null | string;
+  id_not_contains?: null | string;
+  id_not_ends_with?: null | string;
   id_not_in: string[];
-  id_not_starts_with?: string;
-  id_starts_with?: string;
-  image?: ImageWhereInput;
-  NOT: VariantWhereInput[];
-  optionValues_every?: OptionValueWhereInput;
-  optionValues_none?: OptionValueWhereInput;
-  optionValues_some?: OptionValueWhereInput;
-  OR: VariantWhereInput[];
-  price?: number;
-  price_gt?: number;
-  price_gte?: number;
-  price_in: number[];
-  price_lt?: number;
-  price_lte?: number;
-  price_not?: number;
-  price_not_in: number[];
-  sku?: string;
-  sku_contains?: string;
-  sku_ends_with?: string;
-  sku_gt?: string;
-  sku_gte?: string;
-  sku_in: string[];
-  sku_lt?: string;
-  sku_lte?: string;
-  sku_not?: string;
-  sku_not_contains?: string;
-  sku_not_ends_with?: string;
-  sku_not_in: string[];
-  sku_not_starts_with?: string;
-  sku_starts_with?: string;
-}
-
-interface OptionValueWhereInput {
-  AND: OptionValueWhereInput[];
-  id?: string;
-  id_contains?: string;
-  id_ends_with?: string;
-  id_gt?: string;
-  id_gte?: string;
-  id_in: string[];
-  id_lt?: string;
-  id_lte?: string;
-  id_not?: string;
-  id_not_contains?: string;
-  id_not_ends_with?: string;
-  id_not_in: string[];
-  id_not_starts_with?: string;
-  id_starts_with?: string;
-  name?: string;
-  name_contains?: string;
-  name_ends_with?: string;
-  name_gt?: string;
-  name_gte?: string;
+  id_not_starts_with?: null | string;
+  id_starts_with?: null | string;
+  name?: null | string;
+  name_contains?: null | string;
+  name_ends_with?: null | string;
+  name_gt?: null | string;
+  name_gte?: null | string;
   name_in: string[];
-  name_lt?: string;
-  name_lte?: string;
-  name_not?: string;
-  name_not_contains?: string;
-  name_not_ends_with?: string;
+  name_lt?: null | string;
+  name_lte?: null | string;
+  name_not?: null | string;
+  name_not_contains?: null | string;
+  name_not_ends_with?: null | string;
   name_not_in: string[];
-  name_not_starts_with?: string;
-  name_starts_with?: string;
+  name_not_starts_with?: null | string;
+  name_starts_with?: null | string;
+  NOT: ProductTypeWhereInput[];
+  OR: ProductTypeWhereInput[];
+}
+
+export interface VariantWhereInput {
+  AND: VariantWhereInput[];
+  availableForSale?: null | boolean;
+  availableForSale_not?: null | boolean;
+  id?: null | string;
+  id_contains?: null | string;
+  id_ends_with?: null | string;
+  id_gt?: null | string;
+  id_gte?: null | string;
+  id_in: string[];
+  id_lt?: null | string;
+  id_lte?: null | string;
+  id_not?: null | string;
+  id_not_contains?: null | string;
+  id_not_ends_with?: null | string;
+  id_not_in: string[];
+  id_not_starts_with?: null | string;
+  id_starts_with?: null | string;
+  image?: null | ImageWhereInput;
+  NOT: VariantWhereInput[];
+  optionValues_every?: null | OptionValueWhereInput;
+  optionValues_none?: null | OptionValueWhereInput;
+  optionValues_some?: null | OptionValueWhereInput;
+  OR: VariantWhereInput[];
+  price?: null | number;
+  price_gt?: null | number;
+  price_gte?: null | number;
+  price_in: number[];
+  price_lt?: null | number;
+  price_lte?: null | number;
+  price_not?: null | number;
+  price_not_in: number[];
+  sku?: null | string;
+  sku_contains?: null | string;
+  sku_ends_with?: null | string;
+  sku_gt?: null | string;
+  sku_gte?: null | string;
+  sku_in: string[];
+  sku_lt?: null | string;
+  sku_lte?: null | string;
+  sku_not?: null | string;
+  sku_not_contains?: null | string;
+  sku_not_ends_with?: null | string;
+  sku_not_in: string[];
+  sku_not_starts_with?: null | string;
+  sku_starts_with?: null | string;
+}
+
+export interface OptionValueWhereInput {
+  AND: OptionValueWhereInput[];
+  id?: null | string;
+  id_contains?: null | string;
+  id_ends_with?: null | string;
+  id_gt?: null | string;
+  id_gte?: null | string;
+  id_in: string[];
+  id_lt?: null | string;
+  id_lte?: null | string;
+  id_not?: null | string;
+  id_not_contains?: null | string;
+  id_not_ends_with?: null | string;
+  id_not_in: string[];
+  id_not_starts_with?: null | string;
+  id_starts_with?: null | string;
+  name?: null | string;
+  name_contains?: null | string;
+  name_ends_with?: null | string;
+  name_gt?: null | string;
+  name_gte?: null | string;
+  name_in: string[];
+  name_lt?: null | string;
+  name_lte?: null | string;
+  name_not?: null | string;
+  name_not_contains?: null | string;
+  name_not_ends_with?: null | string;
+  name_not_in: string[];
+  name_not_starts_with?: null | string;
+  name_starts_with?: null | string;
   NOT: OptionValueWhereInput[];
-  option?: OptionWhereInput;
+  option?: null | OptionWhereInput;
   OR: OptionValueWhereInput[];
 }
 
-interface OptionWhereInput {
+export interface OptionWhereInput {
   AND: OptionWhereInput[];
-  id?: string;
-  id_contains?: string;
-  id_ends_with?: string;
-  id_gt?: string;
-  id_gte?: string;
+  id?: null | string;
+  id_contains?: null | string;
+  id_ends_with?: null | string;
+  id_gt?: null | string;
+  id_gte?: null | string;
   id_in: string[];
-  id_lt?: string;
-  id_lte?: string;
-  id_not?: string;
-  id_not_contains?: string;
-  id_not_ends_with?: string;
+  id_lt?: null | string;
+  id_lte?: null | string;
+  id_not?: null | string;
+  id_not_contains?: null | string;
+  id_not_ends_with?: null | string;
   id_not_in: string[];
-  id_not_starts_with?: string;
-  id_starts_with?: string;
-  name?: string;
-  name_contains?: string;
-  name_ends_with?: string;
-  name_gt?: string;
-  name_gte?: string;
+  id_not_starts_with?: null | string;
+  id_starts_with?: null | string;
+  name?: null | string;
+  name_contains?: null | string;
+  name_ends_with?: null | string;
+  name_gt?: null | string;
+  name_gte?: null | string;
   name_in: string[];
-  name_lt?: string;
-  name_lte?: string;
-  name_not?: string;
-  name_not_contains?: string;
-  name_not_ends_with?: string;
+  name_lt?: null | string;
+  name_lte?: null | string;
+  name_not?: null | string;
+  name_not_contains?: null | string;
+  name_not_ends_with?: null | string;
   name_not_in: string[];
-  name_not_starts_with?: string;
-  name_starts_with?: string;
+  name_not_starts_with?: null | string;
+  name_starts_with?: null | string;
   NOT: OptionWhereInput[];
   OR: OptionWhereInput[];
-  values_every?: OptionValueWhereInput;
-  values_none?: OptionValueWhereInput;
-  values_some?: OptionValueWhereInput;
+  values_every?: null | OptionValueWhereInput;
+  values_none?: null | OptionValueWhereInput;
+  values_some?: null | OptionValueWhereInput;
 }
 
 export type BrandConnectionEdgesReturnType = MaybePromiseList<BrandEdge_ReturnType>;
@@ -463,13 +498,13 @@ export type BrandNameReturnType = string;
 export type BrandProductsReturnType = MaybePromiseList<Product_ReturnType>;
 
 export interface BrandProductsArgs {
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-  orderBy?: ProductOrderByInput;
-  skip?: number;
-  where?: ProductWhereInput;
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | ProductOrderByInput;
+  skip?: null | number;
+  where?: null | ProductWhereInput;
 }
 
 export type BrandRootType = prisma.Brand;
@@ -486,16 +521,18 @@ export type ProductNameReturnType = string;
 
 export type ProductOptionsReturnType = MaybePromiseList<Option_ReturnType>;
 
+export type ProductTypeReturnType = null | ProductType_ReturnType;
+
 export type ProductVariantsReturnType = MaybePromiseList<Variant_ReturnType>;
 
 export interface ProductVariantsArgs {
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-  orderBy?: VariantOrderByInput;
-  skip?: number;
-  where?: VariantWhereInput;
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | VariantOrderByInput;
+  skip?: null | number;
+  where?: null | VariantWhereInput;
 }
 
 export type ProductRootType = prisma.Product;
@@ -509,13 +546,13 @@ export type OptionNameReturnType = string;
 export type OptionValuesReturnType = MaybePromiseList<OptionValue_ReturnType>;
 
 export interface OptionValuesArgs {
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-  orderBy?: OptionValueOrderByInput;
-  skip?: number;
-  where?: OptionValueWhereInput;
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | OptionValueOrderByInput;
+  skip?: null | number;
+  where?: null | OptionValueWhereInput;
 }
 
 export type OptionRootType = prisma.Option;
@@ -534,6 +571,14 @@ export type OptionValueRootType = prisma.OptionValue;
 
 export type OptionValue_ReturnType = prisma.OptionValue
 
+export type ProductTypeIdReturnType = string;
+
+export type ProductTypeNameReturnType = string;
+
+export type ProductTypeRootType = prisma.ProductType;
+
+export type ProductType_ReturnType = prisma.ProductType
+
 export type VariantOrderByInput = "availableForSale_ASC" | "availableForSale_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "price_ASC" | "price_DESC" | "sku_ASC" | "sku_DESC" | "updatedAt_ASC" | "updatedAt_DESC";
 
 export type VariantAvailableForSaleReturnType = null | boolean;
@@ -545,13 +590,13 @@ export type VariantImageReturnType = null | Image_ReturnType;
 export type VariantOptionValuesReturnType = MaybePromiseList<OptionValue_ReturnType>;
 
 export interface VariantOptionValuesArgs {
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-  orderBy?: OptionValueOrderByInput;
-  skip?: number;
-  where?: OptionValueWhereInput;
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | OptionValueOrderByInput;
+  skip?: null | number;
+  where?: null | OptionValueWhereInput;
 }
 
 export type VariantPriceReturnType = number;
@@ -594,8 +639,6 @@ export type CollectionOptionsReturnType = MaybePromiseList<Option_ReturnType>;
 
 export type CollectionProductsReturnType = MaybePromiseList<Product_ReturnType>;
 
-export type CollectionRulesReturnType = null | CollectionRuleSet_ReturnType;
-
 export type CollectionRootType = prisma.Collection;
 
 export type Collection_ReturnType = prisma.Collection
@@ -607,13 +650,13 @@ export type AttributeKeyReturnType = string;
 export type AttributeProductsReturnType = MaybePromiseList<Product_ReturnType>;
 
 export interface AttributeProductsArgs {
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-  orderBy?: ProductOrderByInput;
-  skip?: number;
-  where?: ProductWhereInput;
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | ProductOrderByInput;
+  skip?: null | number;
+  where?: null | ProductWhereInput;
 }
 
 export type AttributeValueReturnType = string;
@@ -621,36 +664,6 @@ export type AttributeValueReturnType = string;
 export type AttributeRootType = prisma.Attribute;
 
 export type Attribute_ReturnType = prisma.Attribute
-
-export type CollectionRuleSetAppliesDisjunctivelyReturnType = boolean;
-
-export type CollectionRuleSetRulesReturnType = MaybePromiseList<CollectionRule_ReturnType>;
-
-export interface CollectionRuleSetRulesArgs {
-  after?: string;
-  before?: string;
-  first?: number;
-  last?: number;
-  orderBy?: CollectionRuleOrderByInput;
-  skip?: number;
-  where?: CollectionRuleWhereInput;
-}
-
-export type CollectionRuleSetRootType = prisma.CollectionRuleSet;
-
-export type CollectionRuleSet_ReturnType = prisma.CollectionRuleSet
-
-export type CollectionRuleOrderByInput = "createdAt_ASC" | "createdAt_DESC" | "field_ASC" | "field_DESC" | "id_ASC" | "id_DESC" | "relation_ASC" | "relation_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "value_ASC" | "value_DESC";
-
-export type CollectionRuleFieldReturnType = CollectionRuleField;
-
-export type CollectionRuleRelationReturnType = CollectionRuleRelation;
-
-export type CollectionRuleValueReturnType = string;
-
-export type CollectionRuleRootType = prisma.CollectionRule;
-
-export type CollectionRule_ReturnType = prisma.CollectionRule
 
 export type OptionOrderByInput = "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC";
 
@@ -686,29 +699,29 @@ export type ProductEdgeRootType = prisma.ProductEdge;
 
 export type ProductEdge_ReturnType = prisma.ProductEdge
 
-export type MutationAddProductsToCollectionReturnType = Collection_ReturnType;
+export type MutationCollectionAddProductsReturnType = Collection_ReturnType;
 
-export interface MutationAddProductsToCollectionArgs {
+export interface MutationCollectionAddProductsArgs {
   collectionId: string;
   productIds: string[];
 }
 
-export type MutationCreateProductReturnType = Product_ReturnType;
+export type MutationCollectionRemoveProductsReturnType = Collection_ReturnType;
 
-export interface MutationCreateProductArgs {
+export interface MutationCollectionRemoveProductsArgs {
+  collectionId: string;
+  productIds: string[];
+}
+
+export type MutationProductCreateReturnType = Product_ReturnType;
+
+export interface MutationProductCreateArgs {
   data: CreateProductInput;
 }
 
-export type MutationRemoveProductsFromCollectionReturnType = Collection_ReturnType;
+export type MutationProductUpdateReturnType = Product_ReturnType;
 
-export interface MutationRemoveProductsFromCollectionArgs {
-  collectionId: string;
-  productIds: string[];
-}
-
-export type MutationUpdateProductReturnType = Product_ReturnType;
-
-export interface MutationUpdateProductArgs {
+export interface MutationProductUpdateArgs {
   data: UpdateProductInput;
 }
 
@@ -716,24 +729,24 @@ export type MutationRootType = {};
 
 export type Mutation_ReturnType = {};
 
-interface CreateProductInput {
+export interface CreateProductInput {
   attributesIds: UniqueInput[];
   brand: UniqueInput;
   name: string;
   variants: CreateVariantInput[];
 }
 
-interface UniqueInput {
+export interface UniqueInput {
   id: string;
 }
 
-interface CreateVariantInput {
+export interface CreateVariantInput {
   availableForSale: boolean;
   optionsValueIds: UniqueInput[];
   price: number;
 }
 
-interface UpdateProductInput {
+export interface UpdateProductInput {
   attributesIds: UniqueInput[];
   brand: UniqueInput;
   id: string;
@@ -741,12 +754,42 @@ interface UpdateProductInput {
   variants: UpdateVariantInput[];
 }
 
-interface UpdateVariantInput {
+export interface UpdateVariantInput {
   availableForSale: boolean;
   id: string;
   optionsValueIds: UniqueInput[];
   price: number;
 }
+
+export type CollectionRuleFieldReturnType = CollectionRuleField;
+
+export type CollectionRuleRelationReturnType = CollectionRuleRelation;
+
+export type CollectionRuleValueReturnType = string;
+
+export type CollectionRuleRootType = prisma.CollectionRule;
+
+export type CollectionRule_ReturnType = prisma.CollectionRule
+
+export type CollectionRuleOrderByInput = "createdAt_ASC" | "createdAt_DESC" | "field_ASC" | "field_DESC" | "id_ASC" | "id_DESC" | "relation_ASC" | "relation_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "value_ASC" | "value_DESC";
+
+export type CollectionRuleSetAppliesDisjunctivelyReturnType = boolean;
+
+export type CollectionRuleSetRulesReturnType = MaybePromiseList<CollectionRule_ReturnType>;
+
+export interface CollectionRuleSetRulesArgs {
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | CollectionRuleOrderByInput;
+  skip?: null | number;
+  where?: null | CollectionRuleWhereInput;
+}
+
+export type CollectionRuleSetRootType = prisma.CollectionRuleSet;
+
+export type CollectionRuleSet_ReturnType = prisma.CollectionRuleSet
 
 export interface GraphQLNexusGenArgTypes {
   Query: {
@@ -770,14 +813,14 @@ export interface GraphQLNexusGenArgTypes {
   Attribute: {
     products: AttributeProductsArgs;
   };
+  Mutation: {
+    collectionAddProducts: MutationCollectionAddProductsArgs;
+    collectionRemoveProducts: MutationCollectionRemoveProductsArgs;
+    productCreate: MutationProductCreateArgs;
+    productUpdate: MutationProductUpdateArgs;
+  };
   CollectionRuleSet: {
     rules: CollectionRuleSetRulesArgs;
-  };
-  Mutation: {
-    addProductsToCollection: MutationAddProductsToCollectionArgs;
-    createProduct: MutationCreateProductArgs;
-    removeProductsFromCollection: MutationRemoveProductsFromCollectionArgs;
-    updateProduct: MutationUpdateProductArgs;
   };
 }
 
@@ -789,18 +832,19 @@ export interface GraphQLNexusGenRootTypes {
   Product: ProductRootType;
   Option: OptionRootType;
   OptionValue: OptionValueRootType;
+  ProductType: ProductTypeRootType;
   Variant: VariantRootType;
   Image: ImageRootType;
   PageInfo: PageInfoRootType;
   Collection: CollectionRootType;
   Attribute: AttributeRootType;
-  CollectionRuleSet: CollectionRuleSetRootType;
-  CollectionRule: CollectionRuleRootType;
   OptionConnection: OptionConnectionRootType;
   OptionEdge: OptionEdgeRootType;
   ProductConnection: ProductConnectionRootType;
   ProductEdge: ProductEdgeRootType;
   Mutation: MutationRootType;
+  CollectionRule: CollectionRuleRootType;
+  CollectionRuleSet: CollectionRuleSetRootType;
 }
 
 export interface GraphQLNexusGenReturnTypes {
@@ -828,6 +872,7 @@ export interface GraphQLNexusGenReturnTypes {
     id: ProductIdReturnType;
     name: ProductNameReturnType;
     options: ProductOptionsReturnType;
+    type: ProductTypeReturnType;
     variants: ProductVariantsReturnType;
   };
   Option: {
@@ -839,6 +884,10 @@ export interface GraphQLNexusGenReturnTypes {
     id: OptionValueIdReturnType;
     name: OptionValueNameReturnType;
     option: OptionValueOptionReturnType;
+  };
+  ProductType: {
+    id: ProductTypeIdReturnType;
+    name: ProductTypeNameReturnType;
   };
   Variant: {
     availableForSale: VariantAvailableForSaleReturnType;
@@ -865,22 +914,12 @@ export interface GraphQLNexusGenReturnTypes {
     name: CollectionNameReturnType;
     options: CollectionOptionsReturnType;
     products: CollectionProductsReturnType;
-    rules: CollectionRulesReturnType;
   };
   Attribute: {
     id: AttributeIdReturnType;
     key: AttributeKeyReturnType;
     products: AttributeProductsReturnType;
     value: AttributeValueReturnType;
-  };
-  CollectionRuleSet: {
-    appliesDisjunctively: CollectionRuleSetAppliesDisjunctivelyReturnType;
-    rules: CollectionRuleSetRulesReturnType;
-  };
-  CollectionRule: {
-    field: CollectionRuleFieldReturnType;
-    relation: CollectionRuleRelationReturnType;
-    value: CollectionRuleValueReturnType;
   };
   OptionConnection: {
     edges: OptionConnectionEdgesReturnType;
@@ -899,10 +938,19 @@ export interface GraphQLNexusGenReturnTypes {
     node: ProductEdgeNodeReturnType;
   };
   Mutation: {
-    addProductsToCollection: MutationAddProductsToCollectionReturnType;
-    createProduct: MutationCreateProductReturnType;
-    removeProductsFromCollection: MutationRemoveProductsFromCollectionReturnType;
-    updateProduct: MutationUpdateProductReturnType;
+    collectionAddProducts: MutationCollectionAddProductsReturnType;
+    collectionRemoveProducts: MutationCollectionRemoveProductsReturnType;
+    productCreate: MutationProductCreateReturnType;
+    productUpdate: MutationProductUpdateReturnType;
+  };
+  CollectionRule: {
+    field: CollectionRuleFieldReturnType;
+    relation: CollectionRuleRelationReturnType;
+    value: CollectionRuleValueReturnType;
+  };
+  CollectionRuleSet: {
+    appliesDisjunctively: CollectionRuleSetAppliesDisjunctivelyReturnType;
+    rules: CollectionRuleSetRulesReturnType;
   };
 }
 
@@ -918,8 +966,8 @@ export interface GraphQLNexusGenTypes {
     ProductOrderByInput: ProductOrderByInput;
     OptionValueOrderByInput: OptionValueOrderByInput;
     VariantOrderByInput: VariantOrderByInput;
-    CollectionRuleOrderByInput: CollectionRuleOrderByInput;
     OptionOrderByInput: OptionOrderByInput;
+    CollectionRuleOrderByInput: CollectionRuleOrderByInput;
   };
   objects: {
     Query: QueryRootType;
@@ -929,18 +977,19 @@ export interface GraphQLNexusGenTypes {
     Product: ProductRootType;
     Option: OptionRootType;
     OptionValue: OptionValueRootType;
+    ProductType: ProductTypeRootType;
     Variant: VariantRootType;
     Image: ImageRootType;
     PageInfo: PageInfoRootType;
     Collection: CollectionRootType;
     Attribute: AttributeRootType;
-    CollectionRuleSet: CollectionRuleSetRootType;
-    CollectionRule: CollectionRuleRootType;
     OptionConnection: OptionConnectionRootType;
     OptionEdge: OptionEdgeRootType;
     ProductConnection: ProductConnectionRootType;
     ProductEdge: ProductEdgeRootType;
     Mutation: MutationRootType;
+    CollectionRule: CollectionRuleRootType;
+    CollectionRuleSet: CollectionRuleSetRootType;
   };
   interfaces: {};
   unions: {};
@@ -951,21 +1000,22 @@ export interface GraphQLNexusGenTypes {
     Boolean: any;
   };
   inputObjects: {
-    BrandWhereInput: any;
-    ProductWhereInput: any;
-    AttributeWhereInput: any;
-    CollectionWhereInput: any;
-    CollectionRuleSetWhereInput: any;
-    CollectionRuleWhereInput: any;
-    ImageWhereInput: any;
-    VariantWhereInput: any;
-    OptionValueWhereInput: any;
-    OptionWhereInput: any;
-    CreateProductInput: any;
-    UniqueInput: any;
-    CreateVariantInput: any;
-    UpdateProductInput: any;
-    UpdateVariantInput: any;
+    BrandWhereInput: BrandWhereInput;
+    ProductWhereInput: ProductWhereInput;
+    AttributeWhereInput: AttributeWhereInput;
+    CollectionWhereInput: CollectionWhereInput;
+    CollectionRuleSetWhereInput: CollectionRuleSetWhereInput;
+    CollectionRuleWhereInput: CollectionRuleWhereInput;
+    ImageWhereInput: ImageWhereInput;
+    ProductTypeWhereInput: ProductTypeWhereInput;
+    VariantWhereInput: VariantWhereInput;
+    OptionValueWhereInput: OptionValueWhereInput;
+    OptionWhereInput: OptionWhereInput;
+    CreateProductInput: CreateProductInput;
+    UniqueInput: UniqueInput;
+    CreateVariantInput: CreateVariantInput;
+    UpdateProductInput: UpdateProductInput;
+    UpdateVariantInput: UpdateVariantInput;
   };
   allInputTypes: 
     | Extract<keyof GraphQLNexusGenTypes['inputObjects'], string>

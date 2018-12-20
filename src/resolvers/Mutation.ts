@@ -35,7 +35,7 @@ export const UpdateProductInput = inputObjectType('UpdateProductInput', t => {
 })
 
 export const Mutation = prismaObjectType('Mutation', t => {
-  t.field('addProductsToCollection', 'Collection', {
+  t.field('collectionAddProducts', 'Collection', {
     args: {
       productIds: idArg({ list: true }),
       collectionId: idArg(),
@@ -50,7 +50,7 @@ export const Mutation = prismaObjectType('Mutation', t => {
     },
   })
 
-  t.field('removeProductsFromCollection', 'Collection', {
+  t.field('collectionRemoveProducts', 'Collection', {
     args: {
       productIds: idArg({ list: true }),
       collectionId: idArg(),
@@ -65,7 +65,7 @@ export const Mutation = prismaObjectType('Mutation', t => {
     },
   })
 
-  t.field('createProduct', 'Product', {
+  t.field('productCreate', 'Product', {
     args: {
       data: arg('CreateProductInput'),
     },
@@ -90,7 +90,7 @@ export const Mutation = prismaObjectType('Mutation', t => {
     },
   })
 
-  t.field('updateProduct', 'Product', {
+  t.field('productUpdate', 'Product', {
     args: {
       data: arg('UpdateProductInput'),
     },

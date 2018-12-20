@@ -4,6 +4,7 @@ type Collection {
   rules: CollectionRuleSet
   products: [Product!]!
 }
+
 type CollectionRuleSet {
   rules: [CollectionRule!]!
   appliesDisjunctively: Boolean!
@@ -16,12 +17,9 @@ type CollectionRule {
 }
 
 enum CollectionRuleField {
-  TAG
-  TITLE
   TYPE
-  INVENTORY
+  TITLE
   PRICE
-  VENDOR
 }
 
 enum CollectionRuleRelation {
@@ -35,11 +33,17 @@ enum CollectionRuleRelation {
   STARTS_WITH
 }
 
+type ProductType {
+  id: ID! @unique
+  name: String!
+}
+
 type Product {
   id: ID! @unique
   name: String!
   brand: Brand!
   image: Image
+  type: ProductType
   variants: [Variant!]!
   collections: [Collection!]!
   attributes: [Attribute!]!
