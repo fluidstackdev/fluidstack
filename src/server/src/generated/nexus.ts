@@ -651,6 +651,16 @@ export type CollectionOptionsReturnType = MaybePromiseList<Option_ReturnType>;
 
 export type CollectionProductsReturnType = MaybePromiseList<Product_ReturnType>;
 
+export interface CollectionProductsArgs {
+  after?: null | string;
+  before?: null | string;
+  first?: null | number;
+  last?: null | number;
+  orderBy?: null | ProductOrderByInput;
+  skip?: null | number;
+  where?: null | ProductWhereInput;
+}
+
 export type CollectionRootType = prisma.Collection;
 
 export type Collection_ReturnType = prisma.Collection
@@ -736,6 +746,12 @@ export interface MutationCollectionAddProductsArgs {
   productIds: string[];
 }
 
+export type MutationCollectionCreateReturnType = Collection_ReturnType;
+
+export interface MutationCollectionCreateArgs {
+  collection: CollectionInput;
+}
+
 export type MutationCollectionRemoveProductsReturnType = Collection_ReturnType;
 
 export interface MutationCollectionRemoveProductsArgs {
@@ -743,10 +759,23 @@ export interface MutationCollectionRemoveProductsArgs {
   productIds: string[];
 }
 
+export type MutationCollectionUpdateReturnType = Collection_ReturnType;
+
+export interface MutationCollectionUpdateArgs {
+  collection: CollectionInput;
+  id: string;
+}
+
 export type MutationProductCreateReturnType = Product_ReturnType;
 
 export interface MutationProductCreateArgs {
   data: CreateProductInput;
+}
+
+export type MutationProductDeleteReturnType = Product_ReturnType;
+
+export interface MutationProductDeleteArgs {
+  productId: string;
 }
 
 export type MutationProductUpdateReturnType = Product_ReturnType;
@@ -758,6 +787,23 @@ export interface MutationProductUpdateArgs {
 export type MutationRootType = {};
 
 export type Mutation_ReturnType = {};
+
+export interface CollectionInput {
+  name: string;
+  productsIds?: null | string[];
+  ruleSet?: null | CollectionRuleSetInput;
+}
+
+export interface CollectionRuleSetInput {
+  applyDisjunctively: boolean;
+  rules: RulesInput[];
+}
+
+export interface RulesInput {
+  field: CollectionRuleField;
+  relation: CollectionRuleRelation;
+  value: string;
+}
 
 export interface CreateProductInput {
   attributesIds: UniqueInput[];
@@ -841,13 +887,19 @@ export interface GraphQLNexusGenArgTypes {
   Variant: {
     optionValues: VariantOptionValuesArgs;
   };
+  Collection: {
+    products: CollectionProductsArgs;
+  };
   Attribute: {
     products: AttributeProductsArgs;
   };
   Mutation: {
     collectionAddProducts: MutationCollectionAddProductsArgs;
+    collectionCreate: MutationCollectionCreateArgs;
     collectionRemoveProducts: MutationCollectionRemoveProductsArgs;
+    collectionUpdate: MutationCollectionUpdateArgs;
     productCreate: MutationProductCreateArgs;
+    productDelete: MutationProductDeleteArgs;
     productUpdate: MutationProductUpdateArgs;
   };
   CollectionRuleSet: {
@@ -981,8 +1033,11 @@ export interface GraphQLNexusGenReturnTypes {
   };
   Mutation: {
     collectionAddProducts: MutationCollectionAddProductsReturnType;
+    collectionCreate: MutationCollectionCreateReturnType;
     collectionRemoveProducts: MutationCollectionRemoveProductsReturnType;
+    collectionUpdate: MutationCollectionUpdateReturnType;
     productCreate: MutationProductCreateReturnType;
+    productDelete: MutationProductDeleteReturnType;
     productUpdate: MutationProductUpdateReturnType;
   };
   CollectionRule: {
@@ -1056,6 +1111,9 @@ export interface GraphQLNexusGenTypes {
     VariantWhereInput: VariantWhereInput;
     OptionValueWhereInput: OptionValueWhereInput;
     OptionWhereInput: OptionWhereInput;
+    CollectionInput: CollectionInput;
+    CollectionRuleSetInput: CollectionRuleSetInput;
+    RulesInput: RulesInput;
     CreateProductInput: CreateProductInput;
     UniqueInput: UniqueInput;
     CreateVariantInput: CreateVariantInput;

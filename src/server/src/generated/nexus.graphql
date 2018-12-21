@@ -129,7 +129,7 @@ type Collection {
   id: ID!
   name: String!
   options: [Option!]!
-  products: [Product!]!
+  products(after: String, before: String, first: Int, last: Int, orderBy: ProductOrderByInput, skip: Int, where: ProductWhereInput): [Product!]!
 }
 
 type CollectionConnection {
@@ -140,6 +140,12 @@ type CollectionConnection {
 type CollectionEdge {
   cursor: String!
   node: Collection!
+}
+
+input CollectionInput {
+  name: String!
+  productsIds: [String!]
+  ruleSet: CollectionRuleSetInput
 }
 
 enum CollectionOrderByInput {
@@ -194,6 +200,11 @@ enum CollectionRuleRelation {
 type CollectionRuleSet {
   appliesDisjunctively: Boolean!
   rules(after: String, before: String, first: Int, last: Int, orderBy: CollectionRuleOrderByInput, skip: Int, where: CollectionRuleWhereInput): [CollectionRule!]!
+}
+
+input CollectionRuleSetInput {
+  applyDisjunctively: Boolean!
+  rules: [RulesInput!]!
 }
 
 input CollectionRuleSetWhereInput {
@@ -327,8 +338,11 @@ input ImageWhereInput {
 
 type Mutation {
   collectionAddProducts(collectionId: ID!, productIds: [ID!]!): Collection!
+  collectionCreate(collection: CollectionInput!): Collection!
   collectionRemoveProducts(collectionId: ID!, productIds: [ID!]!): Collection!
+  collectionUpdate(collection: CollectionInput!, id: ID!): Collection!
   productCreate(data: CreateProductInput!): Product!
+  productDelete(productId: ID!): Product!
   productUpdate(data: UpdateProductInput!): Product!
 }
 
@@ -576,6 +590,12 @@ type Query {
   collections(after: String, before: String, first: Int, last: Int, orderBy: CollectionOrderByInput, skip: Int, where: CollectionWhereInput): CollectionConnection!
   options(after: String, before: String, first: Int, last: Int, orderBy: OptionOrderByInput, skip: Int, where: OptionWhereInput): OptionConnection!
   products(after: String, before: String, first: Int, last: Int, orderBy: ProductOrderByInput, skip: Int, where: ProductWhereInput): ProductConnection!
+}
+
+input RulesInput {
+  field: CollectionRuleField!
+  relation: CollectionRuleRelation!
+  value: String!
 }
 
 input UniqueInput {

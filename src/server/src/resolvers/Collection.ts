@@ -1,30 +1,11 @@
 import * as _ from 'lodash'
 import { prismaObjectType } from 'nexus-prisma'
 import * as ProductVariant from '../fragments/ProductVariant'
-import { mapRulesToPrismaFilter } from '../utils/rules'
 import { optionsFromVariants } from './utils'
 
 export const Collection = prismaObjectType('Collection', t => {
   // TODO: Fix 'rules'
-  t.prismaFields(['id', 'name'])
-
-  t.field('products', 'Product', {
-    list: true,
-    resolve: async (root, args, ctx) => {
-      const rules = await ctx.prisma
-        .collection({ id: root.id })
-        .rules()
-        .rules()
-
-      if (rules.length === 0) {
-        return ctx.prisma.collection({ id: root.id }).products()
-      }
-
-      return ctx.prisma.products({
-        where: mapRulesToPrismaFilter(rules),
-      })
-    },
-  })
+  t.prismaFields(['id', 'name', { name: 'products', args: false }])
 
   t.field('options', 'Option', {
     list: true,
