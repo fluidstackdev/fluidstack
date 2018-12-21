@@ -754,6 +754,28 @@ export interface AttributeWhereInput {
   NOT: AttributeWhereInput[]
 }
 
+export interface CollectionInput {
+  name: string
+
+  ruleSet?: Maybe<CollectionRuleSetInput>
+
+  productsIds?: Maybe<string[]>
+}
+
+export interface CollectionRuleSetInput {
+  applyDisjunctively: boolean
+
+  rules: RulesInput[]
+}
+
+export interface RulesInput {
+  field: CollectionRuleField
+
+  relation: CollectionRuleRelation
+
+  value: string
+}
+
 export interface CreateProductInput {
   name: string
 
@@ -923,6 +945,8 @@ export type CollectionCollection = {
 
   products: CollectionProducts[]
 
+  attributes: CollectionAttributes[]
+
   options: CollectionOptions[]
 
   brands: CollectionBrands[]
@@ -946,8 +970,28 @@ export type CollectionBrand = {
   name: string
 }
 
+export type CollectionAttributes = {
+  __typename?: 'Attribute'
+
+  id: string
+
+  key: string
+
+  value: string
+}
+
 export type CollectionOptions = {
   __typename?: 'Option'
+
+  id: string
+
+  name: string
+
+  values: CollectionValues[]
+}
+
+export type CollectionValues = {
+  __typename?: 'OptionValue'
 
   id: string
 
@@ -1012,9 +1056,18 @@ export const CollectionDocument = gql`
           name
         }
       }
+      attributes {
+        id
+        key
+        value
+      }
       options {
         id
         name
+        values {
+          id
+          name
+        }
       }
       brands {
         id

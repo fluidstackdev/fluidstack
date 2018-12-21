@@ -10,9 +10,18 @@ query collection($collectionId: ID!) {
         name
       }
     }
+    attributes {
+      id
+      key
+      value
+    }
     options {
       id
       name
+      values {
+        id
+        name
+      }
     }
     brands {
       id

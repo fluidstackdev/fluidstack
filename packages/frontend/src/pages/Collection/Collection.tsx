@@ -18,11 +18,35 @@ class Collection extends Component<CollectionProps> {
 
     return (
       <div>
-        <select>
-          {this.props.data.collection!.brands.map(brand => (
-            <option label={brand.name}>{brand.id}</option>
+        <div>
+          <h3>Brands</h3>
+          <select>
+            {this.props.data.collection!.brands.map(brand => (
+              <option label={brand.name}>{brand.id}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <h3>Options</h3>
+          {this.props.data.collection!.options.map(option => (
+            <>
+              <span>{option.name}</span>
+              <select>
+                {option.values.map(value => (
+                  <option label={value.name}>{value.id}</option>
+                ))}
+              </select>
+            </>
           ))}
-        </select>
+        </div>
+        <div>
+          <h3>Attributes</h3>
+          <select>
+            {this.props.data.collection!.attributes.map(attr => (
+              <option label={attr.value}>{attr.id}</option>
+            ))}
+          </select>
+        </div>
         <h2>Products</h2>
         {this.props.data.collection!.products.map(product => (
           <div key={product.id}>{product.name}</div>
