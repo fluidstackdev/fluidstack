@@ -2,10 +2,10 @@ datamodel: datamodel.prisma
 
 hooks:
   post-deploy:
-    - npx nexus-prisma-generate
+    - npx nexus-prisma-generate --output ./.yoga/nexus-prisma
 
 generate:
   - generator: typescript-client
-    output: ../src/generated/prisma-client/
+    output: ../.yoga/prisma-client/
 
 endpoint: http://localhost:4466
