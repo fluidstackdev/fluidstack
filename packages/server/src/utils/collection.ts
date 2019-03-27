@@ -5,6 +5,7 @@ import {
 } from '../../.yoga/prisma-client'
 import { get } from 'lodash'
 import { NexusGenInputs } from '../../.yoga/nexus'
+import { core } from 'yoga'
 
 interface Product {
   id: string
@@ -27,7 +28,7 @@ function fieldPath(field: CollectionRuleField): string {
 
 export function productMatchRule(
   product: Product,
-  rule: CollectionRule,
+  rule: core.Omit<CollectionRule, 'id'>,
 ): boolean {
   const { field, relation, value } = rule
   const productField: string = get(product, fieldPath(field)).toString()
@@ -82,7 +83,10 @@ function fetchAllProducts(prisma: Prisma): Promise<Product[]> {
   }`)
 }
 
-export function productMatchRules(product: Product, rules: CollectionRule[]) {
+export function productMatchRules(
+  product: Product,
+  rules: core.Omit<CollectionRule, 'id'>[],
+) {
   if (!rules) {
     return false
   }
@@ -90,7 +94,10 @@ export function productMatchRules(product: Product, rules: CollectionRule[]) {
   return rules.some(rule => productMatchRule(product, rule))
 }
 
-async function productsMatchRules(rules: CollectionRule[], prisma: Prisma) {
+async function productsMatchRules(
+  rules: core.Omit<CollectionRule, 'id'>[],
+  prisma: Prisma,
+) {
   const products = await fetchAllProducts(prisma)
 
   return products.filter(p => productMatchRules(p, rules))
