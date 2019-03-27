@@ -2,15 +2,17 @@ import {
   CollectionRule,
   CollectionRuleField,
   Prisma,
-} from '../generated/prisma-client'
+} from '../../.yoga/prisma-client'
 import { get } from 'lodash'
-import { CollectionInput } from '../generated/nexus'
+import { NexusGenInputs } from '../../.yoga/nexus'
 
 interface Product {
   id: string
   name: string
   type: { id: string; name: string }
 }
+
+type CollectionInput = NexusGenInputs['CollectionInput']
 
 function fieldPath(field: CollectionRuleField): string {
   switch (field) {
@@ -80,10 +82,7 @@ function fetchAllProducts(prisma: Prisma): Promise<Product[]> {
   }`)
 }
 
-export function shouldBeInCollection(
-  product: Product,
-  rules: CollectionRule[],
-) {
+export function productMatchRules(product: Product, rules: CollectionRule[]) {
   if (!rules) {
     return false
   }
@@ -91,13 +90,10 @@ export function shouldBeInCollection(
   return rules.some(rule => productMatchRule(product, rule))
 }
 
-async function productsMatchingCollection(
-  rules: CollectionRule[],
-  prisma: Prisma,
-) {
+async function productsMatchRules(rules: CollectionRule[], prisma: Prisma) {
   const products = await fetchAllProducts(prisma)
 
-  return products.filter(p => shouldBeInCollection(p, rules))
+  return products.filter(p => productMatchRules(p, rules))
 }
 
 export async function recomputeCollection(
@@ -108,10 +104,7 @@ export async function recomputeCollection(
     throw new Error('Rule set is empty')
   }
 
-  const products = await productsMatchingCollection(
-    collection.ruleSet.rules,
-    prisma,
-  )
+  const products = await productsMatchRules(collection.ruleSet.rules, prisma)
 
   return prisma.createCollection({
     name: collection.name,

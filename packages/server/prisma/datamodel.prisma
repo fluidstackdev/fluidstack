@@ -6,11 +6,13 @@ type Collection {
 }
 
 type CollectionRuleSet {
+  id: ID! @unique
   rules: [CollectionRule!]!
   appliesDisjunctively: Boolean!
 }
 
 type CollectionRule {
+  id: ID! @unique
   field: CollectionRuleField!
   relation: CollectionRuleRelation!
   value: String!
@@ -40,10 +42,12 @@ type ProductType {
 
 type Product {
   id: ID! @unique
+  slug: String! @unique
   name: String!
   brand: Brand!
-  image: Image
+  description: String!
   type: ProductType
+  thumbnail: Image!
   variants: [Variant!]!
   collections: [Collection!]!
   attributes: [Attribute!]!
@@ -70,7 +74,8 @@ type OptionValue {
 
 type Option {
   id: ID! @unique
-  name: String!
+  name: String! @unique
+  isColor: Boolean!
   values: [OptionValue!]!
 }
 
@@ -80,7 +85,7 @@ type Variant {
   price: Int!
   availableForSale: Boolean @default(value: false)
   sku: String
-  image: Image
+  images: [Image!]!
 }
 
 type Image {

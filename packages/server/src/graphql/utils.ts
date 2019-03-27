@@ -1,5 +1,5 @@
 import * as _ from 'lodash'
-import { Option } from '../generated/prisma-client'
+import { Option } from '../../.yoga/prisma-client'
 
 interface Variant {
   optionValues: { option: Option }[]

@@ -1,4 +1,4 @@
-import { Option } from '../generated/prisma-client'
+import { Option } from '../../.yoga/prisma-client'
 
 export const fragment = `fragment ProductVariant on Product {
   variants {

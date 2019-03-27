@@ -4,4 +4,4 @@ export interface Context {
   prisma: Prisma
 }
 
-export default ({ req }) => ({ prisma, req })
+export default (ctx: any) => ({ prisma, req: ctx.req })

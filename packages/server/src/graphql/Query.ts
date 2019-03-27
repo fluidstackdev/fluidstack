@@ -17,6 +17,8 @@ export const Query = prismaObjectType({
         { name: 'optionsConnection', alias: 'options' },
         { name: 'brandsConnection', alias: 'brands' },
         { name: 'collectionsConnection', alias: 'collections' },
+        { name: 'productsConnection', alias: 'products' },
+        { name: 'product' },
       ],
     })
 
@@ -25,7 +27,7 @@ export const Query = prismaObjectType({
       args: {
         collectionId: idArg(),
       },
-      resolve: (root, args, ctx) => {
+      resolve: (_root, args, ctx) => {
         return ctx.prisma.collection({ id: args.collectionId })
       },
     })

@@ -4,14 +4,14 @@
   "license": "MIT",
   "scripts": {
     "start": "yoga start",
-    "dev": "yoga dev",
-    "codegen": "yarn nexus-codegen"
+    "dev": "yoga dev"
   },
   "dependencies": {
-    "graphql": "14.0.2",
+    "formik": "^1.5.1",
+    "graphql": "14.1.1",
     "lodash": "^4.17.11",
-    "prisma-client-lib": "^1.24.0-beta.2",
-    "yoga": "^0.0.15"
+    "prisma-client-lib": "^1.29.1",
+    "yoga": "^0.0.18"
   },
   "devDependencies": {
     "@types/faker": "^4.1.4",
@@ -19,8 +19,8 @@
     "@types/lodash": "^4.14.118",
     "@types/node": "10.12.12",
     "faker": "^4.1.0",
-    "prisma": "^1.23.0",
-    "ts-node-dev": "1.0.0-pre.31",
+    "prisma": "^1.29.1",
+    "ts-node": "^8.0.3",
     "typescript": "3.2.2"
   },
   "prettier": {

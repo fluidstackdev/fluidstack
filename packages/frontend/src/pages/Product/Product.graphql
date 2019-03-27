@@ -1,0 +1,39 @@
+query product($slug: String!) {
+  product(where: { slug: $slug }) {
+    ...ProductDetail
+  }
+}
+
+fragment ProductDetail on Product {
+  id
+  name
+  thumbnail {
+    url
+  }
+  brand {
+    id
+    name
+  }
+  attributes {
+    id
+    key
+    value
+  }
+  variants {
+    id
+    price
+    images {
+      id
+      url
+    }
+    optionValues {
+      id
+      name
+      option {
+        id
+        name
+        isColor
+      }
+    }
+  }
+}

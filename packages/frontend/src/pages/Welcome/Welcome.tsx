@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { DataProps } from 'react-apollo'
-import { CollectionsQuery, CollectionsVariables } from '../../generated-models'
-import { node } from 'prop-types'
+import {
+  ICollectionsQuery,
+  ICollectionsQueryVariables,
+} from '../../generated-types'
 import { NavItem, NavBar } from '../../components/NavBar/NavBar'
 
-interface Props extends DataProps<CollectionsQuery, CollectionsVariables> {}
+export interface WelcomeProps
+  extends DataProps<ICollectionsQuery, ICollectionsQueryVariables> {}
 
-class Welcome extends Component<Props> {
+class Welcome extends Component<WelcomeProps> {
   render() {
     if (this.props.data.loading) {
       return null

@@ -1,8 +1,8 @@
-import * as _ from 'lodash';
-import { Option } from '../generated/prisma-client';
+import * as _ from 'lodash'
+import { Option } from '../../.yoga/prisma-client'
 
 interface Variant {
-  optionValues: { option: Option }[];
+  optionValues: { option: Option }[]
 }
 
 export function optionsFromVariants(variants: Variant[]) {
@@ -10,5 +10,5 @@ export function optionsFromVariants(variants: Variant[]) {
     .flatMap(v => v.optionValues)
     .map(v => v.option)
     .uniqBy(v => v.id)
-    .value();
+    .value()
 }

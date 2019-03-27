@@ -1,5 +1,4 @@
-import { graphql, compose } from 'react-apollo'
-import { CollectionsHOC } from '../../generated-models'
-import Welcome from './Welcome'
+import { withICollections } from '../../generated-types'
+import Welcome, { WelcomeProps } from './Welcome'
 
-export default CollectionsHOC({})(Welcome)
+export default withICollections<WelcomeProps>({})(Welcome)

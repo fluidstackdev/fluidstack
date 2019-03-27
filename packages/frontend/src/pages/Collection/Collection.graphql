@@ -1,19 +1,29 @@
-query collection($collectionId: ID!) {
+query collection(
+  $collectionId: ID!
+  $brandsIds: [ID!]
+  $optionsValuesIds: [ID!]
+  $attributesIds: [ID!]
+) {
   collection(collectionId: $collectionId) {
     id
     name
-    products {
-      id
-      name
-      brand {
-        id
-        name
+    products(
+      brandsIds: $brandsIds
+      optionsValuesIds: $optionsValuesIds
+      attributesIds: $attributesIds
+    ) {
+      edges {
+        node {
+          ...CollectionProduct
+        }
       }
     }
     attributes {
-      id
-      key
-      value
+      name
+      values {
+        id
+        value
+      }
     }
     options {
       id
@@ -26,6 +36,36 @@ query collection($collectionId: ID!) {
     brands {
       id
       name
+    }
+  }
+}
+
+fragment CollectionProduct on Product {
+  id
+  name
+  slug
+  thumbnail {
+    url
+  }
+  brand {
+    id
+    name
+  }
+  variants {
+    id
+    price
+    images {
+      id
+      url
+    }
+    optionValues {
+      id
+      name
+      option {
+        id
+        name
+        isColor
+      }
     }
   }
 }

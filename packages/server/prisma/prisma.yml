@@ -2,6 +2,7 @@ datamodel: datamodel.prisma
 
 hooks:
   post-deploy:
+    - prisma generate
     - npx nexus-prisma-generate --output ./.yoga/nexus-prisma
 
 generate:
@@ -9,3 +10,6 @@ generate:
     output: ../.yoga/prisma-client/
 
 endpoint: http://localhost:4466
+
+seed:
+  run: yarn ts-node prisma/seed.ts

@@ -1,19 +1,19 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Welcome from './pages/Welcome/WelcomeContainer'
-import Collection from './pages/Collection/CollectionContainer'
 import CollectionContainer from './pages/Collection/CollectionContainer'
+import ProductContainer from './pages/Product/ProductContainer'
 
 const AppRouter = () => (
   <Router>
-    <div>
-      <h2>Collections</h2>
-      <Welcome />
+    <Switch>
       <Route
         path={'/collection/:collectionId'}
         component={CollectionContainer}
       />
-    </div>
+      <Route path={'/product/:slug'} component={ProductContainer} />
+      <Route path={'/'} component={Welcome} />
+    </Switch>
   </Router>
 )
 
