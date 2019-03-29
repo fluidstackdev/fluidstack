@@ -93,8 +93,10 @@ const Container = styled.div`
   flex-basis: 20%;
   display: flex; /* so child elements can use flexbox stuff too! */
   flex-direction: column;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
+    transform: scale(1.1);
   }
 `
 
