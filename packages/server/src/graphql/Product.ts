@@ -14,7 +14,13 @@ import { UniqueInput } from './common'
 export const Product = prismaObjectType({
   name: 'Product',
   definition(t) {
-    t.prismaFields({ filter: ['collections'] })
+    t.prismaFields({ filter: ['collections', 'attributes'] })
+
+    t.field('attributes', {
+      ...t.prismaType.attributes,
+      args: {},
+      nullable: false,
+    })
   },
 })
 
