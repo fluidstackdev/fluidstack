@@ -64,7 +64,7 @@ class Collection extends Component<CollectionProps, CollectionState> {
 
   render() {
     if (this.props.data.loading) {
-      return null
+      return <div>Loading...</div>
     }
 
     if (!this.props.data.collection) {

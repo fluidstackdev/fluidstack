@@ -4,12 +4,14 @@
   "license": "MIT",
   "scripts": {
     "start": "yoga start",
-    "dev": "yoga dev"
+    "dev": "yoga dev",
+    "build": "yoga build"
   },
   "dependencies": {
     "formik": "^1.5.1",
     "graphql": "14.1.1",
     "lodash": "^4.17.11",
+    "now-env": "^3.1.0",
     "prisma-client-lib": "^1.29.1",
     "yoga": "^0.0.18"
   },

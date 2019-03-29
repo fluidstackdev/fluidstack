@@ -1,7 +1,7 @@
 import { prismaObjectType, extendType, arg, idArg, inputObjectType } from 'yoga'
 import { fetchAllCollections, productMatchRules } from '../utils/collection'
 import { VariantCreateInput } from '../../.yoga/prisma-client'
-import { UniqueInput } from './common';
+import { UniqueInput } from './common'
 
 /**
  * type Product {
@@ -14,14 +14,7 @@ import { UniqueInput } from './common';
 export const Product = prismaObjectType({
   name: 'Product',
   definition(t) {
-    t.prismaFields({ filter: ['collections', 'attributes'] })
-
-    t.list.field('attributes', {
-      type: 'Attribute',
-      resolve: async (parent, _args, ctx) => {
-        return ctx.prisma.product({ id: parent.id }).attributes()
-      },
-    })
+    t.prismaFields({ filter: ['collections'] })
   },
 })
 

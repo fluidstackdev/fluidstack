@@ -25,6 +25,10 @@ export type ProductProps = DataProps<IProductQuery, IProductQueryVariables> &
   RouteComponentProps<RouterProps>
 
 export const Product: React.SFC<ProductProps> = props => {
+  if (props.data.loading) {
+    return <div>Loading...</div>
+  }
+
   if (!props.data.product) {
     return <div>Product not found</div>
   }

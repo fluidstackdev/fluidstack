@@ -8,6 +8,11 @@
       "config": { "distDir": "build" }
     }
   ],
+  "build": {
+    "env": {
+      "REACT_APP_PRISMA_ENDPOINT": "@webshop-graphql-staging"
+    }
+  },
   "routes": [
     {
       "src": "/static/(.*)",

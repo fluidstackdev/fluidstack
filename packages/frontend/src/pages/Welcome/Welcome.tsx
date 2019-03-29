@@ -12,7 +12,11 @@ export interface WelcomeProps
 class Welcome extends Component<WelcomeProps> {
   render() {
     if (this.props.data.loading) {
-      return null
+      return <div>Loading...</div>
+    }
+
+    if (!this.props.data.collections) {
+      return <div>No collections found</div>
     }
 
     const items: NavItem[] = this.props.data.collections!.edges.map(

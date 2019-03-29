@@ -5,7 +5,7 @@ import { ApolloProvider } from 'react-apollo'
 import Router from './Router'
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000',
+  uri: process.env.REACT_APP_PRISMA_ENDPOINT,
 })
 
 class App extends Component {

@@ -7,6 +7,7 @@
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "lodash": "^4.17.11",
+    "now-env": "^3.1.0",
     "react": "^16.8.4",
     "react-apollo": "^2.3.3",
     "react-dom": "^16.8.4",
@@ -34,7 +35,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate": "graphql-codegen --watch"
+    "generate": "graphql-codegen --watch",
+    "deploy": "now -e NODE_ENV=staging",
+    "now-build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,5 +1,7 @@
 datamodel: datamodel.prisma
 
+endpoint: ${env:PRISMA_ENDPOINT}
+
 hooks:
   post-deploy:
     - prisma generate
@@ -8,8 +10,6 @@ hooks:
 generate:
   - generator: typescript-client
     output: ../.yoga/prisma-client/
-
-endpoint: http://localhost:4466
 
 seed:
   run: yarn ts-node prisma/seed.ts
