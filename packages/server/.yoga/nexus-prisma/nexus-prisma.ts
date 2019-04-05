@@ -60,6 +60,26 @@ export interface NexusPrismaTypes {
       ImageConnection: ImageConnectionObject
       ImageEdge: ImageEdgeObject
       AggregateImage: AggregateImageObject
+      Order: OrderObject
+      OrderLineItem: OrderLineItemObject
+      User: UserObject
+      OrderOptionValues: OrderOptionValuesObject
+      Payment: PaymentObject
+      OrderConnection: OrderConnectionObject
+      OrderEdge: OrderEdgeObject
+      AggregateOrder: AggregateOrderObject
+      OrderLineItemConnection: OrderLineItemConnectionObject
+      OrderLineItemEdge: OrderLineItemEdgeObject
+      AggregateOrderLineItem: AggregateOrderLineItemObject
+      OrderOptionValuesConnection: OrderOptionValuesConnectionObject
+      OrderOptionValuesEdge: OrderOptionValuesEdgeObject
+      AggregateOrderOptionValues: AggregateOrderOptionValuesObject
+      PaymentConnection: PaymentConnectionObject
+      PaymentEdge: PaymentEdgeObject
+      AggregatePayment: AggregatePaymentObject
+      UserConnection: UserConnectionObject
+      UserEdge: UserEdgeObject
+      AggregateUser: AggregateUserObject
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
@@ -85,6 +105,16 @@ export interface NexusPrismaTypes {
       VariantPreviousValues: VariantPreviousValuesObject
       ImageSubscriptionPayload: ImageSubscriptionPayloadObject
       ImagePreviousValues: ImagePreviousValuesObject
+      OrderSubscriptionPayload: OrderSubscriptionPayloadObject
+      OrderPreviousValues: OrderPreviousValuesObject
+      OrderLineItemSubscriptionPayload: OrderLineItemSubscriptionPayloadObject
+      OrderLineItemPreviousValues: OrderLineItemPreviousValuesObject
+      OrderOptionValuesSubscriptionPayload: OrderOptionValuesSubscriptionPayloadObject
+      OrderOptionValuesPreviousValues: OrderOptionValuesPreviousValuesObject
+      PaymentSubscriptionPayload: PaymentSubscriptionPayloadObject
+      PaymentPreviousValues: PaymentPreviousValuesObject
+      UserSubscriptionPayload: UserSubscriptionPayloadObject
+      UserPreviousValues: UserPreviousValuesObject
     }
     fieldsDetails: {
       Query: QueryFieldDetails
@@ -133,6 +163,26 @@ export interface NexusPrismaTypes {
       ImageConnection: ImageConnectionFieldDetails
       ImageEdge: ImageEdgeFieldDetails
       AggregateImage: AggregateImageFieldDetails
+      Order: OrderFieldDetails
+      OrderLineItem: OrderLineItemFieldDetails
+      User: UserFieldDetails
+      OrderOptionValues: OrderOptionValuesFieldDetails
+      Payment: PaymentFieldDetails
+      OrderConnection: OrderConnectionFieldDetails
+      OrderEdge: OrderEdgeFieldDetails
+      AggregateOrder: AggregateOrderFieldDetails
+      OrderLineItemConnection: OrderLineItemConnectionFieldDetails
+      OrderLineItemEdge: OrderLineItemEdgeFieldDetails
+      AggregateOrderLineItem: AggregateOrderLineItemFieldDetails
+      OrderOptionValuesConnection: OrderOptionValuesConnectionFieldDetails
+      OrderOptionValuesEdge: OrderOptionValuesEdgeFieldDetails
+      AggregateOrderOptionValues: AggregateOrderOptionValuesFieldDetails
+      PaymentConnection: PaymentConnectionFieldDetails
+      PaymentEdge: PaymentEdgeFieldDetails
+      AggregatePayment: AggregatePaymentFieldDetails
+      UserConnection: UserConnectionFieldDetails
+      UserEdge: UserEdgeFieldDetails
+      AggregateUser: AggregateUserFieldDetails
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
@@ -158,6 +208,16 @@ export interface NexusPrismaTypes {
       VariantPreviousValues: VariantPreviousValuesFieldDetails
       ImageSubscriptionPayload: ImageSubscriptionPayloadFieldDetails
       ImagePreviousValues: ImagePreviousValuesFieldDetails
+      OrderSubscriptionPayload: OrderSubscriptionPayloadFieldDetails
+      OrderPreviousValues: OrderPreviousValuesFieldDetails
+      OrderLineItemSubscriptionPayload: OrderLineItemSubscriptionPayloadFieldDetails
+      OrderLineItemPreviousValues: OrderLineItemPreviousValuesFieldDetails
+      OrderOptionValuesSubscriptionPayload: OrderOptionValuesSubscriptionPayloadFieldDetails
+      OrderOptionValuesPreviousValues: OrderOptionValuesPreviousValuesFieldDetails
+      PaymentSubscriptionPayload: PaymentSubscriptionPayloadFieldDetails
+      PaymentPreviousValues: PaymentPreviousValuesFieldDetails
+      UserSubscriptionPayload: UserSubscriptionPayloadFieldDetails
+      UserPreviousValues: UserPreviousValuesFieldDetails
     }
   }
   inputTypes: {
@@ -184,6 +244,16 @@ export interface NexusPrismaTypes {
       OptionWhereUniqueInput: OptionWhereUniqueInputInputObject
       VariantWhereUniqueInput: VariantWhereUniqueInputInputObject
       ImageWhereUniqueInput: ImageWhereUniqueInputInputObject
+      OrderWhereUniqueInput: OrderWhereUniqueInputInputObject
+      OrderLineItemWhereInput: OrderLineItemWhereInputInputObject
+      UserWhereInput: UserWhereInputInputObject
+      OrderWhereInput: OrderWhereInputInputObject
+      PaymentWhereInput: PaymentWhereInputInputObject
+      OrderOptionValuesWhereInput: OrderOptionValuesWhereInputInputObject
+      OrderLineItemWhereUniqueInput: OrderLineItemWhereUniqueInputInputObject
+      OrderOptionValuesWhereUniqueInput: OrderOptionValuesWhereUniqueInputInputObject
+      PaymentWhereUniqueInput: PaymentWhereUniqueInputInputObject
+      UserWhereUniqueInput: UserWhereUniqueInputInputObject
       CollectionCreateInput: CollectionCreateInputInputObject
       CollectionRuleSetCreateOneInput: CollectionRuleSetCreateOneInputInputObject
       CollectionRuleSetCreateInput: CollectionRuleSetCreateInputInputObject
@@ -315,6 +385,64 @@ export interface NexusPrismaTypes {
       VariantUpdateManyMutationInput: VariantUpdateManyMutationInputInputObject
       ImageUpdateInput: ImageUpdateInputInputObject
       ImageUpdateManyMutationInput: ImageUpdateManyMutationInputInputObject
+      OrderCreateInput: OrderCreateInputInputObject
+      OrderLineItemCreateManyInput: OrderLineItemCreateManyInputInputObject
+      OrderLineItemCreateInput: OrderLineItemCreateInputInputObject
+      UserCreateOneInput: UserCreateOneInputInputObject
+      UserCreateInput: UserCreateInputInputObject
+      OrderCreateManyWithoutCustomerInput: OrderCreateManyWithoutCustomerInputInputObject
+      OrderCreateWithoutCustomerInput: OrderCreateWithoutCustomerInputInputObject
+      PaymentCreateOneWithoutOrderInput: PaymentCreateOneWithoutOrderInputInputObject
+      PaymentCreateWithoutOrderInput: PaymentCreateWithoutOrderInputInputObject
+      OrderOptionValuesCreateManyInput: OrderOptionValuesCreateManyInputInputObject
+      OrderOptionValuesCreateInput: OrderOptionValuesCreateInputInputObject
+      UserCreateOneWithoutOrdersInput: UserCreateOneWithoutOrdersInputInputObject
+      UserCreateWithoutOrdersInput: UserCreateWithoutOrdersInputInputObject
+      OrderUpdateInput: OrderUpdateInputInputObject
+      OrderLineItemUpdateManyInput: OrderLineItemUpdateManyInputInputObject
+      OrderLineItemUpdateWithWhereUniqueNestedInput: OrderLineItemUpdateWithWhereUniqueNestedInputInputObject
+      OrderLineItemUpdateDataInput: OrderLineItemUpdateDataInputInputObject
+      UserUpdateOneInput: UserUpdateOneInputInputObject
+      UserUpdateDataInput: UserUpdateDataInputInputObject
+      OrderUpdateManyWithoutCustomerInput: OrderUpdateManyWithoutCustomerInputInputObject
+      OrderUpdateWithWhereUniqueWithoutCustomerInput: OrderUpdateWithWhereUniqueWithoutCustomerInputInputObject
+      OrderUpdateWithoutCustomerDataInput: OrderUpdateWithoutCustomerDataInputInputObject
+      PaymentUpdateOneRequiredWithoutOrderInput: PaymentUpdateOneRequiredWithoutOrderInputInputObject
+      PaymentUpdateWithoutOrderDataInput: PaymentUpdateWithoutOrderDataInputInputObject
+      PaymentUpsertWithoutOrderInput: PaymentUpsertWithoutOrderInputInputObject
+      OrderUpsertWithWhereUniqueWithoutCustomerInput: OrderUpsertWithWhereUniqueWithoutCustomerInputInputObject
+      OrderScalarWhereInput: OrderScalarWhereInputInputObject
+      OrderUpdateManyWithWhereNestedInput: OrderUpdateManyWithWhereNestedInputInputObject
+      OrderUpdateManyDataInput: OrderUpdateManyDataInputInputObject
+      UserUpsertNestedInput: UserUpsertNestedInputInputObject
+      OrderOptionValuesUpdateManyInput: OrderOptionValuesUpdateManyInputInputObject
+      OrderOptionValuesUpdateWithWhereUniqueNestedInput: OrderOptionValuesUpdateWithWhereUniqueNestedInputInputObject
+      OrderOptionValuesUpdateDataInput: OrderOptionValuesUpdateDataInputInputObject
+      OrderOptionValuesUpsertWithWhereUniqueNestedInput: OrderOptionValuesUpsertWithWhereUniqueNestedInputInputObject
+      OrderOptionValuesScalarWhereInput: OrderOptionValuesScalarWhereInputInputObject
+      OrderOptionValuesUpdateManyWithWhereNestedInput: OrderOptionValuesUpdateManyWithWhereNestedInputInputObject
+      OrderOptionValuesUpdateManyDataInput: OrderOptionValuesUpdateManyDataInputInputObject
+      OrderLineItemUpsertWithWhereUniqueNestedInput: OrderLineItemUpsertWithWhereUniqueNestedInputInputObject
+      OrderLineItemScalarWhereInput: OrderLineItemScalarWhereInputInputObject
+      OrderLineItemUpdateManyWithWhereNestedInput: OrderLineItemUpdateManyWithWhereNestedInputInputObject
+      OrderLineItemUpdateManyDataInput: OrderLineItemUpdateManyDataInputInputObject
+      UserUpdateOneRequiredWithoutOrdersInput: UserUpdateOneRequiredWithoutOrdersInputInputObject
+      UserUpdateWithoutOrdersDataInput: UserUpdateWithoutOrdersDataInputInputObject
+      UserUpsertWithoutOrdersInput: UserUpsertWithoutOrdersInputInputObject
+      OrderUpdateManyMutationInput: OrderUpdateManyMutationInputInputObject
+      OrderLineItemUpdateInput: OrderLineItemUpdateInputInputObject
+      OrderLineItemUpdateManyMutationInput: OrderLineItemUpdateManyMutationInputInputObject
+      OrderOptionValuesUpdateInput: OrderOptionValuesUpdateInputInputObject
+      OrderOptionValuesUpdateManyMutationInput: OrderOptionValuesUpdateManyMutationInputInputObject
+      PaymentCreateInput: PaymentCreateInputInputObject
+      OrderCreateOneWithoutPaymentInput: OrderCreateOneWithoutPaymentInputInputObject
+      OrderCreateWithoutPaymentInput: OrderCreateWithoutPaymentInputInputObject
+      PaymentUpdateInput: PaymentUpdateInputInputObject
+      OrderUpdateOneRequiredWithoutPaymentInput: OrderUpdateOneRequiredWithoutPaymentInputInputObject
+      OrderUpdateWithoutPaymentDataInput: OrderUpdateWithoutPaymentDataInputInputObject
+      OrderUpsertWithoutPaymentInput: OrderUpsertWithoutPaymentInputInputObject
+      PaymentUpdateManyMutationInput: PaymentUpdateManyMutationInputInputObject
+      UserUpdateInput: UserUpdateInputInputObject
       CollectionSubscriptionWhereInput: CollectionSubscriptionWhereInputInputObject
       CollectionRuleSetSubscriptionWhereInput: CollectionRuleSetSubscriptionWhereInputInputObject
       CollectionRuleSubscriptionWhereInput: CollectionRuleSubscriptionWhereInputInputObject
@@ -326,6 +454,11 @@ export interface NexusPrismaTypes {
       OptionSubscriptionWhereInput: OptionSubscriptionWhereInputInputObject
       VariantSubscriptionWhereInput: VariantSubscriptionWhereInputInputObject
       ImageSubscriptionWhereInput: ImageSubscriptionWhereInputInputObject
+      OrderSubscriptionWhereInput: OrderSubscriptionWhereInputInputObject
+      OrderLineItemSubscriptionWhereInput: OrderLineItemSubscriptionWhereInputInputObject
+      OrderOptionValuesSubscriptionWhereInput: OrderOptionValuesSubscriptionWhereInputInputObject
+      PaymentSubscriptionWhereInput: PaymentSubscriptionWhereInputInputObject
+      UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
@@ -342,6 +475,15 @@ export interface NexusPrismaTypes {
     ProductTypeOrderByInput: ProductTypeOrderByInputValues,
     BrandOrderByInput: BrandOrderByInputValues,
     OptionOrderByInput: OptionOrderByInputValues,
+    PaymentMethod: PaymentMethodValues,
+    PaymentState: PaymentStateValues,
+    CurrencyCode: CurrencyCodeValues,
+    OrderState: OrderStateValues,
+    OrderLineItemOrderByInput: OrderLineItemOrderByInputValues,
+    OrderOrderByInput: OrderOrderByInputValues,
+    OrderOptionValuesOrderByInput: OrderOptionValuesOrderByInputValues,
+    PaymentOrderByInput: PaymentOrderByInputValues,
+    UserOrderByInput: UserOrderByInputValues,
     MutationType: MutationTypeValues,
   }
 }
@@ -383,6 +525,21 @@ type QueryObject =
   | { name: 'image', args?: QueryImageArgs[] | false, alias?: string  } 
   | { name: 'images', args?: QueryImagesArgs[] | false, alias?: string  } 
   | { name: 'imagesConnection', args?: QueryImagesConnectionArgs[] | false, alias?: string  } 
+  | { name: 'order', args?: QueryOrderArgs[] | false, alias?: string  } 
+  | { name: 'orders', args?: QueryOrdersArgs[] | false, alias?: string  } 
+  | { name: 'ordersConnection', args?: QueryOrdersConnectionArgs[] | false, alias?: string  } 
+  | { name: 'orderLineItem', args?: QueryOrderLineItemArgs[] | false, alias?: string  } 
+  | { name: 'orderLineItems', args?: QueryOrderLineItemsArgs[] | false, alias?: string  } 
+  | { name: 'orderLineItemsConnection', args?: QueryOrderLineItemsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'orderOptionValues', args?: QueryOrderOptionValuesArgs[] | false, alias?: string  } 
+  | { name: 'orderOptionValueses', args?: QueryOrderOptionValuesesArgs[] | false, alias?: string  } 
+  | { name: 'orderOptionValuesesConnection', args?: QueryOrderOptionValuesesConnectionArgs[] | false, alias?: string  } 
+  | { name: 'payment', args?: QueryPaymentArgs[] | false, alias?: string  } 
+  | { name: 'payments', args?: QueryPaymentsArgs[] | false, alias?: string  } 
+  | { name: 'paymentsConnection', args?: QueryPaymentsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'user', args?: QueryUserArgs[] | false, alias?: string  } 
+  | { name: 'users', args?: QueryUsersArgs[] | false, alias?: string  } 
+  | { name: 'usersConnection', args?: QueryUsersConnectionArgs[] | false, alias?: string  } 
 
 type QueryFields =
   | 'collection'
@@ -418,6 +575,21 @@ type QueryFields =
   | 'image'
   | 'images'
   | 'imagesConnection'
+  | 'order'
+  | 'orders'
+  | 'ordersConnection'
+  | 'orderLineItem'
+  | 'orderLineItems'
+  | 'orderLineItemsConnection'
+  | 'orderOptionValues'
+  | 'orderOptionValueses'
+  | 'orderOptionValuesesConnection'
+  | 'payment'
+  | 'payments'
+  | 'paymentsConnection'
+  | 'user'
+  | 'users'
+  | 'usersConnection'
 
 
 type QueryCollectionArgs =
@@ -611,6 +783,96 @@ type QueryImagesArgs =
   | 'first'
   | 'last'
 type QueryImagesConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryOrderArgs =
+  | 'where'
+type QueryOrdersArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryOrdersConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryOrderLineItemArgs =
+  | 'where'
+type QueryOrderLineItemsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryOrderLineItemsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryOrderOptionValuesArgs =
+  | 'where'
+type QueryOrderOptionValuesesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryOrderOptionValuesesConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryPaymentArgs =
+  | 'where'
+type QueryPaymentsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryPaymentsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryUserArgs =
+  | 'where'
+type QueryUsersArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryUsersConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -1049,6 +1311,201 @@ export interface QueryFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.ImageConnection> | prisma.ImageConnection
+  }
+  order: {
+    type: 'Order'
+    args: Record<QueryOrderArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: OrderWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Order | null> | prisma.Order | null
+  }
+  orders: {
+    type: 'Order'
+    args: Record<QueryOrdersArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: OrderWhereInput | null, orderBy?: prisma.OrderOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Order[]> | prisma.Order[]
+  }
+  ordersConnection: {
+    type: 'OrderConnection'
+    args: Record<QueryOrdersConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: OrderWhereInput | null, orderBy?: prisma.OrderOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderConnection> | prisma.OrderConnection
+  }
+  orderLineItem: {
+    type: 'OrderLineItem'
+    args: Record<QueryOrderLineItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: OrderLineItemWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItem | null> | prisma.OrderLineItem | null
+  }
+  orderLineItems: {
+    type: 'OrderLineItem'
+    args: Record<QueryOrderLineItemsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: OrderLineItemWhereInput | null, orderBy?: prisma.OrderLineItemOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItem[]> | prisma.OrderLineItem[]
+  }
+  orderLineItemsConnection: {
+    type: 'OrderLineItemConnection'
+    args: Record<QueryOrderLineItemsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: OrderLineItemWhereInput | null, orderBy?: prisma.OrderLineItemOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItemConnection> | prisma.OrderLineItemConnection
+  }
+  orderOptionValues: {
+    type: 'OrderOptionValues'
+    args: Record<QueryOrderOptionValuesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: OrderOptionValuesWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValues | null> | prisma.OrderOptionValues | null
+  }
+  orderOptionValueses: {
+    type: 'OrderOptionValues'
+    args: Record<QueryOrderOptionValuesesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: OrderOptionValuesWhereInput | null, orderBy?: prisma.OrderOptionValuesOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValues[]> | prisma.OrderOptionValues[]
+  }
+  orderOptionValuesesConnection: {
+    type: 'OrderOptionValuesConnection'
+    args: Record<QueryOrderOptionValuesesConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: OrderOptionValuesWhereInput | null, orderBy?: prisma.OrderOptionValuesOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValuesConnection> | prisma.OrderOptionValuesConnection
+  }
+  payment: {
+    type: 'Payment'
+    args: Record<QueryPaymentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: PaymentWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Payment | null> | prisma.Payment | null
+  }
+  payments: {
+    type: 'Payment'
+    args: Record<QueryPaymentsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: PaymentWhereInput | null, orderBy?: prisma.PaymentOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Payment[]> | prisma.Payment[]
+  }
+  paymentsConnection: {
+    type: 'PaymentConnection'
+    args: Record<QueryPaymentsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: PaymentWhereInput | null, orderBy?: prisma.PaymentOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PaymentConnection> | prisma.PaymentConnection
+  }
+  user: {
+    type: 'User'
+    args: Record<QueryUserArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: UserWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User | null> | prisma.User | null
+  }
+  users: {
+    type: 'User'
+    args: Record<QueryUsersArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: UserWhereInput | null, orderBy?: prisma.UserOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User[]> | prisma.User[]
+  }
+  usersConnection: {
+    type: 'UserConnection'
+    args: Record<QueryUsersConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: UserWhereInput | null, orderBy?: prisma.UserOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserConnection> | prisma.UserConnection
   }
 }
   
@@ -3256,6 +3713,1070 @@ export interface AggregateImageFieldDetails {
 }
   
 
+// Types for Order
+
+type OrderObject =
+  | OrderFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'items', args?: OrderItemsArgs[] | false, alias?: string  } 
+  | { name: 'customer', args?: [] | false, alias?: string  } 
+  | { name: 'subTotalBeforeTax', args?: [] | false, alias?: string  } 
+  | { name: 'subTotal', args?: [] | false, alias?: string  } 
+  | { name: 'payment', args?: [] | false, alias?: string  } 
+  | { name: 'state', args?: [] | false, alias?: string  } 
+
+type OrderFields =
+  | 'id'
+  | 'createdAt'
+  | 'items'
+  | 'customer'
+  | 'subTotalBeforeTax'
+  | 'subTotal'
+  | 'payment'
+  | 'state'
+
+
+type OrderItemsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface OrderFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  items: {
+    type: 'OrderLineItem'
+    args: Record<OrderItemsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Order">,
+      args: { where?: OrderLineItemWhereInput | null, orderBy?: prisma.OrderLineItemOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItem[]> | prisma.OrderLineItem[]
+  }
+  customer: {
+    type: 'User'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Order">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User> | prisma.User
+  }
+  subTotalBeforeTax: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  subTotal: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  payment: {
+    type: 'Payment'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Order">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Payment> | prisma.Payment
+  }
+  state: {
+    type: 'OrderState'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Order">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderState> | prisma.OrderState
+  }
+}
+  
+
+// Types for OrderLineItem
+
+type OrderLineItemObject =
+  | OrderLineItemFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'owner', args?: [] | false, alias?: string  } 
+  | { name: 'image', args?: [] | false, alias?: string  } 
+  | { name: 'quantity', args?: [] | false, alias?: string  } 
+  | { name: 'unitPrice', args?: [] | false, alias?: string  } 
+  | { name: 'sku', args?: [] | false, alias?: string  } 
+  | { name: 'orderOptionValues', args?: OrderLineItemOrderOptionValuesArgs[] | false, alias?: string  } 
+
+type OrderLineItemFields =
+  | 'id'
+  | 'owner'
+  | 'image'
+  | 'quantity'
+  | 'unitPrice'
+  | 'sku'
+  | 'orderOptionValues'
+
+
+type OrderLineItemOrderOptionValuesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface OrderLineItemFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  owner: {
+    type: 'User'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"OrderLineItem">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User | null> | prisma.User | null
+  }
+  image: {
+    type: 'Image'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderLineItem">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Image> | prisma.Image
+  }
+  quantity: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  unitPrice: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  sku: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  orderOptionValues: {
+    type: 'OrderOptionValues'
+    args: Record<OrderLineItemOrderOptionValuesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderLineItem">,
+      args: { where?: OrderOptionValuesWhereInput | null, orderBy?: prisma.OrderOptionValuesOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValues[]> | prisma.OrderOptionValues[]
+  }
+}
+  
+
+// Types for User
+
+type UserObject =
+  | UserFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'orders', args?: UserOrdersArgs[] | false, alias?: string  } 
+  | { name: 'cart', args?: UserCartArgs[] | false, alias?: string  } 
+
+type UserFields =
+  | 'id'
+  | 'orders'
+  | 'cart'
+
+
+type UserOrdersArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type UserCartArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface UserFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  orders: {
+    type: 'Order'
+    args: Record<UserOrdersArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"User">,
+      args: { where?: OrderWhereInput | null, orderBy?: prisma.OrderOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Order[]> | prisma.Order[]
+  }
+  cart: {
+    type: 'Variant'
+    args: Record<UserCartArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"User">,
+      args: { where?: VariantWhereInput | null, orderBy?: prisma.VariantOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Variant[]> | prisma.Variant[]
+  }
+}
+  
+
+// Types for OrderOptionValues
+
+type OrderOptionValuesObject =
+  | OrderOptionValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'optionName', args?: [] | false, alias?: string  } 
+  | { name: 'optionValue', args?: [] | false, alias?: string  } 
+
+type OrderOptionValuesFields =
+  | 'id'
+  | 'optionName'
+  | 'optionValue'
+
+
+
+  
+
+export interface OrderOptionValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  optionName: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  optionValue: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for Payment
+
+type PaymentObject =
+  | PaymentFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'method', args?: [] | false, alias?: string  } 
+  | { name: 'amount', args?: [] | false, alias?: string  } 
+  | { name: 'state', args?: [] | false, alias?: string  } 
+  | { name: 'order', args?: [] | false, alias?: string  } 
+  | { name: 'currencyCode', args?: [] | false, alias?: string  } 
+
+type PaymentFields =
+  | 'id'
+  | 'method'
+  | 'amount'
+  | 'state'
+  | 'order'
+  | 'currencyCode'
+
+
+
+  
+
+export interface PaymentFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  method: {
+    type: 'PaymentMethod'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Payment">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PaymentMethod> | prisma.PaymentMethod
+  }
+  amount: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  state: {
+    type: 'PaymentState'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Payment">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PaymentState> | prisma.PaymentState
+  }
+  order: {
+    type: 'Order'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Payment">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Order> | prisma.Order
+  }
+  currencyCode: {
+    type: 'CurrencyCode'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Payment">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CurrencyCode> | prisma.CurrencyCode
+  }
+}
+  
+
+// Types for OrderConnection
+
+type OrderConnectionObject =
+  | OrderConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type OrderConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface OrderConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'OrderEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderEdge[]> | prisma.OrderEdge[]
+  }
+  aggregate: {
+    type: 'AggregateOrder'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateOrder> | prisma.AggregateOrder
+  }
+}
+  
+
+// Types for OrderEdge
+
+type OrderEdgeObject =
+  | OrderEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type OrderEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface OrderEdgeFieldDetails {
+  node: {
+    type: 'Order'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Order> | prisma.Order
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateOrder
+
+type AggregateOrderObject =
+  | AggregateOrderFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateOrderFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateOrderFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for OrderLineItemConnection
+
+type OrderLineItemConnectionObject =
+  | OrderLineItemConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type OrderLineItemConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface OrderLineItemConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderLineItemConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'OrderLineItemEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderLineItemConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItemEdge[]> | prisma.OrderLineItemEdge[]
+  }
+  aggregate: {
+    type: 'AggregateOrderLineItem'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderLineItemConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateOrderLineItem> | prisma.AggregateOrderLineItem
+  }
+}
+  
+
+// Types for OrderLineItemEdge
+
+type OrderLineItemEdgeObject =
+  | OrderLineItemEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type OrderLineItemEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface OrderLineItemEdgeFieldDetails {
+  node: {
+    type: 'OrderLineItem'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderLineItemEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItem> | prisma.OrderLineItem
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateOrderLineItem
+
+type AggregateOrderLineItemObject =
+  | AggregateOrderLineItemFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateOrderLineItemFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateOrderLineItemFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for OrderOptionValuesConnection
+
+type OrderOptionValuesConnectionObject =
+  | OrderOptionValuesConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type OrderOptionValuesConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface OrderOptionValuesConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderOptionValuesConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'OrderOptionValuesEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderOptionValuesConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValuesEdge[]> | prisma.OrderOptionValuesEdge[]
+  }
+  aggregate: {
+    type: 'AggregateOrderOptionValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderOptionValuesConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateOrderOptionValues> | prisma.AggregateOrderOptionValues
+  }
+}
+  
+
+// Types for OrderOptionValuesEdge
+
+type OrderOptionValuesEdgeObject =
+  | OrderOptionValuesEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type OrderOptionValuesEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface OrderOptionValuesEdgeFieldDetails {
+  node: {
+    type: 'OrderOptionValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderOptionValuesEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValues> | prisma.OrderOptionValues
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateOrderOptionValues
+
+type AggregateOrderOptionValuesObject =
+  | AggregateOrderOptionValuesFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateOrderOptionValuesFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateOrderOptionValuesFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for PaymentConnection
+
+type PaymentConnectionObject =
+  | PaymentConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type PaymentConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface PaymentConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PaymentConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'PaymentEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PaymentConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PaymentEdge[]> | prisma.PaymentEdge[]
+  }
+  aggregate: {
+    type: 'AggregatePayment'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PaymentConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregatePayment> | prisma.AggregatePayment
+  }
+}
+  
+
+// Types for PaymentEdge
+
+type PaymentEdgeObject =
+  | PaymentEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type PaymentEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface PaymentEdgeFieldDetails {
+  node: {
+    type: 'Payment'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PaymentEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Payment> | prisma.Payment
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregatePayment
+
+type AggregatePaymentObject =
+  | AggregatePaymentFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregatePaymentFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregatePaymentFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for UserConnection
+
+type UserConnectionObject =
+  | UserConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type UserConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface UserConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'UserEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserEdge[]> | prisma.UserEdge[]
+  }
+  aggregate: {
+    type: 'AggregateUser'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateUser> | prisma.AggregateUser
+  }
+}
+  
+
+// Types for UserEdge
+
+type UserEdgeObject =
+  | UserEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type UserEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface UserEdgeFieldDetails {
+  node: {
+    type: 'User'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User> | prisma.User
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateUser
+
+type AggregateUserObject =
+  | AggregateUserFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateUserFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateUserFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 // Types for Mutation
 
 type MutationObject =
@@ -3326,6 +4847,35 @@ type MutationObject =
   | { name: 'upsertImage', args?: MutationUpsertImageArgs[] | false, alias?: string  } 
   | { name: 'deleteImage', args?: MutationDeleteImageArgs[] | false, alias?: string  } 
   | { name: 'deleteManyImages', args?: MutationDeleteManyImagesArgs[] | false, alias?: string  } 
+  | { name: 'createOrder', args?: MutationCreateOrderArgs[] | false, alias?: string  } 
+  | { name: 'updateOrder', args?: MutationUpdateOrderArgs[] | false, alias?: string  } 
+  | { name: 'updateManyOrders', args?: MutationUpdateManyOrdersArgs[] | false, alias?: string  } 
+  | { name: 'upsertOrder', args?: MutationUpsertOrderArgs[] | false, alias?: string  } 
+  | { name: 'deleteOrder', args?: MutationDeleteOrderArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyOrders', args?: MutationDeleteManyOrdersArgs[] | false, alias?: string  } 
+  | { name: 'createOrderLineItem', args?: MutationCreateOrderLineItemArgs[] | false, alias?: string  } 
+  | { name: 'updateOrderLineItem', args?: MutationUpdateOrderLineItemArgs[] | false, alias?: string  } 
+  | { name: 'updateManyOrderLineItems', args?: MutationUpdateManyOrderLineItemsArgs[] | false, alias?: string  } 
+  | { name: 'upsertOrderLineItem', args?: MutationUpsertOrderLineItemArgs[] | false, alias?: string  } 
+  | { name: 'deleteOrderLineItem', args?: MutationDeleteOrderLineItemArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyOrderLineItems', args?: MutationDeleteManyOrderLineItemsArgs[] | false, alias?: string  } 
+  | { name: 'createOrderOptionValues', args?: MutationCreateOrderOptionValuesArgs[] | false, alias?: string  } 
+  | { name: 'updateOrderOptionValues', args?: MutationUpdateOrderOptionValuesArgs[] | false, alias?: string  } 
+  | { name: 'updateManyOrderOptionValueses', args?: MutationUpdateManyOrderOptionValuesesArgs[] | false, alias?: string  } 
+  | { name: 'upsertOrderOptionValues', args?: MutationUpsertOrderOptionValuesArgs[] | false, alias?: string  } 
+  | { name: 'deleteOrderOptionValues', args?: MutationDeleteOrderOptionValuesArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyOrderOptionValueses', args?: MutationDeleteManyOrderOptionValuesesArgs[] | false, alias?: string  } 
+  | { name: 'createPayment', args?: MutationCreatePaymentArgs[] | false, alias?: string  } 
+  | { name: 'updatePayment', args?: MutationUpdatePaymentArgs[] | false, alias?: string  } 
+  | { name: 'updateManyPayments', args?: MutationUpdateManyPaymentsArgs[] | false, alias?: string  } 
+  | { name: 'upsertPayment', args?: MutationUpsertPaymentArgs[] | false, alias?: string  } 
+  | { name: 'deletePayment', args?: MutationDeletePaymentArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyPayments', args?: MutationDeleteManyPaymentsArgs[] | false, alias?: string  } 
+  | { name: 'createUser', args?: MutationCreateUserArgs[] | false, alias?: string  } 
+  | { name: 'updateUser', args?: MutationUpdateUserArgs[] | false, alias?: string  } 
+  | { name: 'upsertUser', args?: MutationUpsertUserArgs[] | false, alias?: string  } 
+  | { name: 'deleteUser', args?: MutationDeleteUserArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyUsers', args?: MutationDeleteManyUsersArgs[] | false, alias?: string  } 
 
 type MutationFields =
   | 'createCollection'
@@ -3394,6 +4944,35 @@ type MutationFields =
   | 'upsertImage'
   | 'deleteImage'
   | 'deleteManyImages'
+  | 'createOrder'
+  | 'updateOrder'
+  | 'updateManyOrders'
+  | 'upsertOrder'
+  | 'deleteOrder'
+  | 'deleteManyOrders'
+  | 'createOrderLineItem'
+  | 'updateOrderLineItem'
+  | 'updateManyOrderLineItems'
+  | 'upsertOrderLineItem'
+  | 'deleteOrderLineItem'
+  | 'deleteManyOrderLineItems'
+  | 'createOrderOptionValues'
+  | 'updateOrderOptionValues'
+  | 'updateManyOrderOptionValueses'
+  | 'upsertOrderOptionValues'
+  | 'deleteOrderOptionValues'
+  | 'deleteManyOrderOptionValueses'
+  | 'createPayment'
+  | 'updatePayment'
+  | 'updateManyPayments'
+  | 'upsertPayment'
+  | 'deletePayment'
+  | 'deleteManyPayments'
+  | 'createUser'
+  | 'updateUser'
+  | 'upsertUser'
+  | 'deleteUser'
+  | 'deleteManyUsers'
 
 
 type MutationCreateCollectionArgs =
@@ -3571,6 +5150,83 @@ type MutationUpsertImageArgs =
 type MutationDeleteImageArgs =
   | 'where'
 type MutationDeleteManyImagesArgs =
+  | 'where'
+type MutationCreateOrderArgs =
+  | 'data'
+type MutationUpdateOrderArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyOrdersArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertOrderArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteOrderArgs =
+  | 'where'
+type MutationDeleteManyOrdersArgs =
+  | 'where'
+type MutationCreateOrderLineItemArgs =
+  | 'data'
+type MutationUpdateOrderLineItemArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyOrderLineItemsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertOrderLineItemArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteOrderLineItemArgs =
+  | 'where'
+type MutationDeleteManyOrderLineItemsArgs =
+  | 'where'
+type MutationCreateOrderOptionValuesArgs =
+  | 'data'
+type MutationUpdateOrderOptionValuesArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyOrderOptionValuesesArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertOrderOptionValuesArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteOrderOptionValuesArgs =
+  | 'where'
+type MutationDeleteManyOrderOptionValuesesArgs =
+  | 'where'
+type MutationCreatePaymentArgs =
+  | 'data'
+type MutationUpdatePaymentArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyPaymentsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertPaymentArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeletePaymentArgs =
+  | 'where'
+type MutationDeleteManyPaymentsArgs =
+  | 'where'
+type MutationCreateUserArgs =
+  | 'data'
+type MutationUpdateUserArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertUserArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteUserArgs =
+  | 'where'
+type MutationDeleteManyUsersArgs =
   | 'where'
   
 
@@ -4433,6 +6089,383 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
+  createOrder: {
+    type: 'Order'
+    args: Record<MutationCreateOrderArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: OrderCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Order> | prisma.Order
+  }
+  updateOrder: {
+    type: 'Order'
+    args: Record<MutationUpdateOrderArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: OrderUpdateInput, where: OrderWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Order | null> | prisma.Order | null
+  }
+  updateManyOrders: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyOrdersArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: OrderUpdateManyMutationInput, where?: OrderWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertOrder: {
+    type: 'Order'
+    args: Record<MutationUpsertOrderArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: OrderWhereUniqueInput, create: OrderCreateInput, update: OrderUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Order> | prisma.Order
+  }
+  deleteOrder: {
+    type: 'Order'
+    args: Record<MutationDeleteOrderArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: OrderWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Order | null> | prisma.Order | null
+  }
+  deleteManyOrders: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyOrdersArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: OrderWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createOrderLineItem: {
+    type: 'OrderLineItem'
+    args: Record<MutationCreateOrderLineItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: OrderLineItemCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItem> | prisma.OrderLineItem
+  }
+  updateOrderLineItem: {
+    type: 'OrderLineItem'
+    args: Record<MutationUpdateOrderLineItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: OrderLineItemUpdateInput, where: OrderLineItemWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItem | null> | prisma.OrderLineItem | null
+  }
+  updateManyOrderLineItems: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyOrderLineItemsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: OrderLineItemUpdateManyMutationInput, where?: OrderLineItemWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertOrderLineItem: {
+    type: 'OrderLineItem'
+    args: Record<MutationUpsertOrderLineItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: OrderLineItemWhereUniqueInput, create: OrderLineItemCreateInput, update: OrderLineItemUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItem> | prisma.OrderLineItem
+  }
+  deleteOrderLineItem: {
+    type: 'OrderLineItem'
+    args: Record<MutationDeleteOrderLineItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: OrderLineItemWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItem | null> | prisma.OrderLineItem | null
+  }
+  deleteManyOrderLineItems: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyOrderLineItemsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: OrderLineItemWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createOrderOptionValues: {
+    type: 'OrderOptionValues'
+    args: Record<MutationCreateOrderOptionValuesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: OrderOptionValuesCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValues> | prisma.OrderOptionValues
+  }
+  updateOrderOptionValues: {
+    type: 'OrderOptionValues'
+    args: Record<MutationUpdateOrderOptionValuesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: OrderOptionValuesUpdateInput, where: OrderOptionValuesWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValues | null> | prisma.OrderOptionValues | null
+  }
+  updateManyOrderOptionValueses: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyOrderOptionValuesesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: OrderOptionValuesUpdateManyMutationInput, where?: OrderOptionValuesWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertOrderOptionValues: {
+    type: 'OrderOptionValues'
+    args: Record<MutationUpsertOrderOptionValuesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: OrderOptionValuesWhereUniqueInput, create: OrderOptionValuesCreateInput, update: OrderOptionValuesUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValues> | prisma.OrderOptionValues
+  }
+  deleteOrderOptionValues: {
+    type: 'OrderOptionValues'
+    args: Record<MutationDeleteOrderOptionValuesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: OrderOptionValuesWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValues | null> | prisma.OrderOptionValues | null
+  }
+  deleteManyOrderOptionValueses: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyOrderOptionValuesesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: OrderOptionValuesWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createPayment: {
+    type: 'Payment'
+    args: Record<MutationCreatePaymentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PaymentCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Payment> | prisma.Payment
+  }
+  updatePayment: {
+    type: 'Payment'
+    args: Record<MutationUpdatePaymentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PaymentUpdateInput, where: PaymentWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Payment | null> | prisma.Payment | null
+  }
+  updateManyPayments: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyPaymentsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PaymentUpdateManyMutationInput, where?: PaymentWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertPayment: {
+    type: 'Payment'
+    args: Record<MutationUpsertPaymentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: PaymentWhereUniqueInput, create: PaymentCreateInput, update: PaymentUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Payment> | prisma.Payment
+  }
+  deletePayment: {
+    type: 'Payment'
+    args: Record<MutationDeletePaymentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: PaymentWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Payment | null> | prisma.Payment | null
+  }
+  deleteManyPayments: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyPaymentsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: PaymentWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createUser: {
+    type: 'User'
+    args: Record<MutationCreateUserArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: UserCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User> | prisma.User
+  }
+  updateUser: {
+    type: 'User'
+    args: Record<MutationUpdateUserArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: UserUpdateInput, where: UserWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User | null> | prisma.User | null
+  }
+  upsertUser: {
+    type: 'User'
+    args: Record<MutationUpsertUserArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User> | prisma.User
+  }
+  deleteUser: {
+    type: 'User'
+    args: Record<MutationDeleteUserArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: UserWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User | null> | prisma.User | null
+  }
+  deleteManyUsers: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyUsersArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: UserWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
 }
   
 
@@ -4476,6 +6509,11 @@ type SubscriptionObject =
   | { name: 'option', args?: SubscriptionOptionArgs[] | false, alias?: string  } 
   | { name: 'variant', args?: SubscriptionVariantArgs[] | false, alias?: string  } 
   | { name: 'image', args?: SubscriptionImageArgs[] | false, alias?: string  } 
+  | { name: 'order', args?: SubscriptionOrderArgs[] | false, alias?: string  } 
+  | { name: 'orderLineItem', args?: SubscriptionOrderLineItemArgs[] | false, alias?: string  } 
+  | { name: 'orderOptionValues', args?: SubscriptionOrderOptionValuesArgs[] | false, alias?: string  } 
+  | { name: 'payment', args?: SubscriptionPaymentArgs[] | false, alias?: string  } 
+  | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
   | 'collection'
@@ -4489,6 +6527,11 @@ type SubscriptionFields =
   | 'option'
   | 'variant'
   | 'image'
+  | 'order'
+  | 'orderLineItem'
+  | 'orderOptionValues'
+  | 'payment'
+  | 'user'
 
 
 type SubscriptionCollectionArgs =
@@ -4512,6 +6555,16 @@ type SubscriptionOptionArgs =
 type SubscriptionVariantArgs =
   | 'where'
 type SubscriptionImageArgs =
+  | 'where'
+type SubscriptionOrderArgs =
+  | 'where'
+type SubscriptionOrderLineItemArgs =
+  | 'where'
+type SubscriptionOrderOptionValuesArgs =
+  | 'where'
+type SubscriptionPaymentArgs =
+  | 'where'
+type SubscriptionUserArgs =
   | 'where'
   
 
@@ -4658,6 +6711,71 @@ export interface SubscriptionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.ImageSubscriptionPayload | null> | prisma.ImageSubscriptionPayload | null
+  }
+  order: {
+    type: 'OrderSubscriptionPayload'
+    args: Record<SubscriptionOrderArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: OrderSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderSubscriptionPayload | null> | prisma.OrderSubscriptionPayload | null
+  }
+  orderLineItem: {
+    type: 'OrderLineItemSubscriptionPayload'
+    args: Record<SubscriptionOrderLineItemArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: OrderLineItemSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItemSubscriptionPayload | null> | prisma.OrderLineItemSubscriptionPayload | null
+  }
+  orderOptionValues: {
+    type: 'OrderOptionValuesSubscriptionPayload'
+    args: Record<SubscriptionOrderOptionValuesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: OrderOptionValuesSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValuesSubscriptionPayload | null> | prisma.OrderOptionValuesSubscriptionPayload | null
+  }
+  payment: {
+    type: 'PaymentSubscriptionPayload'
+    args: Record<SubscriptionPaymentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: PaymentSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PaymentSubscriptionPayload | null> | prisma.PaymentSubscriptionPayload | null
+  }
+  user: {
+    type: 'UserSubscriptionPayload'
+    args: Record<SubscriptionUserArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: UserSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserSubscriptionPayload | null> | prisma.UserSubscriptionPayload | null
   }
 }
   
@@ -5907,6 +8025,631 @@ export interface ImagePreviousValuesFieldDetails {
 }
   
 
+// Types for OrderSubscriptionPayload
+
+type OrderSubscriptionPayloadObject =
+  | OrderSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type OrderSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface OrderSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Order'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"OrderSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Order | null> | prisma.Order | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'OrderPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"OrderSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderPreviousValues | null> | prisma.OrderPreviousValues | null
+  }
+}
+  
+
+// Types for OrderPreviousValues
+
+type OrderPreviousValuesObject =
+  | OrderPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'subTotalBeforeTax', args?: [] | false, alias?: string  } 
+  | { name: 'subTotal', args?: [] | false, alias?: string  } 
+  | { name: 'state', args?: [] | false, alias?: string  } 
+
+type OrderPreviousValuesFields =
+  | 'id'
+  | 'createdAt'
+  | 'subTotalBeforeTax'
+  | 'subTotal'
+  | 'state'
+
+
+
+  
+
+export interface OrderPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  subTotalBeforeTax: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  subTotal: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  state: {
+    type: 'OrderState'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderPreviousValues">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderState> | prisma.OrderState
+  }
+}
+  
+
+// Types for OrderLineItemSubscriptionPayload
+
+type OrderLineItemSubscriptionPayloadObject =
+  | OrderLineItemSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type OrderLineItemSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface OrderLineItemSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderLineItemSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'OrderLineItem'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"OrderLineItemSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItem | null> | prisma.OrderLineItem | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'OrderLineItemPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"OrderLineItemSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderLineItemPreviousValues | null> | prisma.OrderLineItemPreviousValues | null
+  }
+}
+  
+
+// Types for OrderLineItemPreviousValues
+
+type OrderLineItemPreviousValuesObject =
+  | OrderLineItemPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'quantity', args?: [] | false, alias?: string  } 
+  | { name: 'unitPrice', args?: [] | false, alias?: string  } 
+  | { name: 'sku', args?: [] | false, alias?: string  } 
+
+type OrderLineItemPreviousValuesFields =
+  | 'id'
+  | 'quantity'
+  | 'unitPrice'
+  | 'sku'
+
+
+
+  
+
+export interface OrderLineItemPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  quantity: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  unitPrice: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  sku: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+}
+  
+
+// Types for OrderOptionValuesSubscriptionPayload
+
+type OrderOptionValuesSubscriptionPayloadObject =
+  | OrderOptionValuesSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type OrderOptionValuesSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface OrderOptionValuesSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"OrderOptionValuesSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'OrderOptionValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"OrderOptionValuesSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValues | null> | prisma.OrderOptionValues | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'OrderOptionValuesPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"OrderOptionValuesSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.OrderOptionValuesPreviousValues | null> | prisma.OrderOptionValuesPreviousValues | null
+  }
+}
+  
+
+// Types for OrderOptionValuesPreviousValues
+
+type OrderOptionValuesPreviousValuesObject =
+  | OrderOptionValuesPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'optionName', args?: [] | false, alias?: string  } 
+  | { name: 'optionValue', args?: [] | false, alias?: string  } 
+
+type OrderOptionValuesPreviousValuesFields =
+  | 'id'
+  | 'optionName'
+  | 'optionValue'
+
+
+
+  
+
+export interface OrderOptionValuesPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  optionName: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  optionValue: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for PaymentSubscriptionPayload
+
+type PaymentSubscriptionPayloadObject =
+  | PaymentSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type PaymentSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface PaymentSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PaymentSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Payment'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"PaymentSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Payment | null> | prisma.Payment | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'PaymentPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"PaymentSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PaymentPreviousValues | null> | prisma.PaymentPreviousValues | null
+  }
+}
+  
+
+// Types for PaymentPreviousValues
+
+type PaymentPreviousValuesObject =
+  | PaymentPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'method', args?: [] | false, alias?: string  } 
+  | { name: 'amount', args?: [] | false, alias?: string  } 
+  | { name: 'state', args?: [] | false, alias?: string  } 
+  | { name: 'currencyCode', args?: [] | false, alias?: string  } 
+
+type PaymentPreviousValuesFields =
+  | 'id'
+  | 'method'
+  | 'amount'
+  | 'state'
+  | 'currencyCode'
+
+
+
+  
+
+export interface PaymentPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  method: {
+    type: 'PaymentMethod'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PaymentPreviousValues">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PaymentMethod> | prisma.PaymentMethod
+  }
+  amount: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  state: {
+    type: 'PaymentState'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PaymentPreviousValues">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PaymentState> | prisma.PaymentState
+  }
+  currencyCode: {
+    type: 'CurrencyCode'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PaymentPreviousValues">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CurrencyCode> | prisma.CurrencyCode
+  }
+}
+  
+
+// Types for UserSubscriptionPayload
+
+type UserSubscriptionPayloadObject =
+  | UserSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type UserSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface UserSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'User'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"UserSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User | null> | prisma.User | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'UserPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"UserSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserPreviousValues | null> | prisma.UserPreviousValues | null
+  }
+}
+  
+
+// Types for UserPreviousValues
+
+type UserPreviousValuesObject =
+  | UserPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+
+type UserPreviousValuesFields =
+  | 'id'
+
+
+
+  
+
+export interface UserPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 
 export interface CollectionWhereUniqueInput {
   id?: string | null
@@ -6894,6 +9637,482 @@ export interface ImageWhereUniqueInput {
 }
 export type ImageWhereUniqueInputInputObject =
   | Extract<keyof ImageWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface OrderWhereUniqueInput {
+  id?: string | null
+}
+export type OrderWhereUniqueInputInputObject =
+  | Extract<keyof OrderWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface OrderLineItemWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  owner?: UserWhereInput | null
+  image?: ImageWhereInput | null
+  quantity?: number | null
+  quantity_not?: number | null
+  quantity_in?: number[]
+  quantity_not_in?: number[]
+  quantity_lt?: number | null
+  quantity_lte?: number | null
+  quantity_gt?: number | null
+  quantity_gte?: number | null
+  unitPrice?: number | null
+  unitPrice_not?: number | null
+  unitPrice_in?: number[]
+  unitPrice_not_in?: number[]
+  unitPrice_lt?: number | null
+  unitPrice_lte?: number | null
+  unitPrice_gt?: number | null
+  unitPrice_gte?: number | null
+  sku?: string | null
+  sku_not?: string | null
+  sku_in?: string[]
+  sku_not_in?: string[]
+  sku_lt?: string | null
+  sku_lte?: string | null
+  sku_gt?: string | null
+  sku_gte?: string | null
+  sku_contains?: string | null
+  sku_not_contains?: string | null
+  sku_starts_with?: string | null
+  sku_not_starts_with?: string | null
+  sku_ends_with?: string | null
+  sku_not_ends_with?: string | null
+  orderOptionValues_every?: OrderOptionValuesWhereInput | null
+  orderOptionValues_some?: OrderOptionValuesWhereInput | null
+  orderOptionValues_none?: OrderOptionValuesWhereInput | null
+  AND?: OrderLineItemWhereInput[]
+  OR?: OrderLineItemWhereInput[]
+  NOT?: OrderLineItemWhereInput[]
+}
+export type OrderLineItemWhereInputInputObject =
+  | Extract<keyof OrderLineItemWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
+  | { name: 'image', alias?: string  } 
+  | { name: 'quantity', alias?: string  } 
+  | { name: 'quantity_not', alias?: string  } 
+  | { name: 'quantity_in', alias?: string  } 
+  | { name: 'quantity_not_in', alias?: string  } 
+  | { name: 'quantity_lt', alias?: string  } 
+  | { name: 'quantity_lte', alias?: string  } 
+  | { name: 'quantity_gt', alias?: string  } 
+  | { name: 'quantity_gte', alias?: string  } 
+  | { name: 'unitPrice', alias?: string  } 
+  | { name: 'unitPrice_not', alias?: string  } 
+  | { name: 'unitPrice_in', alias?: string  } 
+  | { name: 'unitPrice_not_in', alias?: string  } 
+  | { name: 'unitPrice_lt', alias?: string  } 
+  | { name: 'unitPrice_lte', alias?: string  } 
+  | { name: 'unitPrice_gt', alias?: string  } 
+  | { name: 'unitPrice_gte', alias?: string  } 
+  | { name: 'sku', alias?: string  } 
+  | { name: 'sku_not', alias?: string  } 
+  | { name: 'sku_in', alias?: string  } 
+  | { name: 'sku_not_in', alias?: string  } 
+  | { name: 'sku_lt', alias?: string  } 
+  | { name: 'sku_lte', alias?: string  } 
+  | { name: 'sku_gt', alias?: string  } 
+  | { name: 'sku_gte', alias?: string  } 
+  | { name: 'sku_contains', alias?: string  } 
+  | { name: 'sku_not_contains', alias?: string  } 
+  | { name: 'sku_starts_with', alias?: string  } 
+  | { name: 'sku_not_starts_with', alias?: string  } 
+  | { name: 'sku_ends_with', alias?: string  } 
+  | { name: 'sku_not_ends_with', alias?: string  } 
+  | { name: 'orderOptionValues_every', alias?: string  } 
+  | { name: 'orderOptionValues_some', alias?: string  } 
+  | { name: 'orderOptionValues_none', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface UserWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  orders_every?: OrderWhereInput | null
+  orders_some?: OrderWhereInput | null
+  orders_none?: OrderWhereInput | null
+  cart_every?: VariantWhereInput | null
+  cart_some?: VariantWhereInput | null
+  cart_none?: VariantWhereInput | null
+  AND?: UserWhereInput[]
+  OR?: UserWhereInput[]
+  NOT?: UserWhereInput[]
+}
+export type UserWhereInputInputObject =
+  | Extract<keyof UserWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'orders_every', alias?: string  } 
+  | { name: 'orders_some', alias?: string  } 
+  | { name: 'orders_none', alias?: string  } 
+  | { name: 'cart_every', alias?: string  } 
+  | { name: 'cart_some', alias?: string  } 
+  | { name: 'cart_none', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface OrderWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  items_every?: OrderLineItemWhereInput | null
+  items_some?: OrderLineItemWhereInput | null
+  items_none?: OrderLineItemWhereInput | null
+  customer?: UserWhereInput | null
+  subTotalBeforeTax?: number | null
+  subTotalBeforeTax_not?: number | null
+  subTotalBeforeTax_in?: number[]
+  subTotalBeforeTax_not_in?: number[]
+  subTotalBeforeTax_lt?: number | null
+  subTotalBeforeTax_lte?: number | null
+  subTotalBeforeTax_gt?: number | null
+  subTotalBeforeTax_gte?: number | null
+  subTotal?: number | null
+  subTotal_not?: number | null
+  subTotal_in?: number[]
+  subTotal_not_in?: number[]
+  subTotal_lt?: number | null
+  subTotal_lte?: number | null
+  subTotal_gt?: number | null
+  subTotal_gte?: number | null
+  payment?: PaymentWhereInput | null
+  state?: prisma.OrderState | null
+  state_not?: prisma.OrderState | null
+  state_in?: prisma.OrderState[]
+  state_not_in?: prisma.OrderState[]
+  AND?: OrderWhereInput[]
+  OR?: OrderWhereInput[]
+  NOT?: OrderWhereInput[]
+}
+export type OrderWhereInputInputObject =
+  | Extract<keyof OrderWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'items_every', alias?: string  } 
+  | { name: 'items_some', alias?: string  } 
+  | { name: 'items_none', alias?: string  } 
+  | { name: 'customer', alias?: string  } 
+  | { name: 'subTotalBeforeTax', alias?: string  } 
+  | { name: 'subTotalBeforeTax_not', alias?: string  } 
+  | { name: 'subTotalBeforeTax_in', alias?: string  } 
+  | { name: 'subTotalBeforeTax_not_in', alias?: string  } 
+  | { name: 'subTotalBeforeTax_lt', alias?: string  } 
+  | { name: 'subTotalBeforeTax_lte', alias?: string  } 
+  | { name: 'subTotalBeforeTax_gt', alias?: string  } 
+  | { name: 'subTotalBeforeTax_gte', alias?: string  } 
+  | { name: 'subTotal', alias?: string  } 
+  | { name: 'subTotal_not', alias?: string  } 
+  | { name: 'subTotal_in', alias?: string  } 
+  | { name: 'subTotal_not_in', alias?: string  } 
+  | { name: 'subTotal_lt', alias?: string  } 
+  | { name: 'subTotal_lte', alias?: string  } 
+  | { name: 'subTotal_gt', alias?: string  } 
+  | { name: 'subTotal_gte', alias?: string  } 
+  | { name: 'payment', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  | { name: 'state_not', alias?: string  } 
+  | { name: 'state_in', alias?: string  } 
+  | { name: 'state_not_in', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface PaymentWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  method?: prisma.PaymentMethod | null
+  method_not?: prisma.PaymentMethod | null
+  method_in?: prisma.PaymentMethod[]
+  method_not_in?: prisma.PaymentMethod[]
+  amount?: number | null
+  amount_not?: number | null
+  amount_in?: number[]
+  amount_not_in?: number[]
+  amount_lt?: number | null
+  amount_lte?: number | null
+  amount_gt?: number | null
+  amount_gte?: number | null
+  state?: prisma.PaymentState | null
+  state_not?: prisma.PaymentState | null
+  state_in?: prisma.PaymentState[]
+  state_not_in?: prisma.PaymentState[]
+  order?: OrderWhereInput | null
+  currencyCode?: prisma.CurrencyCode | null
+  currencyCode_not?: prisma.CurrencyCode | null
+  currencyCode_in?: prisma.CurrencyCode[]
+  currencyCode_not_in?: prisma.CurrencyCode[]
+  AND?: PaymentWhereInput[]
+  OR?: PaymentWhereInput[]
+  NOT?: PaymentWhereInput[]
+}
+export type PaymentWhereInputInputObject =
+  | Extract<keyof PaymentWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'method', alias?: string  } 
+  | { name: 'method_not', alias?: string  } 
+  | { name: 'method_in', alias?: string  } 
+  | { name: 'method_not_in', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'amount_not', alias?: string  } 
+  | { name: 'amount_in', alias?: string  } 
+  | { name: 'amount_not_in', alias?: string  } 
+  | { name: 'amount_lt', alias?: string  } 
+  | { name: 'amount_lte', alias?: string  } 
+  | { name: 'amount_gt', alias?: string  } 
+  | { name: 'amount_gte', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  | { name: 'state_not', alias?: string  } 
+  | { name: 'state_in', alias?: string  } 
+  | { name: 'state_not_in', alias?: string  } 
+  | { name: 'order', alias?: string  } 
+  | { name: 'currencyCode', alias?: string  } 
+  | { name: 'currencyCode_not', alias?: string  } 
+  | { name: 'currencyCode_in', alias?: string  } 
+  | { name: 'currencyCode_not_in', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface OrderOptionValuesWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  optionName?: string | null
+  optionName_not?: string | null
+  optionName_in?: string[]
+  optionName_not_in?: string[]
+  optionName_lt?: string | null
+  optionName_lte?: string | null
+  optionName_gt?: string | null
+  optionName_gte?: string | null
+  optionName_contains?: string | null
+  optionName_not_contains?: string | null
+  optionName_starts_with?: string | null
+  optionName_not_starts_with?: string | null
+  optionName_ends_with?: string | null
+  optionName_not_ends_with?: string | null
+  optionValue?: string | null
+  optionValue_not?: string | null
+  optionValue_in?: string[]
+  optionValue_not_in?: string[]
+  optionValue_lt?: string | null
+  optionValue_lte?: string | null
+  optionValue_gt?: string | null
+  optionValue_gte?: string | null
+  optionValue_contains?: string | null
+  optionValue_not_contains?: string | null
+  optionValue_starts_with?: string | null
+  optionValue_not_starts_with?: string | null
+  optionValue_ends_with?: string | null
+  optionValue_not_ends_with?: string | null
+  AND?: OrderOptionValuesWhereInput[]
+  OR?: OrderOptionValuesWhereInput[]
+  NOT?: OrderOptionValuesWhereInput[]
+}
+export type OrderOptionValuesWhereInputInputObject =
+  | Extract<keyof OrderOptionValuesWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'optionName', alias?: string  } 
+  | { name: 'optionName_not', alias?: string  } 
+  | { name: 'optionName_in', alias?: string  } 
+  | { name: 'optionName_not_in', alias?: string  } 
+  | { name: 'optionName_lt', alias?: string  } 
+  | { name: 'optionName_lte', alias?: string  } 
+  | { name: 'optionName_gt', alias?: string  } 
+  | { name: 'optionName_gte', alias?: string  } 
+  | { name: 'optionName_contains', alias?: string  } 
+  | { name: 'optionName_not_contains', alias?: string  } 
+  | { name: 'optionName_starts_with', alias?: string  } 
+  | { name: 'optionName_not_starts_with', alias?: string  } 
+  | { name: 'optionName_ends_with', alias?: string  } 
+  | { name: 'optionName_not_ends_with', alias?: string  } 
+  | { name: 'optionValue', alias?: string  } 
+  | { name: 'optionValue_not', alias?: string  } 
+  | { name: 'optionValue_in', alias?: string  } 
+  | { name: 'optionValue_not_in', alias?: string  } 
+  | { name: 'optionValue_lt', alias?: string  } 
+  | { name: 'optionValue_lte', alias?: string  } 
+  | { name: 'optionValue_gt', alias?: string  } 
+  | { name: 'optionValue_gte', alias?: string  } 
+  | { name: 'optionValue_contains', alias?: string  } 
+  | { name: 'optionValue_not_contains', alias?: string  } 
+  | { name: 'optionValue_starts_with', alias?: string  } 
+  | { name: 'optionValue_not_starts_with', alias?: string  } 
+  | { name: 'optionValue_ends_with', alias?: string  } 
+  | { name: 'optionValue_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface OrderLineItemWhereUniqueInput {
+  id?: string | null
+}
+export type OrderLineItemWhereUniqueInputInputObject =
+  | Extract<keyof OrderLineItemWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface OrderOptionValuesWhereUniqueInput {
+  id?: string | null
+}
+export type OrderOptionValuesWhereUniqueInputInputObject =
+  | Extract<keyof OrderOptionValuesWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface PaymentWhereUniqueInput {
+  id?: string | null
+}
+export type PaymentWhereUniqueInputInputObject =
+  | Extract<keyof PaymentWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface UserWhereUniqueInput {
+  id?: string | null
+}
+export type UserWhereUniqueInputInputObject =
+  | Extract<keyof UserWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
 export interface CollectionCreateInput {
@@ -8899,6 +12118,950 @@ export type ImageUpdateManyMutationInputInputObject =
   | Extract<keyof ImageUpdateManyMutationInput, string>
   | { name: 'url', alias?: string  } 
   
+export interface OrderCreateInput {
+  items?: OrderLineItemCreateManyInput | null
+  customer?: UserCreateOneWithoutOrdersInput
+  subTotalBeforeTax?: number
+  subTotal?: number
+  payment?: PaymentCreateOneWithoutOrderInput
+  state?: prisma.OrderState
+}
+export type OrderCreateInputInputObject =
+  | Extract<keyof OrderCreateInput, string>
+  | { name: 'items', alias?: string  } 
+  | { name: 'customer', alias?: string  } 
+  | { name: 'subTotalBeforeTax', alias?: string  } 
+  | { name: 'subTotal', alias?: string  } 
+  | { name: 'payment', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  
+export interface OrderLineItemCreateManyInput {
+  create?: OrderLineItemCreateInput[]
+  connect?: OrderLineItemWhereUniqueInput[]
+}
+export type OrderLineItemCreateManyInputInputObject =
+  | Extract<keyof OrderLineItemCreateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface OrderLineItemCreateInput {
+  owner?: UserCreateOneInput | null
+  image?: ImageCreateOneInput
+  quantity?: number
+  unitPrice?: number
+  sku?: string | null
+  orderOptionValues?: OrderOptionValuesCreateManyInput | null
+}
+export type OrderLineItemCreateInputInputObject =
+  | Extract<keyof OrderLineItemCreateInput, string>
+  | { name: 'owner', alias?: string  } 
+  | { name: 'image', alias?: string  } 
+  | { name: 'quantity', alias?: string  } 
+  | { name: 'unitPrice', alias?: string  } 
+  | { name: 'sku', alias?: string  } 
+  | { name: 'orderOptionValues', alias?: string  } 
+  
+export interface UserCreateOneInput {
+  create?: UserCreateInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserCreateOneInputInputObject =
+  | Extract<keyof UserCreateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserCreateInput {
+  orders?: OrderCreateManyWithoutCustomerInput | null
+  cart?: VariantCreateManyInput | null
+}
+export type UserCreateInputInputObject =
+  | Extract<keyof UserCreateInput, string>
+  | { name: 'orders', alias?: string  } 
+  | { name: 'cart', alias?: string  } 
+  
+export interface OrderCreateManyWithoutCustomerInput {
+  create?: OrderCreateWithoutCustomerInput[]
+  connect?: OrderWhereUniqueInput[]
+}
+export type OrderCreateManyWithoutCustomerInputInputObject =
+  | Extract<keyof OrderCreateManyWithoutCustomerInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface OrderCreateWithoutCustomerInput {
+  items?: OrderLineItemCreateManyInput | null
+  subTotalBeforeTax?: number
+  subTotal?: number
+  payment?: PaymentCreateOneWithoutOrderInput
+  state?: prisma.OrderState
+}
+export type OrderCreateWithoutCustomerInputInputObject =
+  | Extract<keyof OrderCreateWithoutCustomerInput, string>
+  | { name: 'items', alias?: string  } 
+  | { name: 'subTotalBeforeTax', alias?: string  } 
+  | { name: 'subTotal', alias?: string  } 
+  | { name: 'payment', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  
+export interface PaymentCreateOneWithoutOrderInput {
+  create?: PaymentCreateWithoutOrderInput | null
+  connect?: PaymentWhereUniqueInput | null
+}
+export type PaymentCreateOneWithoutOrderInputInputObject =
+  | Extract<keyof PaymentCreateOneWithoutOrderInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface PaymentCreateWithoutOrderInput {
+  method?: prisma.PaymentMethod
+  amount?: number
+  state?: prisma.PaymentState
+  currencyCode?: prisma.CurrencyCode
+}
+export type PaymentCreateWithoutOrderInputInputObject =
+  | Extract<keyof PaymentCreateWithoutOrderInput, string>
+  | { name: 'method', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  | { name: 'currencyCode', alias?: string  } 
+  
+export interface OrderOptionValuesCreateManyInput {
+  create?: OrderOptionValuesCreateInput[]
+  connect?: OrderOptionValuesWhereUniqueInput[]
+}
+export type OrderOptionValuesCreateManyInputInputObject =
+  | Extract<keyof OrderOptionValuesCreateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface OrderOptionValuesCreateInput {
+  optionName?: string
+  optionValue?: string
+}
+export type OrderOptionValuesCreateInputInputObject =
+  | Extract<keyof OrderOptionValuesCreateInput, string>
+  | { name: 'optionName', alias?: string  } 
+  | { name: 'optionValue', alias?: string  } 
+  
+export interface UserCreateOneWithoutOrdersInput {
+  create?: UserCreateWithoutOrdersInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserCreateOneWithoutOrdersInputInputObject =
+  | Extract<keyof UserCreateOneWithoutOrdersInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserCreateWithoutOrdersInput {
+  cart?: VariantCreateManyInput | null
+}
+export type UserCreateWithoutOrdersInputInputObject =
+  | Extract<keyof UserCreateWithoutOrdersInput, string>
+  | { name: 'cart', alias?: string  } 
+  
+export interface OrderUpdateInput {
+  items?: OrderLineItemUpdateManyInput | null
+  customer?: UserUpdateOneRequiredWithoutOrdersInput | null
+  subTotalBeforeTax?: number | null
+  subTotal?: number | null
+  payment?: PaymentUpdateOneRequiredWithoutOrderInput | null
+  state?: prisma.OrderState | null
+}
+export type OrderUpdateInputInputObject =
+  | Extract<keyof OrderUpdateInput, string>
+  | { name: 'items', alias?: string  } 
+  | { name: 'customer', alias?: string  } 
+  | { name: 'subTotalBeforeTax', alias?: string  } 
+  | { name: 'subTotal', alias?: string  } 
+  | { name: 'payment', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  
+export interface OrderLineItemUpdateManyInput {
+  create?: OrderLineItemCreateInput[]
+  update?: OrderLineItemUpdateWithWhereUniqueNestedInput[]
+  upsert?: OrderLineItemUpsertWithWhereUniqueNestedInput[]
+  delete?: OrderLineItemWhereUniqueInput[]
+  connect?: OrderLineItemWhereUniqueInput[]
+  set?: OrderLineItemWhereUniqueInput[]
+  disconnect?: OrderLineItemWhereUniqueInput[]
+  deleteMany?: OrderLineItemScalarWhereInput[]
+  updateMany?: OrderLineItemUpdateManyWithWhereNestedInput[]
+}
+export type OrderLineItemUpdateManyInputInputObject =
+  | Extract<keyof OrderLineItemUpdateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface OrderLineItemUpdateWithWhereUniqueNestedInput {
+  where?: OrderLineItemWhereUniqueInput
+  data?: OrderLineItemUpdateDataInput
+}
+export type OrderLineItemUpdateWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof OrderLineItemUpdateWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface OrderLineItemUpdateDataInput {
+  owner?: UserUpdateOneInput | null
+  image?: ImageUpdateOneRequiredInput | null
+  quantity?: number | null
+  unitPrice?: number | null
+  sku?: string | null
+  orderOptionValues?: OrderOptionValuesUpdateManyInput | null
+}
+export type OrderLineItemUpdateDataInputInputObject =
+  | Extract<keyof OrderLineItemUpdateDataInput, string>
+  | { name: 'owner', alias?: string  } 
+  | { name: 'image', alias?: string  } 
+  | { name: 'quantity', alias?: string  } 
+  | { name: 'unitPrice', alias?: string  } 
+  | { name: 'sku', alias?: string  } 
+  | { name: 'orderOptionValues', alias?: string  } 
+  
+export interface UserUpdateOneInput {
+  create?: UserCreateInput | null
+  update?: UserUpdateDataInput | null
+  upsert?: UserUpsertNestedInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserUpdateOneInputInputObject =
+  | Extract<keyof UserUpdateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserUpdateDataInput {
+  orders?: OrderUpdateManyWithoutCustomerInput | null
+  cart?: VariantUpdateManyInput | null
+}
+export type UserUpdateDataInputInputObject =
+  | Extract<keyof UserUpdateDataInput, string>
+  | { name: 'orders', alias?: string  } 
+  | { name: 'cart', alias?: string  } 
+  
+export interface OrderUpdateManyWithoutCustomerInput {
+  create?: OrderCreateWithoutCustomerInput[]
+  delete?: OrderWhereUniqueInput[]
+  connect?: OrderWhereUniqueInput[]
+  set?: OrderWhereUniqueInput[]
+  disconnect?: OrderWhereUniqueInput[]
+  update?: OrderUpdateWithWhereUniqueWithoutCustomerInput[]
+  upsert?: OrderUpsertWithWhereUniqueWithoutCustomerInput[]
+  deleteMany?: OrderScalarWhereInput[]
+  updateMany?: OrderUpdateManyWithWhereNestedInput[]
+}
+export type OrderUpdateManyWithoutCustomerInputInputObject =
+  | Extract<keyof OrderUpdateManyWithoutCustomerInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface OrderUpdateWithWhereUniqueWithoutCustomerInput {
+  where?: OrderWhereUniqueInput
+  data?: OrderUpdateWithoutCustomerDataInput
+}
+export type OrderUpdateWithWhereUniqueWithoutCustomerInputInputObject =
+  | Extract<keyof OrderUpdateWithWhereUniqueWithoutCustomerInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface OrderUpdateWithoutCustomerDataInput {
+  items?: OrderLineItemUpdateManyInput | null
+  subTotalBeforeTax?: number | null
+  subTotal?: number | null
+  payment?: PaymentUpdateOneRequiredWithoutOrderInput | null
+  state?: prisma.OrderState | null
+}
+export type OrderUpdateWithoutCustomerDataInputInputObject =
+  | Extract<keyof OrderUpdateWithoutCustomerDataInput, string>
+  | { name: 'items', alias?: string  } 
+  | { name: 'subTotalBeforeTax', alias?: string  } 
+  | { name: 'subTotal', alias?: string  } 
+  | { name: 'payment', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  
+export interface PaymentUpdateOneRequiredWithoutOrderInput {
+  create?: PaymentCreateWithoutOrderInput | null
+  update?: PaymentUpdateWithoutOrderDataInput | null
+  upsert?: PaymentUpsertWithoutOrderInput | null
+  connect?: PaymentWhereUniqueInput | null
+}
+export type PaymentUpdateOneRequiredWithoutOrderInputInputObject =
+  | Extract<keyof PaymentUpdateOneRequiredWithoutOrderInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface PaymentUpdateWithoutOrderDataInput {
+  method?: prisma.PaymentMethod | null
+  amount?: number | null
+  state?: prisma.PaymentState | null
+  currencyCode?: prisma.CurrencyCode | null
+}
+export type PaymentUpdateWithoutOrderDataInputInputObject =
+  | Extract<keyof PaymentUpdateWithoutOrderDataInput, string>
+  | { name: 'method', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  | { name: 'currencyCode', alias?: string  } 
+  
+export interface PaymentUpsertWithoutOrderInput {
+  update?: PaymentUpdateWithoutOrderDataInput
+  create?: PaymentCreateWithoutOrderInput
+}
+export type PaymentUpsertWithoutOrderInputInputObject =
+  | Extract<keyof PaymentUpsertWithoutOrderInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface OrderUpsertWithWhereUniqueWithoutCustomerInput {
+  where?: OrderWhereUniqueInput
+  update?: OrderUpdateWithoutCustomerDataInput
+  create?: OrderCreateWithoutCustomerInput
+}
+export type OrderUpsertWithWhereUniqueWithoutCustomerInputInputObject =
+  | Extract<keyof OrderUpsertWithWhereUniqueWithoutCustomerInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface OrderScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  subTotalBeforeTax?: number | null
+  subTotalBeforeTax_not?: number | null
+  subTotalBeforeTax_in?: number[]
+  subTotalBeforeTax_not_in?: number[]
+  subTotalBeforeTax_lt?: number | null
+  subTotalBeforeTax_lte?: number | null
+  subTotalBeforeTax_gt?: number | null
+  subTotalBeforeTax_gte?: number | null
+  subTotal?: number | null
+  subTotal_not?: number | null
+  subTotal_in?: number[]
+  subTotal_not_in?: number[]
+  subTotal_lt?: number | null
+  subTotal_lte?: number | null
+  subTotal_gt?: number | null
+  subTotal_gte?: number | null
+  state?: prisma.OrderState | null
+  state_not?: prisma.OrderState | null
+  state_in?: prisma.OrderState[]
+  state_not_in?: prisma.OrderState[]
+  AND?: OrderScalarWhereInput[]
+  OR?: OrderScalarWhereInput[]
+  NOT?: OrderScalarWhereInput[]
+}
+export type OrderScalarWhereInputInputObject =
+  | Extract<keyof OrderScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'subTotalBeforeTax', alias?: string  } 
+  | { name: 'subTotalBeforeTax_not', alias?: string  } 
+  | { name: 'subTotalBeforeTax_in', alias?: string  } 
+  | { name: 'subTotalBeforeTax_not_in', alias?: string  } 
+  | { name: 'subTotalBeforeTax_lt', alias?: string  } 
+  | { name: 'subTotalBeforeTax_lte', alias?: string  } 
+  | { name: 'subTotalBeforeTax_gt', alias?: string  } 
+  | { name: 'subTotalBeforeTax_gte', alias?: string  } 
+  | { name: 'subTotal', alias?: string  } 
+  | { name: 'subTotal_not', alias?: string  } 
+  | { name: 'subTotal_in', alias?: string  } 
+  | { name: 'subTotal_not_in', alias?: string  } 
+  | { name: 'subTotal_lt', alias?: string  } 
+  | { name: 'subTotal_lte', alias?: string  } 
+  | { name: 'subTotal_gt', alias?: string  } 
+  | { name: 'subTotal_gte', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  | { name: 'state_not', alias?: string  } 
+  | { name: 'state_in', alias?: string  } 
+  | { name: 'state_not_in', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface OrderUpdateManyWithWhereNestedInput {
+  where?: OrderScalarWhereInput
+  data?: OrderUpdateManyDataInput
+}
+export type OrderUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof OrderUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface OrderUpdateManyDataInput {
+  subTotalBeforeTax?: number | null
+  subTotal?: number | null
+  state?: prisma.OrderState | null
+}
+export type OrderUpdateManyDataInputInputObject =
+  | Extract<keyof OrderUpdateManyDataInput, string>
+  | { name: 'subTotalBeforeTax', alias?: string  } 
+  | { name: 'subTotal', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  
+export interface UserUpsertNestedInput {
+  update?: UserUpdateDataInput
+  create?: UserCreateInput
+}
+export type UserUpsertNestedInputInputObject =
+  | Extract<keyof UserUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface OrderOptionValuesUpdateManyInput {
+  create?: OrderOptionValuesCreateInput[]
+  update?: OrderOptionValuesUpdateWithWhereUniqueNestedInput[]
+  upsert?: OrderOptionValuesUpsertWithWhereUniqueNestedInput[]
+  delete?: OrderOptionValuesWhereUniqueInput[]
+  connect?: OrderOptionValuesWhereUniqueInput[]
+  set?: OrderOptionValuesWhereUniqueInput[]
+  disconnect?: OrderOptionValuesWhereUniqueInput[]
+  deleteMany?: OrderOptionValuesScalarWhereInput[]
+  updateMany?: OrderOptionValuesUpdateManyWithWhereNestedInput[]
+}
+export type OrderOptionValuesUpdateManyInputInputObject =
+  | Extract<keyof OrderOptionValuesUpdateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface OrderOptionValuesUpdateWithWhereUniqueNestedInput {
+  where?: OrderOptionValuesWhereUniqueInput
+  data?: OrderOptionValuesUpdateDataInput
+}
+export type OrderOptionValuesUpdateWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof OrderOptionValuesUpdateWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface OrderOptionValuesUpdateDataInput {
+  optionName?: string | null
+  optionValue?: string | null
+}
+export type OrderOptionValuesUpdateDataInputInputObject =
+  | Extract<keyof OrderOptionValuesUpdateDataInput, string>
+  | { name: 'optionName', alias?: string  } 
+  | { name: 'optionValue', alias?: string  } 
+  
+export interface OrderOptionValuesUpsertWithWhereUniqueNestedInput {
+  where?: OrderOptionValuesWhereUniqueInput
+  update?: OrderOptionValuesUpdateDataInput
+  create?: OrderOptionValuesCreateInput
+}
+export type OrderOptionValuesUpsertWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof OrderOptionValuesUpsertWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface OrderOptionValuesScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  optionName?: string | null
+  optionName_not?: string | null
+  optionName_in?: string[]
+  optionName_not_in?: string[]
+  optionName_lt?: string | null
+  optionName_lte?: string | null
+  optionName_gt?: string | null
+  optionName_gte?: string | null
+  optionName_contains?: string | null
+  optionName_not_contains?: string | null
+  optionName_starts_with?: string | null
+  optionName_not_starts_with?: string | null
+  optionName_ends_with?: string | null
+  optionName_not_ends_with?: string | null
+  optionValue?: string | null
+  optionValue_not?: string | null
+  optionValue_in?: string[]
+  optionValue_not_in?: string[]
+  optionValue_lt?: string | null
+  optionValue_lte?: string | null
+  optionValue_gt?: string | null
+  optionValue_gte?: string | null
+  optionValue_contains?: string | null
+  optionValue_not_contains?: string | null
+  optionValue_starts_with?: string | null
+  optionValue_not_starts_with?: string | null
+  optionValue_ends_with?: string | null
+  optionValue_not_ends_with?: string | null
+  AND?: OrderOptionValuesScalarWhereInput[]
+  OR?: OrderOptionValuesScalarWhereInput[]
+  NOT?: OrderOptionValuesScalarWhereInput[]
+}
+export type OrderOptionValuesScalarWhereInputInputObject =
+  | Extract<keyof OrderOptionValuesScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'optionName', alias?: string  } 
+  | { name: 'optionName_not', alias?: string  } 
+  | { name: 'optionName_in', alias?: string  } 
+  | { name: 'optionName_not_in', alias?: string  } 
+  | { name: 'optionName_lt', alias?: string  } 
+  | { name: 'optionName_lte', alias?: string  } 
+  | { name: 'optionName_gt', alias?: string  } 
+  | { name: 'optionName_gte', alias?: string  } 
+  | { name: 'optionName_contains', alias?: string  } 
+  | { name: 'optionName_not_contains', alias?: string  } 
+  | { name: 'optionName_starts_with', alias?: string  } 
+  | { name: 'optionName_not_starts_with', alias?: string  } 
+  | { name: 'optionName_ends_with', alias?: string  } 
+  | { name: 'optionName_not_ends_with', alias?: string  } 
+  | { name: 'optionValue', alias?: string  } 
+  | { name: 'optionValue_not', alias?: string  } 
+  | { name: 'optionValue_in', alias?: string  } 
+  | { name: 'optionValue_not_in', alias?: string  } 
+  | { name: 'optionValue_lt', alias?: string  } 
+  | { name: 'optionValue_lte', alias?: string  } 
+  | { name: 'optionValue_gt', alias?: string  } 
+  | { name: 'optionValue_gte', alias?: string  } 
+  | { name: 'optionValue_contains', alias?: string  } 
+  | { name: 'optionValue_not_contains', alias?: string  } 
+  | { name: 'optionValue_starts_with', alias?: string  } 
+  | { name: 'optionValue_not_starts_with', alias?: string  } 
+  | { name: 'optionValue_ends_with', alias?: string  } 
+  | { name: 'optionValue_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface OrderOptionValuesUpdateManyWithWhereNestedInput {
+  where?: OrderOptionValuesScalarWhereInput
+  data?: OrderOptionValuesUpdateManyDataInput
+}
+export type OrderOptionValuesUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof OrderOptionValuesUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface OrderOptionValuesUpdateManyDataInput {
+  optionName?: string | null
+  optionValue?: string | null
+}
+export type OrderOptionValuesUpdateManyDataInputInputObject =
+  | Extract<keyof OrderOptionValuesUpdateManyDataInput, string>
+  | { name: 'optionName', alias?: string  } 
+  | { name: 'optionValue', alias?: string  } 
+  
+export interface OrderLineItemUpsertWithWhereUniqueNestedInput {
+  where?: OrderLineItemWhereUniqueInput
+  update?: OrderLineItemUpdateDataInput
+  create?: OrderLineItemCreateInput
+}
+export type OrderLineItemUpsertWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof OrderLineItemUpsertWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface OrderLineItemScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  quantity?: number | null
+  quantity_not?: number | null
+  quantity_in?: number[]
+  quantity_not_in?: number[]
+  quantity_lt?: number | null
+  quantity_lte?: number | null
+  quantity_gt?: number | null
+  quantity_gte?: number | null
+  unitPrice?: number | null
+  unitPrice_not?: number | null
+  unitPrice_in?: number[]
+  unitPrice_not_in?: number[]
+  unitPrice_lt?: number | null
+  unitPrice_lte?: number | null
+  unitPrice_gt?: number | null
+  unitPrice_gte?: number | null
+  sku?: string | null
+  sku_not?: string | null
+  sku_in?: string[]
+  sku_not_in?: string[]
+  sku_lt?: string | null
+  sku_lte?: string | null
+  sku_gt?: string | null
+  sku_gte?: string | null
+  sku_contains?: string | null
+  sku_not_contains?: string | null
+  sku_starts_with?: string | null
+  sku_not_starts_with?: string | null
+  sku_ends_with?: string | null
+  sku_not_ends_with?: string | null
+  AND?: OrderLineItemScalarWhereInput[]
+  OR?: OrderLineItemScalarWhereInput[]
+  NOT?: OrderLineItemScalarWhereInput[]
+}
+export type OrderLineItemScalarWhereInputInputObject =
+  | Extract<keyof OrderLineItemScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'quantity', alias?: string  } 
+  | { name: 'quantity_not', alias?: string  } 
+  | { name: 'quantity_in', alias?: string  } 
+  | { name: 'quantity_not_in', alias?: string  } 
+  | { name: 'quantity_lt', alias?: string  } 
+  | { name: 'quantity_lte', alias?: string  } 
+  | { name: 'quantity_gt', alias?: string  } 
+  | { name: 'quantity_gte', alias?: string  } 
+  | { name: 'unitPrice', alias?: string  } 
+  | { name: 'unitPrice_not', alias?: string  } 
+  | { name: 'unitPrice_in', alias?: string  } 
+  | { name: 'unitPrice_not_in', alias?: string  } 
+  | { name: 'unitPrice_lt', alias?: string  } 
+  | { name: 'unitPrice_lte', alias?: string  } 
+  | { name: 'unitPrice_gt', alias?: string  } 
+  | { name: 'unitPrice_gte', alias?: string  } 
+  | { name: 'sku', alias?: string  } 
+  | { name: 'sku_not', alias?: string  } 
+  | { name: 'sku_in', alias?: string  } 
+  | { name: 'sku_not_in', alias?: string  } 
+  | { name: 'sku_lt', alias?: string  } 
+  | { name: 'sku_lte', alias?: string  } 
+  | { name: 'sku_gt', alias?: string  } 
+  | { name: 'sku_gte', alias?: string  } 
+  | { name: 'sku_contains', alias?: string  } 
+  | { name: 'sku_not_contains', alias?: string  } 
+  | { name: 'sku_starts_with', alias?: string  } 
+  | { name: 'sku_not_starts_with', alias?: string  } 
+  | { name: 'sku_ends_with', alias?: string  } 
+  | { name: 'sku_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface OrderLineItemUpdateManyWithWhereNestedInput {
+  where?: OrderLineItemScalarWhereInput
+  data?: OrderLineItemUpdateManyDataInput
+}
+export type OrderLineItemUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof OrderLineItemUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface OrderLineItemUpdateManyDataInput {
+  quantity?: number | null
+  unitPrice?: number | null
+  sku?: string | null
+}
+export type OrderLineItemUpdateManyDataInputInputObject =
+  | Extract<keyof OrderLineItemUpdateManyDataInput, string>
+  | { name: 'quantity', alias?: string  } 
+  | { name: 'unitPrice', alias?: string  } 
+  | { name: 'sku', alias?: string  } 
+  
+export interface UserUpdateOneRequiredWithoutOrdersInput {
+  create?: UserCreateWithoutOrdersInput | null
+  update?: UserUpdateWithoutOrdersDataInput | null
+  upsert?: UserUpsertWithoutOrdersInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserUpdateOneRequiredWithoutOrdersInputInputObject =
+  | Extract<keyof UserUpdateOneRequiredWithoutOrdersInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserUpdateWithoutOrdersDataInput {
+  cart?: VariantUpdateManyInput | null
+}
+export type UserUpdateWithoutOrdersDataInputInputObject =
+  | Extract<keyof UserUpdateWithoutOrdersDataInput, string>
+  | { name: 'cart', alias?: string  } 
+  
+export interface UserUpsertWithoutOrdersInput {
+  update?: UserUpdateWithoutOrdersDataInput
+  create?: UserCreateWithoutOrdersInput
+}
+export type UserUpsertWithoutOrdersInputInputObject =
+  | Extract<keyof UserUpsertWithoutOrdersInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface OrderUpdateManyMutationInput {
+  subTotalBeforeTax?: number | null
+  subTotal?: number | null
+  state?: prisma.OrderState | null
+}
+export type OrderUpdateManyMutationInputInputObject =
+  | Extract<keyof OrderUpdateManyMutationInput, string>
+  | { name: 'subTotalBeforeTax', alias?: string  } 
+  | { name: 'subTotal', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  
+export interface OrderLineItemUpdateInput {
+  owner?: UserUpdateOneInput | null
+  image?: ImageUpdateOneRequiredInput | null
+  quantity?: number | null
+  unitPrice?: number | null
+  sku?: string | null
+  orderOptionValues?: OrderOptionValuesUpdateManyInput | null
+}
+export type OrderLineItemUpdateInputInputObject =
+  | Extract<keyof OrderLineItemUpdateInput, string>
+  | { name: 'owner', alias?: string  } 
+  | { name: 'image', alias?: string  } 
+  | { name: 'quantity', alias?: string  } 
+  | { name: 'unitPrice', alias?: string  } 
+  | { name: 'sku', alias?: string  } 
+  | { name: 'orderOptionValues', alias?: string  } 
+  
+export interface OrderLineItemUpdateManyMutationInput {
+  quantity?: number | null
+  unitPrice?: number | null
+  sku?: string | null
+}
+export type OrderLineItemUpdateManyMutationInputInputObject =
+  | Extract<keyof OrderLineItemUpdateManyMutationInput, string>
+  | { name: 'quantity', alias?: string  } 
+  | { name: 'unitPrice', alias?: string  } 
+  | { name: 'sku', alias?: string  } 
+  
+export interface OrderOptionValuesUpdateInput {
+  optionName?: string | null
+  optionValue?: string | null
+}
+export type OrderOptionValuesUpdateInputInputObject =
+  | Extract<keyof OrderOptionValuesUpdateInput, string>
+  | { name: 'optionName', alias?: string  } 
+  | { name: 'optionValue', alias?: string  } 
+  
+export interface OrderOptionValuesUpdateManyMutationInput {
+  optionName?: string | null
+  optionValue?: string | null
+}
+export type OrderOptionValuesUpdateManyMutationInputInputObject =
+  | Extract<keyof OrderOptionValuesUpdateManyMutationInput, string>
+  | { name: 'optionName', alias?: string  } 
+  | { name: 'optionValue', alias?: string  } 
+  
+export interface PaymentCreateInput {
+  method?: prisma.PaymentMethod
+  amount?: number
+  state?: prisma.PaymentState
+  order?: OrderCreateOneWithoutPaymentInput
+  currencyCode?: prisma.CurrencyCode
+}
+export type PaymentCreateInputInputObject =
+  | Extract<keyof PaymentCreateInput, string>
+  | { name: 'method', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  | { name: 'order', alias?: string  } 
+  | { name: 'currencyCode', alias?: string  } 
+  
+export interface OrderCreateOneWithoutPaymentInput {
+  create?: OrderCreateWithoutPaymentInput | null
+  connect?: OrderWhereUniqueInput | null
+}
+export type OrderCreateOneWithoutPaymentInputInputObject =
+  | Extract<keyof OrderCreateOneWithoutPaymentInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface OrderCreateWithoutPaymentInput {
+  items?: OrderLineItemCreateManyInput | null
+  customer?: UserCreateOneWithoutOrdersInput
+  subTotalBeforeTax?: number
+  subTotal?: number
+  state?: prisma.OrderState
+}
+export type OrderCreateWithoutPaymentInputInputObject =
+  | Extract<keyof OrderCreateWithoutPaymentInput, string>
+  | { name: 'items', alias?: string  } 
+  | { name: 'customer', alias?: string  } 
+  | { name: 'subTotalBeforeTax', alias?: string  } 
+  | { name: 'subTotal', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  
+export interface PaymentUpdateInput {
+  method?: prisma.PaymentMethod | null
+  amount?: number | null
+  state?: prisma.PaymentState | null
+  order?: OrderUpdateOneRequiredWithoutPaymentInput | null
+  currencyCode?: prisma.CurrencyCode | null
+}
+export type PaymentUpdateInputInputObject =
+  | Extract<keyof PaymentUpdateInput, string>
+  | { name: 'method', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  | { name: 'order', alias?: string  } 
+  | { name: 'currencyCode', alias?: string  } 
+  
+export interface OrderUpdateOneRequiredWithoutPaymentInput {
+  create?: OrderCreateWithoutPaymentInput | null
+  update?: OrderUpdateWithoutPaymentDataInput | null
+  upsert?: OrderUpsertWithoutPaymentInput | null
+  connect?: OrderWhereUniqueInput | null
+}
+export type OrderUpdateOneRequiredWithoutPaymentInputInputObject =
+  | Extract<keyof OrderUpdateOneRequiredWithoutPaymentInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface OrderUpdateWithoutPaymentDataInput {
+  items?: OrderLineItemUpdateManyInput | null
+  customer?: UserUpdateOneRequiredWithoutOrdersInput | null
+  subTotalBeforeTax?: number | null
+  subTotal?: number | null
+  state?: prisma.OrderState | null
+}
+export type OrderUpdateWithoutPaymentDataInputInputObject =
+  | Extract<keyof OrderUpdateWithoutPaymentDataInput, string>
+  | { name: 'items', alias?: string  } 
+  | { name: 'customer', alias?: string  } 
+  | { name: 'subTotalBeforeTax', alias?: string  } 
+  | { name: 'subTotal', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  
+export interface OrderUpsertWithoutPaymentInput {
+  update?: OrderUpdateWithoutPaymentDataInput
+  create?: OrderCreateWithoutPaymentInput
+}
+export type OrderUpsertWithoutPaymentInputInputObject =
+  | Extract<keyof OrderUpsertWithoutPaymentInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface PaymentUpdateManyMutationInput {
+  method?: prisma.PaymentMethod | null
+  amount?: number | null
+  state?: prisma.PaymentState | null
+  currencyCode?: prisma.CurrencyCode | null
+}
+export type PaymentUpdateManyMutationInputInputObject =
+  | Extract<keyof PaymentUpdateManyMutationInput, string>
+  | { name: 'method', alias?: string  } 
+  | { name: 'amount', alias?: string  } 
+  | { name: 'state', alias?: string  } 
+  | { name: 'currencyCode', alias?: string  } 
+  
+export interface UserUpdateInput {
+  orders?: OrderUpdateManyWithoutCustomerInput | null
+  cart?: VariantUpdateManyInput | null
+}
+export type UserUpdateInputInputObject =
+  | Extract<keyof UserUpdateInput, string>
+  | { name: 'orders', alias?: string  } 
+  | { name: 'cart', alias?: string  } 
+  
 export interface CollectionSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -9130,6 +13293,111 @@ export type ImageSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
+export interface OrderSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: OrderWhereInput | null
+  AND?: OrderSubscriptionWhereInput[]
+  OR?: OrderSubscriptionWhereInput[]
+  NOT?: OrderSubscriptionWhereInput[]
+}
+export type OrderSubscriptionWhereInputInputObject =
+  | Extract<keyof OrderSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface OrderLineItemSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: OrderLineItemWhereInput | null
+  AND?: OrderLineItemSubscriptionWhereInput[]
+  OR?: OrderLineItemSubscriptionWhereInput[]
+  NOT?: OrderLineItemSubscriptionWhereInput[]
+}
+export type OrderLineItemSubscriptionWhereInputInputObject =
+  | Extract<keyof OrderLineItemSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface OrderOptionValuesSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: OrderOptionValuesWhereInput | null
+  AND?: OrderOptionValuesSubscriptionWhereInput[]
+  OR?: OrderOptionValuesSubscriptionWhereInput[]
+  NOT?: OrderOptionValuesSubscriptionWhereInput[]
+}
+export type OrderOptionValuesSubscriptionWhereInputInputObject =
+  | Extract<keyof OrderOptionValuesSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface PaymentSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: PaymentWhereInput | null
+  AND?: PaymentSubscriptionWhereInput[]
+  OR?: PaymentSubscriptionWhereInput[]
+  NOT?: PaymentSubscriptionWhereInput[]
+}
+export type PaymentSubscriptionWhereInputInputObject =
+  | Extract<keyof PaymentSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface UserSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: UserWhereInput | null
+  AND?: UserSubscriptionWhereInput[]
+  OR?: UserSubscriptionWhereInput[]
+  NOT?: UserSubscriptionWhereInput[]
+}
+export type UserSubscriptionWhereInputInputObject =
+  | Extract<keyof UserSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 
 export type CollectionRuleFieldValues =
   | 'TYPE'
@@ -9267,6 +13535,90 @@ export type OptionOrderByInputValues =
   | 'name_DESC'
   | 'isColor_ASC'
   | 'isColor_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type PaymentMethodValues =
+  | 'PAYPAL'
+  | 'STRIPE'
+  | 'CREDIT_CARD'
+  
+export type PaymentStateValues =
+  | 'AUTHORIZED'
+  | 'SETTLED'
+  | 'DECLINED'
+  | 'REFUNDED'
+  | 'CANCELLED'
+  
+export type CurrencyCodeValues =
+  | 'EUR'
+  | 'USD'
+  
+export type OrderStateValues =
+  | 'COMPLETE'
+  | 'CANCELLED'
+  
+export type OrderLineItemOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'quantity_ASC'
+  | 'quantity_DESC'
+  | 'unitPrice_ASC'
+  | 'unitPrice_DESC'
+  | 'sku_ASC'
+  | 'sku_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type OrderOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'subTotalBeforeTax_ASC'
+  | 'subTotalBeforeTax_DESC'
+  | 'subTotal_ASC'
+  | 'subTotal_DESC'
+  | 'state_ASC'
+  | 'state_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type OrderOptionValuesOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'optionName_ASC'
+  | 'optionName_DESC'
+  | 'optionValue_ASC'
+  | 'optionValue_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type PaymentOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'method_ASC'
+  | 'method_DESC'
+  | 'amount_ASC'
+  | 'amount_DESC'
+  | 'state_ASC'
+  | 'state_DESC'
+  | 'currencyCode_ASC'
+  | 'currencyCode_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type UserOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

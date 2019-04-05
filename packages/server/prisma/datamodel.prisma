@@ -83,7 +83,7 @@ type Variant {
   id: ID! @unique
   optionValues: [OptionValue!]!
   price: Int!
-  availableForSale: Boolean @default(value: false)
+  availableForSale: Boolean @default(value: "false")
   sku: String
   images: [Image!]!
 }
@@ -91,4 +91,74 @@ type Variant {
 type Image {
   id: ID! @unique
   url: String!
+}
+
+type Order {
+  id: ID! @unique
+  createdAt: DateTime!
+  items: [OrderLineItem!]!
+  customer: User!
+  subTotalBeforeTax: Int!
+  subTotal: Int!
+  payment: Payment!
+  state: OrderState!
+}
+
+type ShippingMethod {
+  id: ID! @unique
+}
+
+type OrderLineItem {
+  id: ID! @unique
+  owner: User @relation(name: "UserCart", onDelete: SET_NULL)
+  image: Image!
+  quantity: Int!
+  unitPrice: Int!
+  sku: String
+  orderOptionValues: [OrderOptionValues!]!
+}
+
+type OrderOptionValues {
+  id: ID! @unique
+  optionName: String!
+  optionValue: String!
+}
+
+type Payment {
+  id: ID! @unique
+  method: PaymentMethod!
+  amount: Int!
+  state: PaymentState!
+  order: Order!
+  currencyCode: CurrencyCode!
+}
+
+type User {
+  id: ID! @unique
+  orders: [Order!]!
+  cart: [Variant!]!
+}
+
+enum OrderState {
+  COMPLETE
+  CANCELLED
+}
+
+enum PaymentState {
+  AUTHORIZED
+  SETTLED
+  DECLINED
+  REFUNDED
+  CANCELLED
+}
+
+enum CurrencyCode {
+  EUR
+  USD
+}
+
+enum PaymentMethod {
+  PAYPAL
+  STRIPE
+  CREDIT_CARD
 }
