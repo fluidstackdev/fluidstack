@@ -104,13 +104,9 @@ type Order {
   state: OrderState!
 }
 
-type ShippingMethod {
-  id: ID! @unique
-}
-
 type OrderLineItem {
   id: ID! @unique
-  owner: User @relation(name: "UserCart", onDelete: SET_NULL)
+  order: Order!
   image: Image!
   quantity: Int!
   unitPrice: Int!
