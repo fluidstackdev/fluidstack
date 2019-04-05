@@ -380,6 +380,7 @@ input ImageWhereInput {
 }
 
 type Mutation {
+  addToCart(variantId: ID!): Boolean!
   collectionAddProducts(collectionId: ID!, productIds: [ID!]!): Collection!
   collectionCreate(collection: CollectionInput!): Collection!
   collectionRemoveProducts(collectionId: ID!, productIds: [ID!]!): Collection!
@@ -387,6 +388,7 @@ type Mutation {
   productCreate(data: CreateProductInput!): Product!
   productDelete(productId: ID!): Product!
   productUpdate(data: UpdateProductInput!): Product!
+  removeFromCart(variantId: ID!): Boolean!
 }
 
 type Option {

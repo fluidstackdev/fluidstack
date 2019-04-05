@@ -655,6 +655,7 @@ export interface NexusGenFieldTypes {
     url: string; // String!
   }
   Mutation: { // field return type
+    addToCart: boolean; // Boolean!
     collectionAddProducts: NexusGenRootTypes['Collection']; // Collection!
     collectionCreate: NexusGenRootTypes['Collection']; // Collection!
     collectionRemoveProducts: NexusGenRootTypes['Collection']; // Collection!
@@ -662,6 +663,7 @@ export interface NexusGenFieldTypes {
     productCreate: NexusGenRootTypes['Product']; // Product!
     productDelete: NexusGenRootTypes['Product']; // Product!
     productUpdate: NexusGenRootTypes['Product']; // Product!
+    removeFromCart: boolean; // Boolean!
   }
   Option: { // field return type
     id: string; // ID!
@@ -764,6 +766,9 @@ export interface NexusGenArgTypes {
     }
   }
   Mutation: {
+    addToCart: { // args
+      variantId: string; // ID!
+    }
     collectionAddProducts: { // args
       collectionId: string; // ID!
       productIds: string[]; // [ID!]!
@@ -787,6 +792,9 @@ export interface NexusGenArgTypes {
     }
     productUpdate: { // args
       data: NexusGenInputs['UpdateProductInput']; // UpdateProductInput!
+    }
+    removeFromCart: { // args
+      variantId: string; // ID!
     }
   }
   Option: {
