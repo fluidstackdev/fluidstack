@@ -1,5 +1,5 @@
-# FluidStack
-The constantly evolving modern web stack
+# FluidStack (2019 edition)
+The constantly evolving modern web stack.
 
 ## Description
 
@@ -15,18 +15,28 @@ That's why at Prisma, Stripe, ZEIT and Algolia, we're dedicated to unify our eff
 
 Most applications rely on a common set of challenges that can be hard to get right. We think e-commerce is one of many domains that gather the most of these challenges while also being friendly to everyone.
 
+## Stack
+
+- 💨 Data-layer for database access, CI/CD migrations and data visualisation with Prisma
+- ⭐ One-click serverless deploy with Now (ZEIT)
+- 🤗 SEO-friendly & server-side rendered with NextJS (ZEIT)
+- 💸 Ready-to-sell Stripe integration
+- 🔍 Blazing-fast search capabilities with Algolia
+
 ## Features
 
-- 💨 Data-layer for read access, CI/CD migrations and data visualisation (Prisma)
-- ⭐ One-click deploy with Now (ZEIT)
-- 🤗 Server-side rendered & SEO-friendly with NextJS
-- 💸 Ready-to-sell Stripe integration (PCI compliant, including 3D Secure)
-- 🔍 Blazing-fast search capabilities with Algolia
-- 💻 GraphQL backend
-- 💥 Handcrafted backoffice to manage your e-commerce shop
-- 🔏 Fully customisable products
+- Fully customisable products
+- Multi-authentication support
+- Internationalisation
+- Role permissions support
+- Text-search capabilities
+- Multi-currencies
+- Multi-criteria filtering
+- Handcrafted backoffice to manage your shop
 
-## End-to-end type-safety
+## Design goals
+
+### End-to-end type-safety
 
 End-to-end type-safe means that your entire application, from the database accesses to your frontend is type-safe.
 
