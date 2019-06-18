@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "name": "webshop-server",
+  "builds": [
+    {
+      "src": "dist/src/index.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "env": {
+    "PRISMA_ENDPOINT": "https://eu1.prisma.sh/flavian/webshop-server/staging"
+  },
+  "routes": [{ "src": "/.*", "dest": "dist/src/index.js" }]
+}

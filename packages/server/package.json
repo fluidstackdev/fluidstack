@@ -1,0 +1,38 @@
+{
+  "name": "webshop-server",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node-dev --respawn --no-notify --transpileOnly ./src/index.ts",
+    "dev": "yoga dev",
+    "build": "yoga build",
+    "seed": "yarn ts-node ./prisma/seed.ts",
+    "generate": "prisma2 generate",
+    "install": "yarn generate",
+    "uninstall": "yarn generate"
+  },
+  "dependencies": {
+    "@prisma/nexus": "^0.0.1",
+    "apollo-server": "^2.6.3",
+    "graphql": "^14.3.1",
+    "lodash": "^4.17.11",
+    "typescript": "^3.5.2"
+  },
+  "devDependencies": {
+    "@types/faker": "^4.1.4",
+    "@types/graphql": "14.0.3",
+    "@types/lodash": "^4.14.118",
+    "@types/node": "12.0.8",
+    "faker": "^4.1.0",
+    "prisma2": "^0.0.83",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typescript": "^3.5.2"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "printWidth": 80,
+    "trailingComma": "all",
+    "semi": false
+  }
+}

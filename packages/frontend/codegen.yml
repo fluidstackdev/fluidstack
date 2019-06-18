@@ -1,0 +1,13 @@
+overwrite: true
+watch: true
+schema: http://localhost:4000
+documents: ./src/**/*.graphql
+generates:
+  src/generated-types.tsx:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      avoidOptional: true
+      typesPrefix: I
