@@ -19,12 +19,12 @@ class Welcome extends Component<WelcomeProps> {
       return <div>No collections found</div>
     }
 
-    const items: NavItem[] = this.props.data.collections!.edges.map(
-      ({ node: collection }) =>
+    const items: NavItem[] = this.props.data.collections.map(
+      collection =>
         ({
           label: collection.name,
           link: `/collection/${collection.id}`,
-        } as NavItem),
+        }),
     )
 
     return <NavBar items={items} />

@@ -12,11 +12,7 @@ query collection(
       optionsValuesIds: $optionsValuesIds
       attributesIds: $attributesIds
     ) {
-      edges {
-        node {
-          ...CollectionProduct
-        }
-      }
+      ...CollectionProduct
     }
     attributes {
       name

@@ -1,4 +1,4 @@
-import { inputObjectType } from 'yoga';
+import { inputObjectType } from '@prisma/nexus';
 
 export const UniqueInput = inputObjectType({
   name: 'UniqueInput',

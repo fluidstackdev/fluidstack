@@ -1,16 +1,18 @@
 //@ts-ignore
 import * as faker from 'faker'
 import * as _ from 'lodash'
-import {
+import Photon, {
   Attribute,
   AttributeCreateInput,
   Brand,
   OptionCreateInput,
-  prisma,
   Product,
   ProductType,
   VariantCreateInput,
-} from '../.yoga/prisma-client'
+} from '@generated/photon'
+import console = require('console')
+
+const photon = new Photon()
 
 interface Option {
   id: string
@@ -19,38 +21,89 @@ interface Option {
 }
 
 const IMAGES = [
-  'https://mosaic03.ztat.net/vgs/media/catalog-lg/KA/32/1C/06/UC/11/KA321C06U-C11@4.jpg',
-  'https://mosaic03.ztat.net/vgs/media/catalog-lg/PU/12/1J/04/9A/11/PU121J049-A11@11.jpg',
-  'https://mosaic04.ztat.net/vgs/media/catalog-lg/TO/22/1C/0A/QT/11/TO221C0AQ-T11@12.jpg',
-  'https://mosaic03.ztat.net/vgs/media/catalog-lg/TO/22/1C/0A/PK/11/TO221C0AP-K11@31.1.jpg',
-  'https://mosaic04.ztat.net/vgs/media/catalog-lg/TO/72/1C/08/3E/11/TO721C083-E11@2.2.jpg',
-  'https://mosaic03.ztat.net/vgs/media/catalog-lg/KA/32/1C/0D/1K/11/KA321C0D1-K11@5.jpg',
+  'https://tinypng.com/web/output/e8hxgepvepcmw5u5y87yk49j3zdgdnzw/mb06-gray-0.jpg',
+  'https://tinypng.com/web/output/ukcxgwh688aw7n21q88j3wy5feka15ey/mb05-black-0.jpg',
+  'https://tinypng.com/web/output/zjhmkqazg8hmmtdkb9zzt4fjm1pdt6uv/mb04-black-0.jpg',
+  'https://tinypng.com/web/output/8zfn072e0yhkwv1qbewh55kp24mygn8g/mb04-black-0_alt1.jpg',
+  'https://tinypng.com/web/output/dpm6h6pj2zngd952hnuxtuyrruz1hjb7/mb03-black-0.jpg',
+  'https://tinypng.com/web/output/ycb012zebun79axbnfva6189anpehr4k/mb03-black-0_alt1.jpg',
+  'https://tinypng.com/web/output/mx658qjw8u5kgz0wtf43puywy12rhrz7/mb02-gray-0.jpg',
+  'https://tinypng.com/web/output/zxzqmxpb4kpj4pzk60d258ka7vhnhna2/mb02-blue-0.jpg',
+  'https://tinypng.com/web/output/y1gxvvyx30rthteepm0qj59rmhh01f9w/mb01-blue-0.jpg',
 ]
 
 main()
 
 async function main() {
-  await products(200)
+  // const someProducts = await photon.products.findMany({
+  //   select: {
+  //     variants: {
+  //       select: {
+  //         id: true,
+  //         optionValues: {
+  //           select: {
+  //             id: true,
+  //             name: true,
+  //           },
+  //         },
+  //       },
+  //     },
+  //   },
+  // })
+
+  //console.log(JSON.stringify(someProducts, null, 2))
+
+  // const allOptions = await options(20)
+
+  // const variant = await photon.variants.create({
+  //   data: {
+  //     price: 100,
+  //     optionValues: {
+  //       connect: [
+  //         { id: allOptions[0].values[0].id },
+  //         { id: allOptions[1].values[0].id },
+  //       ],
+  //     },
+  //   },
+  // })
+
+  //console.log(updatedVariant)
+
+  await products(1)
+  // console.log('done')
+
   //await deleteProducts()
+  //await brands(10)
 }
 
 // @ts-ignore
 async function productTypes(n: number): Promise<ProductType[]> {
   return job(n, () => {
-    return prisma.createProductType({
-      name: faker.commerce.product(),
+    return photon.productTypes.create({
+      data: {
+        name: faker.commerce.product(),
+      },
     })
   })
 }
 
 // @ts-ignore
 async function products(n: number): Promise<Product[]> {
-  let allBrands = await prisma.brands()
-  let allAttributes = await prisma.attributes()
-  let allOptions: Option[] = await prisma
-    .options()
-    .$fragment(`fragment tmp on Option { id name values { id name } }`)
-  let allProductTypes = await prisma.productTypes()
+  let allBrands = await photon.brands.findMany()
+  let allAttributes = await photon.attributes.findMany()
+  let allOptions: Option[] = await photon.options.findMany({
+    select: {
+      id: true,
+      name: true,
+      values: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
+  })
+  let allProductTypes = await photon.productTypes.findMany()
 
   if (allBrands.length === 0) {
     allBrands = await brands(20)
@@ -66,34 +119,39 @@ async function products(n: number): Promise<Product[]> {
   }
 
   const materials = allAttributes.filter(a => a.key === 'Material')
-  const heels = allAttributes.filter(a => a.key === 'Heels')
   const length = allAttributes.filter(a => a.key === 'Length')
 
-  return job(n, () => {
+  return job(n, async () => {
     const productName = faker.commerce.productName()
 
-    return prisma.createProduct({
-      name: productName,
-      description: faker.random.words(),
-      slug: faker.helpers.slugify(productName),
-      brand: {
-        connect: { id: pickRnd(allBrands).id },
+    const product = await photon.products.create({
+      data: {
+        name: productName,
+        description: faker.random.words(),
+        slug: faker.helpers.slugify(productName),
+        brand: {
+          connect: { id: pickRnd(allBrands).id },
+        },
+        thumbnail: {
+          create: { url: _.sample(IMAGES)! },
+        },
+        attributes: {
+          connect: [{ id: pickRnd(materials).id }, { id: pickRnd(length).id }],
+        },
+        type: {
+          connect: { id: pickRnd(allProductTypes).id },
+        },
       },
-      thumbnail: {
-        create: { url: _.sample(IMAGES)! },
-      },
-      attributes: {
-        connect: [
-          { id: pickRnd(materials).id },
-          { id: pickRnd(heels).id },
-          { id: pickRnd(length).id },
-        ],
-      },
-      type: {
-        connect: { id: pickRnd(allProductTypes).id },
-      },
-      variants: {
-        create: generateVariant(allOptions),
+    })
+
+    const variants = await generateVariant(allOptions)
+
+    await photon.products.update({
+      where: { id: product.id },
+      data: {
+        variants: {
+          connect: variants.map(v => ({ id: v.id })),
+        },
       },
     })
   })
@@ -113,18 +171,6 @@ async function attributes(n: number): Promise<Attribute[]> {
     {
       key: 'Material',
       value: 'Cotton',
-    },
-    {
-      key: 'Heels',
-      value: 'Small',
-    },
-    {
-      key: 'Heels',
-      value: 'High',
-    },
-    {
-      key: 'Heels',
-      value: 'Super high',
     },
     {
       key: 'Length',
@@ -149,7 +195,9 @@ async function attributes(n: number): Promise<Attribute[]> {
   ]
 
   return Promise.all(
-    attributesToCreate.map(attribute => prisma.createAttribute(attribute)),
+    attributesToCreate.map(attribute =>
+      photon.attributes.create({ data: attribute }),
+    ),
   )
 }
 
@@ -179,51 +227,66 @@ async function options(n: number): Promise<Option[]> {
 
   return Promise.all(
     optionsToCreate.map(option =>
-      prisma
-        .createOption(option)
-        .$fragment(`fragment tmp on Option { id name values { id name } }`),
+      photon.options.create({
+        data: option,
+        select: {
+          id: true,
+          name: true,
+          values: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
+        },
+      }),
     ),
   ) as Promise<Option[]>
 }
 
 // @ts-ignore
 async function deleteOptions(): Promise<{}> {
-  const options = await prisma.options()
+  const options = await photon.options()
 
-  return Promise.all(options.map(o => prisma.deleteOption({ id: o.id })))
+  return Promise.all(
+    options.map(o => photon.options.delete({ where: { id: o.id } })),
+  )
 }
 // @ts-ignore
 async function deleteProducts(): Promise<{}> {
-  const products = await prisma.products()
+  const products = await photon.products()
 
-  return Promise.all(products.map(p => prisma.deleteProduct({ id: p.id })))
+  return Promise.all(
+    products.map(p => photon.products.delete({ where: { id: p.id } })),
+  )
 }
 
 // @ts-ignore
 async function brands(n: number): Promise<Brand[]> {
   return job(n, () => {
-    return prisma.createBrand({
-      name: faker.company.companyName(),
+    return photon.brands.create({
+      data: {
+        name: faker.company.companyName(),
+      },
     })
   })
 }
 
 // @ts-ignore
-function generateVariant(options: Option[]): VariantCreateInput[] {
-  const colorOption = options.find(o => o.name === 'Color')
-  const sizeOption = options.find(o => o.name === 'Size')
+async function generateVariant(options: Option[]): Promise<Variant[]> {
+  const colorOption = options.find(o => o.name === 'Color')!
+  const sizeOption = options.find(o => o.name === 'Size')!
+
   const variants: Array<[{ id: string }, { id: string }]> = cartesianProduct([
     colorOption!.values,
     sizeOption!.values,
   ])
   const randomVariants = _.sampleSize(variants, _.random(1, variants.length))
+  const dbVariants: any[] = []
 
-  return randomVariants.map(
-    variant =>
-      ({
-        optionValues: {
-          connect: variant.map(optionValue => ({ id: optionValue.id })),
-        },
+  for (const __ of randomVariants) {
+    const tmpVariant = await photon.variants.create({
+      data: {
         images: {
           create: _.sampleSize(IMAGES, _.random(1, IMAGES.length - 1)).map(
             url => ({ url }),
@@ -231,8 +294,28 @@ function generateVariant(options: Option[]): VariantCreateInput[] {
         },
         price: _.random(10, 100) * 100,
         availableForSale: true,
-      } as VariantCreateInput),
-  )
+      } as VariantCreateInput,
+    })
+
+    dbVariants.push(tmpVariant)
+  }
+
+  const optionsValuesToCreate = randomVariants.map(randomVariant => ({
+    connect: randomVariant.map(optionValue => ({ id: optionValue.id })),
+  }))
+
+  console.log({ optionsValuesToCreate })
+
+  for (let i = 0; i < dbVariants.length; i++) {
+    await photon.variants.update({
+      where: { id: dbVariants[i].id },
+      data: {
+        optionValues: optionsValuesToCreate[i],
+      },
+    })
+  }
+
+  return dbVariants
 }
 
 function pickRnd<T>(arr: T[]): T {

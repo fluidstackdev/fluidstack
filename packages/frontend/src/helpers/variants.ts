@@ -15,7 +15,7 @@ export function getDisplayPrice(product: ICollectionProductFragment) {
 
 export function sameOptionValue(
   a: IOptionValue | null,
-  b: IOptionValue | null,
+  b: IOptionValue | null
 ) {
   if (!a || !b) {
     return false
@@ -26,15 +26,15 @@ export function sameOptionValue(
 
 export function getAvailableOptionValues(
   optionValues: IOptionValue[],
-  variants: ReadonlyArray<IVariant>,
+  variants: ReadonlyArray<IVariant>
 ) {
   const output: IOptionValue[] = []
 
   variants.forEach(variant => {
     const optionsValuesAreInVariant = variant.optionValues!.find(o =>
       optionValues.every(inputOptionValue =>
-        sameOptionValue(o, inputOptionValue),
-      ),
+        sameOptionValue(o, inputOptionValue)
+      )
     )
 
     if (optionsValuesAreInVariant) {
@@ -57,7 +57,10 @@ export function getIterableVariants(variants: ReadonlyArray<IVariant>) {
       }
 
       if (!output[identifier].find(value => value.id === v.id)) {
-        output[identifier].push({ ...v, isColor: v.option.isColor })
+        output[identifier].push({
+          ...v,
+          isColor: v.option.isColor ? true : false,
+        })
       }
     })
   })
@@ -68,7 +71,7 @@ export function getIterableVariants(variants: ReadonlyArray<IVariant>) {
 export function isOptionValueAvailable(
   optionValue: IOptionValue,
   selectedOptionValues: IOptionValue[],
-  availableOptionValues: IOptionValue[] | null,
+  availableOptionValues: IOptionValue[] | null
 ) {
   if (!availableOptionValues || selectedOptionValues.length === 0) {
     return true

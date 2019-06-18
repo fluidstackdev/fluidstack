@@ -1,5 +1,5 @@
 import * as _ from 'lodash'
-import { Attribute } from '../../.yoga/prisma-client'
+import { Attribute } from '@generated/photon'
 
 export function transformAttributes(attributes: Attribute[]) {
   return _(attributes)

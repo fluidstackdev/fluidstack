@@ -119,11 +119,9 @@ class Collection extends Component<CollectionProps, CollectionState> {
           })}
         </CollectionFilterContainer>
         <ProductsContainer>
-          {this.props.data.collection!.products.edges.map(
-            ({ node: product }) => (
-              <CardProduct product={product} />
-            ),
-          )}
+          {this.props.data.collection!.products.map(product => (
+            <CardProduct product={product} />
+          ))}
         </ProductsContainer>
       </CollectionContainer>
     )

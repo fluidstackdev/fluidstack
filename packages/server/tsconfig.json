@@ -9,6 +9,6 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true
   },
-  "include": ["./.yoga/**/*.ts", "./src/**/*.ts", "prisma/seed.ts"],
+  "include": ["./src/**/*.ts", "prisma/seed.ts"],
   "exclude": ["node_modules", "generated", "example", "examples", "scripts"]
 }

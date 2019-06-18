@@ -17,12 +17,12 @@
     "typescript": "^3.2.2"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.0.3",
-    "@graphql-codegen/typescript": "^1.0.3",
-    "@graphql-codegen/typescript-operations": "^1.0.3",
-    "@graphql-codegen/typescript-react-apollo": "^1.0.3",
-    "@types/jest": "^23.3.10",
-    "@types/node": "^10.12.18",
+    "@graphql-codegen/cli": "^1.2.1",
+    "@graphql-codegen/typescript": "^1.2.1",
+    "@graphql-codegen/typescript-operations": "^1.2.1",
+    "@graphql-codegen/typescript-react-apollo": "^1.2.1",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.8",
     "@types/react": "^16.7.17",
     "@types/react-dom": "^16.0.11",
     "@types/react-router-dom": "^4.3.1",
@@ -50,7 +50,7 @@
   "prettier": {
     "semi": false,
     "singleQuote": true,
-    "trailingComma": "all"
+    "trailingComma": "es5"
   },
   "moduleFileExtensions": [
     "ts",

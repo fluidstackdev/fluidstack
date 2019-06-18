@@ -1,4 +1,8 @@
-type Maybe<T> = T | null
+import gql from 'graphql-tag'
+import * as React from 'react'
+import * as ReactApollo from 'react-apollo'
+export type Maybe<T> = T | null
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -8,32 +12,15 @@ export type Scalars = {
   Float: number
 }
 
-export type IAggregateBrand = {
-  count: Scalars['Int']
-}
-
-export type IAggregateCollection = {
-  count: Scalars['Int']
-}
-
-export type IAggregateOption = {
-  count: Scalars['Int']
-}
-
-export type IAggregateProduct = {
-  count: Scalars['Int']
-}
-
 export type IAttribute = {
+  __typename?: 'Attribute'
   id: Scalars['ID']
   key: Scalars['String']
-  value: Scalars['String']
   products?: Maybe<Array<IProduct>>
+  value: Scalars['String']
 }
 
 export type IAttributeProductsArgs = {
-  where?: Maybe<IProductWhereInput>
-  orderBy?: Maybe<IProductOrderByInput>
   skip?: Maybe<Scalars['Int']>
   after?: Maybe<Scalars['String']>
   before?: Maybe<Scalars['String']>
@@ -41,76 +28,41 @@ export type IAttributeProductsArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
+export type IAttributeCreateManyWithoutAttributesInput = {
+  create?: Maybe<Array<IAttributeCreateWithoutProductsInput>>
+  connect?: Maybe<Array<IAttributeWhereUniqueInput>>
+}
+
+export type IAttributeCreateWithoutProductsInput = {
+  id?: Maybe<Scalars['ID']>
+  key: Scalars['String']
+  value: Scalars['String']
+}
+
 export type IAttributePayload = {
+  __typename?: 'AttributePayload'
   name: Scalars['String']
   values: Array<IAttributeValue>
 }
 
 export type IAttributeValue = {
+  __typename?: 'AttributeValue'
   id: Scalars['ID']
   value: Scalars['String']
 }
 
-export type IAttributeWhereInput = {
+export type IAttributeWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  key?: Maybe<Scalars['String']>
-  key_not?: Maybe<Scalars['String']>
-  key_in?: Maybe<Array<Scalars['String']>>
-  key_not_in?: Maybe<Array<Scalars['String']>>
-  key_lt?: Maybe<Scalars['String']>
-  key_lte?: Maybe<Scalars['String']>
-  key_gt?: Maybe<Scalars['String']>
-  key_gte?: Maybe<Scalars['String']>
-  key_contains?: Maybe<Scalars['String']>
-  key_not_contains?: Maybe<Scalars['String']>
-  key_starts_with?: Maybe<Scalars['String']>
-  key_not_starts_with?: Maybe<Scalars['String']>
-  key_ends_with?: Maybe<Scalars['String']>
-  key_not_ends_with?: Maybe<Scalars['String']>
-  value?: Maybe<Scalars['String']>
-  value_not?: Maybe<Scalars['String']>
-  value_in?: Maybe<Array<Scalars['String']>>
-  value_not_in?: Maybe<Array<Scalars['String']>>
-  value_lt?: Maybe<Scalars['String']>
-  value_lte?: Maybe<Scalars['String']>
-  value_gt?: Maybe<Scalars['String']>
-  value_gte?: Maybe<Scalars['String']>
-  value_contains?: Maybe<Scalars['String']>
-  value_not_contains?: Maybe<Scalars['String']>
-  value_starts_with?: Maybe<Scalars['String']>
-  value_not_starts_with?: Maybe<Scalars['String']>
-  value_ends_with?: Maybe<Scalars['String']>
-  value_not_ends_with?: Maybe<Scalars['String']>
-  products_every?: Maybe<IProductWhereInput>
-  products_some?: Maybe<IProductWhereInput>
-  products_none?: Maybe<IProductWhereInput>
-  AND?: Maybe<Array<IAttributeWhereInput>>
-  OR?: Maybe<Array<IAttributeWhereInput>>
-  NOT?: Maybe<Array<IAttributeWhereInput>>
 }
 
 export type IBrand = {
+  __typename?: 'Brand'
   id: Scalars['ID']
   name: Scalars['String']
   products?: Maybe<Array<IProduct>>
 }
 
 export type IBrandProductsArgs = {
-  where?: Maybe<IProductWhereInput>
-  orderBy?: Maybe<IProductOrderByInput>
   skip?: Maybe<Scalars['Int']>
   after?: Maybe<Scalars['String']>
   before?: Maybe<Scalars['String']>
@@ -118,69 +70,25 @@ export type IBrandProductsArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
-export type IBrandConnection = {
-  pageInfo: IPageInfo
-  edges: Array<IBrandEdge>
-  aggregate: IAggregateBrand
+export type IBrandCreateOneWithoutBrandInput = {
+  create?: Maybe<IBrandCreateWithoutProductsInput>
+  connect?: Maybe<IBrandWhereUniqueInput>
 }
 
-export type IBrandEdge = {
-  node: IBrand
-  cursor: Scalars['String']
-}
-
-export enum IBrandOrderByInput {
-  IId_Asc = 'id_ASC',
-  IId_Desc = 'id_DESC',
-  IName_Asc = 'name_ASC',
-  IName_Desc = 'name_DESC',
-  ICreatedAt_Asc = 'createdAt_ASC',
-  ICreatedAt_Desc = 'createdAt_DESC',
-  IUpdatedAt_Asc = 'updatedAt_ASC',
-  IUpdatedAt_Desc = 'updatedAt_DESC',
-}
-
-export type IBrandWhereInput = {
+export type IBrandCreateWithoutProductsInput = {
   id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  name?: Maybe<Scalars['String']>
-  name_not?: Maybe<Scalars['String']>
-  name_in?: Maybe<Array<Scalars['String']>>
-  name_not_in?: Maybe<Array<Scalars['String']>>
-  name_lt?: Maybe<Scalars['String']>
-  name_lte?: Maybe<Scalars['String']>
-  name_gt?: Maybe<Scalars['String']>
-  name_gte?: Maybe<Scalars['String']>
-  name_contains?: Maybe<Scalars['String']>
-  name_not_contains?: Maybe<Scalars['String']>
-  name_starts_with?: Maybe<Scalars['String']>
-  name_not_starts_with?: Maybe<Scalars['String']>
-  name_ends_with?: Maybe<Scalars['String']>
-  name_not_ends_with?: Maybe<Scalars['String']>
-  products_every?: Maybe<IProductWhereInput>
-  products_some?: Maybe<IProductWhereInput>
-  products_none?: Maybe<IProductWhereInput>
-  AND?: Maybe<Array<IBrandWhereInput>>
-  OR?: Maybe<Array<IBrandWhereInput>>
-  NOT?: Maybe<Array<IBrandWhereInput>>
+  name: Scalars['String']
+}
+
+export type IBrandWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>
 }
 
 export type ICollection = {
+  __typename?: 'Collection'
   id: Scalars['ID']
   name: Scalars['String']
-  products: IProductConnection
+  products: Array<IProduct>
   options: Array<IOption>
   brands: Array<IBrand>
   attributes: Array<IAttributePayload>
@@ -194,15 +102,15 @@ export type ICollectionProductsArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
-export type ICollectionConnection = {
-  pageInfo: IPageInfo
-  edges: Array<ICollectionEdge>
-  aggregate: IAggregateCollection
+export type ICollectionCreateManyWithoutCollectionsInput = {
+  create?: Maybe<Array<ICollectionCreateWithoutProductsInput>>
+  connect?: Maybe<Array<ICollectionWhereUniqueInput>>
 }
 
-export type ICollectionEdge = {
-  node: ICollection
-  cursor: Scalars['String']
+export type ICollectionCreateWithoutProductsInput = {
+  id?: Maybe<Scalars['ID']>
+  name: Scalars['String']
+  rules?: Maybe<ICollectionRuleSetCreateOneWithoutRulesInput>
 }
 
 export type ICollectionInput = {
@@ -211,32 +119,44 @@ export type ICollectionInput = {
   productsIds?: Maybe<Array<Scalars['String']>>
 }
 
-export enum ICollectionOrderByInput {
-  IId_Asc = 'id_ASC',
-  IId_Desc = 'id_DESC',
-  IName_Asc = 'name_ASC',
-  IName_Desc = 'name_DESC',
-  ICreatedAt_Asc = 'createdAt_ASC',
-  ICreatedAt_Desc = 'createdAt_DESC',
-  IUpdatedAt_Asc = 'updatedAt_ASC',
-  IUpdatedAt_Desc = 'updatedAt_DESC',
+export type ICollectionRuleCreateManyWithoutRulesInput = {
+  create?: Maybe<Array<ICollectionRuleCreateWithoutCollectionRuleSetInput>>
+  connect?: Maybe<Array<ICollectionRuleWhereUniqueInput>>
+}
+
+export type ICollectionRuleCreateWithoutCollectionRuleSetInput = {
+  id?: Maybe<Scalars['ID']>
+  field: ICollectionRuleField
+  relation: ICollectionRuleRelation
+  value: Scalars['String']
 }
 
 export enum ICollectionRuleField {
-  IType = 'TYPE',
-  ITitle = 'TITLE',
-  IPrice = 'PRICE',
+  Type = 'TYPE',
+  Title = 'TITLE',
+  Price = 'PRICE',
 }
 
 export enum ICollectionRuleRelation {
-  IContains = 'CONTAINS',
-  IEnds_With = 'ENDS_WITH',
-  IEquals = 'EQUALS',
-  IGreater_Than = 'GREATER_THAN',
-  ILess_Than = 'LESS_THAN',
-  INot_Contains = 'NOT_CONTAINS',
-  INot_Equals = 'NOT_EQUALS',
-  IStarts_With = 'STARTS_WITH',
+  Contains = 'CONTAINS',
+  EndsWith = 'ENDS_WITH',
+  Equals = 'EQUALS',
+  GreaterThan = 'GREATER_THAN',
+  LessThan = 'LESS_THAN',
+  NotContains = 'NOT_CONTAINS',
+  NotEquals = 'NOT_EQUALS',
+  StartsWith = 'STARTS_WITH',
+}
+
+export type ICollectionRuleSetCreateOneWithoutRulesInput = {
+  create?: Maybe<ICollectionRuleSetCreateWithoutCollectionInput>
+  connect?: Maybe<ICollectionRuleSetWhereUniqueInput>
+}
+
+export type ICollectionRuleSetCreateWithoutCollectionInput = {
+  id?: Maybe<Scalars['ID']>
+  appliesDisjunctively: Scalars['Boolean']
+  rules?: Maybe<ICollectionRuleCreateManyWithoutRulesInput>
 }
 
 export type ICollectionRuleSetInput = {
@@ -244,113 +164,21 @@ export type ICollectionRuleSetInput = {
   rules: Array<IRulesInput>
 }
 
-export type ICollectionRuleSetWhereInput = {
+export type ICollectionRuleSetWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  rules_every?: Maybe<ICollectionRuleWhereInput>
-  rules_some?: Maybe<ICollectionRuleWhereInput>
-  rules_none?: Maybe<ICollectionRuleWhereInput>
-  appliesDisjunctively?: Maybe<Scalars['Boolean']>
-  appliesDisjunctively_not?: Maybe<Scalars['Boolean']>
-  AND?: Maybe<Array<ICollectionRuleSetWhereInput>>
-  OR?: Maybe<Array<ICollectionRuleSetWhereInput>>
-  NOT?: Maybe<Array<ICollectionRuleSetWhereInput>>
 }
 
-export type ICollectionRuleWhereInput = {
+export type ICollectionRuleWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  field?: Maybe<ICollectionRuleField>
-  field_not?: Maybe<ICollectionRuleField>
-  field_in?: Maybe<Array<ICollectionRuleField>>
-  field_not_in?: Maybe<Array<ICollectionRuleField>>
-  relation?: Maybe<ICollectionRuleRelation>
-  relation_not?: Maybe<ICollectionRuleRelation>
-  relation_in?: Maybe<Array<ICollectionRuleRelation>>
-  relation_not_in?: Maybe<Array<ICollectionRuleRelation>>
-  value?: Maybe<Scalars['String']>
-  value_not?: Maybe<Scalars['String']>
-  value_in?: Maybe<Array<Scalars['String']>>
-  value_not_in?: Maybe<Array<Scalars['String']>>
-  value_lt?: Maybe<Scalars['String']>
-  value_lte?: Maybe<Scalars['String']>
-  value_gt?: Maybe<Scalars['String']>
-  value_gte?: Maybe<Scalars['String']>
-  value_contains?: Maybe<Scalars['String']>
-  value_not_contains?: Maybe<Scalars['String']>
-  value_starts_with?: Maybe<Scalars['String']>
-  value_not_starts_with?: Maybe<Scalars['String']>
-  value_ends_with?: Maybe<Scalars['String']>
-  value_not_ends_with?: Maybe<Scalars['String']>
-  AND?: Maybe<Array<ICollectionRuleWhereInput>>
-  OR?: Maybe<Array<ICollectionRuleWhereInput>>
-  NOT?: Maybe<Array<ICollectionRuleWhereInput>>
 }
 
-export type ICollectionWhereInput = {
+export type ICollectionWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  name?: Maybe<Scalars['String']>
-  name_not?: Maybe<Scalars['String']>
-  name_in?: Maybe<Array<Scalars['String']>>
-  name_not_in?: Maybe<Array<Scalars['String']>>
-  name_lt?: Maybe<Scalars['String']>
-  name_lte?: Maybe<Scalars['String']>
-  name_gt?: Maybe<Scalars['String']>
-  name_gte?: Maybe<Scalars['String']>
-  name_contains?: Maybe<Scalars['String']>
-  name_not_contains?: Maybe<Scalars['String']>
-  name_starts_with?: Maybe<Scalars['String']>
-  name_not_starts_with?: Maybe<Scalars['String']>
-  name_ends_with?: Maybe<Scalars['String']>
-  name_not_ends_with?: Maybe<Scalars['String']>
-  rules?: Maybe<ICollectionRuleSetWhereInput>
-  products_every?: Maybe<IProductWhereInput>
-  products_some?: Maybe<IProductWhereInput>
-  products_none?: Maybe<IProductWhereInput>
-  AND?: Maybe<Array<ICollectionWhereInput>>
-  OR?: Maybe<Array<ICollectionWhereInput>>
-  NOT?: Maybe<Array<ICollectionWhereInput>>
 }
 
 export type ICreateProductInput = {
   name: Scalars['String']
+  slug: Scalars['String']
   brand: IUniqueInput
   attributesIds: Array<IUniqueInput>
   variants: Array<ICreateVariantInput>
@@ -363,63 +191,63 @@ export type ICreateVariantInput = {
 }
 
 export type IImage = {
+  __typename?: 'Image'
   id: Scalars['ID']
   url: Scalars['String']
 }
 
-export enum IImageOrderByInput {
-  IId_Asc = 'id_ASC',
-  IId_Desc = 'id_DESC',
-  IUrl_Asc = 'url_ASC',
-  IUrl_Desc = 'url_DESC',
-  ICreatedAt_Asc = 'createdAt_ASC',
-  ICreatedAt_Desc = 'createdAt_DESC',
-  IUpdatedAt_Asc = 'updatedAt_ASC',
-  IUpdatedAt_Desc = 'updatedAt_DESC',
+export type IImageCreateManyWithoutImagesInput = {
+  create?: Maybe<Array<IImageCreateWithoutVariantInput>>
+  connect?: Maybe<Array<IImageWhereUniqueInput>>
 }
 
-export type IImageWhereInput = {
+export type IImageCreateOneWithoutThumbnailInput = {
+  create?: Maybe<IImageCreateWithoutProductInput>
+  connect?: Maybe<IImageWhereUniqueInput>
+}
+
+export type IImageCreateWithoutProductInput = {
   id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  url?: Maybe<Scalars['String']>
-  url_not?: Maybe<Scalars['String']>
-  url_in?: Maybe<Array<Scalars['String']>>
-  url_not_in?: Maybe<Array<Scalars['String']>>
-  url_lt?: Maybe<Scalars['String']>
-  url_lte?: Maybe<Scalars['String']>
-  url_gt?: Maybe<Scalars['String']>
-  url_gte?: Maybe<Scalars['String']>
-  url_contains?: Maybe<Scalars['String']>
-  url_not_contains?: Maybe<Scalars['String']>
-  url_starts_with?: Maybe<Scalars['String']>
-  url_not_starts_with?: Maybe<Scalars['String']>
-  url_ends_with?: Maybe<Scalars['String']>
-  url_not_ends_with?: Maybe<Scalars['String']>
-  AND?: Maybe<Array<IImageWhereInput>>
-  OR?: Maybe<Array<IImageWhereInput>>
-  NOT?: Maybe<Array<IImageWhereInput>>
+  url: Scalars['String']
+  variant?: Maybe<IVariantCreateOneWithoutVariantInput>
+}
+
+export type IImageCreateWithoutVariantInput = {
+  id?: Maybe<Scalars['ID']>
+  url: Scalars['String']
+  product?: Maybe<IProductCreateOneWithoutProductInput>
+}
+
+export type IImageWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>
 }
 
 export type IMutation = {
+  __typename?: 'Mutation'
+  createOneProduct: IProduct
+  productCreate: IProduct
+  productDelete: IProduct
+  productUpdate: IProduct
   collectionCreate: ICollection
   collectionAddProducts: ICollection
   collectionRemoveProducts: ICollection
   collectionUpdate: ICollection
-  productCreate: IProduct
-  productDelete: IProduct
-  productUpdate: IProduct
+}
+
+export type IMutationCreateOneProductArgs = {
+  data: IProductCreateInput
+}
+
+export type IMutationProductCreateArgs = {
+  data: ICreateProductInput
+}
+
+export type IMutationProductDeleteArgs = {
+  productId: Scalars['ID']
+}
+
+export type IMutationProductUpdateArgs = {
+  data: IUpdateProductInput
 }
 
 export type IMutationCollectionCreateArgs = {
@@ -441,28 +269,15 @@ export type IMutationCollectionUpdateArgs = {
   collection: ICollectionInput
 }
 
-export type IMutationProductCreateArgs = {
-  data: ICreateProductInput
-}
-
-export type IMutationProductDeleteArgs = {
-  productId: Scalars['ID']
-}
-
-export type IMutationProductUpdateArgs = {
-  data: IUpdateProductInput
-}
-
 export type IOption = {
+  __typename?: 'Option'
   id: Scalars['ID']
   name: Scalars['String']
-  isColor: Scalars['Boolean']
   values?: Maybe<Array<IOptionValue>>
+  isColor?: Maybe<Scalars['Boolean']>
 }
 
 export type IOptionValuesArgs = {
-  where?: Maybe<IOptionValueWhereInput>
-  orderBy?: Maybe<IOptionValueOrderByInput>
   skip?: Maybe<Scalars['Int']>
   after?: Maybe<Scalars['String']>
   before?: Maybe<Scalars['String']>
@@ -470,143 +285,56 @@ export type IOptionValuesArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
-export type IOptionConnection = {
-  pageInfo: IPageInfo
-  edges: Array<IOptionEdge>
-  aggregate: IAggregateOption
+export type IOptionCreateOneWithoutOptionInput = {
+  create?: Maybe<IOptionCreateWithoutValuesInput>
+  connect?: Maybe<IOptionWhereUniqueInput>
 }
 
-export type IOptionEdge = {
-  node: IOption
-  cursor: Scalars['String']
-}
-
-export enum IOptionOrderByInput {
-  IId_Asc = 'id_ASC',
-  IId_Desc = 'id_DESC',
-  IName_Asc = 'name_ASC',
-  IName_Desc = 'name_DESC',
-  IIsColor_Asc = 'isColor_ASC',
-  IIsColor_Desc = 'isColor_DESC',
-  ICreatedAt_Asc = 'createdAt_ASC',
-  ICreatedAt_Desc = 'createdAt_DESC',
-  IUpdatedAt_Asc = 'updatedAt_ASC',
-  IUpdatedAt_Desc = 'updatedAt_DESC',
+export type IOptionCreateWithoutValuesInput = {
+  id?: Maybe<Scalars['ID']>
+  name: Scalars['String']
+  isColor?: Maybe<Scalars['Boolean']>
 }
 
 export type IOptionValue = {
+  __typename?: 'OptionValue'
   id: Scalars['ID']
   name: Scalars['String']
   option: IOption
+  variant?: Maybe<IVariant>
 }
 
-export enum IOptionValueOrderByInput {
-  IId_Asc = 'id_ASC',
-  IId_Desc = 'id_DESC',
-  IName_Asc = 'name_ASC',
-  IName_Desc = 'name_DESC',
-  ICreatedAt_Asc = 'createdAt_ASC',
-  ICreatedAt_Desc = 'createdAt_DESC',
-  IUpdatedAt_Asc = 'updatedAt_ASC',
-  IUpdatedAt_Desc = 'updatedAt_DESC',
+export type IOptionValueCreateManyWithoutOptionValuesInput = {
+  create?: Maybe<Array<IOptionValueCreateWithoutVariantInput>>
+  connect?: Maybe<Array<IOptionValueWhereUniqueInput>>
 }
 
-export type IOptionValueWhereInput = {
+export type IOptionValueCreateWithoutVariantInput = {
   id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  name?: Maybe<Scalars['String']>
-  name_not?: Maybe<Scalars['String']>
-  name_in?: Maybe<Array<Scalars['String']>>
-  name_not_in?: Maybe<Array<Scalars['String']>>
-  name_lt?: Maybe<Scalars['String']>
-  name_lte?: Maybe<Scalars['String']>
-  name_gt?: Maybe<Scalars['String']>
-  name_gte?: Maybe<Scalars['String']>
-  name_contains?: Maybe<Scalars['String']>
-  name_not_contains?: Maybe<Scalars['String']>
-  name_starts_with?: Maybe<Scalars['String']>
-  name_not_starts_with?: Maybe<Scalars['String']>
-  name_ends_with?: Maybe<Scalars['String']>
-  name_not_ends_with?: Maybe<Scalars['String']>
-  option?: Maybe<IOptionWhereInput>
-  AND?: Maybe<Array<IOptionValueWhereInput>>
-  OR?: Maybe<Array<IOptionValueWhereInput>>
-  NOT?: Maybe<Array<IOptionValueWhereInput>>
+  name: Scalars['String']
+  option: IOptionCreateOneWithoutOptionInput
 }
 
-export type IOptionWhereInput = {
+export type IOptionValueWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  name?: Maybe<Scalars['String']>
-  name_not?: Maybe<Scalars['String']>
-  name_in?: Maybe<Array<Scalars['String']>>
-  name_not_in?: Maybe<Array<Scalars['String']>>
-  name_lt?: Maybe<Scalars['String']>
-  name_lte?: Maybe<Scalars['String']>
-  name_gt?: Maybe<Scalars['String']>
-  name_gte?: Maybe<Scalars['String']>
-  name_contains?: Maybe<Scalars['String']>
-  name_not_contains?: Maybe<Scalars['String']>
-  name_starts_with?: Maybe<Scalars['String']>
-  name_not_starts_with?: Maybe<Scalars['String']>
-  name_ends_with?: Maybe<Scalars['String']>
-  name_not_ends_with?: Maybe<Scalars['String']>
-  isColor?: Maybe<Scalars['Boolean']>
-  isColor_not?: Maybe<Scalars['Boolean']>
-  values_every?: Maybe<IOptionValueWhereInput>
-  values_some?: Maybe<IOptionValueWhereInput>
-  values_none?: Maybe<IOptionValueWhereInput>
-  AND?: Maybe<Array<IOptionWhereInput>>
-  OR?: Maybe<Array<IOptionWhereInput>>
-  NOT?: Maybe<Array<IOptionWhereInput>>
 }
 
-export type IPageInfo = {
-  hasNextPage: Scalars['Boolean']
-  hasPreviousPage: Scalars['Boolean']
-  startCursor?: Maybe<Scalars['String']>
-  endCursor?: Maybe<Scalars['String']>
+export type IOptionWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>
 }
 
 export type IProduct = {
+  __typename?: 'Product'
   id: Scalars['ID']
-  slug: Scalars['String']
-  name: Scalars['String']
   brand: IBrand
-  description: Scalars['String']
-  type?: Maybe<IProductType>
-  thumbnail: IImage
+  thumbnail?: Maybe<IImage>
+  name: Scalars['String']
   variants?: Maybe<Array<IVariant>>
-  attributes: Array<IAttribute>
+  slug: Scalars['String']
+  attributes?: Maybe<Array<IAttribute>>
 }
 
 export type IProductVariantsArgs = {
-  where?: Maybe<IVariantWhereInput>
-  orderBy?: Maybe<IVariantOrderByInput>
   skip?: Maybe<Scalars['Int']>
   after?: Maybe<Scalars['String']>
   before?: Maybe<Scalars['String']>
@@ -614,143 +342,56 @@ export type IProductVariantsArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
-export type IProductConnection = {
-  pageInfo: IPageInfo
-  edges: Array<IProductEdge>
-  aggregate: IAggregateProduct
+export type IProductAttributesArgs = {
+  skip?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
 }
 
-export type IProductEdge = {
-  node: IProduct
-  cursor: Scalars['String']
+export type IProductCreateInput = {
+  id?: Maybe<Scalars['ID']>
+  name: Scalars['String']
+  slug: Scalars['String']
+  description: Scalars['String']
+  brand: IBrandCreateOneWithoutBrandInput
+  thumbnail?: Maybe<IImageCreateOneWithoutThumbnailInput>
+  type?: Maybe<IProductTypeCreateOneWithoutTypeInput>
+  variants?: Maybe<IVariantCreateManyWithoutVariantsInput>
+  collections?: Maybe<ICollectionCreateManyWithoutCollectionsInput>
+  attributes?: Maybe<IAttributeCreateManyWithoutAttributesInput>
 }
 
-export enum IProductOrderByInput {
-  IId_Asc = 'id_ASC',
-  IId_Desc = 'id_DESC',
-  ISlug_Asc = 'slug_ASC',
-  ISlug_Desc = 'slug_DESC',
-  IName_Asc = 'name_ASC',
-  IName_Desc = 'name_DESC',
-  IDescription_Asc = 'description_ASC',
-  IDescription_Desc = 'description_DESC',
-  ICreatedAt_Asc = 'createdAt_ASC',
-  ICreatedAt_Desc = 'createdAt_DESC',
-  IUpdatedAt_Asc = 'updatedAt_ASC',
-  IUpdatedAt_Desc = 'updatedAt_DESC',
+export type IProductCreateOneWithoutProductInput = {
+  create?: Maybe<IProductCreateWithoutVariantsInput>
+  connect?: Maybe<IProductWhereUniqueInput>
 }
 
-export type IProductType = {
-  id: Scalars['ID']
+export type IProductCreateWithoutVariantsInput = {
+  id?: Maybe<Scalars['ID']>
+  name: Scalars['String']
+  slug: Scalars['String']
+  description: Scalars['String']
+  brand: IBrandCreateOneWithoutBrandInput
+  thumbnail?: Maybe<IImageCreateOneWithoutThumbnailInput>
+  type?: Maybe<IProductTypeCreateOneWithoutTypeInput>
+  collections?: Maybe<ICollectionCreateManyWithoutCollectionsInput>
+  attributes?: Maybe<IAttributeCreateManyWithoutAttributesInput>
+}
+
+export type IProductTypeCreateOneWithoutTypeInput = {
+  create?: Maybe<IProductTypeCreateWithoutProductInput>
+  connect?: Maybe<IProductTypeWhereUniqueInput>
+}
+
+export type IProductTypeCreateWithoutProductInput = {
+  id?: Maybe<Scalars['ID']>
   name: Scalars['String']
 }
 
-export type IProductTypeWhereInput = {
+export type IProductTypeWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  name?: Maybe<Scalars['String']>
-  name_not?: Maybe<Scalars['String']>
-  name_in?: Maybe<Array<Scalars['String']>>
-  name_not_in?: Maybe<Array<Scalars['String']>>
-  name_lt?: Maybe<Scalars['String']>
-  name_lte?: Maybe<Scalars['String']>
-  name_gt?: Maybe<Scalars['String']>
-  name_gte?: Maybe<Scalars['String']>
-  name_contains?: Maybe<Scalars['String']>
-  name_not_contains?: Maybe<Scalars['String']>
-  name_starts_with?: Maybe<Scalars['String']>
-  name_not_starts_with?: Maybe<Scalars['String']>
-  name_ends_with?: Maybe<Scalars['String']>
-  name_not_ends_with?: Maybe<Scalars['String']>
-  AND?: Maybe<Array<IProductTypeWhereInput>>
-  OR?: Maybe<Array<IProductTypeWhereInput>>
-  NOT?: Maybe<Array<IProductTypeWhereInput>>
-}
-
-export type IProductWhereInput = {
-  id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  slug?: Maybe<Scalars['String']>
-  slug_not?: Maybe<Scalars['String']>
-  slug_in?: Maybe<Array<Scalars['String']>>
-  slug_not_in?: Maybe<Array<Scalars['String']>>
-  slug_lt?: Maybe<Scalars['String']>
-  slug_lte?: Maybe<Scalars['String']>
-  slug_gt?: Maybe<Scalars['String']>
-  slug_gte?: Maybe<Scalars['String']>
-  slug_contains?: Maybe<Scalars['String']>
-  slug_not_contains?: Maybe<Scalars['String']>
-  slug_starts_with?: Maybe<Scalars['String']>
-  slug_not_starts_with?: Maybe<Scalars['String']>
-  slug_ends_with?: Maybe<Scalars['String']>
-  slug_not_ends_with?: Maybe<Scalars['String']>
-  name?: Maybe<Scalars['String']>
-  name_not?: Maybe<Scalars['String']>
-  name_in?: Maybe<Array<Scalars['String']>>
-  name_not_in?: Maybe<Array<Scalars['String']>>
-  name_lt?: Maybe<Scalars['String']>
-  name_lte?: Maybe<Scalars['String']>
-  name_gt?: Maybe<Scalars['String']>
-  name_gte?: Maybe<Scalars['String']>
-  name_contains?: Maybe<Scalars['String']>
-  name_not_contains?: Maybe<Scalars['String']>
-  name_starts_with?: Maybe<Scalars['String']>
-  name_not_starts_with?: Maybe<Scalars['String']>
-  name_ends_with?: Maybe<Scalars['String']>
-  name_not_ends_with?: Maybe<Scalars['String']>
-  brand?: Maybe<IBrandWhereInput>
-  description?: Maybe<Scalars['String']>
-  description_not?: Maybe<Scalars['String']>
-  description_in?: Maybe<Array<Scalars['String']>>
-  description_not_in?: Maybe<Array<Scalars['String']>>
-  description_lt?: Maybe<Scalars['String']>
-  description_lte?: Maybe<Scalars['String']>
-  description_gt?: Maybe<Scalars['String']>
-  description_gte?: Maybe<Scalars['String']>
-  description_contains?: Maybe<Scalars['String']>
-  description_not_contains?: Maybe<Scalars['String']>
-  description_starts_with?: Maybe<Scalars['String']>
-  description_not_starts_with?: Maybe<Scalars['String']>
-  description_ends_with?: Maybe<Scalars['String']>
-  description_not_ends_with?: Maybe<Scalars['String']>
-  type?: Maybe<IProductTypeWhereInput>
-  thumbnail?: Maybe<IImageWhereInput>
-  variants_every?: Maybe<IVariantWhereInput>
-  variants_some?: Maybe<IVariantWhereInput>
-  variants_none?: Maybe<IVariantWhereInput>
-  collections_every?: Maybe<ICollectionWhereInput>
-  collections_some?: Maybe<ICollectionWhereInput>
-  collections_none?: Maybe<ICollectionWhereInput>
-  attributes_every?: Maybe<IAttributeWhereInput>
-  attributes_some?: Maybe<IAttributeWhereInput>
-  attributes_none?: Maybe<IAttributeWhereInput>
-  AND?: Maybe<Array<IProductWhereInput>>
-  OR?: Maybe<Array<IProductWhereInput>>
-  NOT?: Maybe<Array<IProductWhereInput>>
 }
 
 export type IProductWhereUniqueInput = {
@@ -759,47 +400,16 @@ export type IProductWhereUniqueInput = {
 }
 
 export type IQuery = {
-  options: IOptionConnection
-  brands: IBrandConnection
-  collections: ICollectionConnection
-  products: IProductConnection
+  __typename?: 'Query'
+  products?: Maybe<Array<IProduct>>
   product?: Maybe<IProduct>
+  options?: Maybe<Array<IOption>>
+  brands?: Maybe<Array<IBrand>>
+  collections?: Maybe<Array<ICollection>>
   collection: ICollection
 }
 
-export type IQueryOptionsArgs = {
-  where?: Maybe<IOptionWhereInput>
-  orderBy?: Maybe<IOptionOrderByInput>
-  skip?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-}
-
-export type IQueryBrandsArgs = {
-  where?: Maybe<IBrandWhereInput>
-  orderBy?: Maybe<IBrandOrderByInput>
-  skip?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-}
-
-export type IQueryCollectionsArgs = {
-  where?: Maybe<ICollectionWhereInput>
-  orderBy?: Maybe<ICollectionOrderByInput>
-  skip?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
-}
-
 export type IQueryProductsArgs = {
-  where?: Maybe<IProductWhereInput>
-  orderBy?: Maybe<IProductOrderByInput>
   skip?: Maybe<Scalars['Int']>
   after?: Maybe<Scalars['String']>
   before?: Maybe<Scalars['String']>
@@ -809,6 +419,30 @@ export type IQueryProductsArgs = {
 
 export type IQueryProductArgs = {
   where: IProductWhereUniqueInput
+}
+
+export type IQueryOptionsArgs = {
+  skip?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+}
+
+export type IQueryBrandsArgs = {
+  skip?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
+}
+
+export type IQueryCollectionsArgs = {
+  skip?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
 }
 
 export type IQueryCollectionArgs = {
@@ -841,27 +475,17 @@ export type IUpdateVariantInput = {
 }
 
 export type IVariant = {
+  __typename?: 'Variant'
   id: Scalars['ID']
+  availableForSale?: Maybe<Scalars['Boolean']>
+  images?: Maybe<Array<IImage>>
   optionValues?: Maybe<Array<IOptionValue>>
   price: Scalars['Int']
-  availableForSale?: Maybe<Scalars['Boolean']>
+  product?: Maybe<IProduct>
   sku?: Maybe<Scalars['String']>
-  images?: Maybe<Array<IImage>>
-}
-
-export type IVariantOptionValuesArgs = {
-  where?: Maybe<IOptionValueWhereInput>
-  orderBy?: Maybe<IOptionValueOrderByInput>
-  skip?: Maybe<Scalars['Int']>
-  after?: Maybe<Scalars['String']>
-  before?: Maybe<Scalars['String']>
-  first?: Maybe<Scalars['Int']>
-  last?: Maybe<Scalars['Int']>
 }
 
 export type IVariantImagesArgs = {
-  where?: Maybe<IImageWhereInput>
-  orderBy?: Maybe<IImageOrderByInput>
   skip?: Maybe<Scalars['Int']>
   after?: Maybe<Scalars['String']>
   before?: Maybe<Scalars['String']>
@@ -869,69 +493,44 @@ export type IVariantImagesArgs = {
   last?: Maybe<Scalars['Int']>
 }
 
-export enum IVariantOrderByInput {
-  IId_Asc = 'id_ASC',
-  IId_Desc = 'id_DESC',
-  IPrice_Asc = 'price_ASC',
-  IPrice_Desc = 'price_DESC',
-  IAvailableForSale_Asc = 'availableForSale_ASC',
-  IAvailableForSale_Desc = 'availableForSale_DESC',
-  ISku_Asc = 'sku_ASC',
-  ISku_Desc = 'sku_DESC',
-  ICreatedAt_Asc = 'createdAt_ASC',
-  ICreatedAt_Desc = 'createdAt_DESC',
-  IUpdatedAt_Asc = 'updatedAt_ASC',
-  IUpdatedAt_Desc = 'updatedAt_DESC',
+export type IVariantOptionValuesArgs = {
+  skip?: Maybe<Scalars['Int']>
+  after?: Maybe<Scalars['String']>
+  before?: Maybe<Scalars['String']>
+  first?: Maybe<Scalars['Int']>
+  last?: Maybe<Scalars['Int']>
 }
 
-export type IVariantWhereInput = {
+export type IVariantCreateManyWithoutVariantsInput = {
+  create?: Maybe<Array<IVariantCreateWithoutProductInput>>
+  connect?: Maybe<Array<IVariantWhereUniqueInput>>
+}
+
+export type IVariantCreateOneWithoutVariantInput = {
+  create?: Maybe<IVariantCreateWithoutImagesInput>
+  connect?: Maybe<IVariantWhereUniqueInput>
+}
+
+export type IVariantCreateWithoutImagesInput = {
   id?: Maybe<Scalars['ID']>
-  id_not?: Maybe<Scalars['ID']>
-  id_in?: Maybe<Array<Scalars['ID']>>
-  id_not_in?: Maybe<Array<Scalars['ID']>>
-  id_lt?: Maybe<Scalars['ID']>
-  id_lte?: Maybe<Scalars['ID']>
-  id_gt?: Maybe<Scalars['ID']>
-  id_gte?: Maybe<Scalars['ID']>
-  id_contains?: Maybe<Scalars['ID']>
-  id_not_contains?: Maybe<Scalars['ID']>
-  id_starts_with?: Maybe<Scalars['ID']>
-  id_not_starts_with?: Maybe<Scalars['ID']>
-  id_ends_with?: Maybe<Scalars['ID']>
-  id_not_ends_with?: Maybe<Scalars['ID']>
-  optionValues_every?: Maybe<IOptionValueWhereInput>
-  optionValues_some?: Maybe<IOptionValueWhereInput>
-  optionValues_none?: Maybe<IOptionValueWhereInput>
-  price?: Maybe<Scalars['Int']>
-  price_not?: Maybe<Scalars['Int']>
-  price_in?: Maybe<Array<Scalars['Int']>>
-  price_not_in?: Maybe<Array<Scalars['Int']>>
-  price_lt?: Maybe<Scalars['Int']>
-  price_lte?: Maybe<Scalars['Int']>
-  price_gt?: Maybe<Scalars['Int']>
-  price_gte?: Maybe<Scalars['Int']>
+  price: Scalars['Int']
   availableForSale?: Maybe<Scalars['Boolean']>
-  availableForSale_not?: Maybe<Scalars['Boolean']>
   sku?: Maybe<Scalars['String']>
-  sku_not?: Maybe<Scalars['String']>
-  sku_in?: Maybe<Array<Scalars['String']>>
-  sku_not_in?: Maybe<Array<Scalars['String']>>
-  sku_lt?: Maybe<Scalars['String']>
-  sku_lte?: Maybe<Scalars['String']>
-  sku_gt?: Maybe<Scalars['String']>
-  sku_gte?: Maybe<Scalars['String']>
-  sku_contains?: Maybe<Scalars['String']>
-  sku_not_contains?: Maybe<Scalars['String']>
-  sku_starts_with?: Maybe<Scalars['String']>
-  sku_not_starts_with?: Maybe<Scalars['String']>
-  sku_ends_with?: Maybe<Scalars['String']>
-  sku_not_ends_with?: Maybe<Scalars['String']>
-  images_every?: Maybe<IImageWhereInput>
-  images_some?: Maybe<IImageWhereInput>
-  images_none?: Maybe<IImageWhereInput>
-  AND?: Maybe<Array<IVariantWhereInput>>
-  OR?: Maybe<Array<IVariantWhereInput>>
-  NOT?: Maybe<Array<IVariantWhereInput>>
+  optionValues?: Maybe<IOptionValueCreateManyWithoutOptionValuesInput>
+  product?: Maybe<IProductCreateOneWithoutProductInput>
+}
+
+export type IVariantCreateWithoutProductInput = {
+  id?: Maybe<Scalars['ID']>
+  price: Scalars['Int']
+  availableForSale?: Maybe<Scalars['Boolean']>
+  sku?: Maybe<Scalars['String']>
+  optionValues?: Maybe<IOptionValueCreateManyWithoutOptionValuesInput>
+  images?: Maybe<IImageCreateManyWithoutImagesInput>
+}
+
+export type IVariantWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>
 }
 export type ICollectionQueryVariables = {
   collectionId: Scalars['ID']
@@ -945,13 +544,7 @@ export type ICollectionQuery = { __typename?: 'Query' } & {
     ICollection,
     'id' | 'name'
   > & {
-      products: { __typename?: 'ProductConnection' } & {
-        edges: Array<
-          { __typename?: 'ProductEdge' } & {
-            node: { __typename?: 'Product' } & ICollectionProductFragment
-          }
-        >
-      }
+      products: Array<{ __typename?: 'Product' } & ICollectionProductFragment>
       attributes: Array<
         { __typename?: 'AttributePayload' } & Pick<
           IAttributePayload,
@@ -985,7 +578,7 @@ export type ICollectionProductFragment = { __typename?: 'Product' } & Pick<
   IProduct,
   'id' | 'name' | 'slug'
 > & {
-    thumbnail: { __typename?: 'Image' } & Pick<IImage, 'url'>
+    thumbnail: Maybe<{ __typename?: 'Image' } & Pick<IImage, 'url'>>
     brand: { __typename?: 'Brand' } & Pick<IBrand, 'id' | 'name'>
     variants: Maybe<
       Array<
@@ -1021,12 +614,14 @@ export type IProductQuery = { __typename?: 'Query' } & {
 
 export type IProductDetailFragment = { __typename?: 'Product' } & Pick<
   IProduct,
-  'id' | 'name'
+  'id' | 'name' | 'slug'
 > & {
-    thumbnail: { __typename?: 'Image' } & Pick<IImage, 'url'>
+    thumbnail: Maybe<{ __typename?: 'Image' } & Pick<IImage, 'url'>>
     brand: { __typename?: 'Brand' } & Pick<IBrand, 'id' | 'name'>
-    attributes: Array<
-      { __typename?: 'Attribute' } & Pick<IAttribute, 'id' | 'key' | 'value'>
+    attributes: Maybe<
+      Array<
+        { __typename?: 'Attribute' } & Pick<IAttribute, 'id' | 'key' | 'value'>
+      >
     >
     variants: Maybe<
       Array<
@@ -1055,18 +650,10 @@ export type IProductDetailFragment = { __typename?: 'Product' } & Pick<
 export type ICollectionsQueryVariables = {}
 
 export type ICollectionsQuery = { __typename?: 'Query' } & {
-  collections: { __typename?: 'CollectionConnection' } & {
-    edges: Array<
-      { __typename?: 'CollectionEdge' } & {
-        node: { __typename?: 'Collection' } & Pick<ICollection, 'id' | 'name'>
-      }
-    >
-  }
+  collections: Maybe<
+    Array<{ __typename?: 'Collection' } & Pick<ICollection, 'id' | 'name'>>
+  >
 }
-
-import gql from 'graphql-tag'
-import * as React from 'react'
-import * as ReactApollo from 'react-apollo'
 export const CollectionProductFragmentDoc = gql`
   fragment CollectionProduct on Product {
     id
@@ -1102,6 +689,7 @@ export const ProductDetailFragmentDoc = gql`
   fragment ProductDetail on Product {
     id
     name
+    slug
     thumbnail {
       url
     }
@@ -1133,7 +721,7 @@ export const ProductDetailFragmentDoc = gql`
     }
   }
 `
-export const ICollectionDocument = gql`
+export const CollectionDocument = gql`
   query collection(
     $collectionId: ID!
     $brandsIds: [ID!]
@@ -1148,11 +736,7 @@ export const ICollectionDocument = gql`
         optionsValuesIds: $optionsValuesIds
         attributesIds: $attributesIds
       ) {
-        edges {
-          node {
-            ...CollectionProduct
-          }
-        }
+        ...CollectionProduct
       }
       attributes {
         name
@@ -1177,41 +761,42 @@ export const ICollectionDocument = gql`
   }
   ${CollectionProductFragmentDoc}
 `
+export type CollectionComponentProps = Omit<
+  ReactApollo.QueryProps<ICollectionQuery, ICollectionQueryVariables>,
+  'query'
+> &
+  ({ variables: ICollectionQueryVariables; skip?: false } | { skip: true })
 
-export class ICollectionComponent extends React.Component<
-  Partial<ReactApollo.QueryProps<ICollectionQuery, ICollectionQueryVariables>>
-> {
-  render() {
-    return (
-      <ReactApollo.Query<ICollectionQuery, ICollectionQueryVariables>
-        query={ICollectionDocument}
-        {...(this as any)['props'] as any}
-      />
-    )
-  }
-}
+export const CollectionComponent = (props: CollectionComponentProps) => (
+  <ReactApollo.Query<ICollectionQuery, ICollectionQueryVariables>
+    query={CollectionDocument}
+    {...props}
+  />
+)
+
 export type ICollectionProps<TChildProps = {}> = Partial<
   ReactApollo.DataProps<ICollectionQuery, ICollectionQueryVariables>
 > &
   TChildProps
-export function withICollection<TProps, TChildProps = {}>(
-  operationOptions:
-    | ReactApollo.OperationOption<
-        TProps,
-        ICollectionQuery,
-        ICollectionQueryVariables,
-        ICollectionProps<TChildProps>
-      >
-    | undefined,
+export function withCollection<TProps, TChildProps = {}>(
+  operationOptions?: ReactApollo.OperationOption<
+    TProps,
+    ICollectionQuery,
+    ICollectionQueryVariables,
+    ICollectionProps<TChildProps>
+  >,
 ) {
   return ReactApollo.withQuery<
     TProps,
     ICollectionQuery,
     ICollectionQueryVariables,
     ICollectionProps<TChildProps>
-  >(ICollectionDocument, operationOptions)
+  >(CollectionDocument, {
+    alias: 'withCollection',
+    ...operationOptions,
+  })
 }
-export const IProductDocument = gql`
+export const ProductDocument = gql`
   query product($slug: String!) {
     product(where: { slug: $slug }) {
       ...ProductDetail
@@ -1219,83 +804,80 @@ export const IProductDocument = gql`
   }
   ${ProductDetailFragmentDoc}
 `
+export type ProductComponentProps = Omit<
+  ReactApollo.QueryProps<IProductQuery, IProductQueryVariables>,
+  'query'
+> &
+  ({ variables: IProductQueryVariables; skip?: false } | { skip: true })
 
-export class IProductComponent extends React.Component<
-  Partial<ReactApollo.QueryProps<IProductQuery, IProductQueryVariables>>
-> {
-  render() {
-    return (
-      <ReactApollo.Query<IProductQuery, IProductQueryVariables>
-        query={IProductDocument}
-        {...(this as any)['props'] as any}
-      />
-    )
-  }
-}
+export const ProductComponent = (props: ProductComponentProps) => (
+  <ReactApollo.Query<IProductQuery, IProductQueryVariables>
+    query={ProductDocument}
+    {...props}
+  />
+)
+
 export type IProductProps<TChildProps = {}> = Partial<
   ReactApollo.DataProps<IProductQuery, IProductQueryVariables>
 > &
   TChildProps
-export function withIProduct<TProps, TChildProps = {}>(
-  operationOptions:
-    | ReactApollo.OperationOption<
-        TProps,
-        IProductQuery,
-        IProductQueryVariables,
-        IProductProps<TChildProps>
-      >
-    | undefined,
+export function withProduct<TProps, TChildProps = {}>(
+  operationOptions?: ReactApollo.OperationOption<
+    TProps,
+    IProductQuery,
+    IProductQueryVariables,
+    IProductProps<TChildProps>
+  >,
 ) {
   return ReactApollo.withQuery<
     TProps,
     IProductQuery,
     IProductQueryVariables,
     IProductProps<TChildProps>
-  >(IProductDocument, operationOptions)
+  >(ProductDocument, {
+    alias: 'withProduct',
+    ...operationOptions,
+  })
 }
-export const ICollectionsDocument = gql`
+export const CollectionsDocument = gql`
   query collections {
     collections {
-      edges {
-        node {
-          id
-          name
-        }
-      }
+      id
+      name
     }
   }
 `
+export type CollectionsComponentProps = Omit<
+  ReactApollo.QueryProps<ICollectionsQuery, ICollectionsQueryVariables>,
+  'query'
+>
 
-export class ICollectionsComponent extends React.Component<
-  Partial<ReactApollo.QueryProps<ICollectionsQuery, ICollectionsQueryVariables>>
-> {
-  render() {
-    return (
-      <ReactApollo.Query<ICollectionsQuery, ICollectionsQueryVariables>
-        query={ICollectionsDocument}
-        {...(this as any)['props'] as any}
-      />
-    )
-  }
-}
+export const CollectionsComponent = (props: CollectionsComponentProps) => (
+  <ReactApollo.Query<ICollectionsQuery, ICollectionsQueryVariables>
+    query={CollectionsDocument}
+    {...props}
+  />
+)
+
 export type ICollectionsProps<TChildProps = {}> = Partial<
   ReactApollo.DataProps<ICollectionsQuery, ICollectionsQueryVariables>
 > &
   TChildProps
-export function withICollections<TProps, TChildProps = {}>(
-  operationOptions:
-    | ReactApollo.OperationOption<
-        TProps,
-        ICollectionsQuery,
-        ICollectionsQueryVariables,
-        ICollectionsProps<TChildProps>
-      >
-    | undefined,
+export function withCollections<TProps, TChildProps = {}>(
+  operationOptions?: ReactApollo.OperationOption<
+    TProps,
+    ICollectionsQuery,
+    ICollectionsQueryVariables,
+    ICollectionsProps<TChildProps>
+  >,
 ) {
   return ReactApollo.withQuery<
     TProps,
     ICollectionsQuery,
     ICollectionsQueryVariables,
     ICollectionsProps<TChildProps>
-  >(ICollectionsDocument, operationOptions)
+  >(CollectionsDocument, {
+    alias: 'withCollections',
+    ...operationOptions,
+  })
 }

@@ -1,11 +1,7 @@
-import {
-  CollectionRule,
-  CollectionRuleField,
-  Prisma,
-} from '../../.yoga/prisma-client'
+import Photon, { CollectionRule, CollectionRuleField } from '@generated/photon'
 import { get } from 'lodash'
-import { NexusGenInputs } from '../../.yoga/nexus'
-import { core } from 'yoga'
+import { NexusGenInputs } from '../nexus-typegen'
+import { core } from '@prisma/nexus'
 
 interface Product {
   id: string
@@ -53,8 +49,8 @@ export function productMatchRule(
   }
 }
 
-export function fetchAllCollections(
-  prisma: Prisma,
+export async function fetchAllCollections(
+  photon: Photon,
 ): Promise<
   {
     id: string
@@ -62,25 +58,39 @@ export function fetchAllCollections(
     rules: { rules: CollectionRule[] } | null
   }[]
 > {
-  return prisma.collections().$fragment(`fragment Collections on Collection {
-    id
-    name
-    rules {
-      rules {
-        field
-        relation
-        value
-      }
-    }
-  }`)
+  return photon.collections.findMany({
+    select: {
+      id: true,
+      name: true,
+      rules: {
+        select: {
+          rules: {
+            select: {
+              id: true,
+              field: true,
+              relation: true,
+              value: true,
+            },
+          },
+        },
+      },
+    },
+  })
 }
 
-function fetchAllProducts(prisma: Prisma): Promise<Product[]> {
-  return prisma.products().$fragment(`fragment product on Product {
-    id
-    name
-    type { id name }
-  }`)
+async function fetchAllProducts(photon: Photon): Promise<Product[]> {
+  return photon.products.findMany({
+    select: {
+      id: true,
+      name: true,
+      type: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
+  })
 }
 
 export function productMatchRules(
@@ -96,16 +106,16 @@ export function productMatchRules(
 
 async function productsMatchRules(
   rules: core.Omit<CollectionRule, 'id'>[],
-  prisma: Prisma,
+  photon: Photon,
 ) {
-  const products = await fetchAllProducts(prisma)
+  const products = await fetchAllProducts(photon)
 
   return products.filter(p => productMatchRules(p, rules))
 }
 
 export async function recomputeCollection(
   collection: CollectionInput,
-  prisma: Prisma,
+  prisma: Photon,
 ) {
   if (!collection.ruleSet) {
     throw new Error('Rule set is empty')
@@ -113,30 +123,34 @@ export async function recomputeCollection(
 
   const products = await productsMatchRules(collection.ruleSet.rules, prisma)
 
-  return prisma.createCollection({
-    name: collection.name,
-    rules: {
-      create: {
-        appliesDisjunctively: collection.ruleSet.applyDisjunctively,
-        rules: {
-          create: collection.ruleSet.rules,
+  return prisma.collections.create({
+    data: {
+      name: collection.name,
+      rules: {
+        create: {
+          appliesDisjunctively: collection.ruleSet.applyDisjunctively,
+          rules: {
+            create: collection.ruleSet.rules,
+          },
         },
       },
-    },
-    products: {
-      connect: products.map(p => ({ id: p.id })),
+      products: {
+        connect: products.map(p => ({ id: p.id })),
+      },
     },
   })
 }
 
 export function createManualCollection(
   collection: CollectionInput,
-  prisma: Prisma,
+  photon: Photon,
 ) {
-  return prisma.createCollection({
-    name: collection.name,
-    products: {
-      connect: collection.productsIds!.map(id => ({ id })),
+  return photon.collections.create({
+    data: {
+      name: collection.name,
+      products: {
+        connect: collection.productsIds!.map(id => ({ id })),
+      },
     },
   })
 }

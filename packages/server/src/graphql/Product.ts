@@ -1,6 +1,12 @@
-import { prismaObjectType, extendType, arg, idArg, inputObjectType } from 'yoga'
+import {
+  objectType,
+  extendType,
+  arg,
+  idArg,
+  inputObjectType,
+} from '@prisma/nexus'
 import { fetchAllCollections, productMatchRules } from '../utils/collection'
-import { VariantCreateInput } from '../../.yoga/prisma-client'
+import { VariantCreateInput } from '@generated/photon'
 import { UniqueInput } from './common'
 
 /**
@@ -11,16 +17,22 @@ import { UniqueInput } from './common'
  *   options: [Option!]!
  * }
  */
-export const Product = prismaObjectType({
+export const Product = objectType({
   name: 'Product',
   definition(t) {
-    t.prismaFields({ filter: ['collections', 'attributes'] })
+    t.model.id()
+    t.model.brand()
+    t.model.thumbnail()
+    t.model.name()
+    t.model.variants()
+    t.model.slug()
+    t.model.attributes({ pagination: false })
 
-    t.field('attributes', {
-      ...t.prismaType.attributes,
-      args: {},
-      nullable: false,
-    })
+    // t.field('attributes', {
+    //   ...t.prismaType.attributes,
+    //   args: {},
+    //   nullable: false,
+    // })
   },
 })
 
@@ -74,13 +86,15 @@ export const UpdateProductInput = inputObjectType({
 export const ProductMutation = extendType({
   type: 'Mutation',
   definition(t) {
+    t.crud.createOneProduct()
+
     t.field('productCreate', {
       type: 'Product',
       args: {
         data: arg({ type: CreateProductInput }),
       },
       resolve: async (_parent, { data }, ctx) => {
-        const collections = await fetchAllCollections(ctx.prisma)
+        const collections = await fetchAllCollections(ctx.photon)
         const collectionsToConnect = collections
           .filter(
             c =>
@@ -92,26 +106,27 @@ export const ProductMutation = extendType({
           )
           .map(c => ({ id: c.id }))
 
-        return ctx.prisma.createProduct({
-          name: data.name,
-          brand: { connect: { id: data.brand.id } },
-          description: '',
-          slug: '',
-          attributes: {
-            connect: data.attributesIds,
+        return ctx.photon.products.create({
+          data: {
+            name: data.name,
+            slug: '',
+            description: '',
+            brand: { connect: { id: data.brand.id } },
+            attributes: {
+              connect: data.attributesIds,
+            },
+            variants: {
+              create: data.variants.map(
+                variant =>
+                  ({
+                    optionValues: {
+                      connect: variant.optionsValueIds,
+                    },
+                  } as VariantCreateInput),
+              ),
+            },
+            collections: { connect: collectionsToConnect },
           },
-          thumbnail: { create: { url: '' } },
-          variants: {
-            create: data.variants.map(
-              variant =>
-                ({
-                  optionValues: {
-                    connect: variant.optionsValueIds,
-                  },
-                } as VariantCreateInput),
-            ),
-          },
-          collections: { connect: collectionsToConnect },
         })
       },
     })
@@ -122,7 +137,7 @@ export const ProductMutation = extendType({
         productId: idArg(),
       },
       resolve: async (_root, args, ctx) => {
-        return ctx.prisma.deleteProduct({ id: args.productId })
+        return ctx.photon.products.delete({ where: { id: args.productId } })
       },
     })
 

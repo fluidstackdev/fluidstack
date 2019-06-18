@@ -1,0 +1,207 @@
+yarn run v1.13.0
+$ /Users/flavian/projects/prisma/webshop/packages/server/node_modules/.bin/ts-node-dev ./prisma/seed.ts
+Using ts-node version 8.3.0, typescript version 3.5.2
+[
+  {
+    "variants": [
+      {
+        "id": "cjx27zorc0060qvxuw7f3gaav",
+        "optionValues": []
+      },
+      {
+        "id": "cjx27zors0063qvxunq8r7870",
+        "optionValues": []
+      },
+      {
+        "id": "cjx27zos50070qvxufxnbrems",
+        "optionValues": []
+      },
+      {
+        "id": "cjx27zosh0079qvxu6m6denb9",
+        "optionValues": []
+      },
+      {
+        "id": "cjx27zost0086qvxubdxcxk8e",
+        "optionValues": []
+      },
+      {
+        "id": "cjx27zot40095qvxuadimq9ll",
+        "optionValues": []
+      },
+      {
+        "id": "cjx27zotg0098qvxuk0ops8w2",
+        "optionValues": []
+      },
+      {
+        "id": "cjx27zotq0105qvxuuhamziky",
+        "optionValues": []
+      },
+      {
+        "id": "cjx27zou10107qvxuzvepwer2",
+        "optionValues": []
+      },
+      {
+        "id": "cjx27zoua0111qvxulvodrz85",
+        "optionValues": []
+      }
+    ]
+  },
+  {
+    "variants": [
+      {
+        "id": "cjx281rp60002sexue3d3pzsm",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rq40004sexut4io4kep",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rqm0013sexuyeewc4nz",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rqw0022sexui0gfth15",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rrf0024sexuu0nulzyi",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rry0028sexuoxhtfnad",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rsg0036sexu0hsqxyl5",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rvb0043sexub40gk2ew",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rwj0050sexuacsuxu9x",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rwz0057sexu6dvfiozs",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rxi0063sexu1zmqk2aj",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rxu0071sexu1aig7yyo",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281ryp0073sexugf5bqdvd",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rz70080sexuxzm0y33s",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rzf0087sexuy9louz5u",
+        "optionValues": []
+      },
+      {
+        "id": "cjx281rzs0089sexumkbgtur9",
+        "optionValues": []
+      }
+    ]
+  },
+  {
+    "variants": [
+      {
+        "id": "cjx284x9w0002yhxuzsdppufy",
+        "optionValues": []
+      },
+      {
+        "id": "cjx284xa80011yhxu7pov0y6s",
+        "optionValues": [
+          {
+            "id": "cjx27zoqn0052qvxupfnktzx5",
+            "name": "Violet"
+          }
+        ]
+      },
+      {
+        "id": "cjx284xai0017yhxusib40u4e",
+        "optionValues": []
+      },
+      {
+        "id": "cjx284xar0024yhxuwdfvy0jb",
+        "optionValues": []
+      },
+      {
+        "id": "cjx284xb10029yhxu1zilm2ld",
+        "optionValues": []
+      },
+      {
+        "id": "cjx284xba0036yhxu6n392ls9",
+        "optionValues": [
+          {
+            "id": "cjx27zoqn0051qvxu84tmx7g4",
+            "name": "Green"
+          }
+        ]
+      },
+      {
+        "id": "cjx284xbk0042yhxuxj9pgqlh",
+        "optionValues": []
+      },
+      {
+        "id": "cjx284xbx0045yhxuzc02zhoq",
+        "optionValues": [
+          {
+            "id": "cjx27zoqp0054qvxus4grtzdq",
+            "name": "S"
+          }
+        ]
+      },
+      {
+        "id": "cjx284xc70054yhxuswdjmufm",
+        "optionValues": [
+          {
+            "id": "cjx27zoqq0056qvxubksmfax1",
+            "name": "L"
+          }
+        ]
+      },
+      {
+        "id": "cjx284xci0062yhxuoi8d21im",
+        "optionValues": []
+      },
+      {
+        "id": "cjx284xcp0064yhxuhsqc5si3",
+        "optionValues": [
+          {
+            "id": "cjx27zoqn0049qvxu739dgw95",
+            "name": "Red"
+          },
+          {
+            "id": "cjx27zoqq0057qvxulhg5h80y",
+            "name": "XL"
+          }
+        ]
+      },
+      {
+        "id": "cjx284xd20067yhxu7i5p744o",
+        "optionValues": [
+          {
+            "id": "cjx27zoqn0050qvxul46ksvho",
+            "name": "Blue"
+          },
+          {
+            "id": "cjx27zoqq0055qvxu2nfo5nfg",
+            "name": "M"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -34,7 +34,7 @@ export const Product: React.SFC<ProductProps> = props => {
   }
 
   const [selectedVariant, setSelectedVariant] = useState<IVariant>(
-    props.data.product.variants![0],
+    props.data.product.variants![0]
   )
   const [locked, setLocked] = useState(false)
   const [bigThumbnail, setBigThumbnail] = useState(selectedVariant.images![0])
@@ -83,7 +83,7 @@ export const Product: React.SFC<ProductProps> = props => {
                 _(variants!)
                   .flatMap(v => v.optionValues!)
                   .uniqBy(v => v.id)
-                  .filter(v => v.option.isColor)
+                  .filter(v => !!v.option.isColor)
                   .value().length === 1
 
               if (hasOnlyOneColorVariant && !locked) {
@@ -126,7 +126,7 @@ export const Product: React.SFC<ProductProps> = props => {
           <AttributesTitle>Attributes</AttributesTitle>
           <AttributesTable>
             <tbody>
-              {props.data.product.attributes.map(a => (
+              {props.data.product.attributes!.map(a => (
                 <tr key={a.id}>
                   <AttributeName>{a.key}</AttributeName>
                   <AttributeValue>{a.value}</AttributeValue>

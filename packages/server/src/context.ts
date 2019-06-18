@@ -1,7 +1,5 @@
-import { Prisma, prisma } from '../.yoga/prisma-client'
+import Photon from '@generated/photon'
 
 export interface Context {
-  prisma: Prisma
+  photon: Photon
 }
-
-export default (ctx: any) => ({ prisma, req: ctx.req })

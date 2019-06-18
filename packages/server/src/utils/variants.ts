@@ -1,5 +1,5 @@
 import * as _ from 'lodash'
-import { Option } from '../../.yoga/prisma-client'
+import { Option } from '@generated/photon'
 
 interface Variant {
   optionValues: { option: Option }[]

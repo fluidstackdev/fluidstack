@@ -1,0 +1,863 @@
+{
+  "version": "0.0.106",
+  "steps": [
+    {
+      "stepType": "CreateModel",
+      "name": "Collection",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "CollectionRuleSet",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "CollectionRule",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "ProductType",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "Product",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "Brand",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "Attribute",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "OptionValue",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "Option",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "Variant",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateModel",
+      "name": "Image",
+      "embedded": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Collection",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Collection",
+      "name": "name",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Collection",
+      "name": "rules",
+      "type": {
+        "Relation": {
+          "to": "CollectionRuleSet",
+          "to_fields": [
+            "id"
+          ],
+          "name": "CollectionToCollectionRuleSet",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Collection",
+      "name": "products",
+      "type": {
+        "Relation": {
+          "to": "Product",
+          "to_fields": [
+            "id"
+          ],
+          "name": "CollectionToProduct",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "CollectionRuleSet",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "CollectionRuleSet",
+      "name": "rules",
+      "type": {
+        "Relation": {
+          "to": "CollectionRule",
+          "to_fields": [],
+          "name": "CollectionRuleToCollectionRuleSet",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "CollectionRuleSet",
+      "name": "appliesDisjunctively",
+      "type": {
+        "Base": "Boolean"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "CollectionRuleSet",
+      "name": "collection",
+      "type": {
+        "Relation": {
+          "to": "Collection",
+          "to_fields": [],
+          "name": "CollectionToCollectionRuleSet",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "CollectionRule",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "CollectionRule",
+      "name": "field",
+      "type": {
+        "Enum": "CollectionRuleField"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "CollectionRule",
+      "name": "relation",
+      "type": {
+        "Enum": "CollectionRuleRelation"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "CollectionRule",
+      "name": "value",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "CollectionRule",
+      "name": "collectionRuleSet",
+      "type": {
+        "Relation": {
+          "to": "CollectionRuleSet",
+          "to_fields": [
+            "id"
+          ],
+          "name": "CollectionRuleToCollectionRuleSet",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "ProductType",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "ProductType",
+      "name": "name",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "ProductType",
+      "name": "product",
+      "type": {
+        "Relation": {
+          "to": "Product",
+          "to_fields": [],
+          "name": "ProductToProductType",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "name",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "brand",
+      "type": {
+        "Relation": {
+          "to": "Brand",
+          "to_fields": [
+            "id"
+          ],
+          "name": "BrandToProduct",
+          "on_delete": "None"
+        }
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "slug",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": true
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "thumbnail",
+      "type": {
+        "Relation": {
+          "to": "Image",
+          "to_fields": [
+            "id"
+          ],
+          "name": "ImageToProduct",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "description",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "type",
+      "type": {
+        "Relation": {
+          "to": "ProductType",
+          "to_fields": [
+            "id"
+          ],
+          "name": "ProductToProductType",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "variants",
+      "type": {
+        "Relation": {
+          "to": "Variant",
+          "to_fields": [],
+          "name": "ProductToVariant",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "collections",
+      "type": {
+        "Relation": {
+          "to": "Collection",
+          "to_fields": [
+            "id"
+          ],
+          "name": "CollectionToProduct",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Product",
+      "name": "attributes",
+      "type": {
+        "Relation": {
+          "to": "Attribute",
+          "to_fields": [
+            "id"
+          ],
+          "name": "AttributeToProduct",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Brand",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Brand",
+      "name": "name",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Brand",
+      "name": "products",
+      "type": {
+        "Relation": {
+          "to": "Product",
+          "to_fields": [],
+          "name": "BrandToProduct",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Attribute",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Attribute",
+      "name": "key",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Attribute",
+      "name": "value",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Attribute",
+      "name": "products",
+      "type": {
+        "Relation": {
+          "to": "Product",
+          "to_fields": [
+            "id"
+          ],
+          "name": "AttributeToProduct",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "OptionValue",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "OptionValue",
+      "name": "name",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "OptionValue",
+      "name": "option",
+      "type": {
+        "Relation": {
+          "to": "Option",
+          "to_fields": [
+            "id"
+          ],
+          "name": "OptionToOptionValue",
+          "on_delete": "None"
+        }
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "OptionValue",
+      "name": "variant",
+      "type": {
+        "Relation": {
+          "to": "Variant",
+          "to_fields": [
+            "id"
+          ],
+          "name": "OptionValueToVariant",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Option",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Option",
+      "name": "name",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Option",
+      "name": "values",
+      "type": {
+        "Relation": {
+          "to": "OptionValue",
+          "to_fields": [],
+          "name": "OptionToOptionValue",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Option",
+      "name": "isColor",
+      "type": {
+        "Base": "Boolean"
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Variant",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Variant",
+      "name": "optionValues",
+      "type": {
+        "Relation": {
+          "to": "OptionValue",
+          "to_fields": [],
+          "name": "OptionValueToVariant",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Variant",
+      "name": "price",
+      "type": {
+        "Base": "Int"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Variant",
+      "name": "availableForSale",
+      "type": {
+        "Base": "Boolean"
+      },
+      "arity": "optional",
+      "isUnique": false,
+      "default": {
+        "Boolean": false
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Variant",
+      "name": "sku",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Variant",
+      "name": "images",
+      "type": {
+        "Relation": {
+          "to": "Image",
+          "to_fields": [],
+          "name": "ImageToVariant",
+          "on_delete": "None"
+        }
+      },
+      "arity": "list",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Variant",
+      "name": "product",
+      "type": {
+        "Relation": {
+          "to": "Product",
+          "to_fields": [
+            "id"
+          ],
+          "name": "ProductToVariant",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Image",
+      "name": "id",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false,
+      "id": {
+        "strategy": "Auto",
+        "sequence": null
+      },
+      "default": {
+        "Expression": [
+          "cuid",
+          "String",
+          []
+        ]
+      }
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Image",
+      "name": "url",
+      "type": {
+        "Base": "String"
+      },
+      "arity": "required",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Image",
+      "name": "product",
+      "type": {
+        "Relation": {
+          "to": "Product",
+          "to_fields": [],
+          "name": "ImageToProduct",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateField",
+      "model": "Image",
+      "name": "variant",
+      "type": {
+        "Relation": {
+          "to": "Variant",
+          "to_fields": [
+            "id"
+          ],
+          "name": "ImageToVariant",
+          "on_delete": "None"
+        }
+      },
+      "arity": "optional",
+      "isUnique": false
+    },
+    {
+      "stepType": "CreateEnum",
+      "name": "CollectionRuleField",
+      "values": [
+        "TYPE",
+        "TITLE",
+        "PRICE"
+      ]
+    },
+    {
+      "stepType": "CreateEnum",
+      "name": "CollectionRuleRelation",
+      "values": [
+        "CONTAINS",
+        "ENDS_WITH",
+        "EQUALS",
+        "GREATER_THAN",
+        "LESS_THAN",
+        "NOT_CONTAINS",
+        "NOT_EQUALS",
+        "STARTS_WITH"
+      ]
+    }
+  ]
+}

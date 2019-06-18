@@ -4,10 +4,9 @@ import {
   extendType,
   idArg,
   inputObjectType,
-  prismaObjectType,
+  objectType,
   intArg,
-} from 'yoga'
-import * as ProductVariant from '../fragments/ProductVariant'
+} from '@prisma/nexus'
 import {
   createManualCollection,
   recomputeCollection,
@@ -15,18 +14,19 @@ import {
   throwIfMissingCollectionInput,
 } from '../utils/collection'
 import { optionsFromVariants } from './utils'
-import { ProductWhereInput } from '../../.yoga/prisma-client'
+import { ProductWhereInput } from '@generated/photon'
 import { transformAttributes } from '../utils/attributes'
 import { AttributePayload } from './Attributes'
 
-export const Collection = prismaObjectType({
+export const Collection = objectType({
   name: 'Collection',
   definition(t) {
     // TODO: Fix 'rules'
-    t.prismaFields(['id', 'name'])
+    t.model.id()
+    t.model.name()
 
-    t.field('products', {
-      type: 'ProductConnection',
+    t.list.field('products', {
+      type: 'Product',
       args: {
         optionsValuesIds: idArg({ list: true, required: false }),
         brandsIds: idArg({ list: true, required: false }),
@@ -36,28 +36,32 @@ export const Collection = prismaObjectType({
       },
       resolve(root, args, ctx) {
         const where: ProductWhereInput = {
-          collections_some: {
-            id: root.id,
+          collections: {
+            some: { id: root.id },
           },
         }
 
         if (args.brandsIds && args.brandsIds.length > 0) {
-          where.brand = { id_in: args.brandsIds }
+          where.brand = { id: { in: args.brandsIds } }
         }
 
         if (args.attributesIds && args.attributesIds.length > 0) {
-          where.attributes_some = { id_in: args.attributesIds }
+          where.attributes = { some: { id: { in: args.attributesIds } } }
         }
 
         if (args.optionsValuesIds && args.optionsValuesIds.length > 0) {
-          where.variants_some = {
-            optionValues_some: {
-              id_in: args.optionsValuesIds,
+          where.variants = {
+            some: {
+              optionValues: {
+                some: {
+                  id: { in: args.optionsValuesIds },
+                },
+              },
             },
           }
         }
 
-        return ctx.prisma.productsConnection({ where })
+        return ctx.photon.products.findMany({ where })
       },
     })
 
@@ -65,10 +69,34 @@ export const Collection = prismaObjectType({
       type: 'Option',
       list: true,
       resolve: async (root, _args, ctx) => {
-        const products = await ctx.prisma
-          .collection({ id: root.id })
-          .products()
-          .$fragment<ProductVariant.Type[]>(ProductVariant.fragment)
+        const { products } = await ctx.photon.collections.findOne({
+          where: { id: root.id },
+          select: {
+            products: {
+              select: {
+                variants: {
+                  select: {
+                    optionValues: {
+                      select: {
+                        option: {
+                          select: {
+                            id: true,
+                            name: true,
+                            isColor: true,
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        })
+
+        /**
+         * { products { variants { optionsValues { options {  } } } } }
+         */
 
         const variants = _.flatMap(products, p => p.variants)
 
@@ -80,11 +108,15 @@ export const Collection = prismaObjectType({
       type: 'Brand',
       list: true,
       resolve: (parent, _args, ctx) => {
-        return ctx.prisma.brands({
+        return ctx.photon.brands.findMany({
           where: {
-            products_some: {
-              collections_some: {
-                id: parent.id,
+            products: {
+              some: {
+                collections: {
+                  some: {
+                    id: parent.id,
+                  },
+                },
               },
             },
           },
@@ -96,11 +128,15 @@ export const Collection = prismaObjectType({
       type: AttributePayload,
       list: true,
       resolve: async (parent, _args, ctx) => {
-        const attributes = await ctx.prisma.attributes({
+        const attributes = await ctx.photon.attributes.findMany({
           where: {
-            products_some: {
-              collections_some: {
-                id: parent.id,
+            products: {
+              some: {
+                collections: {
+                  some: {
+                    id: parent.id,
+                  },
+                },
               },
             },
           },
@@ -157,9 +193,9 @@ export const CollectionMutation = extendType({
         throwIfManualAndAutomatic(collection)
 
         if (collection.ruleSet && collection.ruleSet.rules.length > 0) {
-          return recomputeCollection(collection, ctx.prisma)
+          return recomputeCollection(collection, ctx.photon)
         } else {
-          return createManualCollection(collection, ctx.prisma)
+          return createManualCollection(collection, ctx.photon)
         }
       },
     })
@@ -171,8 +207,8 @@ export const CollectionMutation = extendType({
         collectionId: idArg(),
       },
       resolve: async (_, args, ctx) => {
-        const collectionRules = await ctx.prisma
-          .collection({ id: args.collectionId })
+        const collectionRules = await ctx.photon.collections
+          .findOne({ where: { id: args.collectionId } })
           .rules()
           .rules()
 
@@ -180,7 +216,7 @@ export const CollectionMutation = extendType({
           throw new Error('Cannot add products to an automatic collection')
         }
 
-        const collection = await ctx.prisma.updateCollection({
+        const collection = await ctx.photon.collections.update({
           where: { id: args.collectionId },
           data: {
             products: { connect: args.productIds.map(id => ({ id })) },
@@ -198,8 +234,8 @@ export const CollectionMutation = extendType({
         collectionId: idArg(),
       },
       resolve: async (_, args, ctx) => {
-        const collectionRules = await ctx.prisma
-          .collection({ id: args.collectionId })
+        const collectionRules = await ctx.photon.collections
+          .findOne({ where: { id: args.collectionId } })
           .rules()
           .rules()
 
@@ -207,7 +243,7 @@ export const CollectionMutation = extendType({
           throw new Error('Cannot remove products from an automatic collection')
         }
 
-        const collection = await ctx.prisma.updateCollection({
+        const collection = await ctx.photon.collections.update({
           where: { id: args.collectionId },
           data: {
             products: { disconnect: args.productIds.map(id => ({ id })) },
@@ -231,17 +267,17 @@ export const CollectionMutation = extendType({
         let outputCollection = null
 
         if (collection.ruleSet && collection.ruleSet.rules.length > 0) {
-          outputCollection = await recomputeCollection(collection, ctx.prisma)
+          outputCollection = await recomputeCollection(collection, ctx.photon)
         }
 
         if (collection.productsIds && collection.productsIds.length > 0) {
           outputCollection = await createManualCollection(
             collection,
-            ctx.prisma,
+            ctx.photon,
           )
         }
 
-        await ctx.prisma.deleteCollection({ id })
+        await ctx.photon.collections.delete({ where: { id } })
 
         return outputCollection!
       },

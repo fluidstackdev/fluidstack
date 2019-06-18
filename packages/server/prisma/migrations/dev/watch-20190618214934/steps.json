@@ -1,0 +1,89 @@
+{
+  "version": "0.0.106",
+  "steps": [
+    {
+      "stepType": "UpdateField",
+      "model": "Collection",
+      "name": "rules",
+      "type": {
+        "Relation": {
+          "to": "CollectionRuleSet",
+          "to_fields": [
+            "id"
+          ],
+          "name": "CollectionToCollectionRuleSet",
+          "on_delete": "None"
+        }
+      }
+    },
+    {
+      "stepType": "UpdateField",
+      "model": "CollectionRuleSet",
+      "name": "collection",
+      "type": {
+        "Relation": {
+          "to": "Collection",
+          "to_fields": [],
+          "name": "CollectionToCollectionRuleSet",
+          "on_delete": "None"
+        }
+      }
+    },
+    {
+      "stepType": "UpdateField",
+      "model": "ProductType",
+      "name": "product",
+      "type": {
+        "Relation": {
+          "to": "Product",
+          "to_fields": [],
+          "name": "ProductToProductType",
+          "on_delete": "None"
+        }
+      }
+    },
+    {
+      "stepType": "UpdateField",
+      "model": "Product",
+      "name": "thumbnail",
+      "type": {
+        "Relation": {
+          "to": "Image",
+          "to_fields": [
+            "id"
+          ],
+          "name": "ImageToProduct",
+          "on_delete": "None"
+        }
+      }
+    },
+    {
+      "stepType": "UpdateField",
+      "model": "Product",
+      "name": "type",
+      "type": {
+        "Relation": {
+          "to": "ProductType",
+          "to_fields": [
+            "id"
+          ],
+          "name": "ProductToProductType",
+          "on_delete": "None"
+        }
+      }
+    },
+    {
+      "stepType": "UpdateField",
+      "model": "Image",
+      "name": "product",
+      "type": {
+        "Relation": {
+          "to": "Product",
+          "to_fields": [],
+          "name": "ImageToProduct",
+          "on_delete": "None"
+        }
+      }
+    }
+  ]
+}

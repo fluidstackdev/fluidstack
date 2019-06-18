@@ -24,7 +24,7 @@ export const CardProduct: React.SFC<Props> = props => {
   return (
     <Container>
       <ImageContainer to={`/product/${props.product.slug}`}>
-        <Image src={props.product.thumbnail.url} />
+        <Image src={props.product.thumbnail!.url} />
       </ImageContainer>
       <DetailContainer>
         <TopDetailContainer to={`/product/${props.product.slug}`}>
@@ -47,13 +47,13 @@ export const CardProduct: React.SFC<Props> = props => {
                         color={v.name}
                         onClick={() =>
                           setOptionValue(
-                            sameOptionValue(v, optionValue) ? null : v,
+                            sameOptionValue(v, optionValue) ? null : v
                           )
                         }
                         available={isOptionValueAvailable(
                           v,
                           [],
-                          availableOptionValues,
+                          availableOptionValues
                         )}
                       />
                     )
@@ -64,11 +64,11 @@ export const CardProduct: React.SFC<Props> = props => {
                         available={isOptionValueAvailable(
                           v,
                           [],
-                          availableOptionValues,
+                          availableOptionValues
                         )}
                         onClick={() =>
                           setOptionValue(
-                            sameOptionValue(v, optionValue) ? null : v,
+                            sameOptionValue(v, optionValue) ? null : v
                           )
                         }
                       >

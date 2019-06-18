@@ -1,4 +1,4 @@
-import { idArg, prismaObjectType } from 'yoga'
+import { idArg, objectType } from '@prisma/nexus'
 
 /**
  * type Query {
@@ -8,19 +8,16 @@ import { idArg, prismaObjectType } from 'yoga'
  *   collection(...): Collection!
  * }
  */
-export const Query = prismaObjectType({
+export const Query = objectType({
   name: 'Query',
   definition(t) {
-    t.prismaFields({
-      pick: [
-        //{ name: 'productsConnection', alias: 'products', args: ['first', 'last'] },
-        { name: 'optionsConnection', alias: 'options' },
-        { name: 'brandsConnection', alias: 'brands' },
-        { name: 'collectionsConnection', alias: 'collections' },
-        { name: 'productsConnection', alias: 'products' },
-        { name: 'product' },
-      ],
-    })
+    t.crud.findManyVariant({ filtering: true })
+    t.crud.findOneVariant()
+    t.crud.findManyProduct({ alias: 'products' })
+    t.crud.findOneProduct({ alias: 'product' })
+    t.crud.findManyOption({ alias: 'options' })
+    t.crud.findManyBrand({ alias: 'brands' })
+    t.crud.findManyCollection({ alias: 'collections' })
 
     t.field('collection', {
       type: 'Collection',
@@ -28,7 +25,9 @@ export const Query = prismaObjectType({
         collectionId: idArg(),
       },
       resolve: (_root, args, ctx) => {
-        return ctx.prisma.collection({ id: args.collectionId })
+        return ctx.photon.collections.findOne({
+          where: { id: args.collectionId },
+        })
       },
     })
   },

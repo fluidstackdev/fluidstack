@@ -1,4 +1,4 @@
-import { objectType } from 'yoga'
+import { objectType } from '@prisma/nexus'
 
 export const AttributePayload = objectType({
   name: 'AttributePayload',
@@ -13,5 +13,15 @@ export const AttributeValue = objectType({
   definition(t) {
     t.id('id')
     t.string('value')
+  },
+})
+
+export const Attribute = objectType({
+  name: 'Attribute',
+  definition(t) {
+    t.model.id()
+    t.model.key()
+    t.model.products()
+    t.model.value()
   },
 })

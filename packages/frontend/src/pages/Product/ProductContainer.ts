@@ -1,7 +1,7 @@
-import { withIProduct } from '../../generated-types'
+import { withProduct } from '../../generated-types'
 import { Product, ProductProps } from './Product'
 
-export default withIProduct<ProductProps>({
+export default withProduct<ProductProps>({
   options: props => ({
     variables: {
       slug: props.match.params.slug,
