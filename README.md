@@ -1,4 +1,14 @@
+# ⚠️ Archive Notice
+
+Please note that this repo is no longer actively maintained and has been archived.
+
+We recommend checking out the following full stack frameworks which accomplish similar goals to Fluidstack:
+
+- [**RedwoodJS**](https://redwoodjs.com/) - JAMStack apps with React, GraphQL, and Prisma
+- [**Blitz**](https://github.com/blitz-js/blitz) - Zero-API data layer built on Next.js and inspired by Ruby on Rails
+
 # FluidStack (2019 edition)
+
 The constantly evolving modern web stack.
 
 ## Description
